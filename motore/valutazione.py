@@ -969,7 +969,10 @@ class Valutatore(object):
         venduti = self.stato.venduti()
         out = [x for x in self.g.values()
                if x.id not in venduti and (ruolo is None or x.ruolo == ruolo)]
-        out.sort(key=lambda x: -x.vor)
+        # L'id scioglie i pareggi: due giocatori con lo stesso VOR devono
+        # uscire sempre nello stesso ordine, altrimenti la lista mostrata
+        # cambia da sola.
+        out.sort(key=lambda x: (-x.vor, x.id))
         return out[:n] if n else out
 
     def cerca(self, testo):

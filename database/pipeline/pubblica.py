@@ -25,6 +25,7 @@ QUI = os.path.dirname(os.path.abspath(__file__))
 DATABASE = os.path.dirname(QUI)
 BASE = os.path.dirname(DATABASE)
 sys.path.insert(0, os.path.join(BASE, 'motore'))
+sys.path.insert(0, QUI)
 
 import percorsi
 import db as dbmod
@@ -64,6 +65,7 @@ def costruisci(uscita=USCITA, con_proiezioni=True):
         os.remove(asta)
         print('    %d giocatori proiettati (regolamento %s)' % (len(righe), firma_reg))
 
+    db_finito = db
     print('\n[3] Compressione')
     grezzo = io.open(db, 'rb').read()
     # Senza `mtime=0` gzip infila l'ora dentro il file, e lo stesso database
@@ -79,6 +81,18 @@ def costruisci(uscita=USCITA, con_proiezioni=True):
     io.open(gz, 'wb').write(compresso)
     print('    %.0f KB -> %.0f KB compressi' % (len(grezzo)/1024.0, len(compresso)/1024.0))
 
+    print('\n[3b] La stessa roba in JSON, per il telefono')
+    # L'applicazione dentro una pagina non ha SQLite, e portarcelo vorrebbe
+    # dire trascinarsi appresso mezzo mega di WebAssembly per leggere seicento
+    # righe. Lo stesso pacchetto esce quindi anche in JSON, con dentro solo le
+    # tabelle che servono mentre l'asta e' in corso.
+    import esporta_json
+    percorso_json = os.path.join(uscita, 'dati.json')
+    esporta_json.esporta(db_finito, percorso_json)
+    grezzo_json = io.open(percorso_json, 'rb').read()
+    print('    %.0f KB (GitHub li manda compressi: circa %.0f)'
+          % (len(grezzo_json) / 1024.0, len(gzip.compress(grezzo_json, 9)) / 1024.0))
+
     generato_il = _generato_il()
     manifest = {
         'generato_il': generato_il,
@@ -89,6 +103,9 @@ def costruisci(uscita=USCITA, con_proiezioni=True):
         'dimensione': len(compresso),
         'dimensione_estratto': len(grezzo),
         'giocatori': n.get('giocatori', 0),
+        'json': 'dati.json',
+        'sha256_json': hashlib.sha256(grezzo_json).hexdigest(),
+        'dimensione_json': len(grezzo_json),
     }
     mp = os.path.join(uscita, 'manifest.json')
     io.open(mp, 'w', encoding='utf-8').write(
@@ -96,7 +113,7 @@ def costruisci(uscita=USCITA, con_proiezioni=True):
     print('\n[4] Manifest')
     for k in ('generato_il', 'schema', 'giocatori', 'dimensione', 'sha256'):
         print('    %-14s %s' % (k, manifest[k]))
-    os.remove(db)          # nel pacchetto va solo il compresso
+    os.remove(db)          # nel pacchetto vanno il compresso e il JSON
     return manifest, uscita
 
 
@@ -139,7 +156,7 @@ def pubblica(manifest, uscita=USCITA, repo=REPO):
         if r.returncode != 0:
             print('    clone non riuscito: %s' % (r.stderr or '').strip()[:200])
             return False
-        for f in ('dati.db.gz', 'manifest.json'):
+        for f in ('dati.db.gz', 'dati.json', 'manifest.json'):
             sh.copyfile(os.path.join(uscita, f), os.path.join(clone, f))
         _scrivi_leggimi(clone, manifest, repo)
         subprocess.run(['git', 'add', '-A'], cwd=clone, capture_output=True)

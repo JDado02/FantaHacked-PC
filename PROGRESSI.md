@@ -3,29 +3,28 @@
 > File di ripresa. Se la sessione si interrompe, **leggi questo per primo**:
 > dice cos'è fatto, dove sta, e qual è il passo successivo.
 >
-> Ultimo aggiornamento: **9 settembre 2026 (ottavo giro) &mdash; i dati si
-> scaricano, l'asta resta sul dispositivo.**
+> Ultimo aggiornamento: **9 settembre 2026 (nono giro) &mdash; due motori, e
+> la prova che dicono la stessa cosa.**
 >
-> Il database era un file solo e conteneva due cose opposte: il listone, che e'
-> uguale per tutti e si rifa' spesso, e gli acquisti dell'asta, che sono di
-> quella sera e non si rifanno. Adesso sono due file. `database/dati.db` si
-> scarica da [DBFantaHacked](https://github.com/JDado02/DBFantaHacked) &mdash;
-> 185 KB compressi, 0,22 secondi da cartella vuota a programma pronto &mdash;
-> e `motore/asta.db` non esce mai dal dispositivo che sta giocando.
+> Il motore e' stato tradotto in JavaScript per l'applicazione Android, e la
+> traduzione e' verificata contro questo, numero per numero: **22.356
+> confronti e 44 liste, zero differenze**, con soglia a un milionesimo e zero
+> sugli interi.
 >
-> Le query non sono cambiate: SQLite apre i due file insieme e risolve da solo
-> in quale sta ogni tabella. Il motore non e' stato toccato.
+> La prova ha trovato tre fragilita' **di questo motore**, non della
+> traduzione: un valore da 1,2e-14 che decideva quale riempitivo entrasse
+> nello zaino, pareggi risolti dall'ordine con cui SQLite restituiva le righe,
+> e liste che potevano cambiare ordine da sole. Tutte corrette qui.
 >
-> Se la rete non c'e' si parte lo stesso; un pacchetto rotto non sostituisce
-> quello buono; dati piu' nuovi del programma vengono rifiutati invece di
-> aprirsi a meta'. E le proiezioni si rifanno da sole quando il regolamento
-> non e' quello con cui erano state calcolate &mdash; difetto vecchio, venuto
-> fuori facendo questo lavoro.
+> Il codice sta adesso in tre repository:
+> [FantaHacked-PC](https://github.com/JDado02/FantaHacked-PC),
+> [FantaHacked-Android](https://github.com/JDado02/FantaHacked-Android),
+> [DBFantaHacked](https://github.com/JDado02/DBFantaHacked).
 >
-> 47 + 264 + **23 nuove** verifiche, tutte superate contro l'`.exe` ricompilato.
+> 47 + 23 + 264 verifiche superate, 98 aste vinte su 100.
 >
-> *(giri precedenti: il listone riletto a mercato chiuso e le due ripartizioni;
-> la lista di serie A e Milik; i consigli come classifica.)*
+> *(giri precedenti: i dati che si scaricano e l'asta che resta locale; il
+> listone riletto a mercato chiuso e le due ripartizioni; la lista di serie A.)*
 ---
 
 ## Come si avvia e come si chiude
@@ -2366,3 +2365,126 @@ si copia una volta e basta, e l'asta non si sposta di li'.**
   divisione e sull'aggiornamento, tutte superate
 - manifest 310 byte, pacchetto 185 KB, database 544 KB
 - avvio senza aggiornamenti 0,06 s; con download 0,22 s
+
+---
+
+# 9 settembre: due motori, e la prova che dicono la stessa cosa
+
+L'applicazione per telefono non poteva essere un client sottile: il calcolo
+serve **fra un rilancio e l'altro**, e un consiglio completo che oggi esce in
+quaranta millisecondi, dietro la rete, diventa mezzo secondo quando va bene e
+«connessione persa» quando va male. Quindi il motore doveva finire dentro il
+telefono, e per farci girare la stessa interfaccia doveva essere JavaScript.
+
+Riscrivere quattromila righe tarate giro dopo giro e' il modo piu' facile di
+perdere quella taratura senza accorgersene: nessun numero e' palesemente
+sbagliato, semplicemente non sono piu' gli stessi.
+
+## Come si e' evitato
+
+Il motore Python **fotografa i propri numeri** in quattro momenti di un'asta
+&mdash; vuota, dopo dieci acquisti, a meta', quasi finita &mdash; con gli
+acquisti scritti nel file, cosi' che la parte JavaScript ricostruisca lo stesso
+stato invece di sperare che coincida. Poi due pagine li rileggono e li
+confrontano uno per uno.
+
+| cosa si confronta | esito |
+|---|---|
+| punti, VOR, contributo al modificatore, prezzi (mercato, atteso, base, piano), pesi della curva, coefficienti delle regressioni, ottimo dello zaino, limiti, verdetti | **22.356 confronti, 0 differenze** |
+| le cinque liste dei consigli: nomi, ordine, cifre, e le frasi delle sezioni vuote | **44 liste, 0 differenze** |
+
+La soglia e' un milionesimo in relativo, e **zero** sui numeri interi &mdash;
+dove uno scarto non e' virgola mobile, e' una decisione diversa.
+
+Gli script sono `simulazioni/dump_equivalenza.py` e
+`simulazioni/dump_consiglio.py`; le pagine stanno nel repository Android.
+
+## Le tre cose che la prova ha trovato **qui**
+
+Non erano difetti della traduzione. Erano fragilita' di questo motore, che con
+un motore solo non c'era modo di vedere.
+
+**Un valore da 1,2e-14.** De Silvestri, difensore di fondo listone, usciva con
+valore `0,000000000000012` invece di zero: l'ultimo bit di una sottrazione fra
+numeri quasi uguali. Indistinguibile da zero per chiunque, e sufficiente a
+farlo entrare nel pool dello zaino al posto di un altro riempitivo, cambiando
+il percorso della programmazione dinamica e da li' il limite su **un terzo
+giocatore**. Adesso c'e' una soglia dichiarata: sotto un miliardesimo di punto,
+zero.
+
+**Pareggi risolti dall'ordine delle righe.** A parita' di costo e di valore
+l'ordine dei giocatori nel pool veniva da come SQLite restituiva le righe.
+Funzionava, ed era casuale: bastava che una query cambiasse piano perche' il
+motore desse un altro numero. Adesso il pareggio e' l'id, che non cambia mai.
+Vale anche per le liste mostrate: due giocatori appaiati non devono scambiarsi
+di posto da soli fra un ricalcolo e l'altro.
+
+**Due righe in fondo a `_svuota`.** Nella traduzione mancavano, e la lista «da
+far pagare agli altri» usciva ordinata per quanto converrebbe **comprarli**,
+che e' esattamente la domanda opposta. Tutti i numeri erano giusti; la lista
+diceva un'altra cosa. E' il motivo per cui la seconda prova confronta anche
+**l'ordine delle liste** e non solo la matematica: un motore puo' avere ragione
+su ogni cifra e mettere in fila i nomi nel modo sbagliato.
+
+## Due trappole di lingua, entrambe silenziose
+
+**`Math.round(2.5)` fa 3; `round(2.5)` in Python fa 2.** Python arrotonda al
+pari piu' vicino. Il costo di ogni giocatore nel piano di spesa e' un
+arrotondamento, e un credito in piu' cambia il percorso dello zaino: la prova
+lo ha trovato su un giocatore su seicento.
+
+**JavaScript non ha `erf`.** L'approssimazione classica (Abramowitz e Stegun
+7.1.26) sbaglia di 1,5e-7. Sembra niente; moltiplicata per 38 giornate ed
+entrata nei punti, nel VOR e nel prezzo di ogni giocatore del reparto, produceva
+scarti fino a due milionesimi in relativo &mdash; abbastanza da far scegliere
+alla programmazione dinamica un percorso diverso e da spostare un limite di un
+credito. Sostituita con la serie a termini tutti positivi, esatta in doppia
+precisione.
+
+## Le regole viaggiano coi dati
+
+Le proiezioni **dipendono dal regolamento**, e l'applicazione per telefono non
+sa rifarle: porta il motore di valutazione, non quello delle proiezioni, che
+serve una volta al giorno e non durante l'asta. Con un regolamento diverso da
+quello che ha prodotto quei numeri mostrerebbe cifre sbagliate senza modo di
+accorgersene.
+
+Quindi `regole_lega.json` sta **dentro `dati.json`**: le due cose arrivano
+insieme o non arrivano. Sul computer resta il file locale, che e' tuo e non
+viene mai sovrascritto; il pacchetto pubblicato porta la copia con cui sono
+state calcolate le proiezioni.
+
+## Cosa c'e' nei tre repository
+
+| | |
+|---|---|
+| [FantaHacked-PC](https://github.com/JDado02/FantaHacked-PC) | motore, interfaccia, pipeline, simulazioni |
+| [FantaHacked-Android](https://github.com/JDado02/FantaHacked-Android) | l'app: `web/` e' l'applicazione, `app/` l'involucro, `prove/` le due prove |
+| [DBFantaHacked](https://github.com/JDado02/DBFantaHacked) | i dati: `dati.db.gz` per il computer, `dati.json` per il telefono, `manifest.json` per decidere se scaricare |
+
+## L'app in se'
+
+Novanta righe di Java che aprono una WebView, e basta: nessuna logica d'asta
+fuori dal JavaScript. Un dettaglio che sembra tecnico e non lo e': i file si
+servono da `https://appassets.androidplatform.net/` e non da `file://`, perche'
+una pagina caricata da `file://` non ha un'origine e il browser le blocca ogni
+richiesta verso l'esterno &mdash; l'app non riuscirebbe **mai** a scaricare i
+dati.
+
+Gradle impacchetta la cartella `web/` direttamente, quindi non ci sono copie da
+tenere allineate: quella che si apre nel browser per lavorarci e' la stessa che
+finisce nell'apk.
+
+**L'asta resta sul telefono**, in `localStorage`, salvata a ogni acquisto. Non
+si sincronizza con niente: due dispositivi che scrivono sulla stessa asta sono
+un modo elaborato di perderla. Coi portieri a pacchetto, comprare il titolare
+registra da solo anche le due riserve a un credito &mdash; tre gesti diventano
+uno, e dimenticarsene falserebbe gli slot di tutti.
+
+## Numeri
+
+- motore in JavaScript: **1.900 righe**, sei moduli, nessuna libreria
+- un consiglio completo: **40 ms** sul telefono, come sul computer
+- il pacchetto per il telefono: 190 KB, che GitHub manda compressi a 43
+- prima apertura da zero: **0,22 secondi** dallo scaricamento al primo consiglio
+- 47 + 23 + 264 verifiche Python, **22.356 + 44 confronti** di equivalenza

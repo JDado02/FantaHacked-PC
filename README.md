@@ -121,6 +121,13 @@ da un'altra cartella produce un eseguibile che non parte.
 
 ---
 
+## Dove sta il resto
+
+| | |
+|---|---|
+| [FantaHacked-Android](https://github.com/JDado02/FantaHacked-Android) | la stessa cosa sul telefono: il motore tradotto in JavaScript |
+| [DBFantaHacked](https://github.com/JDado02/DBFantaHacked) | i dati pubblicati, che entrambi scaricano |
+
 ## Le verifiche
 
 ```bash
@@ -129,6 +136,19 @@ python motore/test_aggiornamento.py    # 23 sui due database e sull'aggiornament
 python app/test_app.py                 # 264 sull'applicazione, contro un server vero
 python simulazioni/cento_aste.py 100   # cento aste complete
 ```
+
+E le due che tengono allineati i due motori. Il motore Python fotografa i
+propri numeri in quattro momenti di un'asta, la parte JavaScript li rilegge e
+li confronta uno per uno:
+
+```bash
+python simulazioni/dump_equivalenza.py  <FantaHacked-Android>/prove/attesi.json
+python simulazioni/dump_consiglio.py    <FantaHacked-Android>/prove/attesi_consiglio.json
+```
+
+Oggi: **22.356 numeri e 44 liste, zero differenze.** La soglia e' un
+milionesimo in relativo, e zero sugli interi &mdash; dove uno scarto non e'
+virgola mobile, e' una decisione diversa.
 
 Girano su copie usa e getta dei database: non toccano mai l'asta in corso.
 

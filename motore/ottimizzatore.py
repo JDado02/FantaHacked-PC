@@ -47,6 +47,10 @@ GIORNATE_STAGIONE = 38
 # niente che si distingua dal rumore delle proiezioni.
 COSTO_RIEMPITIVO = 2
 
+# Sotto questa soglia un valore non e' un valore, e' rumore di virgola mobile.
+# Vedi il commento in `aggiorna`.
+EPS_VALORE = 1e-9
+
 # Se il piano debba usare un prezzo suo invece di quello mostrato. Si': il
 # numero da mostrare e il numero con cui pianificare non sono lo stesso numero.
 #
@@ -346,7 +350,15 @@ def _pota(pool, k_max):
     qualche decina di millisecondi. Restano sempre almeno k_max riempitivi
     economici, altrimenti la rosa non si chiude.
     """
-    per_costo = sorted(pool, key=lambda t: (t[0], -t[1]))
+    # A parita' di costo e di valore l'ordine deve essere **dichiarato**, non
+    # ereditato da come il database restituisce le righe. Sul fondo di un
+    # reparto ci sono decine di riempitivi da un credito che valgono zero
+    # esattamente: quale di loro resta nel pool cambia il percorso della
+    # programmazione dinamica, e da li' il limite su qualcun altro. Finche'
+    # c'era un motore solo la cosa non si vedeva; con due motori che devono
+    # dare lo stesso numero, si vede subito. L'id e' il pareggio giusto:
+    # non cambia mai.
+    per_costo = sorted(pool, key=lambda t: (t[0], -t[1], t[2]))
     tenuti, migliore = [], NEG
     for voce in per_costo:
         if voce[1] > migliore:
@@ -361,7 +373,7 @@ def _pota(pool, k_max):
         alti = sorted(tenuti, key=lambda t: -t[1])[:POOL_MAX_SENZA_NUMPY - k_max]
         bassi = sorted(tenuti, key=lambda t: t[0])[:k_max]
         tenuti = list({v[2]: v for v in alti + bassi}.values())
-    return sorted(tenuti, key=lambda t: -t[1])
+    return sorted(tenuti, key=lambda t: (-t[1], t[2]))
 
 
 # ----------------------------------------------------------- ottimizzatore
@@ -430,8 +442,19 @@ class Ottimizzatore(object):
         self.mod_punti = {}
         for r in RUOLI:
             for x in self.liberi[r]:
-                self.valore[x.id] = (max(0.0, x.presenze * (x.fm - v.rimpiazzo_fm[r]))
-                                     + self.coppia_bonus.get(x.id, 0.0))
+                grezzo = (max(0.0, x.presenze * (x.fm - v.rimpiazzo_fm[r]))
+                          + self.coppia_bonus.get(x.id, 0.0))
+                # Sotto un miliardesimo di punto non c'e' valore: c'e'
+                # l'ultimo bit di una sottrazione fra numeri quasi uguali.
+                # Non e' pedanteria: un difensore di fondo listone usciva a
+                # 1,2e-14 invece che a zero, e quel numero - indistinguibile
+                # da zero per chiunque - bastava a farlo entrare nel pool al
+                # posto di un altro, cambiando il percorso della
+                # programmazione dinamica e il limite su qualcun altro
+                # ancora. Lo ha trovato la prova di equivalenza col motore
+                # dell'applicazione per telefono, che sullo stesso giocatore
+                # dava un centesimo di punto di differenza.
+                self.valore[x.id] = grezzo if grezzo > EPS_VALORE else 0.0
                 # Il costo NON e' quanto vale: e' quanto costera'.
                 # Pianificare sui valori teorici invece che sui prezzi veri
                 # porta a riempirsi di difensori "convenienti" e ad arrivare
@@ -449,7 +472,7 @@ class Ottimizzatore(object):
                     self.costo[x.id] += len(x.riserve_por or ())
                 self.mod_punti[x.id] = self.contributo_difesa(x)
         for r in RUOLI:
-            self.liberi[r].sort(key=lambda x: -self.valore[x.id])
+            self.liberi[r].sort(key=lambda x: (-self.valore[x.id], x.id))
 
         self._riserve()
         self._tabelle = {}

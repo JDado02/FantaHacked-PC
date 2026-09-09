@@ -640,12 +640,13 @@ class Consigliere(object):
         # sposta la rosa, non per convenienza: la convenienza dice se merita di
         # stare in quella fascia, ma se devo scegliere un portiere solo voglio
         # in cima quello che mi fa fare piu' punti, non quello che costa meno.
-        top.sort(key=lambda d: (-d['punteggio'], -d['convenienza']))
-        svuotare.sort(key=lambda d: -d['punteggio'])
+        top.sort(key=lambda d: (-d['punteggio'], -d['convenienza'], d['id']))
+        svuotare.sort(key=lambda d: (-d['punteggio'], d['id']))
         # Da evitare in ordine di pericolo, non di bruttezza: la trappola vera
         # e' quella su cui la stanza spendera' davvero. Chi perde venti punti
         # ma chiude a due crediti non ha mai rovinato un'asta a nessuno.
-        evitare.sort(key=lambda d: d['convenienza'] - 0.15 * d['chiusura'])
+        evitare.sort(key=lambda d: (d['convenienza'] - 0.15 * d['chiusura'],
+                                    d['id']))
 
         # Chi sta fra i consigliati non puo' anche essere uno da far pagare
         # agli altri: sono due indicazioni opposte sullo stesso nome, e a
@@ -854,7 +855,7 @@ class Consigliere(object):
         out = [d for d in neutri
                if d['id'] not in gia_visti and d['chiusura'] <= tetto
                and d['resa'] > 0]
-        out.sort(key=lambda d: (0 if gioca(d) else 1, -d['punteggio']))
+        out.sort(key=lambda d: (0 if gioca(d) else 1, -d['punteggio'], d['id']))
         for d in out:
             g = d.get('gerarchia') or {}
             d['perche'] = ('%s, %d presenze attese e %.2f di fantamedia: a %d '
@@ -968,7 +969,9 @@ class Consigliere(object):
                     'perche': testo,
                     'decisione': d,
                 })
-        out.sort(key=lambda d: (-d['copertura_buchi'], -d['utilita']))
+        # L'id chiude anche qui: due soci che coprono la stessa quota e
+        # rendono uguale devono comparire sempre nello stesso ordine.
+        out.sort(key=lambda d: (-d['copertura_buchi'], -d['utilita'], d['id']))
         return out
 
     # ------------------------------------------------------ il piano B
@@ -1010,7 +1013,7 @@ class Consigliere(object):
         # in quel momento il programma propone una fantamedia alta prodotta da
         # otto presenze, il danno lo fa lui, non l'asta. Chi non e' titolare
         # con ragionevole certezza entra solo se non e' rimasto nessun altro.
-        candidati = sorted(liberi, key=lambda y: -(y.presenze * y.fm))
+        candidati = sorted(liberi, key=lambda y: (-(y.presenze * y.fm), y.id))
         sicuri, incerti = [], []
         for x in candidati:
             if x.id in gia_visti:
