@@ -1,0 +1,32 @@
+# --- roba che si rigenera, e che quindi non va nel repository ---------------
+
+# I due database. Il primo si scarica, il secondo e' l'asta di chi sta
+# giocando: nessuno dei due appartiene al codice.
+database/dati.db
+motore/asta.db
+motore/fanta.db
+motore/fanta.db.prima-della-divisione
+*.db.precedente
+*.db.parziale
+
+# L'eseguibile e la cartella di lavoro di PyInstaller: 50 MB che si rifanno
+# con un comando.
+FantaHacked.exe
+build/lavoro/
+build/dist/
+
+# Il pacchetto pronto da pubblicare: sta nel repository dei dati, non qui.
+pubblicazione/
+
+# Segnaposto che il programma scrive mentre gira.
+motore/fanta.lock
+motore/fanta.porta
+motore/preferenze.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Registri
+*.log

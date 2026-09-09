@@ -1,0 +1,7 @@
+* text=auto
+*.csv text
+*.py text
+*.md text
+*.json text
+*.sql text
+*.xlsb binary

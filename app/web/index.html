@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FantaHacked</title>
+<link rel="icon" href="fantahacked.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="stile.css">
+</head>
+<body>
+
+<!-- ============================================ MOTORE IRRAGGIUNGIBILE -->
+<!-- Copre tutto: vale sia in configurazione sia ad asta in corso. -->
+<section id="disconnesso" class="disconnesso" hidden>
+  <div class="disconnesso-carta">
+    <div class="disconnesso-icona">&#9679;</div>
+    <h1>FantaHacked non &egrave; pi&ugrave; in esecuzione</h1>
+    <p>Questa pagina &egrave; ancora aperta, ma il programma che fa i calcoli
+       si &egrave; chiuso. Nessun dato &egrave; andato perso: l'asta &egrave;
+       salvata sul disco.</p>
+    <p class="nota">Riavvia <b>FantaHacked.exe</b> con un doppio clic.
+       Questa pagina si ricollega da sola appena il programma riparte.</p>
+    <div class="disconnesso-attesa">
+      <span class="battito"></span> in attesa del programma&hellip;
+    </div>
+  </div>
+</section>
+
+<!-- =============================================== AVVIO / NUOVA ASTA -->
+<section id="avvio" class="avvio" hidden>
+  <div class="avvio-carta">
+    <div class="marchio"><span class="marchio-f">Fanta</span>Hacked<span class="cursore"></span></div>
+    <p class="occhiello">Assistente d'asta &mdash; modalit&agrave; Classic</p>
+
+    <div id="avvio-regole" class="regole-strip"></div>
+
+    <h2 class="titolo-sezione">Le otto squadre</h2>
+    <p class="nota">Il primo nome &egrave; il tuo: tutti i consigli sono calcolati
+       dal tuo punto di vista. Gli altri sette sono avversari.</p>
+
+    <form id="form-nuova" class="squadre-griglia" autocomplete="off"></form>
+
+    <div id="avvio-errore" class="errore" hidden></div>
+    <div class="avvio-azioni">
+      <button id="btn-nuova" class="bottone grande">Nuova asta</button>
+      <button id="btn-riprendi" class="bottone fantasma" hidden>Riprendi quella in corso</button>
+    </div>
+    <p class="nota piccola">Avviare una nuova asta cancella quella precedente.</p>
+  </div>
+</section>
+
+<!-- ==================================================== ASTA IN CORSO -->
+<div id="app" class="guscio" hidden>
+
+  <header class="barra">
+    <div class="barra-marchio"><span class="marchio-f">Fanta</span>Hacked<span class="cursore"></span></div>
+
+    <div class="fase">
+      <span class="fase-etichetta">Si chiamano</span>
+      <strong id="fase-nome">&mdash;</strong>
+      <span id="fase-residui" class="fase-residui"></span>
+    </div>
+
+    <div class="turno">
+      <span class="fase-etichetta">Turno di chiamata</span>
+      <div class="turno-riga">
+        <strong id="turno-nome">&mdash;</strong>
+        <button id="btn-avanza" class="bottone minuscolo" title="Passa al successivo">successivo &rsaquo;</button>
+      </div>
+    </div>
+
+    <div class="barra-spazio"></div>
+
+    <div class="metrica">
+      <span class="metrica-etichetta">Lega</span>
+      <span class="metrica-valore" id="m-lega">&mdash;</span>
+      <span class="metrica-sotto" id="m-inflazione"></span>
+    </div>
+    <div class="metrica accento">
+      <span class="metrica-etichetta">I tuoi crediti</span>
+      <span class="metrica-valore" id="m-miei">&mdash;</span>
+      <span class="metrica-sotto" id="m-slot"></span>
+    </div>
+    <span id="spia" class="spia" title="Collegamento con il motore di calcolo"></span>
+    <button id="btn-ricomincia" class="bottone minuscolo" title="Torna alla schermata iniziale">Nuova asta</button>
+    <button id="btn-chiudi" class="bottone minuscolo" title="Chiude il programma">Chiudi</button>
+  </header>
+
+  <main class="colonne">
+
+    <!-- ------------------------------------------------ rail avversari -->
+    <aside class="rail">
+      <h2 class="titolo-rail">Le squadre
+        <button id="btn-rinomina" class="bottone minuscolo"
+                title="Correggi i nomi senza perdere l'asta">rinomina</button>
+      </h2>
+      <p class="nota piccola">Clicca la squadra per darle il turno.
+         <b>rosa</b> apre la sua rosa, dove puoi correggere un acquisto.</p>
+      <form id="form-rinomina" class="rinomina" hidden autocomplete="off"></form>
+      <div id="squadre" class="squadre"></div>
+    </aside>
+
+    <!-- ------------------------------------------------------- centro -->
+    <section class="centro">
+      <div class="cerca-guscio">
+        <input id="cerca" type="search" placeholder="Chi hanno chiamato?  Scrivi il nome&hellip;"
+               autocomplete="off" spellcheck="false">
+        <kbd class="scorciatoia">/</kbd>
+        <div id="risultati" class="risultati" hidden></div>
+      </div>
+
+      <div id="scheda" class="scheda"></div>
+
+      <!-- I consigli stanno **al centro**, non in una colonna laterale.
+           Prima questo spazio &mdash; il 40% dello schermo &mdash; diceva
+           "cerca un giocatore" finche' non si cercava, mentre la lista di chi
+           chiamare stava schiacciata in una striscia da 340px. Erano le due
+           cose piu' importanti del programma: una occupava mezzo schermo per
+           non dire niente, l'altra non aveva posto per dirlo. -->
+      <div id="vista-consiglio" class="vista consiglio-centro"></div>
+    </section>
+
+    <!-- -------------------------------------------------------- destra -->
+    <aside class="destra">
+      <nav class="schede-nav">
+        <button class="scheda-tab attiva" data-vista="rosa">La mia rosa</button>
+        <button class="scheda-tab" data-vista="listone">Listone</button>
+      </nav>
+
+      <div id="vista-rosa" class="vista"></div>
+      <div id="vista-listone" class="vista" hidden></div>
+      <div id="vista-avversario" class="vista" hidden></div>
+    </aside>
+  </main>
+
+  <div id="brindisi" class="brindisi" hidden></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

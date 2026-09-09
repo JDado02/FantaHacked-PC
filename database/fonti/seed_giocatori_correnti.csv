@@ -1,0 +1,594 @@
+ruolo,nome,squadra,qt_fanta,ia,fascia_o_valore,note,sos,accoppiata,fv,pg,media,fmedia,gol,ass,amm,gol_subiti,p_med_aste,p_stat,p_gol_m,tr_media,tr_gol,id_ufficiale,fvm,eta
+P,Svilar,Roma,19,81.51,0° TOP A,Titolare,Mod.,Lazio Napoli Juventus,0.8486256410256412,38,6.26,5.45,,,,31,26.175,23.75,,,,5841,85,27
+P,Carnesecchi,Atalanta,17,79.9,0° TOP A,Mod.,Titolare,Frosinone Bologna Cagliari,0.8360291497975709,37,6.36,5.58,,,,35,21.125,23.75,,,,4431,55,26
+P,Martinez Jo.,Inter,17,79.9,0° TOP B,Mod.,Imbattibilità,Milan Sassuolo Juventus,0.7548157894736843,5,6,5.2,,,,4,22.849999999999998,21.25,,,,5116,68,29
+P,Vicario,Juventus,17,79.9,0° TOP B,titolare,mod.,Torino Genoa Roma,,,,,,,,,23.025,21.25,,,,4964,70,30
+P,Butez,Como,15,78.3,1° Fascia A,Mod.,Titolare,Fiorentina Frosinone Genoa,0.8344610722610722,38,6.07,5.37,,,,29,19.75,17.5,,,,6966,50,31
+P,Maignan,Milan,15,78.3,1° Fascia A,Titolare,Mod.,Inter Parma Cagliari,0.8102575880260091,37,6.26,5.42,,,,35,22.3,17.5,,,,4312,52,31
+P,De Gea,Fiorentina,11,74.47,1° Fascia A,Titolare,Mod.,Cagliari Como Lazio,0.7659829959514172,37,6.24,5,,,,49,10.525,17.5,,,,2521,30,36
+P,Meret,Napoli,11,74.47,1° Fascia B,Mod.,,Roma Bologna Frosinone,0.7593672310145996,11,6.23,5.18,,,,12,19.650000000000002,15,,,,572,48,29
+P,Skorupski,Bologna,10,73.3,2° Fascia A,mod.,pararigori,Atalanta Lecce Napoli,0.7377195926880138,18,6.19,5.28,,,,15,5.8,6.25,,,,133,32,35
+P,Caprile,Cagliari,10,73.3,2° Fascia A,Mod.,Titolare,Atalanta Fiorentina Venezia,0.7454885780885782,38,6.29,4.87,,,,53,4.05,6.25,,,,4360,25,25
+P,Mandas,Lazio,10,73.3,2° Fascia B,Mod.,Titolare,Roma Genoa Torino,0. N.D.,0,0,0,,,,0,8.175,5,,,,6482,36,25
+P,Okoye,Udinese,9,72,2° Fascia B,Mod.,Infortuni,Genoa Lecce Milan,0.7320236412710097,30,6.07,5.08,,,,32,6.75,5,,,,6462,28,27
+P,Perri,Torino,9,72,2° Fascia C,Scommessa,,Juventus Lazio Lecce,,,,,,,,,1.2,3.75,,,,6534,26,29
+P,Sanchez Ro.,Como,8,70.48,2° Fascia C,,,Fiorentina Frosinone Genoa,,,,,,,,,1.45,3.75,,,,6344,25,29
+P,Bijlow,Genoa,8,70.48,3° Fascia,Titolare,,Juventus Bologna Como,0.740841994847258,16,6.06,4.78,,,,20,2.9,2.5,,,,7332,15,28
+P,Falcone,Lecce,8,70.48,3° Fascia,Titolare,Mod.,Parma Bologna Fiorentina,0.7699578088578088,38,6.41,5.22,,,,50,3.85,2.5,,,,2134,26,31
+P,Muric,Sassuolo,7,68.81,3° Fascia,Scommessa,,Inter Parma Bologna,0.731141798552325,32,6.08,4.77,,,,43,1.9,2.5,,,,4236,15,28
+P,Daffara,Parma,6,66.78,3° Fascia,,,Lecce Sassuolo Milan,,,,,,,,,0.625,2.5,,,,7411,7,22
+P,Stankovic F.,Venezia,6,66.78,3° Fascia,Titolare,Mod.,Cagliari Monza Bologna,,,,,,,,,1.05,2.5,,,,6248,11,24
+P,Palmisani,Frosinone,5,64.25,3° Fascia,Scommessa,,Atalanta Como Napoli,,,,,,,,,0.6,2.5,,,,6415,12,22
+P,Milinkovic-Savic V.,Napoli,5,64.25,3° Fascia,Imbattibilità,Mod.,Roma Bologna Frosinone,0.8197847503373821,27,6.2,5.65,,,,24,2.85,2.5,,,,2170,5,29
+P,Thiam,Monza,4,60.96,R,Scommessa,,Lecce Venezia Atalanta,,,,,,,,,0.575,1,,,,4485,5,28
+P,Desplanches,Frosinone,2,49.12,R,,,Atalanta Como Napoli,,,,,,,,,0.45,1,,,,7463,1,23
+P,Provedel,Inter,2,49.12,R,Mod.,Jolly,Milan Sassuolo Juventus,0.7971085265611582,27,6.26,5.35,,,,27,2.8249999999999997,1,,,,2814,5,32
+P,Corvi,Parma,2,49.12,R,Mod.,,Lecce Sassuolo Milan,0.7658436142804563,17,6.18,5.09,,,,18,1.1,1,,,,6662,10,25
+P,Ghidotti,Parma,1,35.69,R,,,Lecce Sassuolo Milan,,,,,,,,,0.425,1,,,,2874,1,26
+P,Sportiello,Atalanta,1,35.69,R,,,Frosinone Bologna Cagliari,0.709391363022942,1,5.5,4.5,,,,1,0.45,1,,,,4,1,34
+P,Pompei,Atalanta,1,35.69,R,,,Frosinone Bologna Cagliari,,,,,,,,,0.45,1,,,,7626,1,20
+P,Happonen,Bologna,1,35.69,R,,,Atalanta Lecce Napoli,,,,,,,,,0.45,1,,,,7533,1,19
+P,Pessina Mas.,Bologna,1,35.69,R,,,Atalanta Lecce Napoli,0.7726757085020244,4,6.12,5.62,,,,2,0.45,1,,,,7172,1,19
+P,Sherri,Cagliari,1,35.69,R,,,Atalanta Fiorentina Venezia,0. N.D.,0,0,0,,,,0,0.45,1,,,,6650,1,29
+P,Tornqvist,Monza,1,35.69,R,Scommessa,,Lecce Venezia Atalanta,0. N.D.,0,0,0,,,,0,0.45,1,,,,7301,10,24
+P,Vigorito,Como,1,35.69,R,,,Fiorentina Frosinone Genoa,0. N.D.,0,0,0,,,,0,0.45,1,,,,2809,1,36
+P,Christensen O.,Fiorentina,1,35.69,R,,,Cagliari Como Lazio,0.824263157894737,1,7.5,6.5,,,,1,0.45,1,,,,6403,1,27
+P,Lezzerini,Fiorentina,1,35.69,R,,,Cagliari Como Lazio,0. N.D.,0,0,0,,,,0,0.45,1,,,,158,1,31
+P,Lolic,Frosinone,1,35.69,R,,,Atalanta Como Napoli,,,,,,,,,0.425,1,,,,7466,1,22
+P,Sommariva,Genoa,1,35.69,R,,,Juventus Bologna Como,0.6877442645074225,2,5.75,3.75,,,,4,0.45,1,,,,219,1,29
+P,Stolz,Genoa,1,35.69,R,,,Juventus Bologna Como,,,,,,,,,0.45,1,,,,6569,1,25
+P,Di Gennaro,Inter,1,35.69,R,,,Milan Sassuolo Juventus,0.7381093117408908,1,6,5,,,,1,0.45,1,,,,1926,1,33
+P,Pinsoglio,Juventus,1,35.69,R,,,Torino Genoa Roma,0. N.D.,0,0,0,,,,0,0.45,1,,,,1930,1,36
+P,Motta,Lazio,1,35.69,R,Jolly,Mod.,Roma Genoa Torino,0.7493998895841001,9,6,5.17,,,,10,0.5,1,,,,7337,1,21
+P,Renzetti,Lazio,1,35.69,R,,,Roma Genoa Torino,,,,,,,,,0.45,1,,,,7534,1,20
+P,Terracciano,Milan,1,35.69,R,Mod.,,Inter Parma Cagliari,0.7776417004048584,2,6,6,,,,0,0.45,1,,,,2815,1,23
+P,Torriani,Milan,1,35.69,R,,,Inter Parma Cagliari,0. N.D.,0,0,0,,,,0,0.45,1,,,,6813,1,21
+P,Strajnar,Monza,1,35.69,R,,,Lecce Venezia Atalanta,,,,,,,,,0.4,1,,,,7475,1,19
+P,Contini,Napoli,1,35.69,R,,,Roma Bologna Frosinone,0. N.D.,0,0,0,,,,0,0.45,1,,,,2845,1,30
+P,De Marzi,Roma,1,35.69,R,,,Lazio Napoli Juventus,,,,,,,,,0.45,1,,,,7048,1,19
+P,Gollini,Roma,1,35.69,R,,,Lazio Napoli Juventus,0. N.D.,0,0,0,,,,0,0.45,1,,,,610,1,31
+P,Russo A.,Sassuolo,1,35.69,R,,,Inter Parma Bologna,0. N.D.,0,0,0,,,,0,0.45,1,,,,4518,1,25
+P,Turati,Sassuolo,1,35.69,R,Mod.,Infortuni,Inter Parma Bologna,0.7479584345479084,6,6.17,5,,,,7,0.45,1,,,,4867,1,25
+P,Mascardi,Torino,1,35.69,R,Jolly,,Juventus Lazio Lecce,,,,,,,,,0.65,1,,,,7457,5,20
+P,Paleari,Torino,1,35.69,R,,,Juventus Lazio Lecce,0.714563047478837,29,6.09,4.52,,,,45,0.625,1,,,,5320,1,
+P,Siviero,Torino,1,35.69,R,,,Juventus Lazio Lecce,0. N.D.,0,0,0,,,,0,0.45,1,,,,7363,1,20
+P,Padelli,Udinese,1,35.69,R,,,Genoa Lecce Milan,0.7542314439946021,2,6.25,5.25,,,,2,0.45,1,,,,543,1,41
+P,Piana,Udinese,1,35.69,R,,,Genoa Lecce Milan,,,,,,,,,0.45,1,,,,5707,1,23
+P,Grandi,Venezia,1,35.69,R,,,Cagliari Monza Bologna,,,,,,,,,0.425,1,,,,6671,1,34
+P,Pozzi,Venezia,1,35.69,R,,,Cagliari Monza Bologna,,,,,,,,,0.425,1,,,,7531,1,26
+P,Satalino,Sassuolo,1,35.69,R,,,Inter Parma Bologna,0. N.D.,0,0,0,,,,0,0.425,1,,,,2127,1,27
+P,Penev,Lecce,1,35.69,R,,,Parma Bologna Fiorentina,,,,,,,,,0.425,1,,,,7557,1,18
+P,Pisseri,Frosinone,1,35.69,R,,,Atalanta Como Napoli,,,,,,,,,0.425,1,,,,7560,1,35
+P,Radunovic,Cagliari,1,35.69,R,,,Atalanta Fiorentina Venezia,0. N.D.,0,0,0,,,,0,0.45,1,,,,3,1,30
+P,Montipò,Venezia,1,35.69,R,mod.,jolly,Cagliari Monza Bologna,0.7350438596491229,35,6.2,4.94,,,,54,0.475,1,,,,4957,1,30
+P,Bleve,Lecce,1,35.69,R,,,Parma Bologna Fiorentina,,,,,,,,,0.45,1,,,,4468,1,31
+P,Grabara,Juventus,1,35.69,R,jolly,,Torino Genoa Roma,,,,,,,,,0.675,1,,,,7603,1,27
+P,Mrozek,Udinese,1,35.69,R,,,Genoa Lecce Milan,,,,,,,,,0.45,1,,,,7611,1,26
+D,Dimarco,Inter,31,89.28,Top,Mod.,Calci Piazzati,Milan Sassuolo Juventus,0.9205741626794259,35,6.6,7.64,7,17,3,,33.575,31.848183732057418,12.820292347377473,1,1,254,240,29
+D,Wesley,Roma,18,80.64000000000001,Top,Titolare,Mod.,Lazio Napoli Juventus,0.682850880175212,30,6.12,6.47,5,0,5,,20.1,12.389646369899049,9.157351676698195,1,1,7181,87,23
+D,Molina N.,Roma,18,80.64000000000001,Top,Titolare,Bonus,Lazio Napoli Juventus,,,,,,,,,16.275000000000002, Prezzo N.D.,,,,4998,78,28
+D,Bremer,Juventus,16,79.2,Top,Titolare,Mod.,Torino Genoa Roma,0.7073145093604466,26,6.33,6.81,4,3,5,,15.6,11.203861828269474,7.3258813413585555,1,1,2788,60,29
+D,Mancini,Roma,16,79.2,Top,Titolare,Mod.,Lazio Napoli Juventus,0.7285454480898048,36,6.25,6.51,4,2,9,,11.825000000000001,11.540159897742507,7.3258813413585555,1,1,2296,50,30
+D,Akanji,Inter,15,78.3,Top,Mod.,Titolare,Milan Sassuolo Juventus,0.6654861690160673,32,6.28,6.41,2,0,4,,12.4,9.770168818867136,3.6629406706792778,1,1,4159,47,31
+D,Rrahmani,Napoli,15,78.3,Top,Mod.,Infortuni,Roma Bologna Frosinone,0.6119718859261434,21,6.24,6.45,2,0,3,,10.475,8.984512250253191,3.6629406706792778,1,1,4409,51,32
+D,Bastoni,Inter,14,77.42,Top,Titolare,Mod.,Milan Sassuolo Juventus,0.6142792024999083,28,6.2,6.34,1,4,6,,13.325,8.322561775070007,1.8314703353396389,-1,-1,2120,43,27
+D,Kalulu,Juventus,14,77.42,Semi-Top,Mod.,Titolare,Torino Genoa Roma,0.6818444685923168,37,6.14,6.35,2,4,2,,10.625,9.237969782723004,3.6629406706792778,1,1,4976,47,26
+D,Pavlovic,Milan,14,77.42,Semi-Top,Mod.,Bonus,Inter Parma Cagliari,0.7660120315066583,34,6.24,6.62,5,0,4,,10.4,10.378314008867958,9.157351676698195,1,1,5022,49,25
+D,Gila,Milan,13,76.44,Semi-Top,Titolare,Mod.,Inter Parma Cagliari,0.5630079661314162,31,6.03,5.95,0,0,3,,9.25,6.993403451301387,0,-1,-1,5833,31,26
+D,N'Dicka,Roma,13,76.44,Semi-Top,Cartellini,Mod.,Lazio Napoli Juventus,0.6787735346148781,31,6.08,6.32,3,1,5,,8.45,8.431385460218708,5.494411006018916,1,1,4317,42,27
+D,Solet,Udinese,13,76.44,Top,Mod.,Titolare,Genoa Lecce Milan,0.7678693703489062,34,6.18,6.4,3,1,1,,11.725,9.53808938378894,5.494411006018916,1,1,6956,46,26
+D,Bisseck,Inter,12,75.48,Semi-Top,Bonus,Mod.,Milan Sassuolo Juventus,0.6661269792618569,23,6.22,6.65,3,2,2,,8.525,7.541889659202744,5.494411006018916,1,-1,6217,36,26
+D,Stones,Inter,12,75.48,,,,Milan Sassuolo Juventus,0. N.D,,,,,,,,6.625, Prezzo N.D.,,,,2514,25,32
+D,Di Lorenzo,Napoli,12,75.48,Semi-Top,Mod.,Bonus,Roma Bologna Frosinone,0.6423299148562955,26,6.08,6.33,2,1,1,,10.675,7.272459296002978,3.6629406706792778,-1,-1,2816,39,33
+D,Ostigard,Genoa,11,74.47,Semi-Top,Cartellini,Bonus,Juventus Bologna Como,0.7253719019108935,30,6.13,6.52,5,0,7,,8.175,7.427536261104332,9.157351676698195,1,1,5750,41,27
+D,Hermoso,Roma,11,74.47,Terza,Cartellini,Mod.,Lazio Napoli Juventus,0.6475635549943819,27,6.17,6.41,3,2,9,,4.6499999999999995,6.630807966809349,5.494411006018916,1,1,4807,26,31
+D,Spence,Inter,11,74.47,Semi-Top,Bonus,Scommessa,Milan Sassuolo Juventus,,,,,,,,,10.325000000000001, Prezzo N.D.,,,,5982,37,26
+D,Scalvini,Atalanta,10,73.3,Semi-Top,Cartellini,Infortuni,Frosinone Bologna Cagliari,0.6581030936385678,24,6.06,6.44,3,1,2,,4.8500000000000005,6.029869595463376,5.494411006018916,1,1,5526,28,23
+D,Ramon,Como,10,73.3,Semi-Top,Mod.,Titolare,Fiorentina Frosinone Genoa,0.5979635607342966,32,6.16,6.14,2,0,11,,8.375,5.478841125227992,3.6629406706792778,1,1,6869,31,21
+D,Chalobah T.,Como,10,73.3,Semi-Top,Scommessa,Bonus,Fiorentina Frosinone Genoa,,,,,,,,,8.200000000000001, Prezzo N.D.,,,,5641,32,27
+D,Dodò,Fiorentina,9,72,jolly,Bonus,Infortuni,Cagliari Como Lazio,0.6314778385614624,36,5.99,6.03,1,2,7,,2.0500000000000003,5.114970492347846,1.8314703353396389,1,1,5885,20,28
+D,Vasquez,Genoa,9,72,Terza,Titolare,Cartellini,Juventus Bologna Como,0.6539296122266638,36,6.08,6.14,1,0,2,,3.975,5.296829859035976,1.8314703353396389,-1,-1,5514,30,28
+D,Vojvoda,Udinese,9,72,Terza,Bonus,Mod.,Genoa Lecce Milan,0.6388734154449877,27,6.02,6.24,2,1,2,,6,5.1748746651044,3.6629406706792778,1,1,4994,19,31
+D,Kamara H.,Udinese,9,72,Quarta,Inaffidabile,,Genoa Lecce Milan,0.5518439251248485,26,5.88,5.87,0,2,5,,3.2,4.469935793511272,0,-1,-1,5555,12,32
+D,Zappacosta,Atalanta,8,70.48,Semi-Top,Bonus,Infortuni,Frosinone Bologna Cagliari,0.7077874544692498,35,6.06,6.3,3,1,3,,4.75,4.9884859790992735,5.494411006018916,-1,-1,554,19,34
+D,Miranda J.,Bologna,8,70.48,Terza,Bonus,Mod.,Atalanta Lecce Napoli,0.6147841711398355,31,6,6.1,1,3,6,,4.275,4.33299883819356,1.8314703353396389,-1,1,4734,23,26
+D,Celik,Juventus,8,70.48,Terza,Mod.,Jolly,Torino Genoa Roma,0.6198897476774221,32,6.17,6.27,1,2,2,,4.074999999999999,4.368982941630471,1.8314703353396389,1,1,4657,16,29
+D,Cambiaso,Juventus,8,70.48,jolly,Cartellini,Titolare,Torino Genoa Roma,0.6811832009539205,36,5.81,5.99,3,4,3,,5.625,4.800979200323232,5.494411006018916,-1,1,5520,18,26
+D,Doekhi,Lazio,8,70.48,Terza,,,Roma Genoa Torino,0. N.D,,,,,,,,2.0500000000000003, Prezzo N.D.,,,,6320,16,28
+D,Tiago Gabriel,Lecce,8,70.48,Quarta,Scommessa,Titolare,Parma Bologna Fiorentina,0.6539463842853207,36,6,6.01,2,0,7,,2.675,4.60901411644294,3.6629406706792778,-1,1,6989,20,22
+D,Bartesaghi,Milan,8,70.48,Terza,Mod.,,Inter Parma Cagliari,0.645950442503212,31,5.97,6.05,2,0,3,,3.7,4.552658718762639,3.6629406706792778,1,1,6496,22,21
+D,Spinazzola,Napoli,8,70.48,Semi-Top,Infortuni,Mod.,Roma Bologna Frosinone,0.7063227629787856,30,6.17,6.55,3,3,1,,5.7,4.978162833474481,5.494411006018916,1,1,1852,25,33
+D,Delprato,Parma,8,70.48,Quarta,Titolare,Bonus,Lecce Sassuolo Milan,0.6550468627542202,35,5.91,6.01,2,0,5,,3.125,4.616770288691744,3.6629406706792778,-1,-1,6664,21,27
+D,Valeri,Parma,8,70.48,Semi-Top,Bonus,Mod.,Lecce Sassuolo Milan,0.6187992596773172,34,6.06,6.09,0,2,2,,3.925,4.361297182205732,0,-1,-1,5862,22,28
+D,Koulierakis,Roma,8,70.48,jolly,,,Lazio Napoli Juventus,0. N.D,,,,,,,,2.125, Prezzo N.D.,,,,7529,15,23
+D,Comuzzo,Torino,8,70.48,titolare,Cartellini,Mod.,Juventus Lazio Lecce,0.5705622934060521,24,5.75,5.75,1,0,2,,1.625,4.021323043925856,1.8314703353396389,-1,-1,6495,13,21
+D,Couto,Como,8,70.48,Terza,Scommessa,Bonus,Fiorentina Frosinone Genoa,,,,,,,,,6.7749999999999995, Prezzo N.D.,,,,6727,25,24
+D,Theate,Bologna,8,70.48,Quarta,Titolare,Bonus,Atalanta Lecce Napoli,,,,,,,,,1.625, Prezzo N.D.,,,,5675,20,26
+D,Diego Carlos,Parma,8,70.48,Quarta,Cartellini,Mod.,Lecce Sassuolo Milan,,,,,,,,,1.175, Prezzo N.D.,,,,4137,26,33
+D,Hien,Atalanta,7,68.81,Scommessa,Cartellini,Mod.,Frosinone Bologna Cagliari,0.5857066273489531,28,5.91,5.86,1,0,5,,0.85,3.5264663899396274,1.8314703353396389,1,1,6046,11,27
+D,Lucumì,Juventus,7,68.81,jolly,Mod.,Cartellini,Torino Genoa Roma,0.5855828767539982,28,5.88,5.89,1,0,5,,4.675000000000001,3.5257213030762293,1.8314703353396389,1,1,6042,17,28
+D,Zortea,Bologna,7,68.81,Quarta,Mod.,Jolly,Atalanta Lecce Napoli,0.5759241041540493,28,5.86,5.89,0,2,2,,1.975,3.4675670405985115,0,-1,-1,4433,19,27
+D,Mina,Cagliari,7,68.81,Quarta,Titolare,Bonus,Atalanta Fiorentina Venezia,0.6016262816657514,26,6,6.17,2,1,3,,2.2,3.622316638624281,3.6629406706792778,1,1,4210,20,32
+D,Obert,Cagliari,7,68.81,Quarta,Cartellini,Titolare,Atalanta Fiorentina Venezia,0.5569451005934076,34,5.88,5.82,0,3,8,,1.05,3.353296832535333,0,-1,-1,5701,15,24
+D,Dragusin,Fiorentina,7,68.81,,,,Cagliari Como Lazio,0. N.D,,,,,,,,4.025, Prezzo N.D.,,,,5365,20,24
+D,Jimenez A.,Fiorentina,7,68.81,Semi-Top,,Cartellini,Cagliari Como Lazio,0.39827442237196997,1,5.5,5,0,0,1,,5.175,2.3979605127988344,0,-1,-1,6531,18,21
+D,Bracaglia,Frosinone,7,68.81,Quarta,Bonus,Titolare,Atalanta Como Napoli,0. N.D,,,,,,,,0.9, Prezzo N.D.,,,,7469,15,23
+D,Tavares N.,Lazio,7,68.81,jolly,Bonus,Infortuni,Roma Genoa Torino,0.5239855707808312,22,5.91,5.8,0,0,5,,2.5,3.1548516234750372,0,-1,-1,5620,25,26
+D,Gabbia,Milan,7,68.81,jolly,Mod.,Infortuni,Inter Parma Cagliari,0.5664202510082919,29,5.91,5.84,0,0,4,,1.55,3.410345528789549,0,-1,-1,4401,15,27
+D,Mangas,Monza,7,68.81,Quarta,,,Lecce Venezia Atalanta,0. N.D,,,,,,,,1.625, Prezzo N.D.,,,,7485,15,28
+D,Idzes,Sassuolo,7,68.81,Quarta,Mod.,,Inter Parma Bologna,0.6050244244595306,35,5.94,5.9,0,0,3,,1.125,3.6427764316177758,0,-1,-1,6672,19,26
+D,Coco,Torino,7,68.81,Quarta,Titolare,Mod.,Juventus Lazio Lecce,0.6337685065759565,35,5.84,5.91,1,1,3,,1.1,3.815840957030512,1.8314703353396389,1,-1,6642,14,27
+D,Ismajli,Torino,7,68.81,Quarta,Infortuni,Mod.,Juventus Lazio Lecce,0.5433150708616321,24,5.92,5.9,0,2,5,,0.7,3.2712321272740295,0,-1,-1,5010,13,30
+D,Badiashile,Napoli,7,68.81,jolly,Scommessa,,Roma Bologna Frosinone,,,,,,,,,1.975, Prezzo N.D.,,,,4664,18,25
+D,Sutalo J.,Lazio,7,68.81,jolly,Scommessa,,Roma Genoa Torino,,,,,,,,,0.925, Prezzo N.D.,,,,7580,19,26
+D,Belghali,Torino,7,68.81,Quarta,Bonus,Mod.,Juventus Lazio Lecce,,,,,,,,,1.35, Prezzo N.D.,,,,7220,20,24
+D,Sugawara,Cagliari,6,66.78,Scommessa,,,Atalanta Fiorentina Venezia,,,,,,,,,0.475, Prezzo N.D.,,,,7621,15,26
+D,Kolasinac,Atalanta,6,66.78,Quarta,Mod.,Infortuni,Frosinone Bologna Cagliari,0.5140619755003885,17,6.03,5.94,0,0,3,,0.65,2.5746794042936956,0,-1,-1,2640,8,33
+D,Bellanova,Atalanta,6,66.78,jolly,Bonus,Mod.,Frosinone Bologna Cagliari,0.5383593983699345,22,5.82,5.82,0,1,2,,2.475,2.696373046735818,0,-1,-1,4887,17,26
+D,Bernasconi,Atalanta,6,66.78,Terza,Scommessa,Mod.,Frosinone Bologna Cagliari,0.556778638507684,22,6.09,6.16,0,3,3,,4.45,2.7886258109657356,0,1,1,7219,18,23
+D,Heggem,Bologna,6,66.78,titolare,Mod.,,Atalanta Lecce Napoli,0.5353811050711024,25,5.84,5.8,0,0,0,,1.1,2.681456264748616,0,1,1,7212,15,27
+D,Holm,Bologna,6,66.78,jolly,Bonus,Infortuni,Atalanta Lecce Napoli,0.548133048204126,16,6.09,6.44,1,4,1,,0.75,2.7453243719303653,1.8314703353396389,1,-1,5678,13,26
+D,Kaiki,Como,6,66.78,jolly,,,Fiorentina Frosinone Genoa,0. N.D,,,,,,,,2.375, Prezzo N.D.,,,,7414,13,23
+D,Valle,Como,6,66.78,Terza,Bonus,Jolly,Fiorentina Frosinone Genoa,0.6073260684819534,26,6.06,6.23,1,3,3,,2.475,3.0417926139918636,1.8314703353396389,1,1,6867,21,22
+D,Viery,Fiorentina,6,66.78,jolly,,,Cagliari Como Lazio,0. N.D,,,,,,,,1, Prezzo N.D.,,,,7410,12,21
+D,Monterisi,Frosinone,6,66.78,titolare,,,Atalanta Como Napoli,0. N.D,,,,,,,,0.875, Prezzo N.D.,,,,4952,13,25
+D,Oyono A.,Frosinone,6,66.78,Quarta,Bonus,,Atalanta Como Napoli,0. N.D,,,,,,,,0.6, Prezzo N.D.,,,,6238,10,25
+D,Marcandalli,Genoa,6,66.78,Quarta,Scommessa,Mod.,Juventus Bologna Como,0.5786756220562326,31,5.87,5.84,0,1,4,,1.45,2.8982968530686404,0,1,-1,6660,14,24
+D,Pavard,Inter,6,66.78,jolly,,,Milan Sassuolo Juventus,0.472389922927261,1,6.5,6.5,0,0,0,,0.975,2.3659649289811866,0,1,-1,4177,14,30
+D,Carlos Augusto,Inter,6,66.78,jolly,,Bonus,Milan Sassuolo Juventus,0.5983193887790844,28,6.12,6.16,1,1,6,,2.175,2.996682658700044,1.8314703353396389,-1,-1,5877,20,27
+D,Romagnoli,Lazio,6,66.78,jolly,Mod.,Cartellini,Roma Genoa Torino,0.5583948746211078,32,6.03,5.92,0,0,5,,0.825,2.7967207295398184,0,1,-1,460,20,
+D,Pedraza,Lazio,6,66.78,Quarta,Scommessa,Jolly,Roma Genoa Torino,0. N.D,,,,,,,,1, Prezzo N.D.,,,,4817,14,30
+D,Marusic,Lazio,6,66.78,jolly,Mod.,Infortuni,Roma Genoa Torino,0.6124510175823129,33,5.86,5.97,1,2,1,,0.825,3.0674609215610142,1.8314703353396389,-1,-1,2188,20,34
+D,Veiga D.,Lecce,6,66.78,titolare,Inaffidabile,,Parma Bologna Fiorentina,0.5738811092462237,36,5.82,5.69,0,0,9,,0.725,2.8742835356597114,0,-1,-1,6990,12,24
+D,Gallo,Lecce,6,66.78,Quarta,Titolare,Bonus,Parma Bologna Fiorentina,0.6270333209062078,37,5.95,5.99,0,3,3,,1.125,3.1404963877587417,0,1,-1,4502,12,26
+D,Tomori,Milan,6,66.78,Scommessa,Infortuni,Mod.,Inter Parma Cagliari,0.5539252943092114,32,5.97,5.88,0,1,6,,0.625,2.7743348365476854,0,1,-1,4751,8,29
+D,Beukema,Napoli,6,66.78,Scommessa,Mod.,Jolly,Roma Bologna Frosinone,0.6047949359357462,22,5.93,6.16,2,0,2,,0.825,3.0291154366341844,3.6629406706792778,1,1,6202,12,28
+D,Buongiorno,Napoli,6,66.78,jolly,Mod.,Infortuni,Roma Bologna Frosinone,0.5901374155213327,32,5.89,5.88,0,1,3,,1.1,2.955703245638595,0,-1,-1,2724,15,27
+D,Kristensen T.,Atalanta,6,66.78,Quarta,Inaffidabile,Cartellini,Frosinone Bologna Cagliari,0.6592020150328226,28,5.98,6.23,3,0,4,,3.0500000000000003,3.301613292291892,5.494411006018916,1,1,6485,20,24
+D,Obrador,Sassuolo,6,66.78,jolly,Mod.,Bonus,Inter Parma Bologna,,,,,,,,,1.075, Prezzo N.D.,,,,7329,13,22
+D,Fortini,Torino,6,66.78,jolly,Scommessa,Mod.,Juventus Lazio Lecce,,,,,,,,,0.85, Prezzo N.D.,,,,7069,12,20
+D,Leysen F.,Sassuolo,6,66.78,titolare,Scommessa,,Inter Parma Bologna,,,,,,,,,0.55, Prezzo N.D.,,,,7564,12,23
+D,Balerdi,Roma,6,66.78,jolly,Scommessa,,Lazio Napoli Juventus,,,,,,,,,0.675, Prezzo N.D.,,,,4705,11,27
+D,Caleta-Car,Sassuolo,6,66.78,,,,Inter Parma Bologna,,,,,,,,,0.475, Prezzo N.D.,,,,4147,15,30
+D,Patterson,Torino,5,64.25,jolly,Scommessa,,Juventus Lazio Lecce,,,,,,,,,0.55, Prezzo N.D.,,,,5751,12,25
+D,Kofler,Cagliari,5,64.25,,,,Atalanta Fiorentina Venezia,0. N.D,,,,,,,,0.525, Prezzo N.D.,,,,7532,8,21
+D,Zè Pedro,Cagliari,5,64.25,titolare,Inaffidabile,,Atalanta Fiorentina Venezia,0.5149975072069961,22,5.77,5.68,0,1,6,,0.675,2.0680368648780934,0,1,1,7274,13,29
+D,Kempf,Como,5,64.25,jolly,Mod.,,Fiorentina Frosinone Genoa,0.7123572797941041,29,6.12,6.52,4,1,3,,1.4,2.8605597016731994,7.3258813413585555,1,1,6893,13,31
+D,Valdepenas,Fiorentina,5,64.25,Terza,,,Cagliari Como Lazio,0. N.D,,,,,,,,3.8249999999999997, Prezzo N.D.,,,,7294,16,20
+D,Calvani,Frosinone,5,64.25,titolare,,Mod.,Atalanta Como Napoli,0. N.D,,,,,,,,0.575, Prezzo N.D.,,,,7467,13,22
+D,Kelly L.,Juventus,5,64.25,Terza,Titolare,Mod.,Torino Genoa Roma,0.6385630488574098,35,6.01,6.07,1,1,4,,1.45,2.564229743068036,1.8314703353396389,1,1,6766,12,28
+D,Gaspar K.,Lecce,5,64.25,Quarta,Mod.,Infortuni,Parma Bologna Fiorentina,0.48256423424100475,21,5.83,5.64,0,0,6,,0.775,1.9377970031240346,0,-1,-1,6632,12,29
+D,De Winter,Milan,5,64.25,Quarta,Cartellini,Infortuni,Inter Parma Cagliari,0.5819756259927755,24,5.75,5.9,1,1,1,,1.55,2.3369958731272398,1.8314703353396389,-1,-1,5739,20,24
+D,Olivera,Napoli,5,64.25,Scommessa,Jolly,,Roma Bologna Frosinone,0.5250866337667109,22,5.75,5.68,0,0,3,,0.75,2.1085510137194485,0,-1,-1,5840,13,29
+D,Ghilardi,Roma,5,64.25,Scommessa,Cartellini,,Lazio Napoli Juventus,0.5429521447598054,21,5.98,5.95,0,0,1,,0.625,2.180292206301093,0,1,-1,6631,10,23
+D,Doig,Sassuolo,5,64.25,titolare,Inaffidabile,Bonus,Inter Parma Bologna,0.5474360580174854,27,5.85,5.76,0,0,5,,0.775,2.198297920476465,0,1,1,5851,10,24
+D,Bella-Kotchap,Venezia,5,64.25,titolare,,,Cagliari Monza Bologna,0.5082907053449903,18,5.83,5.75,0,0,3,,0.825,2.0411048636509768,0,1,1,7253,13,25
+D,Correia T.,Venezia,5,64.25,jolly,Scommessa,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.7, Prezzo N.D.,,,,4845,12,27
+D,Haps,Venezia,5,64.25,Quarta,Titolare,Bonus,Cagliari Monza Bologna,0. N.D,,,,,,,,0.95, Prezzo N.D.,,,,5695,10,33
+D,Kossounou,Atalanta,4,60.96,jolly,Infortuni,Mod.,Frosinone Bologna Cagliari,0.5476605841113971,16,5.94,6.09,1,0,1,,0.975,1.6692694603715383,1.8314703353396389,1,1,5578,12,25
+D,Vitik,Bologna,4,60.96,Scommessa,,Jolly,Atalanta Lecce Napoli,0.5145036198301562,18,5.94,5.86,0,0,3,,0.6,1.5682070332423161,0,1,1,7068,10,23
+D,Rodriguez Ju.,Cagliari,4,60.96,titolare,Inaffidabile,,Atalanta Fiorentina Venezia,0.5191868414491727,16,5.62,5.72,1,0,3,,0.7,1.5824814927370785,1.8314703353396389,1,1,7268,14,21
+D,Smolcic I.,Como,4,60.96,Scommessa,Cartellini,Inaffidabile,Fiorentina Frosinone Genoa,0.531642129233266,25,5.96,5.84,0,1,8,,0.6,1.620445209902995,0,1,-1,7014,10,26
+D,Pongracic,Fiorentina,4,60.96,Scommessa,Cartellini,Infortuni,Cagliari Como Lazio,0.5550640881117598,35,5.84,5.67,0,0,12,,0.5,1.6918353405646436,0,1,-1,5603,8,29
+D,Parisi,Fiorentina,4,60.96,Scommessa,Cartellini,Bonus,Cagliari Como Lazio,0.5642612543902804,23,6.02,5.98,1,1,6,,0.55,1.7198683033815747,1.8314703353396389,-1,-1,5449,10,26
+D,Cittadini,Frosinone,4,60.96,titolare,,,Atalanta Como Napoli,0. N.D,,,,,,,,0.525, Prezzo N.D.,,,,5757,8,24
+D,Mitaj,Genoa,4,60.96,Scommessa,,Bonus,Juventus Bologna Como,0. N.D,,,,,,,,0.65, Prezzo N.D.,,,,7537,10,23
+D,Gatti,Juventus,4,60.96,Scommessa,Cartellini,Bonus,Torino Genoa Roma,0.5705442449531731,16,5.94,6.22,2,0,3,,0.675,1.7390188586172715,3.6629406706792778,1,1,5831,10,28
+D,Provstgaard,Lazio,4,60.96,Quarta,Scommessa,,Roma Genoa Torino,0.5396485382900374,23,5.91,5.85,0,0,3,,0.675,1.6448487447080344,0,-1,-1,7012,13,23
+D,Floriani Mussolini,Lazio,4,60.96,jolly,Scommessa,,Roma Genoa Torino,0.5379744521872478,23,5.72,5.72,0,1,2,,0.875,1.6397461302667315,0,1,1,7131,10,23
+D,Siebert,Lecce,4,60.96,titolare,Inaffidabile,,Parma Bologna Fiorentina,0.5378416173704132,19,5.68,5.76,1,0,3,,0.55,1.6393412497450197,1.8314703353396389,1,1,7240,12,24
+D,Birindelli,Monza,4,60.96,Quarta,Bonus,Cartellini,Lecce Venezia Atalanta,0. N.D,,,,,,,,0.925, Prezzo N.D.,,,,5838,12,27
+D,Valenti,Parma,4,60.96,Scommessa,Titolare,Infortuni,Lecce Sassuolo Milan,0.543510942992894,27,5.96,5.83,0,0,7,,0.625,1.6566213542423411,0,-1,-1,5307,10,27
+D,Rensch,Roma,4,60.96,jolly,,Infortuni,Lazio Napoli Juventus,0.5926144146378209,19,6.16,6.5,1,4,1,,0.775,1.8062887358160782,1.8314703353396389,1,1,6986,14,23
+D,Walukiewicz,Sassuolo,4,60.96,Scommessa,Inaffidabile,,Inter Parma Bologna,0.5763927492387773,34,5.81,5.74,0,1,7,,0.6,1.756845099679793,0,1,-1,4374,10,26
+D,Comert,Torino,4,60.96,Quarta,,,Juventus Lazio Lecce,0. N.D,,,,,,,,0.625, Prezzo N.D.,,,,7526,12,28
+D,Kabasele,Udinese,4,60.96,Quarta,Bonus,Titolare,Genoa Lecce Milan,0.6283476599638077,28,5.98,6.18,3,0,5,,0.8,1.9152036675696855,5.494411006018916,-1,1,4263,12,35
+D,Bertola,Udinese,4,60.96,Scommessa,Inaffidabile,,Genoa Lecce Milan,0.5513390989302357,25,5.86,5.84,0,1,3,,0.65,1.6804815735393586,0,1,1,5820,10,23
+D,Zanoli,Udinese,4,60.96,Scommessa,Bonus,,Genoa Lecce Milan,0.5779013461643582,19,6.05,6.29,1,2,1,,0.575,1.7614433031089636,1.8314703353396389,1,-1,5527,10,26
+D,Arizala,Udinese,4,60.96,,,,Genoa Lecce Milan,0.4539058259642443,5,5.8,5.8,0,0,0,,0.625,1.3835049575390166,0,1,1,7312,8,21
+D,Moreno M.,Venezia,4,60.96,Scommessa,Infortuni,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.5, Prezzo N.D.,,,,6890,6,23
+D,Hainaut,Venezia,4,60.96,Terza,Bonus,Scommessa,Cagliari Monza Bologna,0. N.D.,0,0,0,0,0,0,,0.725, Prezzo N.D.,0,,,6821,12,24
+D,Terzic,Frosinone,4,60.96,Scommessa,,Jolly,Atalanta Como Napoli,,,,,,,,,0.55, Prezzo N.D.,,,,4375,8,27
+D,Favasuli,Napoli,4,60.96,Scommessa,Jolly,,Roma Bologna Frosinone,,,,,,,,,0.6, Prezzo N.D.,,,,7563,11,22
+D,Juan Jesus,Venezia,4,60.96,titolare,Inaffidabile,,Cagliari Monza Bologna,,,,,,,,,0.55, Prezzo N.D.,,,,256,10,35
+D,Drameh,Genoa,3,56.34,Quarta,,,Juventus Bologna Como,,,,,,,,,0.525, Prezzo N.D.,,,,5742,10,25
+D,Casale,Bologna,3,56.34,,Jolly,Infortuni,Atalanta Lecce Napoli,0.47174945932179335,10,5.65,5.65,0,0,0,,0.475,0.9966886701821189,0,1,-1,5498,5,28
+D,Helland,Bologna,3,56.34,titolare,,,Atalanta Lecce Napoli,0.42868350075569694,6,5.5,5.33,0,0,2,,0.6,0.9057010662215987,0,1,1,7326,12,21
+D,Idrissi R.,Cagliari,3,56.34,Scommessa,Bonus,Jolly,Atalanta Fiorentina Venezia,0.5687678978502898,17,5.82,6.09,2,0,3,,0.55,1.2016643761831998,3.6629406706792778,1,1,7125,3,21
+D,Ranieri L.,Fiorentina,3,56.34,Scommessa,Cartellini,Bonus,Cagliari Como Lazio,0.559209094845634,31,5.85,5.79,1,0,8,,0.625,1.1814690151351133,1.8314703353396389,-1,-1,4378,10,27
+D,Joao Mario,Fiorentina,3,56.34,jolly,Bonus,Scommessa,Cagliari Como Lazio,0.5286285147591941,14,5.79,6,1,1,2,,0.975,1.1168598945574875,1.8314703353396389,1,1,7175,12,26
+D,Akpoguma,Frosinone,3,56.34,Scommessa,,Infortuni,Atalanta Como Napoli,0. N.D,,,,,,,,0.55, Prezzo N.D.,,,,7540,6,31
+D,Estupinan,Milan,3,56.34,Scommessa,Inaffidabile,Jolly,Inter Parma Cagliari,0.4778550735407267,14,5.64,5.71,1,1,5,,0.75,1.0095883066231706,1.8314703353396389,1,1,5273,13,28
+D,Lucchesi,Monza,3,56.34,titolare,Inaffidabile,Cartellini,Lecce Venezia Atalanta,0. N.D,,,,,,,,0.5, Prezzo N.D.,,,,6659,11,23
+D,Kouadio,Monza,3,56.34,titolare,Scommessa,,Lecce Venezia Atalanta,0.4441494025401438,1,6,6,0,0,0,,0.6,0.9383766502166888,0,1,1,7238,14,20
+D,Carboni A.,Monza,3,56.34,titolare,Bonus,Infortuni,Lecce Venezia Atalanta,0. N.D,,,,,,,,0.6, Prezzo N.D.,,,,4925,9,25
+D,Troilo,Parma,3,56.34,titolare,Inaffidabile,Cartellini,Lecce Sassuolo Milan,0.491301456878751,21,5.79,5.71,1,0,5,,0.75,1.0379971530205812,1.8314703353396389,1,1,7235,14,23
+D,Britschgi,Parma,3,56.34,Scommessa,,Bonus,Lecce Sassuolo Milan,0.5289805851948234,28,5.75,5.7,0,2,5,,0.55,1.1176037313703628,0,1,1,7255,10,20
+D,Candè,Sassuolo,3,56.34,,Inaffidabile,,Inter Parma Bologna,0.4509883347111234,8,5.69,5.56,0,0,2,,0.525,0.9528256041609258,0,-1,-1,6985,7,28
+D,Palma,Udinese,3,56.34,Scommessa,Infortuni,,Genoa Lecce Milan,0.4316983558372371,4,5.5,5.5,0,0,0,,0.7,0.9120707012951227,0,1,1,6925,11,18
+D,Ebosse,Udinese,3,56.34,Scommessa,Inaffidabile,,Genoa Lecce Milan,0.4929505287422717,16,5.75,5.72,0,1,4,,0.55,1.0414812296002345,0,1,-1,5994,5,27
+D,Halhal,Venezia,3,56.34,Scommessa,,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.55, Prezzo N.D.,,,,7538,10,23
+D,Schingtienne,Venezia,3,56.34,titolare,,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.625, Prezzo N.D.,,,,6892,10,24
+D,Sverko,Venezia,3,56.34,,Cartellini,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.45, Prezzo N.D.,,,,6673,7,28
+D,Franjic,Venezia,3,56.34,Scommessa,,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.525, Prezzo N.D.,,,,7478,7,26
+D,Odenthal,Sassuolo,3,56.34,titolare,,,Inter Parma Bologna,,,,,,,,,0.625, Prezzo N.D.,,,,7154,8,26
+D,Tchato,Frosinone,3,56.34,,,,Atalanta Como Napoli,,,,,,,,,0.525, Prezzo N.D.,,,,7605,8,24
+D,Kambwala,Como,3,56.34,,,,Fiorentina Frosinone Genoa,,,,,,,,,0.45, Prezzo N.D.,,,,6601,8,22
+D,Goglichidze,Monza,2,49.12,Scommessa,,,Lecce Venezia Atalanta,,,,,,,,,0.25, Prezzo N.D.,,,,6537,5,22
+D,Alhassane,Bologna,2,49.12,,,,Atalanta Lecce Napoli,0. N.D,,,,,,,,0.625, Prezzo N.D.,,,,7483,6,24
+D,Van Der Brempt,Sassuolo,2,49.12,titolare,Mod.,Infortuni,Inter Parma Bologna,0.5041614809204326,14,5.96,5.96,0,1,2,,0.625,0.6191102985702911,0,1,-1,6896,11,24
+D,Otoa,Genoa,2,49.12,,,,Juventus Bologna Como,0.45783545011982596,10,5.6,5.35,0,0,1,,0.5,0.5622219327471463,0,1,-1,6977,5,22
+D,Puczka,Genoa,2,49.12,Scommessa,,,Juventus Bologna Como,0. N.D,,,,,,,,0.575, Prezzo N.D.,,,,7413,3,21
+D,Sabelli,Genoa,2,49.12,Scommessa,Mod.,Bonus,Juventus Bologna Como,0.4923874178544887,13,5.81,5.65,0,0,0,,0.525,0.6046517491253119,0,-1,-1,791,5,33
+D,Lazzari,Lazio,2,49.12,Scommessa,Cartellini,Bonus,Roma Genoa Torino,0.5060991006788748,17,5.79,5.74,0,0,2,,0.525,0.6214896956336582,0,-1,-1,2263,5,33
+D,Pellegrini Lu.,Lazio,2,49.12,Scommessa,Cartellini,Infortuni,Roma Genoa Torino,0.5478905497919001,24,5.85,5.81,1,0,8,,0.5,0.6728095951444534,1.8314703353396389,-1,1,2728,7,27
+D,Jean,Lecce,2,49.12,,Mod.,,Parma Bologna Fiorentina,0.4467425703716693,5,5.8,5.7,0,0,1,,0.975,0.5485998764164098,0,-1,-1,6883,4,26
+D,Ndaba,Lecce,2,49.12,Scommessa,,,Parma Bologna Fiorentina,0.45801414531092133,9,5.5,5.5,0,0,0,,0.55,0.5624413704418113,0,1,1,7182,5,27
+D,Diawara S.,Milan,2,49.12,,,,Inter Parma Cagliari,0. N.D,,,,,,,,0.5, Prezzo N.D.,,,,7525,4,20
+D,Bakoune,Monza,2,49.12,Scommessa,,,Lecce Venezia Atalanta,0. N.D,,,,,,,,0.525, Prezzo N.D.,,,,7476,4,20
+D,Marin R.,Napoli,2,49.12,jolly,Inaffidabile,Scommessa,Roma Bologna Frosinone,0. N.D,,,,,,,,0.8, Prezzo N.D.,,,,6638,8,24
+D,Ndiaye,Parma,2,49.12,Scommessa,,Cartellini,Lecce Sassuolo Milan,0.4289664487253355,11,5.59,5.36,0,0,3,,0.525,0.5267707990347119,0,1,1,7202,8,24
+D,Biraghi,Torino,2,49.12,,,,Juventus Lazio Lecce,0.47362375477007607,11,5.59,5.59,0,0,0,,0.475,0.5816099708576533,0,-1,-1,252,5,34
+D,Abankwah,Udinese,2,49.12,jolly,Mod.,,Genoa Lecce Milan,0. N.D,,,,,,,,0.55, Prezzo N.D.,,,,6021,10,22
+D,Sagrado,Venezia,2,49.12,,,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.65, Prezzo N.D.,,,,6681,4,22
+D,Aurelio,Cagliari,2,49.12,,,,Atalanta Fiorentina Venezia,,,,,,,,,0.5, Prezzo N.D.,,,,7548,5,26
+D,Cinquegrano,Sassuolo,2,49.12,titolare,Scommessa,Inaffidabile,Inter Parma Bologna,,,,,,,,,0.6, Prezzo N.D.,,,,7573,4,22
+D,Terracciano F.,Milan,2,49.12,Scommessa,Mod.,,Inter Parma Cagliari,,,,,,,,,0.75, Prezzo N.D.,,,,5812,4,36
+D,Lulli,Roma,2,49.12,jolly,Scommessa,Bonus,Lazio Napoli Juventus,,,,,,,,,1.1, Prezzo N.D.,,,,7599,10,19
+D,Drobnic,Parma,2,49.12,titolare,Scommessa,,Lecce Sassuolo Milan,,,,,,,,,0.475, Prezzo N.D.,,,,7615,1,19
+D,De Silvestri,Bologna,1,35.69,,Jolly,,Atalanta Lecce Napoli,0.4826331654934576,10,6.05,5.95,0,0,2,,0.4,0.21531472095576873,0,-1,-1,487,4,38
+D,Goldaniga,Como,1,35.69,,Inaffidabile,Cartellini,Fiorentina Frosinone Genoa,0. N.D.,0,0,0,0,0,0,,0.45, Prezzo N.D.,0,,,418,1,33
+D,Amey,Frosinone,1,35.69,,,,Atalanta Como Napoli,0. N.D,,,,,,,,0.475, Prezzo N.D.,,,,5424,1,21
+D,Rugani,Juventus,1,35.69,,Affidabile,Scommessa,Torino Genoa Roma,0.4509883347111234,8,5.69,5.56,0,0,2,,0.5,0.20119717082299987,0,1,-1,294,3,32
+D,Cabal,Juventus,1,35.69,Scommessa,Jolly,,Torino Genoa Roma,0.5516935723411338,9,5.94,6.56,2,0,1,,0.5,0.2461242949606883,3.6629406706792778,1,1,6039,4,25
+D,Patric,Lazio,1,35.69,,,,Roma Genoa Torino,0.47133695733861064,10,5.85,5.75,0,0,2,,0.425,0.21027520009268763,0,-1,-1,327,1,33
+D,Antov,Monza,1,35.69,,,,Lecce Venezia Atalanta,0. N.D,,,,,,,,0.475, Prezzo N.D.,,,,5399,2,26
+D,Marianucci,Napoli,1,35.69,Scommessa,,,Roma Bologna Frosinone,0.47538136785814805,11,5.73,5.73,0,1,2,,0.5,0.2120795127357163,0,-1,-1,6809,3,22
+D,Mazzocchi,Venezia,1,35.69,Scommessa,Infortuni,Jolly,Cagliari Monza Bologna,0.46080697972217277,9,5.94,5.94,0,1,0,,0.625,0.20557751382855433,0,1,-1,5481,10,31
+D,Carboni F.,Parma,1,35.69,,,,Lecce Sassuolo Milan,0.44941256043488065,2,6,6,0,0,0,,0.475,0.2004941785240111,0,1,-1,6149,3,23
+D,Ziolkowski,Monza,1,35.69,titolare,Mod.,Jolly,Lecce Venezia Atalanta,0.46504095793982825,9,5.94,5.78,0,0,3,,0.525,0.20746639736090589,0,1,1,7260,8,21
+D,Pieragnolo,Sassuolo,1,35.69,,,,Inter Parma Bologna,0. N.D.,0,0,0,0,0,0,,0.475, Prezzo N.D.,0,,,7156,1,23
+D,Gomes,Venezia,1,35.69,,,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.425, Prezzo N.D.,,,,7454,1,18
+D,Omar Fayed,Frosinone,1,35.69,,,,Atalanta Como Napoli,,,,,,,,,0.425, Prezzo N.D.,,,,7553,1,23
+D,Maye,Monza,1,35.69,,,,Lecce Venezia Atalanta,,,,,,,,,0.425, Prezzo N.D.,,,,7604,1,20
+D,Dembelè A.,Lecce,1,35.69,Scommessa,,,Parma Bologna Fiorentina,,,,,,,,,0.5, Prezzo N.D.,,,,6826,2,22
+C,Paz N.,Como,29,88.16,Top,Affidabile,Titolare,Fiorentina Frosinone Genoa,0.9306294106823501,35,6.37,7.3,12,5,5,,41.575,29.741054706586542,17.765262252794496,1,1,6875,245,22
+C,Calhanoglu,Inter,28,87.36,Top,Titolare,Calci Piazzati,Milan Sassuolo Juventus,0.813011695906433,22,6.52,7.64,9,4,7,,36.949999999999996,24.858645614035094,13.323946689595873,1,1,2194,243,32
+C,McTominay,Napoli,27,86.94000000000001,Top,Affidabile,Bonus,Roma Bologna Frosinone,0.8839551856922576,33,6.39,7.26,10,2,1,,37.775000000000006,25.93723404737865,14.804385210662081,-1,-1,4777,220,30
+C,Orsolini,Bologna,25,85.5,Top,Calci Piazzati,Bonus,Atalanta Lecce Napoli,0.8568796548379053,34,6.06,6.76,10,1,2,,30.65,22.894753277700282,14.804385210662081,-1,-1,2167,177,29
+C,Pulisic,Milan,24,84.96000000000001,Top,Titolare,Bonus,Inter Parma Cagliari,0.8213896594933303,27,6.15,7.07,8,4,0,,29.65,20.935579641166,11.843508168529665,-1,-1,2423,150,28
+C,Rabiot,Milan,23,84.18,Semi-Top,Affidabile,Bonus,Inter Parma Cagliari,0.7124623791139859,29,6.33,6.98,6,4,4,,22.1,17.242836383721908,8.882631126397248,1,1,2379,145,31
+C,Baturina,Como,20,82.2,Top,Bonus,Affidabile,Fiorentina Frosinone Genoa,0.7284081425418171,25,6.3,7.14,6,3,0,,25.75,14.968787329234338,8.882631126397248,1,1,7126,105,23
+C,Mora,Roma,20,82.2,Semi-Top,Affidabile,Bonus,Lazio Napoli Juventus,,,,,,,,,20.674999999999997, Prezzo N.D.,,,,7556,100,19
+C,Da Cunha,Como,18,80.64000000000001,Semi-Top,Bonus,Cartellini,Fiorentina Frosinone Genoa,0.8175156142156804,35,6.34,6.91,6,4,4,,16.674999999999997,14.833003304329306,8.882631126397248,1,1,5559,87,25
+C,Barella,Inter,18,80.64000000000001,Semi-Top,Titolare,Affidabile,Milan Sassuolo Juventus,0.7222398554926489,34,6.28,6.71,3,9,7,,15.350000000000001,13.104319938058625,4.441315563198624,1,-1,1870,81,29
+C,Zaniolo,Udinese,18,80.64000000000001,Semi-Top,Infortuni,Cartellini,Genoa Lecce Milan,0.7149472480438778,31,6.26,6.77,5,5,8,,14.775,12.972002868508122,7.402192605331041,1,1,2766,80,27
+C,McKennie,Juventus,17,79.9,Semi-Top,Affidabile,Bonus,Torino Genoa Roma,0.7406628119941715,34,6.13,6.68,5,6,5,,13.424999999999999,12.575528719146037,7.402192605331041,1,1,4973,70,28
+C,De Bruyne,Napoli,17,79.9,Semi-Top,Affidabile,Bonus,Roma Bologna Frosinone,0.7119000357723613,17,6.26,7.24,5,2,1,,20.150000000000002,12.087172732369979,7.402192605331041,1,1,2517,108,35
+C,Zaccagni,Lazio,16,79.2,Semi-Top,Titolare,Calci Piazzati,Roma Fiorentina Torino,0.6268025744024728,26,5.88,5.96,3,0,6,,20.575,9.928552778535169,4.441315563198624,-1,-1,632,87,31
+C,Atta,Fiorentina,15,78.3,Semi-Top,Affidabile,Titolare,Cagliari Como Lazio,0.7329035034990555,32,6.36,6.88,5,3,3,,17.5,10.759939560745506,7.402192605331041,1,1,6908,78,23
+C,Samardzic,Atalanta,13,76.44,Terza,Bonus,Affidabile,"Frosinone, Bologna Cagliari",0.5979608580171616,21,5.93,6.29,2,2,1,,10.325000000000001,7.427570797860172,2.960877042132416,1,-1,5119,44,24
+C,Conceicao,Juventus,13,76.44,Semi-Top,Bonus,Affidabile,Torino Genoa Roma,0.6929889358724814,30,6.28,6.7,3,5,3,,17.025,8.60796206694003,4.441315563198624,1,-1,6884,68,24
+C,Taylor K.,Lazio,13,76.44,Terza,Affidabile,Titolare,Roma Fiorentina Torino,0.5903449717077414,17,6.06,6.56,3,2,5,,7.925,7.332970066067709,4.441315563198624,1,1,7314,53,24
+C,Vlasic,Torino,13,76.44,Semi-Top,Bonus,Rigorista,Juventus Lazio Lecce,0.8290517169968574,37,6.03,6.66,8,3,7,,16.150000000000002,10.298065902676464,11.843508168529665,-1,1,5687,73,29
+C,Goncalves P.,Fiorentina,12,75.48,Semi-Top,Scommessa,Bonus,Cagliari Como Lazio,,,,,,,,,8, Prezzo N.D.,,,,7625,50,28
+C,Ederson D.S.,Atalanta,12,75.48,Terza,Affidabile,Titolare,"Frosinone, Bologna Cagliari",0.6961117387575944,30,6.25,6.43,2,1,3,,9.424999999999999,7.881377106213483,2.960877042132416,-1,-1,5792,46,27
+C,Gudmundsson A.,Lazio,12,75.48,Semi-Top,Bonus,Affidabile,Roma Fiorentina Torino,0.7254720228928087,32,5.88,6.34,5,3,4,,9.325,8.21379424319238,7.402192605331041,-1,-1,5800,40,29
+C,Zielinski,Inter,12,75.48,Semi-Top,Bonus,Rigorista,Milan Sassuolo Juventus,0.7780198248541621,30,6.25,6.8,6,2,3,,13.375,8.808740456998823,8.882631126397248,1,1,152,45,32
+C,Modric,Milan,12,75.48,Terza,Affidabile,Titolare,Inter Parma Cagliari,0.6818585868197299,33,6.45,6.67,2,3,4,,6.2,7.720002919972983,2.960877042132416,1,1,2606,45,41
+C,Ekkelenkamp,Udinese,12,75.48,Semi-Top,Affidabile,Bonus,Genoa Lecce Milan,0.7182059374659631,31,6.05,6.61,5,3,1,,10.075000000000001,8.131527623989633,7.402192605331041,1,1,6684,57,26
+C,Jones C.,Inter,12,75.48,Scomm.,Scommessa,Bonus,Milan Sassuolo Juventus,,,,,,,,,7.925, Prezzo N.D.,,,,5172,47,25
+C,Gonzalez N.,Juventus,12,75.48,Semi-Top,Infortuni,Subentrante,Torino Genoa Roma,,,,,,,,,5.7, Prezzo N.D.,,,,4179,45,28
+C,Kessiè,Atalanta,12,75.48,Terza,Scommessa,Bonus,"Frosinone, Bologna Cagliari",,,,,,,,,8.4, Prezzo N.D.,,,,1850,47,30
+C,Rodriguez Je.,Como,11,74.47,Scomm.,Bonus,Affidabile,Fiorentina Frosinone Genoa,0.6554952542653865,28,6.25,6.66,2,8,3,,4.4,6.712025592957208,2.960877042132416,1,1,7129,31,21
+C,Baldanzi,Genoa,11,74.47,Terza,Affidabile,Bonus,Juventus Bologna Como,0.565774618400196,17,6.15,6.38,1,2,2,,5.4,5.793319926936108,1.480438521066208,1,-1,5823,28,23
+C,Alajbegovic,Juventus,11,74.47,Semi-Top,Bonus,Scommessa,Torino Genoa Roma,0. N.D,,,,,,,,14.25, Prezzo N.D.,,,,7436,42,19
+C,Saelemaekers,Milan,11,74.47,Terza,Infortuni,Affidabile,Inter Parma Cagliari,0.6891646555279409,35,6.14,6.41,3,3,5,,5.375,7.0567876358602915,4.441315563198624,-1,-1,4892,35,27
+C,Mastantuono,Fiorentina,11,74.47,Semi-Top,Bonus,Scommessa,Cagliari Como Lazio,,,,,,,,,18.075, Prezzo N.D.,,,,7078,50,19
+C,Moreira,Milan,11,74.47,Scomm.,Scommessa,Bonus,Inter Parma Cagliari,,,,,,,,,9.775, Prezzo N.D.,,,,6372,45,22
+C,Bernardeschi,Bologna,10,73.3,Terza,Bonus,Infortuni,Atalanta Lecce Napoli,0.7003831038479077,24,6.04,6.56,4,2,3,,5.475,6.417260189006453,5.921754084264832,1,1,184,27,32
+C,Rowe,Atalanta,10,73.3,Semi-Top,Bonus,Infortuni,"Frosinone, Bologna Cagliari",0.6695893686614315,28,6.2,6.59,3,3,2,,11.549999999999999,6.1351125903603645,4.441315563198624,1,1,6844,40,23
+C,Perrone,Como,10,73.3,Quarta,Cartellini,Affidabile,Fiorentina Frosinone Genoa,0.6932937516222812,36,6.22,6.47,3,4,8,,2.75,6.352303999239152,4.441315563198624,1,1,6151,34,23
+C,Frattesi,Lazio,10,73.3,Semi-Top,Titolare,Bonus,Roma Fiorentina Torino,0.5085475388274754,14,5.89,5.89,0,0,0,,15.075,4.659566824506743,0,-1,-1,2848,75,27
+C,Zambo Anguissa,Napoli,10,73.3,Scomm.,Affidabile,Bonus,Roma Bologna Frosinone,0.6322325912694993,18,6.17,6.86,4,1,1,,5.6499999999999995,5.792831117506787,5.921754084264832,-1,-1,4220,41,31
+C,Vergara,Napoli,10,73.3,Scomm.,Scommessa,Affidabile,Roma Bologna Frosinone,0.5135039321555745,8,6.25,6.5,1,0,2,,4.4,4.704979778375452,1.480438521066208,1,1,7223,35,23
+C,Konè M.,Roma,10,73.3,Terza,Cartellini,Affidabile,Lazio Napoli Juventus,0.6584556700587754,29,6.26,6.53,2,3,2,,8.525,6.033100076913528,2.960877042132416,1,1,5589,42,25
+C,Thorstvedt,Sassuolo,10,73.3,Scomm.,Bonus,Infortuni,Inter Parma Bologna,0.6726321855291879,31,6.15,6.48,4,3,9,,1.95,6.162992399911184,5.921754084264832,1,1,5844,39,27
+C,Diouf,Inter,9,72,Semi-Top,Scommessa,Bonus,Milan Sassuolo Juventus,0.5232252913303399,10,6.15,6.45,1,0,1,,7.95,4.238124859775753,1.480438521066208,1,1,6274,43,23
+C,Sucic P.,Inter,9,72,Scomm.,Bonus,Subentrante,Milan Sassuolo Juventus,0.6242881673127884,28,6.07,6.27,2,2,5,,2.975,5.056734155233586,2.960877042132416,1,1,7070,21,23
+C,Locatelli,Juventus,9,72,Quarta,Cartellini,Affidabile,Torino Genoa Roma,0.6891750295395017,36,6.26,6.19,1,2,9,,2.025,5.582317739269964,1.480438521066208,-1,-1,827,33,28
+C,Thuram K.,Juventus,9,72,,Affidabile,Cartellini,Torino Genoa Roma,0.6875714538221914,34,6.1,6.4,3,2,2,,3.175,5.56932877595975,4.441315563198624,-1,-1,5562,25,25
+C,Cancellieri,Lazio,9,72,Scomm.,Scommessa,Subentrante,Roma Fiorentina Torino,0.6447235982009543,28,5.93,6.29,4,1,6,,1.2249999999999999,5.222261145427729,5.921754084264832,1,1,5500,25,24
+C,Isaksen,Lazio,9,72,Scomm.,Bonus,Subentrante,Roma Fiorentina Torino,0.6898304350904995,27,6.04,6.63,5,1,0,,3.225,5.587626524233046,7.402192605331041,1,1,6398,22,25
+C,Colpani,Monza,9,72,Quarta,Bonus,,Lecce Venezia Atalanta,0. N.D,,,,,,,,2.525, Prezzo N.D.,,,,5878,15,27
+C,Politano,Napoli,9,72,Scomm.,Affidabile,Bonus,Roma Bologna Frosinone,0.6738115698994916,33,6.09,6.36,2,5,4,,7.550000000000001,5.457873716185883,2.960877042132416,-1,-1,536,37,33
+C,Cristante,Roma,9,72,Quarta,Cartellini,Bonus,Lazio Napoli Juventus,0.6624476975799063,37,6.11,6.22,2,1,6,,1.675,5.365826350397239,2.960877042132416,-1,-1,779,29,31
+C,Volpato,Sassuolo,9,72,Scomm.,Subentrante,Infortuni,Inter Parma Bologna,0.6108203436137749,21,6.14,6.52,2,4,4,,1.825,4.947644783271577,2.960877042132416,1,1,5735,25,23
+C,Casadei,Torino,9,72,Quarta,Inaffidabile,Subentrante,Juventus Lazio Lecce,0.7025409116695314,32,5.97,6.45,6,0,5,,3.35,5.690581384523205,8.882631126397248,1,1,5888,27,23
+C,Pellegrini Lo.,Roma,9,72,,Infortuni,Inaffidabile,Lazio Napoli Juventus,,,,,,,,,0.9, Prezzo N.D.,,,,530,20,30
+C,Mbangula,Bologna,8,70.48,Terza,Scommessa,Affidabile,Atalanta Lecce Napoli,,,,,,,,,0.975, Prezzo N.D.,,,,6833,28,22
+C,Pasalic,Atalanta,8,70.48,Scomm.,Bonus,Scommessa,"Frosinone, Bologna Cagliari",0.6654549903007286,31,5.94,6.27,3,3,3,,1.55,4.690126771639536,4.441315563198624,1,-1,2077,22,31
+C,Odgaard,Bologna,8,70.48,Scomm.,Bonus,Inaffidabile,Atalanta Lecce Napoli,0.6554319267746129,22,5.91,6.61,5,1,1,,1.325,4.619484219907473,7.402192605331041,-1,-1,2765,17,27
+C,Cambiaghi,Bologna,8,70.48,Scomm.,Subentrante,Infortuni,Atalanta Lecce Napoli,0.6143221360288376,24,5.98,6.42,3,4,3,,1.425,4.329742414731248,4.441315563198624,-1,1,4436,25,26
+C,Mandragora,Torino,8,70.48,Quarta,Affidabile,Cartellini,Juventus Lazio Lecce,0.7902996491378342,34,6.04,6.62,7,2,7,,1.45,5.5700319271234555,10.363069647463456,-1,1,1933,23,29
+C,Calò,Frosinone,8,70.48,Terza,Titolare,Rigorista,Atalanta Como Napoli,0. N.D,,,,,,,,3.675, Prezzo N.D.,,,,7472,27,29
+C,Chukwueze,Milan,8,70.48,Scomm.,Bonus,Subentrante,Inter Parma Cagliari,0.41795387192807765,1,5.5,5.5,0,0,0,,4.6499999999999995,2.9457388893490917,0,-1,-1,4856,22,27
+C,Lobotka,Napoli,8,70.48,Titolare,Affidabile,,Roma Bologna Frosinone,0.6143789616494583,31,6.05,6.1,1,0,3,,1.4749999999999999,4.330142921705383,1.480438521066208,1,1,4287,23,32
+C,Konè I.,Sassuolo,8,70.48,Scomm.,Scommessa,,Inter Parma Bologna,0.7119337506390845,35,6.19,6.63,6,0,3,,0.7,5.017709074504268,8.882631126397248,1,1,6717,20,24
+C,Schmid,Frosinone,8,70.48,Quarta,Scommessa,Bonus,Atalanta Como Napoli,,,,,,,,,1.05, Prezzo N.D.,,,,7551,25,26
+C,Hutchinson,Milan,8,70.48,Scomm.,Scommessa,Bonus,Inter Parma Cagliari,,,,,,,,,1.4, Prezzo N.D.,,,,7618,25,23
+C,Gaetano,Atalanta,7,68.81,Quarta,Infortuni,Affidabile,"Frosinone, Bologna Cagliari",0.6607637105268659,32,6.06,6.31,2,4,4,,3.4749999999999996,3.978375705618443,2.960877042132416,-1,-1,4364,30,26
+C,Zalewski,Atalanta,7,68.81,Scomm.,Subentrante,Bonus,"Frosinone, Bologna Cagliari",0.6682105515665523,31,6.1,6.4,2,5,3,,1.375,4.023212204663266,2.960877042132416,1,1,5422,18,24
+C,Ferguson,Bologna,7,68.81,Titolare,Infortuni,Affidabile,Atalanta Lecce Napoli,0.5240851663414793,23,5.8,5.78,1,0,5,,0.975,3.155451275896255,1.480438521066208,-1,-1,5858,23,27
+C,Adopo,Cagliari,7,68.81,Titolare,,,Atalanta Fiorentina Venezia,0.6406975653354096,38,5.83,5.88,1,1,4,,0.65,3.8575599536888343,1.480438521066208,-1,-1,4870,13,26
+C,Romano,Cagliari,7,68.81,Quarta,Titolare,Bonus,Atalanta Fiorentina Venezia,0. N.D,,,,,,,,1.05, Prezzo N.D.,,,,7311,21,20
+C,Fagioli,Fiorentina,7,68.81,Quarta,Cartellini,Bonus,Cagliari Como Lazio,0.6538853980581494,33,6.03,6.23,2,3,5,,0.925,3.9369622460333598,2.960877042132416,1,1,4465,20,25
+C,Ndour,Fiorentina,7,68.81,Scomm.,Scommessa,,Cagliari Como Lazio,0.6375665136889055,30,5.8,6.07,3,0,2,,1.7750000000000001,3.8387082831066888,4.441315563198624,1,1,6294,22,22
+C,Frendrup,Genoa,7,68.81,Titolare,,Affidabile,Juventus Bologna Como,0.6273880164227098,36,5.96,5.97,1,0,5,,0.8,3.777424823379082,1.480438521066208,-1,-1,5791,19,25
+C,Koopmeiners,Juventus,7,68.81,,Inaffidabile,,Torino Genoa Roma,0.553068529174734,29,5.64,5.55,0,0,5,,0.85,3.329956480594927,0,-1,-1,5685,15,28
+C,Rovella,Lazio,7,68.81,,Cartellini,Affidabile,Roma Fiorentina Torino,0.45471828547803955,11,5.73,5.64,0,1,2,,0.675,2.7378019570775916,0,-1,-1,4459,16,25
+C,Coulibaly L.,Lecce,7,68.81,Titolare,Cartellini,Affidabile,Parma Bologna Fiorentina,0.6651965597459211,33,6.05,6.29,3,1,4,,0.675,4.0050653366602225,4.441315563198624,1,1,5504,17,30
+C,Akinsanmiro,Monza,7,68.81,Titolare,Affidabile,,Lecce Venezia Atalanta,0.5492119011540779,23,5.8,5.8,0,1,2,,0.55,3.3067362053610587,0,1,1,6593,11,22
+C,Bernabè,Parma,7,68.81,Terza,Titolare,Bonus,Lecce Sassuolo Milan,0.6828739197215193,32,6.17,6.48,3,1,0,,3.075,4.111498511403303,4.441315563198624,1,1,6666,34,25
+C,Pisilli,Roma,7,68.81,Scomm.,Scommessa,Subentrante,Lazio Napoli Juventus,0.6170740673298039,22,6.09,6.48,2,4,3,,1.425,3.715325825134333,2.960877042132416,1,-1,6190,19,22
+C,Karlstrom,Udinese,7,68.81,Titolare,,Inaffidabile,Genoa Lecce Milan,0.6235548077465692,36,5.96,5.96,1,0,6,,0.65,3.754345553091125,1.480438521066208,1,1,6680,20,31
+C,Unai Gomez,Udinese,7,68.81,Scomm.,Scommessa,,Genoa Lecce Milan,0. N.D,,,,,,,,0.975, Prezzo N.D.,,,,6783,16,23
+C,Sow,Genoa,7,68.81,Quarta,Scommessa,,Juventus Bologna Como,,,,,,,,,0.675, Prezzo N.D.,,,,5946,15,29
+C,Elmas,Atalanta,7,68.81,Scomm.,Bonus,Subentrante,"Frosinone, Bologna Cagliari",,,,,,,,,1.075, Prezzo N.D.,,,,4479,22,27
+C,Monteiro J.,Lecce,7,68.81,,,,Parma Bologna Fiorentina,,,,,,,,,0.65, Prezzo N.D.,,,,7619,23,27
+C,Sarr P.,Juventus,7,68.81,Quarta,,,Torino Genoa Roma,,,,,,,,,1.325, Prezzo N.D.,,,,5680,25,24
+C,Braganca,Torino,6,66.78,,,,Juventus Lazio Lecce,,,,,,,,,0.5, Prezzo N.D.,,,,7624,20,27
+C,Pobega,Bologna,6,66.78,Titolare,Infortuni,,Atalanta Lecce Napoli,0.5848180104271965,23,5.83,6.17,3,1,2,,0.525,2.929061005224614,4.441315563198624,-1,1,5298,12,27
+C,Winks,Cagliari,6,66.78,Titolare,,,Atalanta Fiorentina Venezia,0. N.D,,,,,,,,0.525, Prezzo N.D.,,,,4260,15,30
+C,Fazzini,Cagliari,6,66.78,Quarta,Infortuni,Bonus,Atalanta Fiorentina Venezia,0.4890009368006146,12,5.88,5.83,0,0,2,,2.475,2.449161191965878,0,-1,-1,6010,23,23
+C,Milla,Como,6,66.78,Quarta,,,Fiorentina Frosinone Genoa,0. N.D,,,,,,,,1.4749999999999999, Prezzo N.D.,,,,7412,30,32
+C,Caqueret,Como,6,66.78,,Scommessa,Bonus,Fiorentina Frosinone Genoa,0.647434050897756,28,6.11,6.41,2,4,3,,0.6,3.2426734439214107,2.960877042132416,-1,-1,5036,17,26
+C,Liberali,Como,6,66.78,Scomm.,Scommessa,Bonus,Fiorentina Frosinone Genoa,0. N.D.,0,0,0,0,0,0,,1.8, Prezzo N.D.,0,,,6678,21,19
+C,Oulai,Fiorentina,6,66.78,Scomm.,Scommessa,,Cagliari Como Lazio,0. N.D,,,,,,,,0.975, Prezzo N.D.,,,,7464,18,20
+C,Zerbin,Frosinone,6,66.78,Scomm.,Scommessa,Bonus,Atalanta Como Napoli,0.5848576301083119,29,5.76,5.79,0,2,2,,0.6,2.92925944039748,0,-1,-1,5998,12,27
+C,Ellertsson,Genoa,6,66.78,Titolare,Scommessa,Subentrante,Juventus Bologna Como,0.6117144661458785,35,5.84,5.91,1,1,1,,0.6,3.0637719036916327,1.480438521066208,-1,-1,6020,16,24
+C,Zhegrova,Juventus,6,66.78,Scomm.,Scommessa,Bonus,Torino Genoa Roma,0.4984294944633611,12,5.96,5.96,0,0,1,,0.925,2.496384123019744,0,1,1,5761,17,27
+C,Pierotti,Lecce,6,66.78,Titolare,Bonus,Inaffidabile,Parma Bologna Fiorentina,0.6337288217277636,37,5.8,5.85,1,1,4,,0.7,3.1740308036235034,1.480438521066208,-1,-1,6549,19,25
+C,Pessina,Monza,6,66.78,Scomm.,Rigorista,Cartellini,Lecce Venezia Atalanta,0. N.D,,,,,,,,0.75, Prezzo N.D.,,,,2741,15,29
+C,Nicolussi Caviglia,Parma,6,66.78,,Cartellini,,Lecce Sassuolo Milan,0.5672556091778714,23,5.89,6.02,0,4,4,,0.625,2.841099718567369,0,-1,-1,4349,16,26
+C,Matic,Sassuolo,6,66.78,Titolare,Cartellini,,Inter Parma Bologna,0.5935840475126511,34,5.96,5.96,1,1,6,,0.65,2.972965701967113,1.480438521066208,1,1,2528,15,38
+C,Adzic,Sassuolo,6,66.78,Scomm.,Scommessa,Subentrante,Inter Parma Bologna,0.5055540716371921,4,6.12,6.88,1,0,0,,2.375,2.532067567794877,1.480438521066208,1,1,6677,16,20
+C,Bakola,Sassuolo,6,66.78,Quarta,Affidabile,,Inter Parma Bologna,0.466571601972522,3,6.17,6.17,0,0,0,,0.825,2.3368238684793767,0,1,1,7036,14,19
+C,Cacciamani,Torino,6,66.78,Quarta,Scommessa,,Juventus Lazio Lecce,0. N.D,,,,,,,,1.8, Prezzo N.D.,,,,7060,24,19
+C,Oristanio,Torino,6,66.78,Scomm.,Scommessa,Affidabile,Juventus Lazio Lecce,0.5401065156869627,18,5.78,5.92,1,0,1,,0.75,2.705123483818152,1.480438521066208,-1,-1,6218,12,24
+C,Piotrowski,Udinese,6,66.78,Titolare,Scommessa,Bonus,Genoa Lecce Milan,0.603545806829089,30,5.88,5.95,1,0,2,,0.675,3.022859173503492,1.480438521066208,1,1,7198,15,29
+C,Basic,Venezia,6,66.78,Quarta,Bonus,Affidabile,Cagliari Monza Bologna,0.6011870548597107,23,6.09,6.43,2,3,0,,0.725,3.0110453642648607,2.960877042132416,1,1,5674,19,30
+C,Tourè I.,Monza,6,66.78,,Scommessa,,Lecce Venezia Atalanta,,,,,,,,,0.525, Prezzo N.D.,,,,7146,14,28
+C,Amondarain,Bologna,5,64.25,,,,Atalanta Lecce Napoli,0. N.D,,,,,,,,0.6, Prezzo N.D.,,,,7528,10,21
+C,Felici,Cagliari,5,64.25,,Scommessa,Bonus,Atalanta Fiorentina Venezia,0.5431181306889855,11,6.05,6.55,2,1,3,,0.55,2.1809587435479574,2.960877042132416,1,1,6640,7,25
+C,Meichtry,Genoa,5,64.25,,Scommessa,,Juventus Bologna Como,0. N.D,,,,,,,,0.625, Prezzo N.D.,,,,7409,11,21
+C,Luis Henrique,Inter,5,64.25,Scomm.,Scommessa,Bonus,Milan Sassuolo Juventus,0.6056252024455082,27,5.89,6.06,1,2,1,,0.65,2.431963703570244,1.480438521066208,1,1,5301,12,25
+C,Dele-Bashiru,Lazio,5,64.25,,Bonus,Scommessa,Roma Fiorentina Torino,0.5543506608038743,21,5.69,5.83,1,0,0,,0.525,2.2260643722905575,1.480438521066208,-1,-1,6629,13,25
+C,Jashari,Milan,5,64.25,Scomm.,Scommessa,Affidabile,Inter Parma Cagliari,0.49543750515379875,12,5.71,5.79,0,1,0,,0.7,1.9894912316332234,0,1,1,7203,13,24
+C,Keita M.,Parma,5,64.25,Titolare,Inaffidabile,,Lecce Sassuolo Milan,0.6511190495376764,36,6.01,6.06,1,1,1,,0.6,2.6146499332997317,1.480438521066208,1,1,6898,15,24
+C,Fitz-Jim,Torino,5,64.25,Titolare,Scommessa,,Juventus Lazio Lecce,0. N.D,,,,,,,,0.925, Prezzo N.D.,,,,7535,18,23
+C,Gineitis,Torino,5,64.25,Titolare,Inaffidabile,Subentrante,Juventus Lazio Lecce,0.5619592663872554,27,5.87,5.81,0,1,5,,0.55,2.256617679086322,0,-1,-1,6170,12,22
+C,Busio,Venezia,5,64.25,Quarta,Titolare,Affidabile,Cagliari Monza Bologna,0. N.D,,,,,,,,1.4, Prezzo N.D.,,,,5507,14,24
+C,Sohm,Venezia,5,64.25,,Bonus,Subentrante,Cagliari Monza Bologna,0.5415903615987046,24,5.65,5.62,0,1,3,,0.575,2.174823795794798,0,-1,-1,5319,11,25
+C,Perez K.,Venezia,5,64.25,Scomm.,Scommessa,Subentrante,Cagliari Monza Bologna,0. N.D,,,,,,,,0.6, Prezzo N.D.,,,,6994,15,29
+C,Cissè A.,Milan,5,64.25,Scomm.,Scommessa,,Inter Parma Cagliari,,,,,,,,,4.05, Prezzo N.D.,,,,6618,24,20
+C,De Roon,Roma,4,60.96,,Cartellini,Affidabile,Lazio Napoli Juventus,0.6004934719533125,34,5.97,6,1,2,6,,0.75,1.8303041025136961,1.480438521066208,-1,-1,22,10,35
+C,Moro N.,Bologna,4,60.96,,,,Atalanta Lecce Napoli,0.6192415903891035,28,5.93,6.12,2,0,1,,0.55,1.8874483675059872,2.960877042132416,1,1,6054,14,28
+C,Dominguez B.,Sassuolo,4,60.96,Scomm.,Bonus,Subentrante,Inter Parma Bologna,0.5132026719063745,12,5.83,6.04,0,3,1,,0.65,1.5642417439706293,0,-1,-1,6895,12,23
+C,Addai,Como,4,60.96,,Bonus,Infortuni,Fiorentina Frosinone Genoa,0.5528984548223739,12,5.96,6.54,3,0,4,,0.575,1.6852344902985954,4.441315563198624,1,1,7127,10,21
+C,Fabbian,Parma,4,60.96,,Affidabile,Subentrante,Lecce Sassuolo Milan,0.5782710236549199,22,5.8,6.05,2,0,2,,0.8,1.762570080100196,2.960877042132416,-1,-1,6206,8,23
+C,Cichella,Frosinone,4,60.96,,,,Atalanta Como Napoli,0. N.D,,,,,,,,0.575, Prezzo N.D.,,,,7473,12,21
+C,Koutsoupias,Frosinone,4,60.96,,Scommessa,Cartellini,Atalanta Como Napoli,0. N.D,,,,,,,,0.525, Prezzo N.D.,,,,7474,11,
+C,Fini ,Frosinone,4,60.96,,,,Atalanta Como Napoli,0. N.D,,,,,,,,In aggiorn., Prezzo N.D.,,,,6506,13,20
+C,Amorim,Genoa,4,60.96,,,,Juventus Bologna Como,0.4676864345523173,9,5.72,5.67,0,0,1,,0.625,1.425508252515463,0,1,1,7341,11,21
+C,Messias,Genoa,4,60.96,Scomm.,Subentrante,Scommessa,Juventus Bologna Como,0.6664237890790103,19,6.18,6.68,3,1,1,,0.6,2.0312597091128235,4.441315563198624,1,1,4970,8,35
+C,Traorè Hj.,Genoa,4,60.96,,Subentrante,Infortuni,Juventus Bologna Como,0. N.D,,,,,,,,0.625, Prezzo N.D.,,,,2857,11,26
+C,Mkhitaryan,Inter,4,60.96,,Affidabile,Bonus,Milan Sassuolo Juventus,0.6647373869689589,28,6.21,6.59,4,1,5,,0.7,2.0261195554813862,5.921754084264832,1,1,2529,9,37
+C,Douglas Luiz,Juventus,4,60.96,Scomm.,Scommessa,,Torino Genoa Roma,0. N.D.,0,0,0,0,0,0,,2.225, Prezzo N.D.,0,,,4911,15,28
+C,Cataldi,Lazio,4,60.96,,Cartellini,Infortuni,Roma Fiorentina Torino,0.691340724534814,27,6.07,6.41,3,3,6,,0.525,2.107206528382113,4.441315563198624,1,-1,333,12,32
+C,Ngom,Lecce,4,60.96,,,,Parma Bologna Fiorentina,0.4872952605230676,13,5.69,5.65,0,0,1,,0.675,1.4852759540743101,0,1,1,7322,12,22
+C,Berisha M.,Lecce,4,60.96,Scomm.,Infortuni,Affidabile,Parma Bologna Fiorentina,0.5835735308785567,12,6.17,6.92,2,3,0,,0.65,1.778732122117841,2.960877042132416,1,1,6015,12,23
+C,Gandelman,Lecce,4,60.96,,Scommessa,,Parma Bologna Fiorentina,0.5740292966809255,16,5.97,6.41,2,1,0,,0.6,1.7496412962834607,2.960877042132416,1,1,7318,10,26
+C,Ricci S.,Como,4,60.96,,Affidabile,Cartellini,Fiorentina Frosinone Genoa,0.6158166531383225,28,6,6.18,1,3,3,,0.625,1.8770091587656066,1.480438521066208,1,-1,5453,12,25
+C,Loftus-Cheek,Milan,4,60.96,Scomm.,Bonus,Infortuni,Inter Parma Cagliari,0.6167362068916014,21,6.1,6.52,3,1,2,,1.175,1.8798119586056008,4.441315563198624,1,1,4199,16,30
+C,Folorunsho,Monza,4,60.96,Quarta,Bonus,Infortuni,Lecce Venezia Atalanta,0.6073026715280155,26,6.04,6.21,2,0,3,,0.75,1.8510585428173916,2.960877042132416,1,1,6252,17,28
+C,Almqvist,Parma,4,60.96,,Subentrante,,Lecce Sassuolo Milan,0.49377130902073973,9,5.94,6.06,0,1,0,,0.575,1.5050149498952148,0,1,-1,6207,11,27
+C,Ilkhan,Torino,4,60.96,,Inaffidabile,,Juventus Lazio Lecce,0.5207042750346353,17,5.82,6,1,2,2,,0.55,1.5871066303055688,1.480438521066208,1,1,6005,8,22
+C,Njie,Fiorentina,4,60.96,Scomm.,Scommessa,Affidabile,Cagliari Como Lazio,0.4833434544347571,9,6,5.94,0,0,1,,1.2750000000000001,1.4732308491171395,0,-1,-1,6827,28,21
+C,Miller L.,Udinese,4,60.96,,Scommessa,Calci Piazzati,Genoa Lecce Milan,0.5341796511536017,19,5.92,5.95,0,2,4,,0.525,1.6281795767161777,0,1,1,7208,12,20
+C,Grillitsch,Frosinone,4,60.96,,Cartellini,,Atalanta Como Napoli,,,,,,,,,0.5, Prezzo N.D.,,,,7550,10,31
+C,Massolin,Cagliari,4,60.96,,,,Atalanta Fiorentina Venezia,,,,,,,,,0.75, Prezzo N.D.,,,,7579,12,24
+C,Fernandez T.,Venezia,3,56.34,Scomm.,Scommessa,Affidabile,Cagliari Monza Bologna,,,,,,,,,0.55, Prezzo N.D.,,,,7232,8,18
+C,Sulemana I.,Sassuolo,3,56.34,,,,Inter Parma Bologna,0.5265380008818179,18,5.69,5.78,1,0,3,,0.475,1.1124431613630608,1.480438521066208,-1,-1,6024,7,23
+C,Deiola,Cagliari,3,56.34,Titolare,Cartellini,Inaffidabile,Atalanta Fiorentina Venezia,0.5392991728617575,20,5.98,5.95,0,1,3,,0.55,1.1394043274636785,0,-1,-1,1871,8,31
+C,Brescianini,Fiorentina,3,56.34,,Subentrante,Affidabile,Cagliari Como Lazio,0.5747949542804216,18,5.97,6.31,2,1,2,,0.65,1.2143980396559608,2.960877042132416,-1,-1,4947,11,26
+C,Gelli F.,Frosinone,3,56.34,,,,Atalanta Como Napoli,0. N.D,,,,,,,,0.575, Prezzo N.D.,,,,6241,6,30
+C,Masini,Frosinone,3,56.34,,Scommessa,,Atalanta Como Napoli,0.536110573090077,21,5.98,5.9,0,1,5,,0.65,1.1326676132960602,0,-1,-1,6917,8,25
+C,Stankovic A.,Inter,3,56.34,,Scommessa,Subentrante,Milan Sassuolo Juventus,0. N.D,,,,,,,,0.7, Prezzo N.D.,,,,6503,7,21
+C,Gorter,Lecce,3,56.34,Titolare,,,Parma Bologna Fiorentina,0.41795387192807765,1,5.5,5.5,0,0,0,,0.55,0.8830320429160461,0,1,1,7248,12,21
+C,Maleh,Lecce,3,56.34,Titolare,Inaffidabile,Cartellini,Parma Bologna Fiorentina,0.5154950138330441,21,5.69,5.71,1,0,3,,0.65,1.0891120904757638,1.480438521066208,-1,1,5457,7,28
+C,Musah,Milan,3,56.34,Quarta,Scommessa,,Inter Parma Cagliari,0.5389384371377164,16,5.94,6.09,1,0,1,,0.6,1.1386421830627103,1.480438521066208,1,1,5295,15,24
+C,Colombo L.,Monza,3,56.34,,Subentrante,,Lecce Venezia Atalanta,0. N.D,,,,,,,,0.65, Prezzo N.D.,,,,7477,4,21
+C,Gilmour,Napoli,3,56.34,,Subentrante,Affidabile,Roma Bologna Frosinone,0.5321554838659299,13,6.08,6.27,1,0,1,,0.45,1.1243114985377434,1.480438521066208,1,1,5131,10,25
+C,Ordonez C.,Parma,3,56.34,,Inaffidabile,Cartellini,Lecce Sassuolo Milan,0.5211802995427413,21,5.79,5.81,1,0,3,,0.65,1.1011236778589266,1.480438521066208,1,1,7138,10,22
+C,Diallo O.,Parma,3,56.34,,Scommessa,Subentrante,Lecce Sassuolo Milan,0. N.D,,,,,,,,0.55, Prezzo N.D.,,,,7536,12,19
+C,Aboukhlal,Torino,3,56.34,,Inaffidabile,,Juventus Lazio Lecce,0.4682468666446574,11,5.77,5.64,0,0,4,,0.6,0.9892885675034998,0,1,1,7183,5,26
+C,Helgason,Venezia,3,56.34,,Scommessa,,Cagliari Monza Bologna,0.44056568846392474,4,5.62,5.62,0,0,0,,0.7,0.9308051583021572,0,-1,-1,5872,3,26
+C,Gagliardini,Cagliari,3,56.34,,Inaffidabile,,Atalanta Fiorentina Venezia,,,,,,,,,0.25, Prezzo N.D.,,,,801,8,32
+C,El Azzouzi O.,Bologna,2,49.12,,,,Atalanta Lecce Napoli,0. N.D,,,,,,,,0.575, Prezzo N.D.,,,,6225,10,25
+C,Fadera,Cagliari,2,49.12,Scomm.,Scommessa,Bonus,Atalanta Fiorentina Venezia,0.589937391927876,24,5.92,6.15,2,1,5,,0.65,0.7244431172874315,2.960877042132416,-1,1,6815,12,25
+C,Hasa,Frosinone,2,49.12,,,,Atalanta Como Napoli,0. N.D,,,,,,,,0.5, Prezzo N.D.,,,,6903,5,22
+C,Venturino,Genoa,2,49.12,,Subentrante,Bonus,Juventus Bologna Como,0.46999984785140836,7,5.86,5.86,0,0,0,,0.575,0.5771598131615294,0,-1,-1,6980,4,20
+C,Belahyane,Lazio,2,49.12,,Affidabile,Cartellini,Roma Fiorentina Torino,0.4697843053548711,11,5.77,5.82,0,2,1,,0.4,0.5768951269757816,0,1,-1,6191,3,22
+C,Ciurria,Monza,2,49.12,,Bonus,Subentrante,Lecce Venezia Atalanta,0. N.D,,,,,,,,0.575, Prezzo N.D.,,,,5880,6,31
+C,Cremaschi,Parma,2,49.12,,,,Lecce Sassuolo Milan,0.4463803004765632,1,6,6,0,0,0,,0.45,0.5481550089852195,0,1,1,7276,3,21
+C,Boloca,Sassuolo,2,49.12,,Affidabile,,Inter Parma Bologna,0.4374302440970573,2,5.75,5.75,0,0,0,,0.5,0.5371643397511863,0,1,1,6219,5,28
+C,Lipani,Sassuolo,2,49.12,,,,Inter Parma Bologna,0.5417196879016458,21,5.93,5.9,0,1,3,,0.575,0.665231776743221,0,1,1,6246,5,21
+C,Zarraga,Udinese,2,49.12,,,,Genoa Lecce Milan,0.4710837495885347,10,5.75,5.7,0,0,2,,0.45,0.5784908444947205,0,-1,-1,6212,4,27
+C,Chakvetadze,Udinese,2,49.12,,Scommessa,,Genoa Lecce Milan,0. N.D,,,,,,,,0.525, Prezzo N.D.,,,,7418,6,27
+C,Duncan,Venezia,2,49.12,,Inaffidabile,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.575, Prezzo N.D.,,,,526,4,33
+C,Forson O.,Monza,2,49.12,,Scommessa,Bonus,Lecce Venezia Atalanta,,,,,,,,,0.55, Prezzo N.D.,,,,6592,1,22
+C,Foe Ondoa,Monza,2,49.12,,Scommessa,,Lecce Venezia Atalanta,,,,,,,,,0.45, Prezzo N.D.,,,,7574,2,21
+C,Jovanovic,Udinese,2,49.12,,,,Genoa Lecce Milan,,,,,,,,,0.25, Prezzo N.D.,,,,7092,5,20
+C,Liteta,Cagliari,1,35.69,,,,Atalanta Fiorentina Venezia,0.44795655988653094,4,5.75,5.75,0,0,0,,0.5,0.19984462027937858,0,1,1,7165,1,20
+C,Lahdo,Como,1,35.69,,,,Fiorentina Frosinone Genoa,0. N.D.,0,0,0,0,0,0,,0.475, Prezzo N.D.,0,,,7357,1,19
+C,El Azzouzi A.,Frosinone,1,35.69,,Cartellini,,Atalanta Como Napoli,0. N.D,,,,,,,,0.45, Prezzo N.D.,,,,7456,1,25
+C,Kone B.,Frosinone,1,35.69,,,,Atalanta Como Napoli,0. N.D,,,,,,,,0.475, Prezzo N.D.,,,,5725,3,26
+C,Przyborek,Lazio,1,35.69,Top,,,Roma Fiorentina Torino,0. N.D.,0,0,0,0,0,0,,0.45, Prezzo N.D.,0,,,7345,5,19
+C,Kaba,Lecce,1,35.69,,Inaffidabile,,Parma Bologna Fiorentina,0.48131717330135154,11,5.77,5.73,0,0,1,,0.45,0.21472762393906544,0,-1,-1,6410,2,25
+C,Fofana Sa.,Lecce,1,35.69,,,,Parma Bologna Fiorentina,0.4232170298228145,2,5.5,5.5,0,0,0,,0.425,0.18880769742970308,0,1,1,7319,1,23
+C,Ilic,Lecce,1,35.69,Titolare,Affidabile,Infortuni,Parma Bologna Fiorentina,0.47293818734031945,8,6,5.88,0,0,2,,0.575,0.21098954882719997,0,-1,-1,5007,10,25
+C,Anjorin,Torino,1,35.69,,,,Juventus Lazio Lecce,0.47083582587342354,9,5.78,5.72,0,0,1,,0.425,0.21005163281778103,0,-1,-1,6889,4,
+C,Dagasso,Venezia,1,35.69,,,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.45, Prezzo N.D.,,,,7481,1,22
+C,Laerke,Lecce,1,35.69,,Scommessa,,Parma Bologna Fiorentina,,,,,,,,,0.475, Prezzo N.D.,,,,7571,1,19
+C,Comotto,Milan,1,35.69,,,,Inter Parma Cagliari,,,,,,,,,0.825, Prezzo N.D.,,,,7572,1,18
+C,Mout,Monza,1,35.69,Titolare,Inaffidabile,,Lecce Venezia Atalanta,,,,,,,,,0.525, Prezzo N.D.,,,,7575,12,19
+C,Ciervo,Cagliari,1,35.69,,,,Atalanta Fiorentina Venezia,,,,,,,,,0.55, Prezzo N.D.,,,,5462,1,24
+A,Malen,Roma,38,93.48,Top,Bonus,Affidabile,Lazio Napoli Juventus,0.8219073805141517,18,6.72,8.97,14,2,1,,102.425,72.99030683393975,40.597592433361996,1,1,5585,450,27
+A,Martinez L.,Inter,33,90.42,Top,Titolare,Bonus,Milan Sassuolo Juventus,0.8483142133684727,30,6.42,8.25,17,6,4,,93.5,63.28127121754127,49.29707652622528,1,1,2764,361,28
+A,Thuram,Inter,28,87.36,Top,Affidabile,Titolare,Milan Sassuolo Juventus,0.8019201315903465,29,6.43,7.95,13,6,2,,64.57499999999999,49.03901988701287,37.697764402407564,1,-1,4871,249,29
+A,Hojlund,Napoli,28,87.36,Semi-Top,Titolare,Affidabile,Roma Bologna Frosinone,0.8436021115807509,33,6.21,7.44,12,5,1,,71.725,51.58795632738609,34.79793637145314,1,1,6052,260,23
+A,Ramos G.,Milan,27,86.94000000000001,Top,Titolare,Bonus,Inter Parma Cagliari,0. N.D,,,,,,,,79.05,ND,ND,,,6397,237,25
+A,Kolo Muani,Juventus,25,85.5,Top,Affidabile,Bonus,Torino Genoa Roma,0. N.D,,,,,,,,64.275,ND,ND,,,5951,165,28
+A,Kean,Como,24,84.96000000000001,Scomm.,Bonus,Infortuni,Fiorentina Frosinone Genoa,0.6934547785473387,26,5.88,6.77,8,1,4,,50,35.349550791229134,23.198624247635426,-1,-1,2097,183,26
+A,Woltemade,Juventus,23,84.18,Scomm.,Scommessa,Bonus,Torino Genoa Roma,,,,,,,,,33.825,ND,ND,,,6752,160,24
+A,Douvikas,Como,22,83.6,Semi-Top,Scommessa,Bonus,Fiorentina Frosinone Genoa,0.864671948721612,36,6.18,7.38,14,1,0,,38.800000000000004,39.757616202219715,40.597592433361996,1,1,7017,185,27
+A,Yildiz,Juventus,22,83.6,Scomm.,Affidabile,Titolare,Torino Genoa Roma,0.8321107739532783,35,6.39,7.3,10,6,2,,22.349999999999998,38.260453386371736,28.99828030954428,1,1,6434,100,21
+A,Scamacca,Atalanta,19,81.51,Terza,Infortuni,Bonus,"Frosinone, Bologna Cagliari",0.7353235309316348,22,6.18,7.55,10,1,2,,36.675,28.469704977962838,28.99828030954428,1,1,2137,110,27
+A,Berardi,Sassuolo,19,81.51,Terza,Titolare,Infortuni,Inter Parma Bologna,0.7201757691682208,26,6.31,7.19,8,4,2,,25.1,27.883225298828297,23.198624247635426,1,1,531,106,32
+A,Davis K.,Udinese,19,81.51,Semi-Top,Infortuni,Bonus,Genoa Lecce Milan,0.7754322757317796,30,6.32,7.37,10,4,5,,34.5,30.02260527757625,28.99828030954428,1,1,5637,108,28
+A,Krstovic,Atalanta,18,80.64000000000001,Scomm.,Bonus,Subentrante,"Frosinone, Bologna Cagliari",0.7388284056614146,32,6.16,7.19,10,5,4,,26.075,26.810605184641414,28.99828030954428,1,-1,6435,98,26
+A,De Ketelaere,Atalanta,17,79.9,Terza,Bonus,Affidabile,"Frosinone, Bologna Cagliari",0.6391994565958053,31,6.21,6.6,3,5,4,,20.625,21.70561554735206,8.699484092863285,-1,-1,5995,95,25
+A,Esposito F.P.,Inter,17,79.9,Scomm.,Subentrante,Scommessa,Milan Sassuolo Juventus,0.70502292153975,31,6.26,7.02,7,3,1,,34.3,23.94081585818606,20.298796216680998,1,1,7071,105,21
+A,Dybala,Roma,16,79.2,Semi-Top,Calci Piazzati,Infortuni,Lazio Napoli Juventus,0.6656253733180739,21,6.26,6.74,2,7,0,,34.5,21.08701182671658,5.799656061908856,-1,-1,309,100,33
+A,Dovbyk,Bologna,15,78.3,Scomm.,Bonus,Infortuni,Atalanta Lecce Napoli,0.5448192190603859,13,6,6.77,3,1,0,,17.375,15.99725431966058,8.699484092863285,-1,-1,6675,51,29
+A,Laurientè,Sassuolo,15,78.3,Terza,Bonus,Titolare,Inter Parma Bologna,0.749595661379039,37,6.23,6.99,7,9,4,,16.6,22.010002607242026,20.298796216680998,1,1,6060,83,28
+A,Beto,Fiorentina,14,77.42,Terza,Scommessa,Bonus,Cagliari Como Lazio,,,,,,,,,19.25,ND,ND,,,5694,50,28
+A,Raspadori,Atalanta,14,77.42,Terza,Affidabile,Bonus,"Frosinone, Bologna Cagliari",0.5509482874357919,13,6.12,6.88,3,1,0,,17.5,14.929045744647656,8.699484092863285,-1,-1,4371,73,26
+A,Santos A.,Napoli,14,77.42,Terza,Bonus,Affidabile,Roma Bologna Frosinone,0.5658430586016284,13,6.35,7.23,4,0,1,,16,15.332649358928325,11.599312123817713,1,1,7351,61,24
+A,Pellegrino M.,Fiorentina,14,77.42,Scomm.,Bonus,,Cagliari Como Lazio,0.7518677954994623,37,5.99,6.65,9,0,5,,16.049999999999997,20.373361654648928,26.098452278589853,-1,1,7023,40,25
+A,Castro S.,Roma,14,77.42,Scomm.,Subentrante,Bonus,Lazio Napoli Juventus,0.6808557811802601,35,5.93,6.51,7,1,3,,12.325,18.44914910264151,20.298796216680998,-1,-1,6572,70,22
+A,Simeone,Torino,14,77.42,Semi-Top,Bonus,Titolare,Juventus Lazio Lecce,0.7368683679838367,32,6.08,7.09,11,0,1,,28.35,19.966922167258026,31.89810834049871,1,1,2061,80,31
+A,Soulè,Roma,13,76.44,Scomm.,Affidabile,Bonus,Lazio Napoli Juventus,0.7010691519327934,32,6.12,6.83,6,5,1,,8.95,17.416660941466386,17.39896818572657,1,1,5734,48,23
+A,Esposito Se.,Sassuolo,12,75.48,Scomm.,Affidabile,Scommessa,Inter Parma Bologna,0.7524369355266072,36,6.26,6.88,7,4,6,,10.175,17.038181968064492,20.298796216680998,1,-1,4463,40,24
+A,Diao,Como,12,75.48,Terza,Infortuni,Bonus,Fiorentina Frosinone Genoa,0.5274092789584635,16,6,6.38,2,1,2,,11.575000000000001,11.942655712735446,5.799656061908856,-1,-1,6967,50,21
+A,Pinamonti,Lazio,12,75.48,Terza,Inaffidabile,Bonus,Roma Fiorentina Torino,0.742499432581859,34,5.88,6.62,9,3,2,,26.05,16.813157151383614,26.098452278589853,-1,-1,2038,53,27
+A,Kevin Carlos,Cagliari,12,75.48,Scomm.,Scommessa,,Atalanta Fiorentina Venezia,,,,,,,,,2.9499999999999997,ND,ND,,,7547,36,25
+A,Colombo,Genoa,11,74.47,Terza,Rigorista,Titolare,Juventus Bologna Como,0.7450403943454756,37,5.92,6.41,7,1,2,,14.825,15.257868495899583,20.298796216680998,1,1,4923,52,24
+A,Adams A.,Venezia,11,74.47,Quarta,Scommessa,,Cagliari Monza Bologna,0. N.D,,,,,,,,8.075000000000001,ND,ND,,,7484,35,26
+A,Adams C.,Torino,10,73.3,Quarta,Bonus,Scommessa,Juventus Lazio Lecce,0.6876447080912308,32,5.98,6.64,6,3,0,,3.75,12.601089275771802,17.39896818572657,-1,-1,6646,33,30
+A,Tourè E.,Parma,10,73.3,Quarta,Scommessa,Infortuni,Lecce Sassuolo Milan,,,,,,,,,5.95,ND,ND,,,6229,37,25
+A,Romero D.,Parma,10,73.3,Quarta,Scommessa,,Lecce Sassuolo Milan,,,,,,,,,3.8249999999999997,ND,ND,,,7554,37,23
+A,Raimondo,Frosinone,9,72,Quarta,Scommessa,,Atalanta Como Napoli,0.4231713303878252,1,6,6,0,0,0,,3.625,6.8553755522827675,0,-1,-1,5436,27,22
+A,Cutrone,Monza,9,72,Scomm.,Scommessa,Affidabile,Lecce Venezia Atalanta,0.49303161886928765,14,5.71,5.93,1,0,0,,2.2,7.98711222568246,2.899828030954428,-1,-1,2155,23,28
+A,Bowie,Sassuolo,9,72,Terza,Scommessa,Bonus,Inter Parma Bologna,0.549296709912035,14,5.96,6.79,4,0,1,,5.125,8.898606700574966,11.599312123817713,1,1,7347,32,24
+A,Yeboah J.,Venezia,9,72,Quarta,Affidabile,Bonus,Cagliari Monza Bologna,0. N.D,,,,,,,,4.15,ND,ND,,,6904,27,26
+A,Bobcek,Frosinone,9,72,Scomm.,Scommessa,,Atalanta Como Napoli,,,,,,,,,0.975,ND,ND,,,7612,31,25
+A,Piccoli,Bologna,8,70.48,Quarta,Scommessa,Subentrante,Atalanta Lecce Napoli,0.6052595551695086,27,5.78,6.24,4,1,1,,6.8500000000000005,8.531738689669393,11.599312123817713,-1,-1,4359,29,25
+A,Ghedjemis,Frosinone,8,70.48,Quarta,Bonus,,Atalanta Como Napoli,0. N.D,,,,,,,,1.4749999999999999,ND,ND,,,6530,23,24
+A,Vitinha O.,Genoa,8,70.48,Scomm.,Titolare,,Juventus Bologna Como,0.6216261007025347,31,5.95,6.39,5,1,5,,3.6,8.76244151550293,14.49914015477214,1,1,6164,13,26
+A,Geubbels,Lecce,8,70.48,Quarta,Scommessa,Rigorista,Parma Bologna Fiorentina,0. N.D,,,,,,,,3.0500000000000003,ND,ND,,,5029,23,25
+A,Osmajic,Genoa,8,70.48,,Subentrante,Scommessa,Juventus Bologna Como,,,,,,,,,0.725,ND,ND,,,7600,28,27
+A,Bonny,Inter,7,68.81,Scomm.,Affidabile,Bonus,Milan Sassuolo Juventus,0.6583353566602985,27,6.15,6.83,5,4,1,,5.225,7.927509781064149,14.49914015477214,1,-1,6669,15,23
+A,Boga,Juventus,7,68.81,Scomm.,Scommessa,Subentrante,Torino Genoa Roma,0.5647538234863488,13,6.19,7.15,4,1,1,,4.25,6.80062435396674,11.599312123817713,1,1,2832,27,29
+A,Varela G.,Monza,7,68.81,Quarta,Scommessa,Bonus,Lecce Venezia Atalanta,0. N.D,,,,,,,,5.725,ND,ND,,,7523,40,21
+A,Rrahmani Al.,Venezia,7,68.81,Scomm.,Scommessa,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.575,ND,ND,,,7449,13,26
+A,Gnonto,Fiorentina,7,,,,,Cagliari Como Lazio,,,,,,,,,1.0250000000000001,ND,ND,,,7623,25,23
+A,Sulemana K.,Atalanta,6,66.78,,Scommessa,Subentrante,"Frosinone, Bologna Cagliari",0.5380177373897652,21,6,6.24,2,1,4,,0.575,5.389323675433278,5.799656061908856,1,1,5918,8,24
+A,Kvernadze,Frosinone,6,66.78,Quarta,Scommessa,Bonus,Atalanta Como Napoli,0. N.D,,,,,,,,1.975,ND,ND,,,6204,24,23
+A,Noslin,Lazio,6,66.78,Scomm.,Subentrante,,Roma Fiorentina Torino,0.5591869961947521,23,6.02,6.5,4,2,4,,0.65,5.601376140882832,11.599312123817713,1,1,6556,8,27
+A,Stulic,Lecce,6,66.78,,Inaffidabile,,Parma Bologna Fiorentina,0.6612405730061965,30,5.73,6.12,4,0,1,,0.7,6.6236468198030725,11.599312123817713,1,1,7252,11,25
+A,Neres,Napoli,6,66.78,Scomm.,Bonus,Affidabile,Roma Bologna Frosinone,0.5602877550911847,16,6.19,6.84,3,3,3,,2.725,5.6124024427483965,8.699484092863285,1,1,6831,20,29
+A,Zapata D.,Torino,6,66.78,Scomm.,Affidabile,Infortuni,Juventus Lazio Lecce,0.6276759312876897,23,5.83,6.13,3,1,0,,0.85,6.287429803708788,8.699484092863285,-1,-1,608,12,35
+A,Zeballos,Monza,6,,,,,Lecce Venezia Atalanta,,,,,,,,,0.95,ND,ND,,,7620,18,24
+A,Maldini,Cagliari,5,64.25,Quarta,Bonus,Infortuni,Atalanta Fiorentina Venezia,0.5407774179485504,18,5.94,6.31,2,1,1,,3.925,4.343118637899295,5.799656061908856,-1,-1,4896,21,25
+A,Birligea,Frosinone,5,,,,,Atalanta Como Napoli,,,,,,,,,0.525,ND,ND,,,7610,11,26
+A,Ngonge,Monza,5,,,,,Lecce Venezia Atalanta,,,,,,,,,0.8,ND,ND,,,6145,13,26
+A,Borrelli,Cagliari,4,60.96,,Subentrante,,Atalanta Fiorentina Venezia,0.602261721110944,26,5.92,6.46,5,1,4,,0.55,3.6713874518923144,14.49914015477214,1,1,6243,9,
+A,Mendy P.,Cagliari,4,60.96,Scomm.,Affidabile,,Atalanta Fiorentina Venezia,0.48969223075375934,8,5.94,6.62,2,0,1,,1,2.9851638386749166,5.799656061908856,1,1,7374,12,19
+A,Havel,Genoa,4,60.96,,Scommessa,Subentrante,Juventus Bologna Como,0. N.D,,,,,,,,0.525,ND,ND,,,7453,5,23
+A,N'Dri,Lecce,4,60.96,Scomm.,Scommessa,,Parma Bologna Fiorentina,0.5088095903038372,17,5.82,6.09,2,0,3,,0.675,3.1017032624921916,5.799656061908856,1,1,7001,12,26
+A,Camarda,Milan,4,60.96,,Subentrante,,Inter Parma Cagliari,0.5499874857702169,18,5.67,5.64,1,0,1,,0.925,3.352723713255242,2.899828030954428,-1,1,6519,20,18
+A,Mota,Monza,4,60.96,Scomm.,Affidabile,,Lecce Venezia Atalanta,0. N.D,,,,,,,,0.825,ND,ND,,,5882,8,28
+A,Giovane,Napoli,4,60.96,,Scommessa,Affidabile,Roma Bologna Frosinone,0.6475027965608381,31,6,6.45,3,6,2,,0.575,3.947177047834869,8.699484092863285,1,1,7162,7,23
+A,Lang,Napoli,4,60.96,Scomm.,Scommessa,,Roma Bologna Frosinone,0.5105022499142541,14,6.04,6.32,1,2,2,,0.975,3.112021715477293,2.899828030954428,1,1,7120,14,27
+A,Lucca,Napoli,4,60.96,,Scommessa,Subentrante,Roma Bologna Frosinone,0.46237024679649397,9,5.72,6,1,0,1,,1.3,2.818609024471427,2.899828030954428,-1,-1,6215,12,26
+A,Frigan,Parma,4,60.96,,Infortuni,,Lecce Sassuolo Milan,0. N.D.,0,0,0,0,0,0,,0.55,ND,0,,,7213,6,23
+A,Kulenovic,Torino,4,60.96,,Scommessa,Subentrante,Juventus Lazio Lecce,0.43427303223694974,7,5.71,5.79,0,1,2,,0.5,2.6473284045164456,0,1,1,7349,9,27
+A,Gueye,Udinese,4,60.96,,,,Genoa Lecce Milan,0.4768438771782904,13,5.77,5.92,1,0,2,,0.55,2.9068402752788582,2.899828030954428,1,1,7272,7,20
+A,Adorante,Venezia,4,60.96,,Scommessa,Subentrante,Cagliari Monza Bologna,0. N.D,,,,,,,,0.575,ND,ND,,,4387,8,26
+A,Robinson J.,Monza,4,60.96,,Subentrante,,Lecce Venezia Atalanta,,,,,,,,,0.575,ND,ND,,,7546,5,19
+A,Milik,Juventus,4,60.96,,Infortuni,,Torino Genoa Roma,,,,,,,,,0.575,ND,ND,,,2012,10,32
+A,Fatah,Lecce,4,,,,,Parma Bologna Fiorentina,,,,,,,,,0.525,ND,ND,,,7602,14,22
+A,Nzola,Cagliari,4,,,,,Atalanta Fiorentina Venezia,,,,,,,,,0.975,ND,ND,,,5336,10,30
+A,Ekhator,Juventus,3,56.34,,Subentrante,Scommessa,Torino Genoa Roma,0.5712428920745365,25,5.96,6.28,3,0,3,,0.6,2.413786840460954,8.699484092863285,1,1,6822,10,20
+A,Elphege,Parma,3,56.34,,Subentrante,,Lecce Sassuolo Milan,0.5092587695233637,8,6,6.88,2,1,0,,0.75,2.151872930620973,5.799656061908856,1,1,7342,11,25
+A,Lontani,Parma,3,,,,,Lecce Sassuolo Milan,,,,,,,,,0.75,ND,ND,,,7561,11,18
+A,Trepy,Cagliari,1,35.69,,Scommessa,,Atalanta Fiorentina Venezia,0.416212696690179,3,5.67,5.67,0,0,0,,0.475,0.3713657786218122,0,1,1,7317,2,20
+A,Bayo V.,Udinese,1,35.69,,Scommessa,Subentrante,Genoa Lecce Milan,0.4752082095272545,12,5.75,5.83,0,1,0,,0.475,0.42400452495069285,0,1,1,7161,3,29
+A,Lisman,Venezia,1,35.69,,,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.45,ND,ND,,,7408,1,20
+A,Lauberbach,Venezia,1,35.69,,,,Cagliari Monza Bologna,0. N.D,,,,,,,,0.45,ND,ND,,,7482,1,28
+A,De Martis,Parma,1,,,,,Lecce Sassuolo Milan,,,,,,,,,0.45,ND,ND,,,7568,1,18
+A,Robinho Junior,Genoa,1,,,,,Juventus Bologna Como,,,,,,,,,0,ND,ND,,,7622,3,
+A,Leao,Milan,18,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,4510,75,
+A,Nkunku,Milan,13,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,4728,20,
+A,Dia,Lazio,10,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,5672,20,
+A,Lukaku,Napoli,10,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,2531,45,
+P,Di Gregorio,Juventus,9,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,5876,10,
+A,Ratkov,Lazio,9,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7313,22,
+A,Dallinga,Bologna,8,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6643,10,
+D,Norton-Cuffy,Genoa,8,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6814,15,
+A,David,Juventus,8,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,5544,25,
+D,Gutierrez,Napoli,8,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,5427,26,
+D,Djimsiti,Atalanta,7,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,787,16,
+P,Suzuki,Parma,7,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6641,20,
+C,El Shaarawy,Genoa,7,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,795,25,34
+D,Ahanor,Atalanta,6,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6916,13,
+A,Mutandwa,Cagliari,6,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6598,7,
+P,Perin,Juventus,6,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,218,5,
+A,Gimenez,Milan,6,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7008,10,
+D,Circati,Parma,6,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6663,18,
+C,Ondrejka,Parma,5,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6984,18,
+D,Pedersen,Torino,5,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6426,12,
+D,Rodriguez R.,Torino,5,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,2169,12,34
+D,Zappa,Cagliari,4,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,4461,7,
+C,Prati,Cagliari,4,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6424,7,
+A,Morata,Como,4,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,313,7,
+D,Martin,Genoa,4,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,2593,8,
+C,Fofana Y.,Milan,4,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,4686,10,
+D,Delli Carri,Monza,4,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,2115,11,
+C,El Aynaoui,Roma,4,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6271,13,
+D,Ehizibue,Genoa,4,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6047,10,31
+A,Kuhn,Como,3,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7128,5,
+C,Miretti,Juventus,3,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,5813,7,
+D,Athekame,Milan,3,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7211,8,
+C,Sorensen O.,Parma,3,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7209,12,
+D,Angelino,Roma,3,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,4772,12,
+A,Petagna,Monza,2,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,383,5,
+A,Buksa,Udinese,2,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7249,4,
+A,Enem,Bologna,2,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7627,4,
+P,Rossi F.,Atalanta,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,2297,1,35
+P,Ciocci,Cagliari,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,4929,1,
+D,Raterink,Cagliari,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7346,1,
+A,Albarracin,Cagliari,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7338,1,
+D,Cuenca A.,Como,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7407,8,
+A,Azon,Como,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7027,1,
+D,Gelli J.,Frosinone,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7468,1,
+D,Oyono J.,Frosinone,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7470,2,
+D,Corrado,Frosinone,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7471,1,
+D,Vogliacco,Genoa,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6245,2,
+D,Matturro,Genoa,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6244,2,
+P,Fruchtl,Lecce,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,2401,1,
+P,Samooja,Lecce,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6523,1,
+D,Perez M.,Lecce,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7164,1,
+P,Pizzignacco,Monza,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6682,1,
+A,Vaz,Roma,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6981,4,
+D,Missori,Sassuolo,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,6189,2,
+C,Iannoni,Sassuolo,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7157,1,
+A,Moro L.,Sassuolo,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7158,1,
+D,Mlacic,Udinese,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7356,3,
+C,Camara A.,Udinese,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7392,3,
+C,Bjarkason,Venezia,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,5485,3,
+P,Vismara,Atalanta,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7545,1,
+D,Macchioni,Sassuolo,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7396,1,
+C,Sierro,Parma,1,,,aggiunto dal listone ufficiale del 7 settembre 2026,,,,,,,,,,,,,,,,7628,1,

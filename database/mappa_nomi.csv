@@ -1,0 +1,594 @@
+nome_fantacalcio,squadra,id_fonte_stat,nome_fonte_stat,nome_normalizzato,metodo,confidenza
+Pellegrino M.,Fiorentina,,Marco Pellegrino | Mateo Pellegrino,pellegrino m,ambiguo,0.0
+Sulemana I.,Sassuolo,,Sulemana | Kamaldeen Sulemana,sulemana i,ambiguo,0.0
+Terracciano,Milan,,Pietro Terracciano | Filippo Terracciano,terracciano,ambiguo,0.0
+Adorante,Venezia,,,adorante,assente_nella_fonte,0.0
+Akpoguma,Frosinone,,,akpoguma,assente_nella_fonte,0.0
+Alajbegovic,Juventus,,,alajbegovic,assente_nella_fonte,0.0
+Alhassane,Bologna,,,alhassane,assente_nella_fonte,0.0
+Amey,Frosinone,,,amey,assente_nella_fonte,0.0
+Amondarain,Bologna,,,amondarain,assente_nella_fonte,0.0
+Antov,Monza,,,antov,assente_nella_fonte,0.0
+Aurelio,Cagliari,,,aurelio,assente_nella_fonte,0.0
+Azon,Como,,,azon,assente_nella_fonte,0.0
+Badiashile,Napoli,,,badiashile,assente_nella_fonte,0.0
+Bakoune,Monza,,,bakoune,assente_nella_fonte,0.0
+Balerdi,Roma,,,balerdi,assente_nella_fonte,0.0
+Birligea,Frosinone,,,birligea,assente_nella_fonte,0.0
+Bleve,Lecce,,,bleve,assente_nella_fonte,0.0
+Bobcek,Frosinone,,,bobcek,assente_nella_fonte,0.0
+Bracaglia,Frosinone,,,bracaglia,assente_nella_fonte,0.0
+Braganca,Torino,,,braganca,assente_nella_fonte,0.0
+Caleta-Car,Sassuolo,,,caleta car,assente_nella_fonte,0.0
+Calvani,Frosinone,,,calvani,assente_nella_fonte,0.0
+Calò,Frosinone,,,calo,assente_nella_fonte,0.0
+Chakvetadze,Udinese,,,chakvetadze,assente_nella_fonte,0.0
+Chalobah T.,Como,,,chalobah t,assente_nella_fonte,0.0
+Cichella,Frosinone,,,cichella,assente_nella_fonte,0.0
+Ciervo,Cagliari,,,ciervo,assente_nella_fonte,0.0
+Cinquegrano,Sassuolo,,,cinquegrano,assente_nella_fonte,0.0
+Comert,Torino,,,comert,assente_nella_fonte,0.0
+Comotto,Milan,,,comotto,assente_nella_fonte,0.0
+Corrado,Frosinone,,,corrado,assente_nella_fonte,0.0
+Correia T.,Venezia,,,correia t,assente_nella_fonte,0.0
+Couto,Como,,,couto,assente_nella_fonte,0.0
+Cuenca A.,Como,,,cuenca a,assente_nella_fonte,0.0
+Daffara,Parma,,,daffara,assente_nella_fonte,0.0
+Dagasso,Venezia,,,dagasso,assente_nella_fonte,0.0
+De Martis,Parma,,,de martis,assente_nella_fonte,0.0
+De Marzi,Roma,,,de marzi,assente_nella_fonte,0.0
+Delli Carri,Monza,,,delli carri,assente_nella_fonte,0.0
+Desplanches,Frosinone,,,desplanches,assente_nella_fonte,0.0
+Diallo O.,Parma,,,diallo o,assente_nella_fonte,0.0
+Diawara S.,Milan,,,diawara s,assente_nella_fonte,0.0
+Djimsiti,Atalanta,,,djimsiti,assente_nella_fonte,0.0
+Doekhi,Lazio,,,doekhi,assente_nella_fonte,0.0
+Drameh,Genoa,,,drameh,assente_nella_fonte,0.0
+Drobnic,Parma,,,drobnic,assente_nella_fonte,0.0
+Enem,Bologna,,,enem,assente_nella_fonte,0.0
+Fatah,Lecce,,,fatah,assente_nella_fonte,0.0
+Favasuli,Napoli,,,favasuli,assente_nella_fonte,0.0
+Fernandez T.,Venezia,,,fernandez t,assente_nella_fonte,0.0
+Fitz-Jim,Torino,,,fitz jim,assente_nella_fonte,0.0
+Foe Ondoa,Monza,,,foe ondoa,assente_nella_fonte,0.0
+Franjic,Venezia,,,franjic,assente_nella_fonte,0.0
+Frigan,Parma,,,frigan,assente_nella_fonte,0.0
+Fruchtl,Lecce,,,fruchtl,assente_nella_fonte,0.0
+Geubbels,Lecce,,,geubbels,assente_nella_fonte,0.0
+Ghidotti,Parma,,,ghidotti,assente_nella_fonte,0.0
+Gnonto,Fiorentina,,,gnonto,assente_nella_fonte,0.0
+Gomes,Venezia,,,gomes,assente_nella_fonte,0.0
+Goncalves P.,Fiorentina,,,goncalves p,assente_nella_fonte,0.0
+Grabara,Juventus,,,grabara,assente_nella_fonte,0.0
+Grandi,Venezia,,,grandi,assente_nella_fonte,0.0
+Grillitsch,Frosinone,,,grillitsch,assente_nella_fonte,0.0
+Halhal,Venezia,,,halhal,assente_nella_fonte,0.0
+Happonen,Bologna,,,happonen,assente_nella_fonte,0.0
+Hasa,Frosinone,,,hasa,assente_nella_fonte,0.0
+Havel,Genoa,,,havel,assente_nella_fonte,0.0
+Hutchinson,Milan,,,hutchinson,assente_nella_fonte,0.0
+Jones C.,Inter,,,jones c,assente_nella_fonte,0.0
+Jovanovic,Udinese,,,jovanovic,assente_nella_fonte,0.0
+Kaiki,Como,,,kaiki,assente_nella_fonte,0.0
+Kambwala,Como,,,kambwala,assente_nella_fonte,0.0
+Kessiè,Atalanta,,,kessie,assente_nella_fonte,0.0
+Kevin Carlos,Cagliari,,,kevin carlos,assente_nella_fonte,0.0
+Kofler,Cagliari,,,kofler,assente_nella_fonte,0.0
+Koulierakis,Roma,,,koulierakis,assente_nella_fonte,0.0
+Koutsoupias,Frosinone,,,koutsoupias,assente_nella_fonte,0.0
+Laerke,Lecce,,,laerke,assente_nella_fonte,0.0
+Lahdo,Como,,,lahdo,assente_nella_fonte,0.0
+Lauberbach,Venezia,,,lauberbach,assente_nella_fonte,0.0
+Leysen F.,Sassuolo,,,leysen f,assente_nella_fonte,0.0
+Lisman,Venezia,,,lisman,assente_nella_fonte,0.0
+Lolic,Frosinone,,,lolic,assente_nella_fonte,0.0
+Lontani,Parma,,,lontani,assente_nella_fonte,0.0
+Lucchesi,Monza,,,lucchesi,assente_nella_fonte,0.0
+Lulli,Roma,,,lulli,assente_nella_fonte,0.0
+Mangas,Monza,,,mangas,assente_nella_fonte,0.0
+Mascardi,Torino,,,mascardi,assente_nella_fonte,0.0
+Massolin,Cagliari,,,massolin,assente_nella_fonte,0.0
+Mastantuono,Fiorentina,,,mastantuono,assente_nella_fonte,0.0
+Maye,Monza,,,maye,assente_nella_fonte,0.0
+Meichtry,Genoa,,,meichtry,assente_nella_fonte,0.0
+Milla,Como,,,milla,assente_nella_fonte,0.0
+Mitaj,Genoa,,,mitaj,assente_nella_fonte,0.0
+Molina N.,Roma,,,molina n,assente_nella_fonte,0.0
+Monteiro J.,Lecce,,,monteiro j,assente_nella_fonte,0.0
+Mora,Roma,,,mora,assente_nella_fonte,0.0
+Moreira,Milan,,,moreira,assente_nella_fonte,0.0
+Mout,Monza,,,mout,assente_nella_fonte,0.0
+Mrozek,Udinese,,,mrozek,assente_nella_fonte,0.0
+Omar Fayed,Frosinone,,,omar fayed,assente_nella_fonte,0.0
+Osmajic,Genoa,,,osmajic,assente_nella_fonte,0.0
+Oulai,Fiorentina,,,oulai,assente_nella_fonte,0.0
+Palmisani,Frosinone,,,palmisani,assente_nella_fonte,0.0
+Patterson,Torino,,,patterson,assente_nella_fonte,0.0
+Pedraza,Lazio,,,pedraza,assente_nella_fonte,0.0
+Penev,Lecce,,,penev,assente_nella_fonte,0.0
+Perri,Torino,,,perri,assente_nella_fonte,0.0
+Piana,Udinese,,,piana,assente_nella_fonte,0.0
+Pieragnolo,Sassuolo,,,pieragnolo,assente_nella_fonte,0.0
+Pisseri,Frosinone,,,pisseri,assente_nella_fonte,0.0
+Pompei,Atalanta,,,pompei,assente_nella_fonte,0.0
+Pozzi,Venezia,,,pozzi,assente_nella_fonte,0.0
+Puczka,Genoa,,,puczka,assente_nella_fonte,0.0
+Ramos G.,Milan,,,ramos g,assente_nella_fonte,0.0
+Renzetti,Lazio,,,renzetti,assente_nella_fonte,0.0
+Robinho Junior,Genoa,,,robinho junior,assente_nella_fonte,0.0
+Robinson J.,Monza,,,robinson j,assente_nella_fonte,0.0
+Russo A.,Sassuolo,,,russo a,assente_nella_fonte,0.0
+Samooja,Lecce,,,samooja,assente_nella_fonte,0.0
+Satalino,Sassuolo,,,satalino,assente_nella_fonte,0.0
+Schmid,Frosinone,,,schmid,assente_nella_fonte,0.0
+Sierro,Parma,,,sierro,assente_nella_fonte,0.0
+Siviero,Torino,,,siviero,assente_nella_fonte,0.0
+Sow,Genoa,,,sow,assente_nella_fonte,0.0
+Stolz,Genoa,,,stolz,assente_nella_fonte,0.0
+Stones,Inter,,,stones,assente_nella_fonte,0.0
+Strajnar,Monza,,,strajnar,assente_nella_fonte,0.0
+Sugawara,Cagliari,,,sugawara,assente_nella_fonte,0.0
+Sutalo J.,Lazio,,,sutalo j,assente_nella_fonte,0.0
+Tchato,Frosinone,,,tchato,assente_nella_fonte,0.0
+Terzic,Frosinone,,,terzic,assente_nella_fonte,0.0
+Theate,Bologna,,,theate,assente_nella_fonte,0.0
+Thiam,Monza,,,thiam,assente_nella_fonte,0.0
+Tornqvist,Monza,,,tornqvist,assente_nella_fonte,0.0
+Torriani,Milan,,,torriani,assente_nella_fonte,0.0
+Unai Gomez,Udinese,,,unai gomez,assente_nella_fonte,0.0
+Valdepenas,Fiorentina,,,valdepenas,assente_nella_fonte,0.0
+Varela G.,Monza,,,varela g,assente_nella_fonte,0.0
+Vicario,Juventus,,,vicario,assente_nella_fonte,0.0
+Viery,Fiorentina,,,viery,assente_nella_fonte,0.0
+Vigorito,Como,,,vigorito,assente_nella_fonte,0.0
+Vismara,Atalanta,,,vismara,assente_nella_fonte,0.0
+Winks,Cagliari,,,winks,assente_nella_fonte,0.0
+Woltemade,Juventus,,,woltemade,assente_nella_fonte,0.0
+Zeballos,Monza,,,zeballos,assente_nella_fonte,0.0
+Abankwah,Udinese,10881,James Abankwah,abankwah,cognome,0.95
+Aboukhlal,Torino,10796,Zakaria Aboukhlal,aboukhlal,cognome,0.95
+Addai,Como,13978,Jayden Addai,addai,cognome,0.95
+Adopo,Cagliari,6706,Ndary Adopo,adopo,cognome,0.95
+Adzic,Sassuolo,13072,Vasilije Adzic,adzic,cognome,0.95
+Ahanor,Atalanta,12779,Honest Ahanor,ahanor,cognome,0.95
+Akanji,Inter,6490,Manuel Akanji,akanji,cognome,0.95
+Akinsanmiro,Monza,11586,Ebenezer Akinsanmiro,akinsanmiro,cognome,0.95
+Albarracin,Cagliari,14399,Agustín Albarracín,albarracin,cognome,0.95
+Almqvist,Parma,9061,Pontus Almqvist,almqvist,cognome,0.95
+Amorim,Genoa,14426,Alex Amorim,amorim,cognome,0.95
+Angelino,Roma,1040,Angelino,angelino,cognome,0.95
+Anjorin,Torino,8383,Faustino Anjorin,anjorin,cognome,0.95
+Arizala,Udinese,14386,Juan Arizala,arizala,cognome,0.95
+Athekame,Milan,13896,Zachary Athekame,athekame,cognome,0.95
+Atta,Fiorentina,11800,Arthur Atta,atta,cognome,0.95
+Bakola,Sassuolo,12601,Darryl Bakola,bakola,cognome,0.95
+Baldanzi,Genoa,9951,Tommaso Baldanzi,baldanzi,cognome,0.95
+Barella,Inter,1409,Nicolò Barella,barella,cognome,0.95
+Bartesaghi,Milan,11967,Davide Bartesaghi,bartesaghi,cognome,0.95
+Basic,Venezia,6902,Toma Basic,basic,cognome,0.95
+Baturina,Como,13934,Martin Baturina,baturina,cognome,0.95
+Belahyane,Lazio,11049,Reda Belahyane,belahyane,cognome,0.95
+Belghali,Torino,13962,Rafik Belghali,belghali,cognome,0.95
+Bella-Kotchap,Venezia,9710,Armel Bella Kotchap,bella kotchap,cognome,0.95
+Bellanova,Atalanta,6412,Raoul Bellanova,bellanova,cognome,0.95
+Berardi,Sassuolo,1612,Domenico Berardi,berardi,cognome,0.95
+Bernabè,Parma,8867,Adrián Bernabé,bernabe,cognome,0.95
+Bernardeschi,Bologna,1424,Federico Bernardeschi,bernardeschi,cognome,0.95
+Bernasconi,Atalanta,11520,Lorenzo Bernasconi,bernasconi,cognome,0.95
+Bertola,Udinese,9561,Nicolò Bertola,bertola,cognome,0.95
+Beto,Fiorentina,9983,Beto,beto,cognome,0.95
+Beukema,Napoli,11961,Sam Beukema,beukema,cognome,0.95
+Bijlow,Genoa,14380,Justin Bijlow,bijlow,cognome,0.95
+Biraghi,Torino,1164,Cristiano Biraghi,biraghi,cognome,0.95
+Birindelli,Monza,10892,Samuele Birindelli,birindelli,cognome,0.95
+Bisseck,Inter,6414,Yann Bisseck,bisseck,cognome,0.95
+Bjarkason,Venezia,9889,Bjarki Steinn Bjarkason,bjarkason,cognome,0.95
+Boga,Juventus,3544,Jeremie Boga,boga,cognome,0.95
+Boloca,Sassuolo,11930,Daniel Boloca,boloca,cognome,0.95
+Bonny,Inter,12784,Ange-Yoan Bonny,bonny,cognome,0.95
+Borrelli,Cagliari,11883,Gennaro Borrelli,borrelli,cognome,0.95
+Bowie,Sassuolo,14417,Kieron Bowie,bowie,cognome,0.95
+Bremer,Juventus,6960,Bremer,bremer,cognome,0.95
+Brescianini,Fiorentina,7284,Marco Brescianini,brescianini,cognome,0.95
+Britschgi,Parma,13980,Sascha Britschgi,britschgi,cognome,0.95
+Buksa,Udinese,11102,Adam Buksa,buksa,cognome,0.95
+Buongiorno,Napoli,5025,Alessandro Buongiorno,buongiorno,cognome,0.95
+Busio,Venezia,9904,Gianluca Busio,busio,cognome,0.95
+Butez,Como,5610,Jean Butez,butez,cognome,0.95
+Cabal,Juventus,11054,Juan Cabal,cabal,cognome,0.95
+Cacciamani,Torino,13599,Alessio Cacciamani,cacciamani,cognome,0.95
+Calhanoglu,Inter,189,Hakan Calhanoglu,calhanoglu,cognome,0.95
+Camarda,Milan,12218,Francesco Camarda,camarda,cognome,0.95
+Cambiaghi,Bologna,7576,Nicolò Cambiaghi,cambiaghi,cognome,0.95
+Cambiaso,Juventus,9841,Andrea Cambiaso,cambiaso,cognome,0.95
+Cancellieri,Lazio,9071,Matteo Cancellieri,cancellieri,cognome,0.95
+Candè,Sassuolo,10389,Fali Candé,cande,cognome,0.95
+Caprile,Cagliari,7087,Elia Caprile,caprile,cognome,0.95
+Caqueret,Como,7328,Maxence Caqueret,caqueret,cognome,0.95
+Carlos Augusto,Inter,10891,Carlos Augusto,carlos augusto,cognome,0.95
+Carnesecchi,Atalanta,8871,Marco Carnesecchi,carnesecchi,cognome,0.95
+Casadei,Torino,10433,Cesare Casadei,casadei,cognome,0.95
+Casale,Bologna,8829,Nicolò Casale,casale,cognome,0.95
+Cataldi,Lazio,1206,Danilo Cataldi,cataldi,cognome,0.95
+Celik,Juventus,6872,Mehmet Zeki Çelik,celik,cognome,0.95
+Chukwueze,Milan,7208,Samuel Chukwueze,chukwueze,cognome,0.95
+Ciocci,Cagliari,8185,Giuseppe Ciocci,ciocci,cognome,0.95
+Circati,Parma,12783,Alessandro Circati,circati,cognome,0.95
+Cittadini,Frosinone,10268,Giorgio Cittadini,cittadini,cognome,0.95
+Ciurria,Monza,10894,Patrick Ciurria,ciurria,cognome,0.95
+Coco,Torino,11741,Saúl Coco,coco,cognome,0.95
+Colpani,Monza,6718,Andrea Colpani,colpani,cognome,0.95
+Comuzzo,Torino,11902,Pietro Comuzzo,comuzzo,cognome,0.95
+Conceicao,Juventus,13052,Francisco Conceição,conceicao,cognome,0.95
+Contini,Napoli,3939,Nikita Contini,contini,cognome,0.95
+Corvi,Parma,8290,Edoardo Corvi,corvi,cognome,0.95
+Cremaschi,Parma,14021,Benjamín Cremaschi,cremaschi,cognome,0.95
+Cristante,Roma,1168,Bryan Cristante,cristante,cognome,0.95
+Cutrone,Monza,4918,Patrick Cutrone,cutrone,cognome,0.95
+Da Cunha,Como,8182,Lucas Da Cunha,da cunha,cognome,0.95
+Dallinga,Bologna,10794,Thijs Dallinga,dallinga,cognome,0.95
+David,Juventus,8636,Jonathan Christian David,david,cognome,0.95
+De Bruyne,Napoli,447,Kevin De Bruyne,de bruyne,cognome,0.95
+De Gea,Fiorentina,546,David de Gea,de gea,cognome,0.95
+De Ketelaere,Atalanta,10877,Charles De Ketelaere,de ketelaere,cognome,0.95
+De Roon,Roma,1710,Marten de Roon,de roon,cognome,0.95
+De Silvestri,Bologna,1193,Lorenzo De Silvestri,de silvestri,cognome,0.95
+De Winter,Milan,9964,Koni de Winter,de winter,cognome,0.95
+Deiola,Cagliari,1634,Alessandro Deiola,deiola,cognome,0.95
+Dele-Bashiru,Lazio,12872,Fisayo Dele-Bashiru,dele bashiru,cognome,0.95
+Delprato,Parma,6692,Enrico Del Prato,delprato,cognome,0.95
+Di Gennaro,Inter,11897,Raffaele Di Gennaro,di gennaro,cognome,0.95
+Di Gregorio,Juventus,10890,Michele Di Gregorio,di gregorio,cognome,0.95
+Di Lorenzo,Napoli,6978,Giovanni Di Lorenzo,di lorenzo,cognome,0.95
+Dia,Lazio,7224,Boulaye Dia,dia,cognome,0.95
+Diao,Como,12081,Assane Diao,diao,cognome,0.95
+Diego Carlos,Parma,5712,Diego Carlos,diego carlos,cognome,0.95
+Dimarco,Inter,1324,Federico Dimarco,dimarco,cognome,0.95
+Diouf,Inter,9523,Andy Diouf,diouf,cognome,0.95
+Dodò,Fiorentina,10935,Dodô,dodo,cognome,0.95
+Doig,Sassuolo,11023,Josh Doig,doig,cognome,0.95
+Douglas Luiz,Juventus,6122,Douglas Luiz,douglas luiz,cognome,0.95
+Douvikas,Como,12030,Tasos Douvikas,douvikas,cognome,0.95
+Dovbyk,Bologna,11736,Artem Dovbyk,dovbyk,cognome,0.95
+Dragusin,Fiorentina,9105,Radu Dragusin,dragusin,cognome,0.95
+Duncan,Venezia,1474,Alfred Duncan,duncan,cognome,0.95
+Dybala,Roma,1294,Paulo Dybala,dybala,cognome,0.95
+Ebosse,Udinese,8632,Enzo Ebosse,ebosse,cognome,0.95
+Ederson D.S.,Atalanta,10404,Éderson,ederson d s,cognome,0.95
+Ehizibue,Genoa,7785,Kingsley Ehizibue,ehizibue,cognome,0.95
+Ekhator,Juventus,12776,Jeff Ekhator,ekhator,cognome,0.95
+Ekkelenkamp,Udinese,9993,Jurgen Ekkelenkamp,ekkelenkamp,cognome,0.95
+El Aynaoui,Roma,12104,Neil El Aynaoui,el aynaoui,cognome,0.95
+El Shaarawy,Genoa,1252,Stephan El Shaarawy,el shaarawy,cognome,0.95
+Ellertsson,Genoa,10957,Mikael Ellertsson,ellertsson,cognome,0.95
+Elmas,Atalanta,7912,Eljif Elmas,elmas,cognome,0.95
+Elphege,Parma,14412,Nesta Elphege,elphege,cognome,0.95
+Estupinan,Milan,5136,Estupiñán,estupinan,cognome,0.95
+Fabbian,Parma,11964,Giovanni Fabbian,fabbian,cognome,0.95
+Fadera,Cagliari,12997,Alieu Fadera,fadera,cognome,0.95
+Fagioli,Fiorentina,7379,Nicolo Fagioli,fagioli,cognome,0.95
+Falcone,Lecce,4984,Wladimiro Falcone,falcone,cognome,0.95
+Fazzini,Cagliari,10303,Jacopo Fazzini,fazzini,cognome,0.95
+Felici,Cagliari,12868,Mattia Felici,felici,cognome,0.95
+Fini ,Frosinone,12011,Seydou Fini,fini,cognome,0.95
+Folorunsho,Monza,11877,Michael Folorunsho,folorunsho,cognome,0.95
+Fortini,Torino,12609,Niccolò Fortini,fortini,cognome,0.95
+Frattesi,Lazio,4981,Davide Frattesi,frattesi,cognome,0.95
+Frendrup,Genoa,10365,Morten Frendrup,frendrup,cognome,0.95
+Gabbia,Milan,4920,Matteo Gabbia,gabbia,cognome,0.95
+Gaetano,Atalanta,7507,Gianluca Gaetano,gaetano,cognome,0.95
+Gagliardini,Cagliari,1496,Roberto Gagliardini,gagliardini,cognome,0.95
+Gallo,Lecce,8009,Antonino Gallo,gallo,cognome,0.95
+Gandelman,Lecce,14339,Omri Gandelman,gandelman,cognome,0.95
+Gatti,Juventus,10993,Federico Gatti,gatti,cognome,0.95
+Ghedjemis,Frosinone,12303,Farès Ghedjemis,ghedjemis,cognome,0.95
+Ghilardi,Roma,12858,Daniele Ghilardi,ghilardi,cognome,0.95
+Gila,Milan,10577,Mario Gila,gila,cognome,0.95
+Gilmour,Napoli,7988,Billy Gilmour,gilmour,cognome,0.95
+Gimenez,Milan,13453,Santiago Giménez,gimenez,cognome,0.95
+Gineitis,Torino,11278,Gvidas Gineitis,gineitis,cognome,0.95
+Giovane,Napoli,13961,Giovane,giovane,cognome,0.95
+Goglichidze,Monza,12356,Saba Goglichidze,goglichidze,cognome,0.95
+Goldaniga,Como,1264,Edoardo Goldaniga,goldaniga,cognome,0.95
+Gollini,Roma,1841,Pierluigi Gollini,gollini,cognome,0.95
+Gorter,Lecce,13878,Olaf Gorter,gorter,cognome,0.95
+Gueye,Udinese,13811,Idrissa Gueye,gueye,cognome,0.95
+Gutierrez,Napoli,8513,Miguel Gutiérrez,gutierrez,cognome,0.95
+Hainaut,Venezia,12785,Antoine Hainaut,hainaut,cognome,0.95
+Haps,Venezia,9952,Ridgeciano Haps,haps,cognome,0.95
+Heggem,Bologna,13894,Torbjørn Heggem,heggem,cognome,0.95
+Helgason,Venezia,10906,Thórir Helgason,helgason,cognome,0.95
+Helland,Bologna,14382,Eivind Helland,helland,cognome,0.95
+Hermoso,Roma,6136,Mario Hermoso,hermoso,cognome,0.95
+Hien,Atalanta,11053,Isak Hien,hien,cognome,0.95
+Hojlund,Napoli,11055,Rasmus Højlund,hojlund,cognome,0.95
+Holm,Bologna,10956,Emil Holm,holm,cognome,0.95
+Iannoni,Sassuolo,13965,Edoardo Iannoni,iannoni,cognome,0.95
+Idzes,Sassuolo,12989,Jay Idzes,idzes,cognome,0.95
+Ilic,Lecce,8828,Ivan Ilic,ilic,cognome,0.95
+Ilkhan,Torino,10899,Emirhan Ilkhan,ilkhan,cognome,0.95
+Isaksen,Lazio,11951,Gustav Isaksen,isaksen,cognome,0.95
+Ismajli,Torino,9090,Ardian Ismajli,ismajli,cognome,0.95
+Jashari,Milan,13895,Ardon Jashari,jashari,cognome,0.95
+Jean,Lecce,13027,Gaby Jean,jean,cognome,0.95
+Joao Mario,Fiorentina,13946,João Mário,joao mario,cognome,0.95
+Juan Jesus,Venezia,1247,Juan Jesus,juan jesus,cognome,0.95
+Kaba,Lecce,11946,Mohamed Kaba,kaba,cognome,0.95
+Kabasele,Udinese,1725,Christian Kabasele,kabasele,cognome,0.95
+Karlstrom,Udinese,12853,Jesper Karlström,karlstrom,cognome,0.95
+Kean,Como,1304,Moise Kean,kean,cognome,0.95
+Kempf,Como,4291,Marc-Oliver Kempf,kempf,cognome,0.95
+Kolasinac,Atalanta,342,Sead Kolasinac,kolasinac,cognome,0.95
+Kolo Muani,Juventus,5743,Randal Kolo Muani,kolo muani,cognome,0.95
+Koopmeiners,Juventus,9969,Teun Koopmeiners,koopmeiners,cognome,0.95
+Kossounou,Atalanta,9714,Odilon Kossounou,kossounou,cognome,0.95
+Kouadio,Monza,13045,Eddy Kouadio,kouadio,cognome,0.95
+Krstovic,Atalanta,12008,Nikola Krstovic,krstovic,cognome,0.95
+Kuhn,Como,13933,Nicolas Kühn,kuhn,cognome,0.95
+Kulenovic,Torino,14403,Sandro Kulenovic,kulenovic,cognome,0.95
+Kvernadze,Frosinone,11882,Giorgi Kvernadze,kvernadze,cognome,0.95
+Lang,Napoli,13881,Noa Lang,lang,cognome,0.95
+Laurientè,Sassuolo,6697,Armand Lauriente,lauriente,cognome,0.95
+Lazzari,Lazio,6180,Manuel Lazzari,lazzari,cognome,0.95
+Leao,Milan,7193,Rafael Leão,leao,cognome,0.95
+Lezzerini,Fiorentina,1432,Luca Lezzerini,lezzerini,cognome,0.95
+Liberali,Como,13151,Mattia Liberali,liberali,cognome,0.95
+Lipani,Sassuolo,11929,Luca Lipani,lipani,cognome,0.95
+Liteta,Cagliari,14020,Joseph Liteta,liteta,cognome,0.95
+Lobotka,Napoli,6125,Stanislav Lobotka,lobotka,cognome,0.95
+Locatelli,Juventus,1122,Manuel Locatelli,locatelli,cognome,0.95
+Loftus-Cheek,Milan,688,Ruben Loftus-Cheek,loftus cheek,cognome,0.95
+Lucca,Napoli,11936,Lorenzo Lucca,lucca,cognome,0.95
+Lucumì,Juventus,11038,Jhon Lucumí,lucumi,cognome,0.95
+Luis Henrique,Inter,8980,Luis Henrique,luis henrique,cognome,0.95
+Lukaku,Napoli,594,Romelu Lukaku,lukaku,cognome,0.95
+Macchioni,Sassuolo,14200,Tommaso Macchioni,macchioni,cognome,0.95
+Maignan,Milan,3737,Mike Maignan,maignan,cognome,0.95
+Maldini,Cagliari,8163,Daniel Maldini,maldini,cognome,0.95
+Maleh,Lecce,9893,Youssef Maleh,maleh,cognome,0.95
+Malen,Roma,9749,Donyell Malen,malen,cognome,0.95
+Mancini,Roma,6159,Gianluca Mancini,mancini,cognome,0.95
+Mandas,Lazio,12043,Christos Mandas,mandas,cognome,0.95
+Mandragora,Torino,3821,Rolando Mandragora,mandragora,cognome,0.95
+Marcandalli,Genoa,12958,Alessandro Marcandalli,marcandalli,cognome,0.95
+Marianucci,Napoli,11876,Luca Marianucci,marianucci,cognome,0.95
+Martin,Genoa,5133,Aarón Martín,martin,cognome,0.95
+Marusic,Lazio,6176,Adam Marusic,marusic,cognome,0.95
+Masini,Frosinone,12777,Patrizio Masini,masini,cognome,0.95
+Matic,Sassuolo,697,Nemanja Matic,matic,cognome,0.95
+Matturro,Genoa,12078,Alan Matturro,matturro,cognome,0.95
+Mazzocchi,Venezia,9902,Pasquale Mazzocchi,mazzocchi,cognome,0.95
+Mbangula,Bologna,12904,Samuel Mbangula,mbangula,cognome,0.95
+McKennie,Juventus,5360,Weston McKennie,mckennie,cognome,0.95
+McTominay,Napoli,5560,Scott McTominay,mctominay,cognome,0.95
+Meret,Napoli,1892,Alex Meret,meret,cognome,0.95
+Messias,Genoa,8838,Junior Messias,messias,cognome,0.95
+Milik,Juventus,1583,Arkadiusz Milik,milik,cognome,0.95
+Mina,Cagliari,6521,Yerry Mina,mina,cognome,0.95
+Miretti,Juventus,9966,Fabio Miretti,miretti,cognome,0.95
+Missori,Sassuolo,10076,Filippo Missori,missori,cognome,0.95
+Mkhitaryan,Inter,317,Henrikh Mkhitaryan,mkhitaryan,cognome,0.95
+Mlacic,Udinese,14433,Branimir Mlacic,mlacic,cognome,0.95
+Modric,Milan,2250,Luka Modric,modric,cognome,0.95
+Monterisi,Frosinone,8197,Ilario Monterisi,monterisi,cognome,0.95
+Montipò,Venezia,8881,Lorenzo Montipò,montipo,cognome,0.95
+Morata,Como,1804,Álvaro Morata,morata,cognome,0.95
+Mota,Monza,10895,Dany Mota,mota,cognome,0.95
+Motta,Lazio,14391,Edoardo Motta,motta,cognome,0.95
+Muric,Sassuolo,7027,Arijanet Muric,muric,cognome,0.95
+Musah,Milan,8771,Yunus Musah,musah,cognome,0.95
+Mutandwa,Cagliari,12334,Kingstone Mutandwa,mutandwa,cognome,0.95
+N'Dicka,Roma,7049,Evan Ndicka,n dicka,cognome,0.95
+N'Dri,Lecce,13451,Konan N’Dri,n dri,cognome,0.95
+Ndaba,Lecce,13876,Corrie Ndaba,ndaba,cognome,0.95
+Ndiaye,Parma,9447,Niakhate Ndiaye,ndiaye,cognome,0.95
+Ndour,Fiorentina,11768,Cher Ndour,ndour,cognome,0.95
+Neres,Napoli,12993,David Neres,neres,cognome,0.95
+Ngom,Lecce,14347,Oumar Ngom,ngom,cognome,0.95
+Ngonge,Monza,11306,Cyril Ngonge,ngonge,cognome,0.95
+Nicolussi Caviglia,Parma,7483,Hans Nicolussi Caviglia,nicolussi caviglia,cognome,0.95
+Njie,Fiorentina,12365,Alieu Njie,njie,cognome,0.95
+Nkunku,Milan,3300,Christopher Nkunku,nkunku,cognome,0.95
+Norton-Cuffy,Genoa,13136,Brooke Norton-Cuffy,norton cuffy,cognome,0.95
+Noslin,Lazio,12378,Tijjani Noslin,noslin,cognome,0.95
+Nzola,Cagliari,9018,M&#039;Bala Nzola,nzola,cognome,0.95
+Obert,Cagliari,10073,Adam Obert,obert,cognome,0.95
+Obrador,Sassuolo,8554,Rafael Obrador,obrador,cognome,0.95
+Odenthal,Sassuolo,14085,Cas Odenthal,odenthal,cognome,0.95
+Odgaard,Bologna,7005,Jens Odgaard,odgaard,cognome,0.95
+Okoye,Udinese,8326,Maduka Okoye,okoye,cognome,0.95
+Olivera,Napoli,6368,Mathías Olivera,olivera,cognome,0.95
+Ondrejka,Parma,13386,Jacob Ondrejka,ondrejka,cognome,0.95
+Oristanio,Torino,11958,Gaetano Oristanio,oristanio,cognome,0.95
+Orsolini,Bologna,6160,Riccardo Orsolini,orsolini,cognome,0.95
+Ostigard,Genoa,10237,Leo Østigard,ostigard,cognome,0.95
+Otoa,Genoa,13478,Sebastian Otoa,otoa,cognome,0.95
+Padelli,Udinese,1195,Daniele Padelli,padelli,cognome,0.95
+Paleari,Torino,9044,Alberto Paleari,paleari,cognome,0.95
+Palma,Udinese,12635,Matteo Palma,palma,cognome,0.95
+Parisi,Fiorentina,9924,Fabiano Parisi,parisi,cognome,0.95
+Pasalic,Atalanta,1134,Mario Pasalic,pasalic,cognome,0.95
+Patric,Lazio,1204,Patric,patric,cognome,0.95
+Pavard,Inter,3363,Benjamin Pavard,pavard,cognome,0.95
+Pavlovic,Milan,8642,Strahinja Pavlovic,pavlovic,cognome,0.95
+Pedersen,Torino,12012,Marcus Pedersen,pedersen,cognome,0.95
+Perin,Juventus,1093,Mattia Perin,perin,cognome,0.95
+Perrone,Como,11378,Máximo Perrone,perrone,cognome,0.95
+Petagna,Monza,1493,Andrea Petagna,petagna,cognome,0.95
+Piccoli,Bologna,7375,Roberto Piccoli,piccoli,cognome,0.95
+Pierotti,Lecce,12362,Santiago Pierotti,pierotti,cognome,0.95
+Pinamonti,Lazio,4895,Andrea Pinamonti,pinamonti,cognome,0.95
+Pinsoglio,Juventus,6107,Carlo Pinsoglio,pinsoglio,cognome,0.95
+Piotrowski,Udinese,13955,Jakub Piotrowski,piotrowski,cognome,0.95
+Pisilli,Roma,11470,Niccolò Pisilli,pisilli,cognome,0.95
+Pizzignacco,Monza,6507,Semuel Pizzignacco,pizzignacco,cognome,0.95
+Pobega,Bologna,8912,Tommaso Pobega,pobega,cognome,0.95
+Politano,Napoli,1473,Matteo Politano,politano,cognome,0.95
+Pongracic,Fiorentina,8303,Marin Pongracic,pongracic,cognome,0.95
+Prati,Cagliari,11959,Matteo Prati,prati,cognome,0.95
+Provedel,Inter,6982,Ivan Provedel,provedel,cognome,0.95
+Provstgaard,Lazio,13447,Oliver Provstgaard,provstgaard,cognome,0.95
+Przyborek,Lazio,14442,Adrian Przyborek,przyborek,cognome,0.95
+Pulisic,Milan,2662,Christian Pulisic,pulisic,cognome,0.95
+Rabiot,Milan,3291,Adrien Rabiot,rabiot,cognome,0.95
+Radunovic,Cagliari,1926,Boris Radunovic,radunovic,cognome,0.95
+Raimondo,Frosinone,9539,Antonio Raimondo,raimondo,cognome,0.95
+Ramon,Como,12436,Jacobo Ramón,ramon,cognome,0.95
+Raspadori,Atalanta,7500,Giacomo Raspadori,raspadori,cognome,0.95
+Raterink,Cagliari,14444,Othniël Raterink,raterink,cognome,0.95
+Ratkov,Lazio,14342,Petar Ratkov,ratkov,cognome,0.95
+Rensch,Roma,13389,Devyne Rensch,rensch,cognome,0.95
+Romano,Cagliari,13342,Alessandro Romano,romano,cognome,0.95
+Romero D.,Parma,8429,Luka Romero,romero d,cognome,0.95
+Rovella,Lazio,7411,Nicolo Rovella,rovella,cognome,0.95
+Rowe,Atalanta,10172,Jonathan Rowe,rowe,cognome,0.95
+Rrahmani,Napoli,7924,Amir Rrahmani,rrahmani,cognome,0.95
+Rugani,Juventus,1301,Daniele Rugani,rugani,cognome,0.95
+Sabelli,Genoa,1898,Stefano Sabelli,sabelli,cognome,0.95
+Saelemaekers,Milan,8297,Alexis Saelemaekers,saelemaekers,cognome,0.95
+Sagrado,Venezia,12874,Richie Sagrado,sagrado,cognome,0.95
+Samardzic,Atalanta,8341,Lazar Samardzic,samardzic,cognome,0.95
+Sanchez Ro.,Como,498,Alexis Sánchez,sanchez ro,cognome,0.95
+Sarr P.,Juventus,11350,Amin Sarr,sarr p,cognome,0.95
+Scalvini,Atalanta,9107,Giorgio Scalvini,scalvini,cognome,0.95
+Scamacca,Atalanta,6253,Gianluca Scamacca,scamacca,cognome,0.95
+Schingtienne,Venezia,13006,Joël Schingtienne,schingtienne,cognome,0.95
+Sherri,Cagliari,12867,Alen Sherri,sherri,cognome,0.95
+Siebert,Lecce,13875,Jamil Siebert,siebert,cognome,0.95
+Simeone,Torino,1102,Giovanni Simeone,simeone,cognome,0.95
+Skorupski,Bologna,1305,Lukasz Skorupski,skorupski,cognome,0.95
+Sohm,Venezia,9029,Simon Sohm,sohm,cognome,0.95
+Solet,Udinese,6618,Oumar Solet,solet,cognome,0.95
+Sommariva,Genoa,1922,Daniele Sommariva,sommariva,cognome,0.95
+Spence,Inter,10764,Djed Spence,spence,cognome,0.95
+Spinazzola,Napoli,1500,Leonardo Spinazzola,spinazzola,cognome,0.95
+Sportiello,Atalanta,1501,Marco Sportiello,sportiello,cognome,0.95
+Stulic,Lecce,13969,Nikola Stulic,stulic,cognome,0.95
+Suzuki,Parma,12781,Zion Suzuki,suzuki,cognome,0.95
+Sverko,Venezia,12873,Marin Sverko,sverko,cognome,0.95
+Svilar,Roma,10967,Mile Svilar,svilar,cognome,0.95
+Thorstvedt,Sassuolo,10994,Kristian Thorstvedt,thorstvedt,cognome,0.95
+Tiago Gabriel,Lecce,13396,Tiago Gabriel,tiago gabriel,cognome,0.95
+Tomori,Milan,703,Fikayo Tomori,tomori,cognome,0.95
+Trepy,Cagliari,14264,Yael Trepy,trepy,cognome,0.95
+Troilo,Parma,13979,Mariano Troilo,troilo,cognome,0.95
+Turati,Sassuolo,8101,Stefano Turati,turati,cognome,0.95
+Valenti,Parma,8967,Lautaro Valenti,valenti,cognome,0.95
+Valeri,Parma,11027,Emanuele Valeri,valeri,cognome,0.95
+Valle,Como,12822,Álex Valle,valle,cognome,0.95
+Van Der Brempt,Sassuolo,13050,Ignace Van der Brempt,van der brempt,cognome,0.95
+Vaz,Roma,13330,Robinio Vaz,vaz,cognome,0.95
+Venturino,Genoa,13349,Lorenzo Venturino,venturino,cognome,0.95
+Vergara,Napoli,10241,Antonio Vergara,vergara,cognome,0.95
+Vitik,Bologna,13893,Martin Vitík,vitik,cognome,0.95
+Vitinha O.,Genoa,11380,Vitinha,vitinha o,cognome,0.95
+Vlasic,Torino,6276,Nikola Vlasic,vlasic,cognome,0.95
+Vogliacco,Genoa,12124,Alessandro Vogliacco,vogliacco,cognome,0.95
+Vojvoda,Udinese,8819,Mergim Vojvoda,vojvoda,cognome,0.95
+Volpato,Sassuolo,10084,Cristian Volpato,volpato,cognome,0.95
+Walukiewicz,Sassuolo,8030,Sebastian Walukiewicz,walukiewicz,cognome,0.95
+Wesley,Roma,13891,Wesley,wesley,cognome,0.95
+Yildiz,Juventus,11942,Kenan Yildiz,yildiz,cognome,0.95
+Zaccagni,Lazio,1958,Mattia Zaccagni,zaccagni,cognome,0.95
+Zalewski,Atalanta,9036,Nicola Zalewski,zalewski,cognome,0.95
+Zaniolo,Udinese,6686,Nicolo Zaniolo,zaniolo,cognome,0.95
+Zanoli,Udinese,9876,Alessandro Zanoli,zanoli,cognome,0.95
+Zappa,Cagliari,8857,Gabriele Zappa,zappa,cognome,0.95
+Zappacosta,Atalanta,1178,Davide Zappacosta,zappacosta,cognome,0.95
+Zarraga,Udinese,8728,Oier Zarraga,zarraga,cognome,0.95
+Zerbin,Frosinone,4911,Alessio Zerbin,zerbin,cognome,0.95
+Zhegrova,Juventus,10328,Edon Zhegrova,zhegrova,cognome,0.95
+Zielinski,Inter,1386,Piotr Zielinski,zielinski,cognome,0.95
+Ziolkowski,Monza,14039,Jan Ziólkowski,ziolkowski,cognome,0.95
+Zortea,Bologna,9866,Nadir Zortea,zortea,cognome,0.95
+Zè Pedro,Cagliari,14019,Zé Pedro,ze pedro,cognome,0.95
+Adams C.,Torino,7700,Che Adams,adams c,cognome+iniziale,0.98
+Bayo V.,Udinese,13956,Vakoun Bayo,bayo v,cognome+iniziale,0.98
+Berisha M.,Lecce,10908,Medon Berisha,berisha m,cognome+iniziale,0.98
+Camara A.,Udinese,13481,Abdoulaye Camara,camara a,cognome+iniziale,0.98
+Carboni A.,Monza,8232,Andrea Carboni,carboni a,cognome+iniziale,0.98
+Carboni F.,Parma,9057,Franco Ezequiel Carboni,carboni f,cognome+iniziale,0.98
+Castro S.,Roma,12528,Santiago Castro,castro s,cognome+iniziale,0.98
+Christensen O.,Fiorentina,9992,Oliver Christensen,christensen o,cognome+iniziale,0.98
+Cissè A.,Milan,11418,Alphadjo Cissè,cisse a,cognome+iniziale,0.98
+Colombo L.,Monza,8478,Lorenzo Colombo,colombo l,cognome+iniziale,0.98
+Coulibaly L.,Lecce,3334,Lassana Coulibaly,coulibaly l,cognome+iniziale,0.98
+Davis K.,Udinese,1053,Keinan Davis,davis k,cognome+iniziale,0.98
+Dembelè A.,Lecce,11279,Ali Dembélé,dembele a,cognome+iniziale,0.98
+Dominguez B.,Sassuolo,13061,Benjamín Domínguez,dominguez b,cognome+iniziale,0.98
+El Azzouzi O.,Bologna,11962,Oussama El Azzouzi,el azzouzi o,cognome+iniziale,0.98
+Esposito F.P.,Inter,14003,Francesco Pio Esposito,esposito f p,cognome+iniziale,0.98
+Esposito Se.,Sassuolo,7969,Sebastiano Esposito,esposito se,cognome+iniziale,0.98
+Fofana Sa.,Lecce,10255,Sadik Fofana,fofana sa,cognome+iniziale,0.98
+Fofana Y.,Milan,6945,Youssouf Fofana,fofana y,cognome+iniziale,0.98
+Forson O.,Monza,12340,Omari Forson,forson o,cognome+iniziale,0.98
+Gaspar K.,Lecce,12885,Kialonda Gaspar,gaspar k,cognome+iniziale,0.98
+Gelli F.,Frosinone,11880,Francesco Gelli,gelli f,cognome+iniziale,0.98
+Gonzalez N.,Juventus,7074,Nicolás González,gonzalez n,cognome+iniziale,0.98
+Gudmundsson A.,Lazio,10366,Albert Gudmundsson,gudmundsson a,cognome+iniziale,0.98
+Idrissi R.,Cagliari,13929,Riyad Idrissi,idrissi r,cognome+iniziale,0.98
+Jimenez A.,Fiorentina,12168,Alejandro Jiménez,jimenez a,cognome+iniziale,0.98
+Kamara H.,Udinese,3729,Hassane Kamara,kamara h,cognome+iniziale,0.98
+Keita M.,Parma,13097,Mandela Keita,keita m,cognome+iniziale,0.98
+Kelly L.,Juventus,8090,Lloyd Kelly,kelly l,cognome+iniziale,0.98
+Kone B.,Frosinone,6443,Ben Kone,kone b,cognome+iniziale,0.98
+Konè I.,Sassuolo,13069,Ismaël Koné,kone i,cognome+iniziale,0.98
+Kristensen T.,Atalanta,12040,Thomas Thiesson Kristensen,kristensen t,cognome+iniziale,0.98
+Martinez Jo.,Inter,9052,Josep Martínez,martinez jo,cognome+iniziale,0.98
+Martinez L.,Inter,7006,Lautaro Martínez,martinez l,cognome+iniziale,0.98
+Mendy P.,Cagliari,14445,Paul Mendy,mendy p,cognome+iniziale,0.98
+Milinkovic-Savic V.,Napoli,6167,Vanja Milinkovic-Savic,milinkovic savic v,cognome+iniziale,0.98
+Miller L.,Udinese,13958,Lennon Miller,miller l,cognome+iniziale,0.98
+Miranda J.,Bologna,7286,Juan Miranda,miranda j,cognome+iniziale,0.98
+Moreno M.,Venezia,13083,Matías Moreno,moreno m,cognome+iniziale,0.98
+Moro L.,Sassuolo,13880,Luca Moro,moro l,cognome+iniziale,0.98
+Moro N.,Bologna,8626,Nikola Moro,moro n,cognome+iniziale,0.98
+Ordonez C.,Parma,13948,Christian Ordóñez,ordonez c,cognome+iniziale,0.98
+Oyono A.,Frosinone,11879,Anthony Oyono,oyono a,cognome+iniziale,0.98
+Paz N.,Como,11541,Nico Paz,paz n,cognome+iniziale,0.98
+Pellegrini Lo.,Roma,1471,Lorenzo Pellegrini,pellegrini lo,cognome+iniziale,0.98
+Pellegrini Lu.,Lazio,4970,Luca Pellegrini,pellegrini lu,cognome+iniziale,0.98
+Perez K.,Venezia,8470,Kike Pérez,perez k,cognome+iniziale,0.98
+Perez M.,Lecce,13877,Matías Pérez,perez m,cognome+iniziale,0.98
+Pessina Mas.,Bologna,13237,Massimo Pessina,pessina mas,cognome+iniziale,0.98
+Ranieri L.,Fiorentina,6696,Luca Ranieri,ranieri l,cognome+iniziale,0.98
+Ricci S.,Como,7530,Samuele Ricci,ricci s,cognome+iniziale,0.98
+Rodriguez Je.,Como,13059,Jesús Rodriguez,rodriguez je,cognome+iniziale,0.98
+Rodriguez Ju.,Cagliari,14065,Juan Rodríguez,rodriguez ju,cognome+iniziale,0.98
+Rodriguez R.,Torino,308,Ricardo Rodríguez,rodriguez r,cognome+iniziale,0.98
+Rossi F.,Atalanta,4940,Francesco Rossi,rossi f,cognome+iniziale,0.98
+Santos A.,Napoli,14427,Alisson Santos,santos a,cognome+iniziale,0.98
+Smolcic I.,Como,13443,Ivan Smolcic,smolcic i,cognome+iniziale,0.98
+Sorensen O.,Parma,13949,Oliver Sørensen,sorensen o,cognome+iniziale,0.98
+Stankovic F.,Venezia,8308,Filip Stankovic,stankovic f,cognome+iniziale,0.98
+Sucic P.,Inter,13964,Petar Sucic,sucic p,cognome+iniziale,0.98
+Sulemana K.,Atalanta,9630,Kamaldeen Sulemana,sulemana k,cognome+iniziale,0.98
+Tavares N.,Lazio,9691,Nuno Tavares,tavares n,cognome+iniziale,0.98
+Taylor K.,Lazio,14341,Kenneth Taylor,taylor k,cognome+iniziale,0.98
+Terracciano F.,Milan,8512,Filippo Terracciano,terracciano f,cognome+iniziale,0.98
+Thuram K.,Juventus,7265,Kephren Thuram,thuram k,cognome+iniziale,0.98
+Tourè E.,Parma,8294,El Bilal Touré,toure e,cognome+iniziale,0.98
+Tourè I.,Monza,13938,Idrissa Touré,toure i,cognome+iniziale,0.98
+Traorè Hj.,Genoa,6986,Hamed Junior Traore,traore hj,cognome+iniziale,0.98
+Veiga D.,Lecce,13395,Danilo Veiga,veiga d,cognome+iniziale,0.98
+Yeboah J.,Venezia,7234,John Yeboah,yeboah j,cognome+iniziale,0.98
+Zapata D.,Torino,1148,Duván Zapata,zapata d,cognome+iniziale,0.98
+Marin R.,Napoli,10200,Rafa Marín,marin r,cognome+iniziale+squadra,0.99
+Bastoni,Inter,4939,Alessandro Bastoni,bastoni,cognome+squadra,0.97
+Ferguson,Bologna,11039,Lewis Ferguson,ferguson,cognome+squadra,0.97
+Konè M.,Roma,7482,Kouadio Kone,kone m,cognome+squadra,0.97
+Pessina,Monza,7013,Matteo Pessina,pessina,cognome+squadra,0.97
+Romagnoli,Lazio,1119,Alessio Romagnoli,romagnoli,cognome+squadra,0.97
+Thuram,Inter,5992,Marcus Thuram,thuram,cognome+squadra,0.97
+Vasquez,Genoa,9985,Johan Vásquez,vasquez,cognome+squadra,0.97
+Adams A.,Venezia,,Che Adams,adams a,omonimo_gia_assegnato,0.0
+Colombo,Genoa,,Lorenzo Colombo,colombo,omonimo_gia_assegnato,0.0
+El Azzouzi A.,Frosinone,,Oussama El Azzouzi,el azzouzi a,omonimo_gia_assegnato,0.0
+Gelli J.,Frosinone,,Francesco Gelli,gelli j,omonimo_gia_assegnato,0.0
+Oyono J.,Frosinone,,Anthony Oyono,oyono j,omonimo_gia_assegnato,0.0
+Rrahmani Al.,Venezia,,Amir Rrahmani,rrahmani al,omonimo_gia_assegnato,0.0
+Stankovic A.,Inter,,Filip Stankovic,stankovic a,omonimo_gia_assegnato,0.0
+Floriani Mussolini,Lazio,10075,Romano Floriani,floriani mussolini,token_parziale,0.7
+Kalulu,Juventus,8313,Pierre Kalulu Kyatengwa,kalulu,token_parziale,0.7
+Soulè,Roma,9965,Matìas Soulè Malvano,soule,token_parziale,0.7
+Zambo Anguissa,Napoli,6434,Franck Zambo,zambo anguissa,token_parziale,0.7

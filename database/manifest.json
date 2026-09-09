@@ -1,0 +1,111 @@
+{
+  "generato_il": "2026-09-07",
+  "stagione_corrente": "2026-27",
+  "stagioni_storiche": [
+    "2025-26",
+    "2024-25",
+    "2023-24"
+  ],
+  "modalita": "classic",
+  "fonti": [
+    {
+      "blocco": "anagrafica_quotazioni",
+      "nome": "Listone corrente estratto dal foglio FantaAlgoritmo PRO",
+      "url": "locale: fonti/seed_giocatori_correnti.csv",
+      "tipo": "seed_estratto",
+      "scaricato_il": "2026-09-02",
+      "note": "Espone una sola quotazione: qa impostata uguale a qi."
+    },
+    {
+      "blocco": "statistiche_storiche",
+      "nome": "Listoni statistici con id ufficiali Fantacalcio",
+      "url": "locale: fonti/seed_listone_stagione_*.csv",
+      "tipo": "seed_estratto",
+      "scaricato_il": "2026-09-02",
+      "note": "Stagioni identificate confrontando i gol con la fonte avanzata: accordo 99.2% (2025-26) e 99.6% (2024-25)."
+    },
+    {
+      "blocco": "minuti_avanzate",
+      "nome": "Understat - Serie A",
+      "url": "https://understat.com/getLeagueData/Serie%20A/{2023,2024,2025}",
+      "tipo": "endpoint_json",
+      "scaricato_il": "2026-09-02",
+      "note": "Fonte unica per minuti, xG, npxG, xA, tiri, passaggi chiave. Non copre la Serie B: i giocatori delle neopromosse sono assenti."
+    },
+    {
+      "blocco": "calendario",
+      "nome": "fixturedownload.com - Serie A 2026/27",
+      "url": "https://fixturedownload.com/download/serie-a-2026-UTC.csv",
+      "tipo": "csv",
+      "scaricato_il": "2026-09-02",
+      "note": "380 partite, 38 giornate, 20 squadre coerenti col listone."
+    },
+    {
+      "blocco": "prezzi_asta",
+      "nome": "Tabella prezzi medi d asta del foglio di partenza",
+      "url": "locale: fonti/seed_prezzi_asta.csv",
+      "tipo": "seed_estratto",
+      "scaricato_il": "2026-09-02",
+      "note": "Solo media, normalizzata su 1000 crediti."
+    },
+    {
+      "blocco": "contesto_editoriale",
+      "nome": "NON REPERITO",
+      "url": "",
+      "tipo": "mancante",
+      "scaricato_il": "",
+      "note": "titolarita, ballottaggi, calci piazzati e infortuni richiedono compilazione manuale: nessuna fonte strutturata disponibile."
+    }
+  ],
+  "conteggi": {
+    "giocatori": 593,
+    "per_ruolo": {
+      "P": 74,
+      "C": 203,
+      "D": 212,
+      "A": 104
+    },
+    "righe_statistiche": 740,
+    "righe_avanzate": 921,
+    "righe_contesto": 593,
+    "righe_calendario": 380,
+    "righe_prezzi": 531,
+    "squadre": 20
+  },
+  "copertura": {
+    "statistiche.mv": 1.0,
+    "statistiche.minuti": 0.9162,
+    "contesto.quota_minuti": 0.6374,
+    "contesto.rigorista": 0.6948,
+    "contesto.titolarita": 0.0,
+    "avanzate.xg": 1.0,
+    "giocatori.id_ufficiale": 1.0,
+    "giocatori.con_storico": 0.7504
+  },
+  "abbinamento_fonte_statistica": {
+    "cognome": 357,
+    "cognome+iniziale": 71,
+    "assente_nella_fonte": 143,
+    "ambiguo": 3,
+    "cognome+squadra": 7,
+    "token_parziale": 4,
+    "cognome+iniziale+squadra": 1,
+    "omonimo_gia_assegnato": 7
+  },
+  "convenzioni": {
+    "titolarita": "campo vuoto: non stimato. Usare quota_minuti_2025_26 come base.",
+    "rigori": "rpiu + rmeno == rc",
+    "rigorista": "derivato dai rigori calciati 2025-26: >=3 primo, 1-2 secondo, 0 nessuno. Da confermare manualmente.",
+    "fonte_xg_unica": "understat",
+    "id_sintetici": "id >= 900001 per chi non ha storico Serie A; id_ufficiale=0",
+    "qa": "uguale a qi: la fonte disponibile espone una sola quotazione"
+  },
+  "lacune_totali": 830,
+  "errori_validazione": [],
+  "avvertenze": [
+    "titolarita, calci_piazzati, corner e stato infortuni NON sono compilati.",
+    "Gli abbinamenti con metodo token_parziale hanno confidenza 0.70 e vanno riletti.",
+    "I giocatori delle neopromosse non hanno statistiche di Serie A: assenza corretta.",
+    "qa e uguale a qi perche il listone disponibile espone una sola quotazione."
+  ]
+}

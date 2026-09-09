@@ -1,0 +1,831 @@
+file,id,colonna,motivo,fonte_tentata
+giocatori.csv,,nome_completo,Stankovic A.: la voce statistica e gia di Stankovic F.,understat
+giocatori.csv,,nome_completo,Rrahmani Al.: la voce statistica e gia di Rrahmani,understat
+giocatori.csv,,nome_completo,Oyono J.: la voce statistica e gia di Oyono A.,understat
+giocatori.csv,,nome_completo,Gelli J.: la voce statistica e gia di Gelli F.,understat
+giocatori.csv,,nome_completo,Colombo: la voce statistica e gia di Colombo L.,understat
+giocatori.csv,,nome_completo,El Azzouzi A.: la voce statistica e gia di El Azzouzi O.,understat
+giocatori.csv,,nome_completo,Adams A.: la voce statistica e gia di Adams C.,understat
+squadre.csv,,gf_prec/gs_prec,neopromossa Frosinone: nessun dato di Serie A,
+squadre.csv,,gf_prec/gs_prec,neopromossa Monza: nessun dato di Serie A,
+squadre.csv,,gf_prec/gs_prec,neopromossa Venezia: nessun dato di Serie A,
+squadre.csv,,allenatore,nessuna fonte strutturata disponibile,
+giocatori.csv,4964,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4964,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6534,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6534,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6344,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7411,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7411,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6248,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6415,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6415,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4485,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4485,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7463,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7463,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,2874,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,2874,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7626,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7626,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7533,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7533,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7301,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,2809,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7466,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7466,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6569,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6569,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7534,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7534,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,2815,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6813,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7475,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7475,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7048,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7048,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4518,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7457,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7457,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7363,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,5707,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,5707,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6671,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6671,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7531,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7531,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,2127,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7557,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7557,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7560,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7560,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4468,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4468,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7603,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7603,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7611,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7611,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4998,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4998,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,2514,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,2514,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5982,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5641,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,5641,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6320,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6320,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7529,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7529,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6727,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6727,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5675,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,5675,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5365,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7469,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7469,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7485,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7485,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4664,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4664,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7580,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7580,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7621,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7621,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7414,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7414,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7410,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7410,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4952,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6238,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4817,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4817,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7564,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7564,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4705,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4705,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4147,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4147,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5751,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,5751,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7532,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7532,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7294,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7294,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7467,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7467,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4845,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4845,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5695,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5757,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7537,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7537,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5838,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7526,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7526,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6890,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4375,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4375,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7563,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7563,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5742,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,5742,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7540,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7540,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6659,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6659,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4925,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7538,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7538,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6892,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6673,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7478,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7478,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7605,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7605,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6601,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6601,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7483,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7483,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7413,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7413,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7525,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7525,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7476,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7476,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6638,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6021,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6681,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7548,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7548,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7573,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7573,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7599,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7599,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7615,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7615,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5424,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,5424,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5399,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,5399,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7156,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7454,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7454,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7553,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7553,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7604,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7604,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7556,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7556,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7625,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7625,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5172,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,5172,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,1850,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,1850,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7436,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7436,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7078,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7078,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6372,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6372,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5878,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6833,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7472,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7472,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7551,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7551,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7618,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7618,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7311,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6783,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6783,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5946,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,5946,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7619,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7619,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5680,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7624,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7624,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4260,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4260,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7412,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7412,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7464,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7464,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,2741,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7060,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7528,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7528,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7409,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7409,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7535,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7535,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5507,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6994,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7473,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7473,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7474,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7474,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,2857,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7550,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7550,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7579,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7579,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7232,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7232,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6024,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6241,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6503,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6503,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7477,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7536,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7536,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6903,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6903,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5880,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7418,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7418,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,526,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6592,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7574,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7574,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7092,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7092,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7357,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7456,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7456,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5725,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7481,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7481,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7571,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7571,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7572,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7572,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7575,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7575,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5462,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,5462,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6397,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6397,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5951,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6752,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6752,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5694,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7023,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7547,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7547,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,4923,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7484,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7484,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7554,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6904,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7612,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7612,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6530,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5029,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,5029,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7600,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7600,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7523,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7523,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7449,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7449,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7623,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7623,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6204,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7620,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7620,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7610,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7610,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7453,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7453,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5882,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7213,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4387,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,4387,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7546,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7546,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7602,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7602,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7561,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7561,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7408,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7408,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7482,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7482,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7568,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7568,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7622,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7622,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,787,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6598,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,2169,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,2115,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,2115,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7627,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7627,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7407,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7407,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7027,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7468,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7468,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7470,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7470,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7471,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7471,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,6244,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,2401,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6523,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,6682,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7392,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,5485,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7545,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7545,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7396,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,7628,nome_completo,non abbinato alla fonte statistica,understat
+giocatori.csv,7628,nuovo_acquisto,nessuna squadra nota per la stagione 2025-26,
+giocatori.csv,,qa,il listone disponibile espone una sola quotazione: qa impostata = qi,
+giocatori.csv,218,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,313,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,383,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,460,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,787,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,2115,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,2401,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,2531,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,2593,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,4461,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,4510,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,4686,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,4728,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,4772,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,4929,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,5320,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,5427,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,5485,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,5544,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,5672,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,5813,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,5876,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6189,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6243,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6244,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6245,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6271,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6424,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6426,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6523,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6598,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6641,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6643,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6663,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6682,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6814,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6889,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6916,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6981,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,6984,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7008,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7027,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7128,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7157,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7158,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7164,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7209,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7211,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7249,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7313,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7338,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7346,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7356,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7392,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7396,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7407,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7468,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7470,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7471,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7474,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7545,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7622,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7627,eta,il listone non lo espone per questo giocatore,listone ufficiale
+giocatori.csv,7628,eta,il listone non lo espone per questo giocatore,listone ufficiale
+statistiche.csv,2815,minuti,2025-26: giocatore non abbinato alla fonte dei minuti,understat
+statistiche.csv,2815,minuti,2024-25: giocatore non abbinato alla fonte dei minuti,understat
+statistiche.csv,6024,minuti,2025-26: giocatore non abbinato alla fonte dei minuti,understat
+statistiche.csv,6024,minuti,2024-25: giocatore non abbinato alla fonte dei minuti,understat
+statistiche.csv,7023,minuti,2025-26: giocatore non abbinato alla fonte dei minuti,understat
+statistiche.csv,7023,minuti,2024-25: giocatore non abbinato alla fonte dei minuti,understat
+statistiche.csv,4923,minuti,2025-26: giocatore non abbinato alla fonte dei minuti,understat
+statistiche.csv,4923,minuti,2024-25: giocatore non abbinato alla fonte dei minuti,understat
+statistiche.csv,5436,minuti,2025-26: giocatore non abbinato alla fonte dei minuti,understat
+statistiche.csv,787,minuti,2025-26: giocatore non abbinato alla fonte dei minuti,understat
+statistiche.csv,787,minuti,2024-25: giocatore non abbinato alla fonte dei minuti,understat
+statistiche.csv,383,minuti,2025-26: giocatore non abbinato alla fonte dei minuti,understat
+avanzate.csv,,tocchi_area,non esposto dalla fonte utilizzata,understat
+contesto.csv,4964,rigorista,nessuno storico rigori calciati,
+contesto.csv,4964,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6482,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6534,rigorista,nessuno storico rigori calciati,
+contesto.csv,6534,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6344,rigorista,nessuno storico rigori calciati,
+contesto.csv,6344,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7411,rigorista,nessuno storico rigori calciati,
+contesto.csv,7411,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6248,rigorista,nessuno storico rigori calciati,
+contesto.csv,6248,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6415,rigorista,nessuno storico rigori calciati,
+contesto.csv,6415,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4485,rigorista,nessuno storico rigori calciati,
+contesto.csv,4485,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7463,rigorista,nessuno storico rigori calciati,
+contesto.csv,7463,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,2874,rigorista,nessuno storico rigori calciati,
+contesto.csv,2874,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7626,rigorista,nessuno storico rigori calciati,
+contesto.csv,7626,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7533,rigorista,nessuno storico rigori calciati,
+contesto.csv,7533,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6650,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7301,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,2809,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7466,rigorista,nessuno storico rigori calciati,
+contesto.csv,7466,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6569,rigorista,nessuno storico rigori calciati,
+contesto.csv,6569,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,1930,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7534,rigorista,nessuno storico rigori calciati,
+contesto.csv,7534,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,2815,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6813,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7475,rigorista,nessuno storico rigori calciati,
+contesto.csv,7475,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7048,rigorista,nessuno storico rigori calciati,
+contesto.csv,7048,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,610,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4518,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7457,rigorista,nessuno storico rigori calciati,
+contesto.csv,7457,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7363,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5707,rigorista,nessuno storico rigori calciati,
+contesto.csv,5707,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6671,rigorista,nessuno storico rigori calciati,
+contesto.csv,6671,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7531,rigorista,nessuno storico rigori calciati,
+contesto.csv,7531,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,2127,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7557,rigorista,nessuno storico rigori calciati,
+contesto.csv,7557,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7560,rigorista,nessuno storico rigori calciati,
+contesto.csv,7560,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,3,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4468,rigorista,nessuno storico rigori calciati,
+contesto.csv,4468,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7603,rigorista,nessuno storico rigori calciati,
+contesto.csv,7603,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7611,rigorista,nessuno storico rigori calciati,
+contesto.csv,7611,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4998,rigorista,nessuno storico rigori calciati,
+contesto.csv,4998,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,2514,rigorista,nessuno storico rigori calciati,
+contesto.csv,2514,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5982,rigorista,nessuno storico rigori calciati,
+contesto.csv,5982,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5641,rigorista,nessuno storico rigori calciati,
+contesto.csv,5641,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6320,rigorista,nessuno storico rigori calciati,
+contesto.csv,6320,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7529,rigorista,nessuno storico rigori calciati,
+contesto.csv,7529,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6727,rigorista,nessuno storico rigori calciati,
+contesto.csv,6727,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5675,rigorista,nessuno storico rigori calciati,
+contesto.csv,5675,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5365,rigorista,nessuno storico rigori calciati,
+contesto.csv,5365,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7469,rigorista,nessuno storico rigori calciati,
+contesto.csv,7469,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7485,rigorista,nessuno storico rigori calciati,
+contesto.csv,7485,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4664,rigorista,nessuno storico rigori calciati,
+contesto.csv,4664,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7580,rigorista,nessuno storico rigori calciati,
+contesto.csv,7580,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7621,rigorista,nessuno storico rigori calciati,
+contesto.csv,7621,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7414,rigorista,nessuno storico rigori calciati,
+contesto.csv,7414,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7410,rigorista,nessuno storico rigori calciati,
+contesto.csv,7410,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4952,rigorista,nessuno storico rigori calciati,
+contesto.csv,4952,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6238,rigorista,nessuno storico rigori calciati,
+contesto.csv,6238,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4817,rigorista,nessuno storico rigori calciati,
+contesto.csv,4817,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7564,rigorista,nessuno storico rigori calciati,
+contesto.csv,7564,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4705,rigorista,nessuno storico rigori calciati,
+contesto.csv,4705,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4147,rigorista,nessuno storico rigori calciati,
+contesto.csv,4147,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5751,rigorista,nessuno storico rigori calciati,
+contesto.csv,5751,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7532,rigorista,nessuno storico rigori calciati,
+contesto.csv,7532,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7294,rigorista,nessuno storico rigori calciati,
+contesto.csv,7294,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7467,rigorista,nessuno storico rigori calciati,
+contesto.csv,7467,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4845,rigorista,nessuno storico rigori calciati,
+contesto.csv,4845,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5695,rigorista,nessuno storico rigori calciati,
+contesto.csv,5695,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5757,rigorista,nessuno storico rigori calciati,
+contesto.csv,5757,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7537,rigorista,nessuno storico rigori calciati,
+contesto.csv,7537,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5838,rigorista,nessuno storico rigori calciati,
+contesto.csv,5838,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7526,rigorista,nessuno storico rigori calciati,
+contesto.csv,7526,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6890,rigorista,nessuno storico rigori calciati,
+contesto.csv,6890,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6821,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4375,rigorista,nessuno storico rigori calciati,
+contesto.csv,4375,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7563,rigorista,nessuno storico rigori calciati,
+contesto.csv,7563,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5742,rigorista,nessuno storico rigori calciati,
+contesto.csv,5742,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7540,rigorista,nessuno storico rigori calciati,
+contesto.csv,7540,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6659,rigorista,nessuno storico rigori calciati,
+contesto.csv,6659,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4925,rigorista,nessuno storico rigori calciati,
+contesto.csv,4925,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7538,rigorista,nessuno storico rigori calciati,
+contesto.csv,7538,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6892,rigorista,nessuno storico rigori calciati,
+contesto.csv,6892,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6673,rigorista,nessuno storico rigori calciati,
+contesto.csv,6673,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7478,rigorista,nessuno storico rigori calciati,
+contesto.csv,7478,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7605,rigorista,nessuno storico rigori calciati,
+contesto.csv,7605,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6601,rigorista,nessuno storico rigori calciati,
+contesto.csv,6601,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7483,rigorista,nessuno storico rigori calciati,
+contesto.csv,7483,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7413,rigorista,nessuno storico rigori calciati,
+contesto.csv,7413,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7525,rigorista,nessuno storico rigori calciati,
+contesto.csv,7525,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7476,rigorista,nessuno storico rigori calciati,
+contesto.csv,7476,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6638,rigorista,nessuno storico rigori calciati,
+contesto.csv,6638,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6021,rigorista,nessuno storico rigori calciati,
+contesto.csv,6021,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6681,rigorista,nessuno storico rigori calciati,
+contesto.csv,6681,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7548,rigorista,nessuno storico rigori calciati,
+contesto.csv,7548,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7573,rigorista,nessuno storico rigori calciati,
+contesto.csv,7573,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7599,rigorista,nessuno storico rigori calciati,
+contesto.csv,7599,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7615,rigorista,nessuno storico rigori calciati,
+contesto.csv,7615,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5424,rigorista,nessuno storico rigori calciati,
+contesto.csv,5424,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5399,rigorista,nessuno storico rigori calciati,
+contesto.csv,5399,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7156,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7454,rigorista,nessuno storico rigori calciati,
+contesto.csv,7454,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7553,rigorista,nessuno storico rigori calciati,
+contesto.csv,7553,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7604,rigorista,nessuno storico rigori calciati,
+contesto.csv,7604,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7556,rigorista,nessuno storico rigori calciati,
+contesto.csv,7556,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7625,rigorista,nessuno storico rigori calciati,
+contesto.csv,7625,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5172,rigorista,nessuno storico rigori calciati,
+contesto.csv,5172,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,1850,rigorista,nessuno storico rigori calciati,
+contesto.csv,1850,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7436,rigorista,nessuno storico rigori calciati,
+contesto.csv,7436,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7078,rigorista,nessuno storico rigori calciati,
+contesto.csv,7078,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6372,rigorista,nessuno storico rigori calciati,
+contesto.csv,6372,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5878,rigorista,nessuno storico rigori calciati,
+contesto.csv,5878,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6833,rigorista,nessuno storico rigori calciati,
+contesto.csv,6833,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7472,rigorista,nessuno storico rigori calciati,
+contesto.csv,7472,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7551,rigorista,nessuno storico rigori calciati,
+contesto.csv,7551,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7618,rigorista,nessuno storico rigori calciati,
+contesto.csv,7618,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7311,rigorista,nessuno storico rigori calciati,
+contesto.csv,7311,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6783,rigorista,nessuno storico rigori calciati,
+contesto.csv,6783,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5946,rigorista,nessuno storico rigori calciati,
+contesto.csv,5946,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7619,rigorista,nessuno storico rigori calciati,
+contesto.csv,7619,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5680,rigorista,nessuno storico rigori calciati,
+contesto.csv,5680,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7624,rigorista,nessuno storico rigori calciati,
+contesto.csv,7624,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4260,rigorista,nessuno storico rigori calciati,
+contesto.csv,4260,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7412,rigorista,nessuno storico rigori calciati,
+contesto.csv,7412,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6678,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7464,rigorista,nessuno storico rigori calciati,
+contesto.csv,7464,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,2741,rigorista,nessuno storico rigori calciati,
+contesto.csv,2741,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7060,rigorista,nessuno storico rigori calciati,
+contesto.csv,7060,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7528,rigorista,nessuno storico rigori calciati,
+contesto.csv,7528,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7409,rigorista,nessuno storico rigori calciati,
+contesto.csv,7409,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7535,rigorista,nessuno storico rigori calciati,
+contesto.csv,7535,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5507,rigorista,nessuno storico rigori calciati,
+contesto.csv,5507,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6994,rigorista,nessuno storico rigori calciati,
+contesto.csv,6994,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6618,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7473,rigorista,nessuno storico rigori calciati,
+contesto.csv,7473,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7474,rigorista,nessuno storico rigori calciati,
+contesto.csv,7474,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,2857,rigorista,nessuno storico rigori calciati,
+contesto.csv,2857,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4911,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7550,rigorista,nessuno storico rigori calciati,
+contesto.csv,7550,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7579,rigorista,nessuno storico rigori calciati,
+contesto.csv,7579,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7232,rigorista,nessuno storico rigori calciati,
+contesto.csv,7232,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6024,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6241,rigorista,nessuno storico rigori calciati,
+contesto.csv,6241,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6503,rigorista,nessuno storico rigori calciati,
+contesto.csv,6503,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7477,rigorista,nessuno storico rigori calciati,
+contesto.csv,7477,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7536,rigorista,nessuno storico rigori calciati,
+contesto.csv,7536,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6225,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6903,rigorista,nessuno storico rigori calciati,
+contesto.csv,6903,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5880,rigorista,nessuno storico rigori calciati,
+contesto.csv,5880,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7418,rigorista,nessuno storico rigori calciati,
+contesto.csv,7418,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,526,rigorista,nessuno storico rigori calciati,
+contesto.csv,526,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6592,rigorista,nessuno storico rigori calciati,
+contesto.csv,6592,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7574,rigorista,nessuno storico rigori calciati,
+contesto.csv,7574,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7092,rigorista,nessuno storico rigori calciati,
+contesto.csv,7092,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7357,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7456,rigorista,nessuno storico rigori calciati,
+contesto.csv,7456,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5725,rigorista,nessuno storico rigori calciati,
+contesto.csv,5725,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7481,rigorista,nessuno storico rigori calciati,
+contesto.csv,7481,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7571,rigorista,nessuno storico rigori calciati,
+contesto.csv,7571,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7572,rigorista,nessuno storico rigori calciati,
+contesto.csv,7572,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7575,rigorista,nessuno storico rigori calciati,
+contesto.csv,7575,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5462,rigorista,nessuno storico rigori calciati,
+contesto.csv,5462,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6397,rigorista,nessuno storico rigori calciati,
+contesto.csv,6397,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5951,rigorista,nessuno storico rigori calciati,
+contesto.csv,5951,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6752,rigorista,nessuno storico rigori calciati,
+contesto.csv,6752,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5694,rigorista,nessuno storico rigori calciati,
+contesto.csv,5694,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7023,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7547,rigorista,nessuno storico rigori calciati,
+contesto.csv,7547,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4923,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7484,rigorista,nessuno storico rigori calciati,
+contesto.csv,7484,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6229,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7554,rigorista,nessuno storico rigori calciati,
+contesto.csv,7554,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5436,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6904,rigorista,nessuno storico rigori calciati,
+contesto.csv,6904,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7612,rigorista,nessuno storico rigori calciati,
+contesto.csv,7612,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6530,rigorista,nessuno storico rigori calciati,
+contesto.csv,6530,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5029,rigorista,nessuno storico rigori calciati,
+contesto.csv,5029,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7600,rigorista,nessuno storico rigori calciati,
+contesto.csv,7600,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7523,rigorista,nessuno storico rigori calciati,
+contesto.csv,7523,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7449,rigorista,nessuno storico rigori calciati,
+contesto.csv,7449,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7623,rigorista,nessuno storico rigori calciati,
+contesto.csv,7623,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6204,rigorista,nessuno storico rigori calciati,
+contesto.csv,6204,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7620,rigorista,nessuno storico rigori calciati,
+contesto.csv,7620,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7610,rigorista,nessuno storico rigori calciati,
+contesto.csv,7610,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7453,rigorista,nessuno storico rigori calciati,
+contesto.csv,7453,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5882,rigorista,nessuno storico rigori calciati,
+contesto.csv,5882,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7213,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4387,rigorista,nessuno storico rigori calciati,
+contesto.csv,4387,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7546,rigorista,nessuno storico rigori calciati,
+contesto.csv,7546,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7602,rigorista,nessuno storico rigori calciati,
+contesto.csv,7602,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7561,rigorista,nessuno storico rigori calciati,
+contesto.csv,7561,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7408,rigorista,nessuno storico rigori calciati,
+contesto.csv,7408,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7482,rigorista,nessuno storico rigori calciati,
+contesto.csv,7482,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7568,rigorista,nessuno storico rigori calciati,
+contesto.csv,7568,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7622,rigorista,nessuno storico rigori calciati,
+contesto.csv,7622,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,787,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6598,rigorista,nessuno storico rigori calciati,
+contesto.csv,6598,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,2169,rigorista,nessuno storico rigori calciati,
+contesto.csv,2169,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,2115,rigorista,nessuno storico rigori calciati,
+contesto.csv,2115,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,383,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7627,rigorista,nessuno storico rigori calciati,
+contesto.csv,7627,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,2297,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,4929,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7407,rigorista,nessuno storico rigori calciati,
+contesto.csv,7407,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7027,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7468,rigorista,nessuno storico rigori calciati,
+contesto.csv,7468,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7470,rigorista,nessuno storico rigori calciati,
+contesto.csv,7470,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7471,rigorista,nessuno storico rigori calciati,
+contesto.csv,7471,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6245,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6244,rigorista,nessuno storico rigori calciati,
+contesto.csv,6244,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,2401,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6523,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6682,rigorista,nessuno storico rigori calciati,
+contesto.csv,6682,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,6189,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7392,rigorista,nessuno storico rigori calciati,
+contesto.csv,7392,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,5485,rigorista,nessuno storico rigori calciati,
+contesto.csv,5485,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7545,rigorista,nessuno storico rigori calciati,
+contesto.csv,7545,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7396,rigorista,nessuno storico rigori calciati,
+contesto.csv,7396,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,7628,rigorista,nessuno storico rigori calciati,
+contesto.csv,7628,quota_minuti_2025_26,minuti non disponibili per questo giocatore,understat
+contesto.csv,,titolarita,"giudizio prospettico: nessuna fonte strutturata, va compilato a mano",redazionali
+contesto.csv,,calci_piazzati/corner,nessuna fonte strutturata disponibile,redazionali
+contesto.csv,,stato/rientro_stimato,"infortuni: dato volatile, da aggiornare a ridosso dell asta",redazionali
+prezzi_asta.csv,,mediana/p25/p75/n_campioni,"la fonte espone solo la media, non la distribuzione",
+mappa_nomi.csv,,Pellegrino M.,omonimia non risolta: Marco Pellegrino | Mateo Pellegrino,understat
+mappa_nomi.csv,,Sulemana I.,omonimia non risolta: Sulemana | Kamaldeen Sulemana,understat
+mappa_nomi.csv,,Terracciano,omonimia non risolta: Pietro Terracciano | Filippo Terracciano,understat
+mappa_nomi.csv,,Floriani Mussolini,"abbinato per token parziale a ""Romano Floriani"": da rileggere",understat
+mappa_nomi.csv,,Kalulu,"abbinato per token parziale a ""Pierre Kalulu Kyatengwa"": da rileggere",understat
+mappa_nomi.csv,,Soulè,"abbinato per token parziale a ""Matìas Soulè Malvano"": da rileggere",understat
+mappa_nomi.csv,,Zambo Anguissa,"abbinato per token parziale a ""Franck Zambo"": da rileggere",understat

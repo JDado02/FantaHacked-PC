@@ -1,0 +1,1055 @@
+/* ==========================================================================
+   FantaHacked — cabina di regia dell'asta
+
+   Sceglie deliberatamente un tema unico e scuro: l'asta si fa di sera, davanti
+   a uno schermo, e tutto il colore saturo e' riservato al verdetto. Ogni altro
+   elemento sta su una scala di grigi con una punta di blu, cosi' l'unica cosa
+   che salta all'occhio e' il numero che decide.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  --fondo:      #0A0F14;
+  --pannello:   #131B23;
+  --rilievo:    #1A242E;
+  --alto:       #22303C;
+  --linea:      #26343F;
+  --linea-tenue:#1D2831;
+
+  --inchiostro: #E8EFF5;
+  --secondario: #A9BAC9;
+  --muto:       #74889A;
+  --spento:     #4E6072;
+
+  /* L'unico accento: la luce dei riflettori. E' il colore del numero che decide. */
+  --ambra:      #F3B441;
+  --ambra-cupa: #8C6415;
+
+  /* Semantica del verdetto. Non si usano per nient'altro. */
+  --ok:         #47C98C;
+  --ok-cupo:    #14402C;
+  --attesa:     #F3B441;
+  --attesa-cupa:#4A360F;
+  --stop:       #F0575C;
+  --stop-cupo:  #45191B;
+
+  /* Ruoli: tinte smorzate, servono solo a scandire la lettura. */
+  --r-p: #9782CE;
+  --r-d: #5E95CA;
+  --r-c: #42A08F;
+  --r-a: #CB7F5E;
+
+  --raggio:   10px;
+  --raggio-s: 6px;
+
+  --display: "Oswald", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+  --testo: "Source Sans 3", "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+/* `display` esplicito su .avvio e .guscio batterebbe l'attributo hidden del
+   browser: senza questa riga le due schermate si sovrappongono. */
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--inchiostro);
+  font-family: var(--inchiostro);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+button, input, select { font-family: inherit; font-size: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ambra); outline-offset: 2px; }
+
+kbd {
+  font-family: var(--inchiostro); font-size: 11px; font-weight: 600;
+  background: var(--alto); color: var(--secondario);
+  border: 1px solid var(--linea); border-bottom-width: 2px;
+  border-radius: 4px; padding: 1px 5px;
+}
+
+.nota { color: var(--muto); font-size: 13px; margin: 4px 0 0; }
+.nota.piccola { font-size: 12px; }
+.errore {
+  background: var(--stop-cupo); border: 1px solid var(--stop);
+  color: #FFD9DA; border-radius: var(--raggio-s);
+  padding: 9px 12px; font-size: 13px; margin: 12px 0;
+}
+
+/* ================================================ MOTORE IRRAGGIUNGIBILE */
+
+.disconnesso {
+  position: fixed; inset: 0; z-index: 200;
+  display: grid; place-items: center; padding: 24px;
+  background: rgba(6, 10, 14, .93);
+  backdrop-filter: blur(3px);
+}
+.disconnesso-carta {
+  max-width: 460px; text-align: center;
+  background: var(--pannello);
+  border: 1px solid var(--stop);
+  border-radius: 14px; padding: 32px 34px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.6);
+}
+.disconnesso-icona { color: var(--stop); font-size: 22px; }
+.disconnesso h1 {
+  font-family: var(--display); font-weight: 500;
+  font-size: 22px; letter-spacing: .02em; margin: 10px 0 14px;
+}
+.disconnesso p { margin: 0 0 12px; color: var(--secondario); }
+.disconnesso-attesa {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 8px; color: var(--muto); font-size: 12px;
+}
+.battito {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--attesa); animation: battito 1.3s ease-in-out infinite;
+}
+@keyframes battito { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+
+/* Spia del collegamento nella barra: verde vuol dire che i numeri a schermo
+   arrivano dal motore, non che sono vecchi di dieci minuti. */
+.spia {
+  width: 7px; height: 7px; border-radius: 50%; flex: none;
+  background: var(--ok); box-shadow: 0 0 6px rgba(71,201,140,.55);
+}
+.spia.rotta { background: var(--stop); box-shadow: 0 0 6px rgba(240,87,92,.55); }
+
+/* =============================================================== AVVIO */
+
+.avvio {
+  position: fixed; inset: 0; overflow-y: auto;
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px 20px;
+  background:
+    radial-gradient(1100px 520px at 50% -10%, #16222E 0%, transparent 62%),
+    var(--fondo);
+}
+
+.avvio-carta {
+  width: 100%; max-width: 720px;
+  background: var(--pannello);
+  border: 1px solid var(--linea);
+  border-radius: 16px;
+  padding: 38px 40px 30px;
+  box-shadow: 0 30px 70px rgba(0,0,0,.5);
+}
+
+.marchio {
+  font-family: var(--display); font-weight: 600;
+  font-size: 40px; letter-spacing: .012em; line-height: 1;
+}
+.marchio-f { color: var(--ambra); }
+
+/* Il cursore di un terminale che lampeggia: e' il mezzo nome che manca,
+   e dice da che parte sta il programma senza doverlo scrivere. */
+.cursore {
+  display: inline-block; width: .42em; height: .78em;
+  background: var(--ok); margin-left: .16em; vertical-align: -.04em;
+  animation: lampeggia 1.15s steps(1) infinite;
+}
+@keyframes lampeggia { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
+
+.occhiello {
+  margin: 8px 0 0; color: var(--muto);
+  font-size: 12px; letter-spacing: .13em; text-transform: uppercase;
+}
+
+.regole-strip {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 24px 0 4px; padding: 14px 16px;
+  background: var(--rilievo); border: 1px solid var(--linea-tenue);
+  border-radius: var(--raggio);
+}
+.regola { display: flex; flex-direction: column; min-width: 92px; }
+.regola b {
+  font-family: var(--display); font-weight: 500; font-size: 20px;
+  font-variant-numeric: tabular-nums; line-height: 1.15;
+}
+.regola span {
+  font-size: 11px; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--muto);
+}
+
+.titolo-sezione {
+  font-family: var(--display); font-weight: 500;
+  font-size: 15px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--secondario);
+  margin: 30px 0 2px;
+}
+
+.squadre-griglia {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px;
+  margin-top: 16px;
+}
+.campo { display: flex; flex-direction: column; gap: 4px; }
+.campo label {
+  font-size: 11px; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--muto);
+}
+.campo.mio label { color: var(--ambra); }
+.campo input {
+  background: var(--fondo); border: 1px solid var(--linea);
+  border-radius: var(--raggio-s); padding: 9px 11px;
+  transition: border-color .15s;
+}
+.campo input:focus { border-color: var(--ambra); outline: none; }
+.campo.mio input { border-color: var(--ambra-cupa); }
+
+.avvio-azioni { display: flex; gap: 12px; align-items: center; margin-top: 26px; }
+
+.bottone {
+  background: var(--alto); color: var(--inchiostro);
+  border: 1px solid var(--linea); border-radius: var(--raggio-s);
+  padding: 9px 16px; cursor: pointer;
+  font-weight: 600; transition: background .13s, border-color .13s;
+}
+.bottone:hover { background: #2A3947; border-color: #3A4C5C; }
+.bottone.grande {
+  background: var(--ambra); border-color: var(--ambra); color: #17120A;
+  font-family: var(--display); font-weight: 500;
+  font-size: 17px; letter-spacing: .05em; text-transform: uppercase;
+  padding: 11px 30px;
+}
+.bottone.grande:hover { background: #FFC756; border-color: #FFC756; }
+.bottone.fantasma { background: transparent; }
+.bottone.minuscolo {
+  padding: 2px 8px; font-size: 12px; font-weight: 400;
+  color: var(--secondario); background: transparent;
+}
+.bottone:disabled { opacity: .4; cursor: default; }
+
+/* ============================================================== GUSCIO */
+
+.guscio { display: flex; flex-direction: column; height: 100vh; }
+
+.barra {
+  display: flex; align-items: center; gap: 26px;
+  padding: 0 20px; height: 62px; flex: none;
+  background: var(--pannello);
+  border-bottom: 1px solid var(--linea);
+}
+.barra-marchio {
+  font-family: var(--display); font-weight: 600; font-size: 21px;
+  letter-spacing: .01em;
+}
+.barra-spazio { flex: 1; }
+
+.fase, .turno { min-width: 0; }
+.fase-etichetta {
+  display: block; font-size: 10px; letter-spacing: .13em;
+  text-transform: uppercase; color: var(--muto);
+  white-space: nowrap;
+}
+/* Nessun nome di squadra deve poter allargare la barra: se e' lungo si
+   tronca, non spinge via i crediti. */
+.fase strong, .turno strong {
+  font-family: var(--display); font-weight: 400; font-size: 19px;
+  display: block; max-width: 220px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.fase-residui { color: var(--muto); font-size: 12px; margin-left: 6px; }
+.turno-riga { display: flex; align-items: baseline; gap: 8px; }
+.turno.mio strong { color: var(--ambra); }
+
+.metrica { display: flex; flex-direction: column; align-items: flex-end; }
+.metrica-etichetta {
+  font-size: 10px; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--muto);
+}
+.metrica-valore {
+  font-family: var(--display); font-weight: 500; font-size: 22px;
+  font-variant-numeric: tabular-nums; line-height: 1.1;
+}
+.metrica.accento .metrica-valore { color: var(--ambra); }
+.metrica-sotto { font-size: 11px; color: var(--muto); }
+
+.colonne {
+  flex: 1; min-height: 0;
+  display: grid; grid-template-columns: 264px minmax(0,1fr) 340px;
+}
+.rail, .destra { overflow-y: auto; padding: 16px 14px 40px; }
+.rail { border-right: 1px solid var(--linea); background: #0D141A; }
+.destra { border-left: 1px solid var(--linea); background: #0D141A; }
+.centro { overflow-y: auto; padding: 18px 22px 60px; min-width: 0; }
+
+.titolo-rail {
+  font-family: var(--display); font-weight: 500;
+  font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--secondario); margin: 2px 0 0;
+}
+
+/* ============================================================ SQUADRE */
+
+.squadre { display: flex; flex-direction: column; gap: 7px; margin-top: 14px; }
+
+.squadra {
+  background: var(--pannello); border: 1px solid var(--linea-tenue);
+  border-left: 3px solid var(--linea);
+  border-radius: var(--raggio-s);
+  padding: 9px 10px; cursor: pointer;
+  transition: border-color .13s, background .13s;
+}
+.squadra:hover { background: var(--rilievo); }
+.squadra.io { border-left-color: var(--ambra); }
+.squadra.turno { border-color: var(--ambra); background: #1A2029; }
+.squadra.esclusa { opacity: .45; }
+
+.squadra-testa { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.squadra-nome {
+  font-weight: 600; font-size: 13px; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap;
+}
+.squadra.io .squadra-nome { color: var(--ambra); }
+/* Sempre visibile: e' da qui che si aprono le rose degli avversari, ed e'
+   dove si va a correggere un acquisto registrato per sbaglio. Nascosto fino
+   al passaggio del mouse, semplicemente non lo si trovava. */
+.occhio {
+  background: var(--alto); border: 1px solid var(--linea-tenue);
+  border-radius: 3px; cursor: pointer;
+  color: var(--secondario); font-size: 9px; letter-spacing: .09em;
+  text-transform: uppercase; padding: 1px 5px; flex: none;
+  transition: color .12s, border-color .12s;
+}
+.occhio:hover { color: var(--ambra); border-color: var(--ambra-cupa); }
+
+.squadra-crediti {
+  font-family: var(--display); font-weight: 500; font-size: 16px;
+  font-variant-numeric: tabular-nums; flex: none;
+}
+.squadra-barra {
+  height: 3px; background: var(--alto); border-radius: 2px;
+  margin: 6px 0 7px; overflow: hidden;
+}
+.squadra-barra i { display: block; height: 100%; background: var(--spento); }
+.squadra.io .squadra-barra i { background: var(--ambra); }
+
+.pallini { display: flex; gap: 8px; }
+.gruppo-pallini { display: flex; align-items: center; gap: 2px; }
+.gruppo-pallini + .gruppo-pallini { margin-left: 7px; }
+.gruppo-pallini b {
+  font-size: 9px; font-weight: 700; letter-spacing: .06em;
+  color: var(--spento); margin-right: 3px;
+}
+/* I pallini dicono a colpo d'occhio quanto e' piena una rosa, reparto per
+   reparto: venticinque caselle che si riempiono. A cinque pixel pero' erano
+   una macchia grigia - l'informazione c'era e non si leggeva. Adesso sono
+   quadratini piu' grandi, staccati fra un reparto e l'altro, e i vuoti hanno
+   un contorno invece di sparire nel fondo. */
+.pallino {
+  width: 7px; height: 7px; border-radius: 2px;
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--alto);
+}
+.pallino.pieno { background: var(--secondario); box-shadow: none; }
+.squadra.io .pallino.pieno { background: var(--ambra); }
+
+.badge-turno {
+  display: inline-block; font-size: 9px; letter-spacing: .1em;
+  text-transform: uppercase; color: #17120A; background: var(--ambra);
+  border-radius: 3px; padding: 0 5px; margin-left: 6px; vertical-align: 1px;
+}
+
+/* ============================================================== CERCA */
+
+.cerca-guscio { position: relative; margin-bottom: 18px; }
+#cerca {
+  width: 100%; background: var(--pannello);
+  border: 1px solid var(--linea); border-radius: var(--raggio);
+  padding: 14px 46px 14px 16px;
+  font-size: 16px;
+  transition: border-color .13s, box-shadow .13s;
+}
+#cerca::placeholder { color: var(--spento); }
+#cerca:focus {
+  outline: none; border-color: var(--ambra);
+  box-shadow: 0 0 0 3px rgba(243,180,65,.1);
+}
+.scorciatoia { position: absolute; right: 13px; top: 14px; }
+
+.risultati {
+  position: absolute; z-index: 30; left: 0; right: 0; top: calc(100% + 5px);
+  background: var(--rilievo); border: 1px solid var(--linea);
+  border-radius: var(--raggio); overflow: hidden;
+  box-shadow: 0 18px 44px rgba(0,0,0,.55);
+}
+.risultato {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 13px; cursor: pointer; border-bottom: 1px solid var(--linea-tenue);
+}
+.risultato:last-child { border-bottom: none; }
+.risultato:hover, .risultato.evidenziato { background: var(--alto); }
+.risultato-nome { font-weight: 600; }
+.risultato-squadra { color: var(--muto); font-size: 12px; }
+.risultato-prezzo {
+  margin-left: auto; font-family: var(--display); font-weight: 500;
+  font-variant-numeric: tabular-nums; color: var(--secondario);
+}
+.risultato.venduto .risultato-nome { color: var(--spento); text-decoration: line-through; }
+
+.tag-ruolo {
+  flex: none; width: 19px; height: 19px; border-radius: 4px;
+  display: grid; place-items: center;
+  font-family: var(--display); font-weight: 500; font-size: 12px;
+  color: #0A0F14;
+}
+.tag-ruolo.P { background: var(--r-p); }
+.tag-ruolo.D { background: var(--r-d); }
+.tag-ruolo.C { background: var(--r-c); }
+.tag-ruolo.A { background: var(--r-a); }
+
+/* ============================================================= SCHEDA */
+
+.vuoto {
+  text-align: center; color: var(--muto);
+  padding: 90px 20px; line-height: 1.7;
+}
+.vuoto-icona { font-size: 26px; color: var(--alto); margin-bottom: 14px; }
+
+.scheda { display: none; }
+.scheda.viva { display: block; }
+
+.scheda-testa { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.scheda-nome {
+  font-family: var(--display); font-weight: 500; font-size: 30px;
+  line-height: 1.1; letter-spacing: .005em;
+}
+.scheda-sotto { color: var(--muto); font-size: 13px; margin-top: 2px; }
+.scheda-sotto b { color: var(--secondario); font-weight: 600; }
+
+.verdetto {
+  border-radius: var(--raggio); border: 1px solid;
+  padding: 18px 20px; display: flex; gap: 22px; align-items: center;
+}
+.verdetto.ottimo     { background: var(--ok-cupo);     border-color: var(--ok); }
+.verdetto.attenzione { background: var(--attesa-cupa); border-color: var(--attesa); }
+.verdetto.stop       { background: var(--stop-cupo);   border-color: var(--stop); }
+
+.verdetto-cifra { flex: none; text-align: center; min-width: 122px; }
+.verdetto-numero {
+  font-family: var(--display); font-weight: 600;
+  font-size: 66px; line-height: .92; font-variant-numeric: tabular-nums;
+}
+.verdetto.ottimo     .verdetto-numero { color: var(--ok); }
+.verdetto.attenzione .verdetto-numero { color: var(--attesa); }
+.verdetto.stop       .verdetto-numero { color: var(--stop); }
+.verdetto-unita {
+  font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--secondario); display: block; margin-top: 4px;
+}
+.verdetto-testo { min-width: 0; }
+.verdetto-parola {
+  font-family: var(--display); font-weight: 500;
+  font-size: 23px; letter-spacing: .07em; text-transform: uppercase;
+}
+.verdetto-frase { color: #DDE7EF; margin-top: 3px; font-size: 15px; }
+
+/* Niente flex qui: renderebbe ogni parola in grassetto un elemento a se',
+   con i suoi spazi, e la frase uscirebbe a pezzi. */
+.avviso {
+  display: block; margin-top: 12px; padding: 10px 13px;
+  background: var(--rilievo); border-left: 3px solid var(--attesa);
+  border-radius: 0 var(--raggio-s) var(--raggio-s) 0;
+  color: var(--secondario); font-size: 13px;
+}
+.avviso.grave { border-left-color: var(--stop); }
+.avviso.bonus { border-left-color: var(--ok); }
+
+.tag-coppia {
+  display: inline-block; margin-left: 6px; padding: 1px 6px;
+  border-radius: 3px; border: 1px solid var(--linea);
+  font-size: 10px; font-weight: 600; letter-spacing: .03em;
+  color: var(--muto); vertical-align: 1px;
+}
+
+.numeri {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  gap: 1px; background: var(--linea-tenue);
+  border: 1px solid var(--linea-tenue); border-radius: var(--raggio);
+  margin-top: 14px; overflow: hidden;
+}
+.numero { background: var(--pannello); padding: 11px 13px; }
+.numero span {
+  display: block; font-size: 10px; letter-spacing: .11em;
+  text-transform: uppercase; color: var(--muto);
+}
+.numero b {
+  font-family: var(--display); font-weight: 500; font-size: 22px;
+  font-variant-numeric: tabular-nums; line-height: 1.25;
+}
+.numero small { color: var(--muto); font-size: 11px; display: block; }
+
+/* ------------------------------------------------------ assegnazione */
+
+.assegna {
+  margin-top: 16px; padding: 15px 16px;
+  background: var(--pannello); border: 1px solid var(--linea);
+  border-radius: var(--raggio);
+}
+.assegna-titolo {
+  font-family: var(--display); font-weight: 500;
+  font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--secondario); margin-bottom: 11px;
+}
+.assegna-riga { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chi {
+  background: var(--rilievo); border: 1px solid var(--linea);
+  border-radius: var(--raggio-s); padding: 6px 11px; cursor: pointer;
+  font-size: 13px; display: flex; align-items: center; gap: 6px;
+  max-width: 190px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.chi:hover:not(:disabled) { background: var(--alto); }
+.chi.scelto { border-color: var(--ambra); background: #2A2113; color: #FFDFA0; }
+.chi.mio { border-left: 3px solid var(--ambra); }
+.chi:disabled { opacity: .35; cursor: default; }
+.chi kbd { font-size: 10px; padding: 0 4px; }
+
+.assegna-prezzo { display: flex; gap: 8px; align-items: center; margin-top: 12px; }
+.assegna-prezzo input {
+  width: 96px; background: var(--fondo); border: 1px solid var(--linea);
+  border-radius: var(--raggio-s); padding: 9px 11px;
+  font-family: var(--display); font-size: 20px; font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.assegna-prezzo input:focus { outline: none; border-color: var(--ambra); }
+
+/* --------------------------------------------------------- concorrenti */
+
+.blocchi { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+@media (max-width: 1180px) { .blocchi { grid-template-columns: 1fr; } }
+
+.blocco {
+  background: var(--pannello); border: 1px solid var(--linea-tenue);
+  border-radius: var(--raggio); padding: 13px 15px;
+}
+.blocco h3 {
+  font-family: var(--display); font-weight: 500;
+  font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muto); margin: 0 0 9px;
+}
+.riga-lista {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 5px 0; border-bottom: 1px solid var(--linea-tenue);
+  font-size: 13px;
+}
+.riga-lista:last-child { border-bottom: none; }
+.riga-lista .cresce { flex: 1; min-width: 0; overflow: hidden;
+                      text-overflow: ellipsis; white-space: nowrap; }
+.riga-lista .cifra {
+  font-family: var(--display); font-weight: 500; font-size: 15px;
+  font-variant-numeric: tabular-nums; flex: none;
+}
+.riga-lista .fioco { color: var(--muto); font-size: 12px; flex: none; }
+.riga-lista.cliccabile { cursor: pointer; }
+.riga-lista.cliccabile:hover .cresce { color: var(--ambra); }
+
+/* =============================================== COLONNA DI DESTRA */
+
+.schede-nav { display: flex; gap: 2px; margin-bottom: 14px; }
+.scheda-tab {
+  flex: 1; background: transparent; border: none;
+  border-bottom: 2px solid var(--linea);
+  padding: 7px 4px; cursor: pointer; color: var(--muto);
+  font-size: 12px; font-weight: 600; letter-spacing: .03em;
+}
+.scheda-tab:hover { color: var(--secondario); }
+.scheda-tab.attiva { color: var(--ambra); border-bottom-color: var(--ambra); }
+
+.vista { display: block; }
+
+.torna {
+  background: none; border: none; cursor: pointer; padding: 0 0 8px;
+  color: var(--muto); font-size: 12px;
+}
+.torna:hover { color: var(--ambra); }
+
+.reparto { margin-bottom: 15px; }
+.reparto-testa {
+  display: flex; align-items: baseline; gap: 8px;
+  padding-bottom: 5px; margin-bottom: 5px;
+  border-bottom: 1px solid var(--linea);
+}
+.reparto-nome {
+  font-family: var(--display); font-weight: 500;
+  font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+}
+.reparto-conta { margin-left: auto; color: var(--muto); font-size: 12px;
+                 font-variant-numeric: tabular-nums; }
+.reparto.P .reparto-nome { color: var(--r-p); }
+.reparto.D .reparto-nome { color: var(--r-d); }
+.reparto.C .reparto-nome { color: var(--r-c); }
+.reparto.A .reparto-nome { color: var(--r-a); }
+
+.giocatore-riga {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 4px 0; font-size: 13px;
+}
+.giocatore-riga .cresce { flex: 1; min-width: 0; overflow: hidden;
+                          text-overflow: ellipsis; white-space: nowrap; }
+.giocatore-riga .prezzo {
+  font-family: var(--display); font-weight: 500;
+  font-variant-numeric: tabular-nums; color: var(--ambra);
+}
+.giocatore-riga .vuoto-slot { color: var(--spento); font-style: italic; }
+.giocatore-riga .togli {
+  background: none; border: none; color: var(--spento); cursor: pointer;
+  padding: 0 3px; font-size: 14px; line-height: 1; visibility: hidden;
+}
+.giocatore-riga:hover .togli { visibility: visible; }
+.giocatore-riga .togli:hover { color: var(--stop); }
+
+.riquadro {
+  background: var(--pannello); border: 1px solid var(--linea-tenue);
+  border-radius: var(--raggio); padding: 12px 14px; margin-bottom: 14px;
+}
+.riquadro-titolo {
+  font-family: var(--display); font-weight: 500;
+  font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muto); margin-bottom: 8px;
+}
+.indicazione { font-size: 13px; color: var(--secondario); }
+
+.consiglio-voce {
+  display: block; width: 100%; text-align: left;
+  background: var(--pannello); border: 1px solid var(--linea-tenue);
+  border-left: 3px solid var(--linea);
+  border-radius: var(--raggio-s);
+  padding: 9px 11px; margin-bottom: 7px; cursor: pointer;
+}
+.consiglio-voce:hover { background: var(--rilievo); }
+.consiglio-voce.occasione { border-left-color: var(--ok); }
+.consiglio-voce.giusto    { border-left-color: var(--attesa); }
+.consiglio-voce.caro      { border-left-color: var(--spento); }
+.consiglio-voce.ripiego   { border-left-color: var(--r-c); }
+/* Le quattro sezioni si distinguono dal bordo prima che dal testo: quando si
+   scorre in fretta durante un rilancio, il colore arriva prima della parola. */
+.consiglio-voce.top         { border-left-color: var(--ok); }
+.consiglio-voce.alternativa { border-left-color: var(--r-c); }
+.consiglio-voce.evitare     { border-left-color: var(--stop); }
+.consiglio-voce.svuota      { border-left-color: var(--spento); }
+.consiglio-voce.coppia      { border-left-color: var(--r-p); background: #151A22; }
+/* Non sono affari: sono i migliori dentro i crediti che il piano assegna a
+   quel reparto. Il bordo ambra lo dice senza doverlo leggere. */
+.consiglio-voce.obbligato   { border-left-color: var(--attesa); }
+/* Il numero d'ordine: e' una classifica, e va vista come tale. */
+.posto {
+  display: inline-grid; place-items: center;
+  min-width: 16px; height: 16px; padding: 0 3px; margin-right: 6px;
+  border-radius: 3px; background: var(--rilievo); color: var(--muto);
+  font-family: var(--display); font-size: 10px; font-weight: 600;
+  vertical-align: 1px;
+}
+.consiglio-voce.top:first-of-type .posto { background: var(--ok-cupo); color: var(--ok); }
+.consiglio-testa { display: flex; align-items: baseline; gap: 8px; }
+.consiglio-nome { font-weight: 600; flex: 1; min-width: 0;
+                  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.consiglio-cifra {
+  font-family: var(--display); font-weight: 500; font-size: 17px;
+  font-variant-numeric: tabular-nums; color: var(--ambra);
+}
+/* Quando il numero non e' il tuo limite ma la chiusura attesa, non deve avere
+   lo stesso colore: sono due cifre che si fa in un attimo a confondere, e
+   confonderle vuol dire offrire quaranta dove il limite era venti. */
+.consiglio-cifra.stimata { color: var(--spento); font-size: 15px; }
+.dubbio {
+  display: inline-grid; place-items: center;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--attesa-cupa); color: var(--attesa);
+  border: 1px solid var(--attesa);
+  font-size: 10px; font-weight: 700; margin-left: 5px;
+  vertical-align: 1px; cursor: help;
+}
+.consiglio-riga2 { display: flex; align-items: baseline; gap: 7px; margin-top: 3px; }
+.consiglio-perche { color: var(--muto); font-size: 12px; min-width: 0; }
+.esito {
+  flex: none; font-size: 9px; font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; padding: 1px 5px; border-radius: 3px;
+  border: 1px solid;
+}
+.esito.ottimo     { color: var(--ok);     border-color: var(--ok);     background: var(--ok-cupo); }
+.esito.attenzione { color: var(--attesa); border-color: var(--attesa); background: var(--attesa-cupa); }
+.esito.stop       { color: var(--stop);   border-color: var(--stop);   background: var(--stop-cupo); }
+
+.listone-filtri { display: flex; gap: 5px; margin-bottom: 9px; }
+.filtro {
+  flex: 1; background: var(--pannello); border: 1px solid var(--linea);
+  border-radius: var(--raggio-s); padding: 5px 0; cursor: pointer;
+  font-size: 12px; font-weight: 600; color: var(--muto);
+}
+/* La classe che mette l'interfaccia e' `attiva`: con `attivo` il filtro scelto
+   restava indistinguibile dagli altri. */
+.filtro.attiva { color: var(--ambra); border-color: var(--ambra-cupa); background: #1E1A11; }
+.filtro[data-titolari] { flex: 1.6; }
+
+/* ------------------------------------------------- gerarchia di reparto
+   Chi gioca davvero. E' l'etichetta che impedisce di scambiare una
+   fantamedia alta su otto partite per un affare, quindi deve leggersi
+   accanto al nome senza dover cercare, ma non rubare la scena al verdetto:
+   testo piccolo, colore tenue, nessuno sfondo pieno. */
+.grado {
+  flex: none; font-size: 9px; font-weight: 700; letter-spacing: .05em;
+  text-transform: uppercase; padding: 1px 4px; border-radius: 3px;
+  border: 1px solid var(--linea); color: var(--muto);
+  vertical-align: 1px; white-space: nowrap; cursor: help;
+}
+.grado.titolare     { color: var(--ok);     border-color: #245743; }
+.grado.titolare.incerto { color: var(--attesa); border-color: var(--ambra-cupa); }
+.grado.ballottaggio { color: var(--attesa); border-color: var(--ambra-cupa); }
+.grado.rotazione    { color: var(--secondario); }
+.grado.riserva      { color: var(--stop);   border-color: #5B2225; }
+.rigorista {
+  display: inline-grid; place-items: center; width: 14px; height: 14px;
+  border-radius: 3px; background: var(--ambra-cupa); color: var(--ambra);
+  font-size: 9px; font-weight: 800; vertical-align: 1px; margin-left: 3px;
+  cursor: help;
+}
+.utilita {
+  flex: none; font-family: var(--display); font-size: 12px; font-weight: 500;
+  color: var(--ok); font-variant-numeric: tabular-nums; cursor: help;
+}
+.utilita.meno { color: var(--stop); }
+/* Quanto rende in assoluto, accanto a quanto rende in piu' di quello che
+   costa: sono due numeri diversi e vederli insieme e' l'unico modo di capire
+   perche' il portiere da sei crediti non scavalca quello da quaranta. */
+.resa {
+  flex: none; font-size: 11px; color: var(--spento);
+  font-variant-numeric: tabular-nums; cursor: help;
+}
+.consiglio-voce .consiglio-perche { display: block; margin-top: 3px; }
+.vista.in-aggiornamento { opacity: .55; transition: opacity .12s; }
+
+/* ---------------------------------------------------------- il listone
+   Tre colonne di numeri che vogliono dire cose diverse: senza intestazione
+   si finisce per credere che quella accanto al nome sia il prezzo da
+   pagare, e non lo e'. */
+.listone-intestazione {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 0 2px 5px; margin-bottom: 2px;
+  border-bottom: 1px solid var(--linea);
+  font-size: 10px; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--spento);
+}
+.listone-intestazione .cresce { flex: 1; }
+.col {
+  flex: none; width: 34px; text-align: right;
+  font-variant-numeric: tabular-nums; font-size: 12px; color: var(--muto);
+}
+.listone-intestazione .col { font-size: 10px; }
+.col.forte { color: var(--ambra); font-family: var(--display); font-size: 15px;
+             font-weight: 500; }
+.listone-intestazione .col.forte { font-family: var(--inchiostro); font-size: 10px;
+                                   font-weight: 400; }
+.listone-riga .venduto-a { max-width: 96px; overflow: hidden;
+                           text-overflow: ellipsis; white-space: nowrap; }
+
+/* ------------------------------------------------- la squadra che esce
+   L'undici non e' un grafico: e' l'unica risposta che conta a fine asta,
+   e va letto per reparti come si legge una formazione sul giornale. */
+.undici-testa { display: flex; align-items: baseline; gap: 9px; margin-bottom: 6px; }
+.modulo {
+  font-family: var(--display); font-size: 17px; font-weight: 600;
+  letter-spacing: .1em; color: var(--inchiostro);
+}
+.cifra.grande { font-family: var(--display); font-size: 22px; font-weight: 500;
+                color: var(--ambra); font-variant-numeric: tabular-nums; }
+.cifra.ok { color: var(--ok); }
+.cifra.attenzione { color: var(--attesa); }
+/* `campo` era gia' preso dai campi del modulo iniziale: qui serve il campo
+   da gioco, e due regole con lo stesso nome si sarebbero mangiate a vicenda. */
+.formazione { display: flex; flex-direction: column; gap: 4px;
+              background: linear-gradient(180deg, #101820, #0D141A);
+              border: 1px solid var(--linea-tenue);
+              border-radius: var(--raggio-s); padding: 8px; }
+.formazione .linea { display: flex; gap: 4px; justify-content: center;
+                     flex-wrap: wrap; }
+.maglia {
+  flex: 1 1 0; min-width: 0; max-width: 120px;
+  display: flex; flex-direction: column; align-items: center; gap: 1px;
+  padding: 4px 3px; border-radius: 4px;
+  background: var(--rilievo); border: 1px solid var(--linea);
+  font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  cursor: help;
+}
+.maglia b { font-family: var(--display); font-weight: 500; font-size: 12px;
+            color: var(--ambra); font-variant-numeric: tabular-nums; }
+.maglia.titolare { border-color: #245743; }
+.maglia.ballottaggio, .maglia.rotazione { border-color: var(--ambra-cupa); }
+.maglia.riserva { border-color: #5B2225; }
+.maglia.vuota { color: var(--spento); background: transparent;
+                border-style: dashed; }
+
+.barra-piano { height: 6px; border-radius: 3px; background: var(--alto);
+               overflow: hidden; display: flex; margin: 6px 0 3px; }
+.barra-piano i { display: block; height: 100%; }
+.barra-piano i.P { background: var(--r-p); }
+.barra-piano i.D { background: var(--r-d); }
+.barra-piano i.C { background: var(--r-c); }
+.barra-piano i.A { background: var(--r-a); }
+.legenda-piano { display: flex; flex-wrap: wrap; gap: 10px; font-size: 11px;
+                 color: var(--muto); font-variant-numeric: tabular-nums; }
+.legenda-piano b { font-weight: 600; }
+
+/* =========================================================== BRINDISI */
+
+.brindisi {
+  position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%);
+  background: var(--alto); border: 1px solid var(--linea);
+  border-left: 3px solid var(--ambra);
+  border-radius: var(--raggio-s); padding: 10px 18px;
+  box-shadow: 0 14px 34px rgba(0,0,0,.5); z-index: 60;
+  font-size: 13px; max-width: 70vw;
+}
+.brindisi.male { border-left-color: var(--stop); }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--alto); border-radius: 5px;
+                            border: 3px solid var(--fondo); }
+::-webkit-scrollbar-thumb:hover { background: #33465A; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+@media (max-width: 1100px) {
+  .colonne { grid-template-columns: 210px minmax(0,1fr) 290px; }
+  .verdetto-numero { font-size: 52px; }
+}
+
+/* ------------------------------------------------- in positivo o in negativo
+   Quanto ha pagato una rosa rispetto a quello che vale. Non e' un giudizio sul
+   giocatore: e' un giudizio sull'asta di chi l'ha comprato, ed e' la cosa che
+   dice se un avversario con centocinquanta crediti residui sia messo bene o
+   abbia solo comprato poco. */
+.bilancio {
+  border: 1px solid var(--linea-tenue); border-left: 3px solid var(--linea);
+  border-radius: var(--raggio-s); background: var(--pannello);
+  padding: 9px 11px; margin-bottom: 10px;
+}
+.bilancio.positivo { border-left-color: var(--ok); }
+.bilancio.negativo { border-left-color: var(--stop); }
+.bilancio.pari     { border-left-color: var(--spento); }
+.bilancio-testa { display: flex; align-items: baseline; gap: 8px; }
+.bilancio-verso {
+  flex: 1; font-family: var(--display); font-weight: 500; font-size: 12px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--muto);
+}
+.bilancio-cifra {
+  font-family: var(--display); font-weight: 500; font-size: 19px;
+  font-variant-numeric: tabular-nums;
+}
+.bilancio.positivo .bilancio-cifra { color: var(--ok); }
+.bilancio.negativo .bilancio-cifra { color: var(--stop); }
+.bilancio.pari     .bilancio-cifra { color: var(--spento); }
+.bilancio-barre {
+  display: flex; gap: 14px; margin: 3px 0 5px;
+  font-size: 12px; color: var(--secondario);
+}
+.bilancio-barre b { font-variant-numeric: tabular-nums; color: var(--inchiostro); }
+
+/* Lo scarto sul singolo acquisto, accanto al prezzo pagato. */
+.scarto {
+  flex: none; font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums;
+  padding: 0 4px; border-radius: 3px; cursor: help; margin-right: 4px;
+}
+.scarto.sopra { color: var(--stop); background: var(--stop-cupo); }
+.scarto.sotto { color: var(--ok);   background: var(--ok-cupo); }
+.scarto.pari  { color: var(--spento); }
+
+/* Intestazioni del listone: ordinano, e quindi devono sembrare cliccabili. */
+.listone-intestazione .ordina {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: inherit; color: inherit; text-align: inherit;
+}
+.listone-intestazione .ordina:hover { color: var(--secondario); }
+.listone-intestazione .ordina.attiva { color: var(--ambra); }
+.listone-intestazione .ordina.cresce { text-align: left; }
+.freccia { font-style: normal; font-size: 9px; margin-left: 2px; }
+
+/* Il rischio di restare in dieci: rosso quando la rosa non sta in piedi.
+   Verde e ambra ci sono gia' piu' su, insieme alle altre cifre. */
+.cifra.stop { color: var(--stop); }
+
+/* ------------------------------------------------ correggere i nomi */
+/* Sbagliare a scrivere un nome non deve costare l'asta: il modulo sta nel
+   rail, si apre col bottone accanto al titolo e non porta via la pagina. */
+.titolo-rail #btn-rinomina { float: right; margin-top: -2px; }
+
+.rinomina {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 10px;
+  padding: 8px;
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  background: var(--rilievo);
+}
+
+.rinomina-riga { display: flex; align-items: center; gap: 6px; }
+
+.rinomina-riga span {
+  width: 18px;
+  font-size: 11px;
+  color: var(--muto);
+  text-align: right;
+}
+
+.rinomina-riga input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 6px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--inchiostro);
+  background: var(--fondo);
+  border: 1px solid var(--linea);
+  border-radius: 5px;
+}
+
+.rinomina-azioni {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* =============================================== i consigli, al centro
+   Stavano in una colonna da 340px mentre mezzo schermo diceva "cerca un
+   giocatore". Erano le due cose piu' importanti del programma: una occupava
+   meta' schermo per non dire niente, l'altra non aveva posto per dirlo. */
+.consiglio-centro { margin-top: 4px; }
+
+/* Con la larghezza del centro ci stanno due colonne di consigli, e due
+   colonne vogliono dire il doppio dei nomi sotto gli occhi senza scorrere:
+   in asta lo scorrimento e' tempo che non hai. */
+.lista-voci {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 8px;
+  align-content: start;
+}
+
+.consiglio-centro .consiglio-voce { margin: 0; }
+
+/* --------------------------------------------- le spiegazioni si aprono */
+.spiega { margin: 0 0 10px; }
+
+.spiega > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  padding: 2px 8px 2px 6px;
+  font-size: 11px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--muto);
+  background: var(--rilievo);
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.spiega > summary::-webkit-details-marker { display: none; }
+.spiega > summary::before { content: '?'; font-weight: 700; color: var(--ambra); }
+.spiega > summary:hover { color: var(--secondario); border-color: var(--alto); }
+.spiega[open] > summary { margin-bottom: 8px; }
+
+.spiega-corpo {
+  max-width: 68ch;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--secondario);
+  background: var(--rilievo);
+  border-left: 2px solid var(--ambra-cupa);
+  border-radius: 0 6px 6px 0;
+}
+
+.spiega-corpo b { color: var(--inchiostro); }
+
+/* L'indicazione di reparto e' una riga sola: non le serve l'altezza di un
+   riquadro con tanto di titolo. */
+.indicazione-strip { padding: 10px 14px; }
+.indicazione-strip .indicazione { margin: 0; }
+
+/* Il titolo della colonna centrale. Serve a dire dove sono finiti i consigli:
+   prima erano una scheda in alto a destra, e chi era abituato a cercarli li'
+   ha visto sparire una linguetta senza capire dove fosse andata. */
+.titolo-centro {
+  margin: 2px 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ambra);
+}
+
+/* Una sezione vuota non e' un guasto: quasi sempre vuol dire "non c'e' niente
+   da segnalare", e allora la cosa utile e' dire perche'. */
+.sezione-vuota {
+  margin: 0;
+  padding: 9px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--secondario);
+  background: var(--rilievo);
+  border: 1px dashed var(--linea);
+  border-radius: 6px;
+}
+
+/* La porta per tornare ai consigli. Sta in alto a destra sulla scheda del
+   giocatore, dove l'occhio la cerca, e dice anche dove porta: un semplice
+   "x" avrebbe fatto pensare a "cancella l'acquisto". */
+.chiudi-scheda {
+  margin-left: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--muto);
+  background: var(--rilievo);
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.chiudi-scheda span {
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.chiudi-scheda:hover {
+  color: var(--inchiostro);
+  border-color: var(--alto);
+  background: var(--alto);
+}
+
+/* Fuori dalla lista di serie A. Rosso pieno, non una sfumatura: non e' un
+   giudizio del motore ma un fatto del regolamento, e chi lo compra si prende
+   una casella vuota in rosa per tutta la stagione. */
+.cartellino.fuori-lista {
+  margin-left: 6px;
+  padding: 1px 6px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  color: var(--fondo);
+  background: var(--stop);
+  border-radius: 3px;
+  vertical-align: middle;
+}
