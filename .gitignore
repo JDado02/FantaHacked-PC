@@ -9,6 +9,13 @@ motore/fanta.db.prima-della-divisione
 *.db.precedente
 *.db.parziale
 
+# Le copie usa e getta che le simulazioni creano per non pestarsi i piedi:
+# una per asta e per processo, cancellate a fine giro.
+simulazioni/cento_*.db
+simulazioni/cento_*.db-journal
+simulazioni/*_[0-9]*_[0-9]*.db
+pubblicazione/
+
 # L'eseguibile e la cartella di lavoro di PyInstaller: 50 MB che si rifanno
 # con un comando.
 FantaHacked.exe
