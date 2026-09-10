@@ -12,6 +12,15 @@
 # dal pacchetto adesso lo si sa prima, e si puo' controllare.
 * text=auto eol=lf
 
+# Fuori dall'archivio "Download ZIP" di GitHub: quello e' la strada del
+# sorgente, per chi l'antivirus lo blocca, e portarsi dentro l'eseguibile
+# compilato sarebbe esattamente il contrario dello scopo. Ventidue megabyte
+# su ventitre'. Il link diretto al file continua a funzionare: `export-ignore`
+# toglie il file dall'archivio generato, non dal repository.
+FantaHacked-Windows.zip export-ignore
+build/ export-ignore
+simulazioni/cento_aste_mercato.json export-ignore
+
 # I binari non si toccano.
 *.png  binary
 *.jpg  binary
