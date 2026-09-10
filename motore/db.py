@@ -50,6 +50,20 @@ class DatiTroppoNuovi(Exception):
     """Il file dei dati vuole una versione del programma piu' recente."""
 
 
+def _cartella(percorso):
+    """Si assicura che la cartella del file esista.
+
+    Serve quando `FantaHacked.exe` viene messo in una cartella vuota: li'
+    `motore/` non c'e', e SQLite non crea le cartelle per conto suo - dice
+    soltanto "unable to open database file", che a chi ha appena fatto doppio
+    clic non spiega niente.
+    """
+    cartella = os.path.dirname(os.path.abspath(percorso))
+    if cartella and not os.path.isdir(cartella):
+        os.makedirs(cartella)
+    return percorso
+
+
 def _v(x):
     """Cella CSV -> valore SQLite. La stringa vuota diventa NULL, non zero."""
     if x is None or x == '':
@@ -65,14 +79,14 @@ def connetti(percorso=None, dati=None, **kw):
     solo, viene spezzato in due prima di tutto il resto: chi aveva un'asta in
     corso se la ritrova dov'era.
     """
-    percorso = percorso or DB_PATH
+    percorso = _cartella(percorso or DB_PATH)
     dati = dati or DATI_PATH
     _dividi_il_vecchio(percorso, dati)
 
     con = sqlite3.connect(percorso, **kw)
     con.row_factory = sqlite3.Row
     if not _ha_tabelle(con):
-        with open(os.path.join(MOTORE, 'schema_asta.sql'), encoding='utf-8') as f:
+        with open(percorsi.risorsa('motore', 'schema_asta.sql'), encoding='utf-8') as f:
             con.executescript(f.read())
         con.commit()
     if os.path.exists(dati):
@@ -144,10 +158,10 @@ def _dividi_il_vecchio(percorso, dati):
     if not {'giocatori', 'acquisti'} <= tabelle:
         src.close()
         return
-    _copia(src, dati, os.path.join(MOTORE, 'schema_dati.sql'),
+    _copia(src, dati, percorsi.risorsa('motore', 'schema_dati.sql'),
            ['squadre', 'giocatori', 'statistiche', 'avanzate', 'contesto',
             'gerarchie', 'accoppiate', 'calendario', 'prezzi_asta', 'proiezioni'])
-    _copia(src, percorso, os.path.join(MOTORE, 'schema_asta.sql'),
+    _copia(src, percorso, percorsi.risorsa('motore', 'schema_asta.sql'),
            ['asta', 'presidenti', 'acquisti'])
     src.close()
     os.rename(vecchio, vecchio + '.prima-della-divisione')
@@ -271,7 +285,7 @@ def crea_dati(percorso=None, verboso=True, generato_il=None):
         os.remove(percorso)
     con = sqlite3.connect(percorso)
     con.row_factory = sqlite3.Row
-    with open(os.path.join(MOTORE, 'schema_dati.sql'), encoding='utf-8') as f:
+    with open(percorsi.risorsa('motore', 'schema_dati.sql'), encoding='utf-8') as f:
         con.executescript(f.read())
 
     n = {}
@@ -340,12 +354,12 @@ def _data_manifest():
 
 def crea_asta(percorso=None):
     """Un file d'asta vuoto. Cancella quello che c'era: usarlo con attenzione."""
-    percorso = percorso or DB_PATH
+    percorso = _cartella(percorso or DB_PATH)
     if os.path.exists(percorso):
         os.remove(percorso)
     con = sqlite3.connect(percorso)
     con.row_factory = sqlite3.Row
-    with open(os.path.join(MOTORE, 'schema_asta.sql'), encoding='utf-8') as f:
+    with open(percorsi.risorsa('motore', 'schema_asta.sql'), encoding='utf-8') as f:
         con.executescript(f.read())
     con.commit()
     con.close()

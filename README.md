@@ -19,6 +19,18 @@ differenze**.
 
 ## Come si usa
 
+**Un file solo.** `FantaHacked.exe` si copia dove si vuole — anche su una
+chiavetta, anche in una cartella vuota — e funziona: interfaccia, motore,
+schemi e regolamento predefinito viaggiano dentro l'eseguibile. Al primo
+avvio si scarica i dati dei giocatori (mezzo mega) e si crea accanto le due
+cartelle che gli servono:
+
+```
+FantaHacked.exe
+├── database/dati.db     scaricato, si può ributtare via quando si vuole
+└── motore/asta.db       la tua asta, che non esce mai da qui
+```
+
 Doppio clic su `FantaHacked.exe`. Si apre una finestra con la sua icona: non è
 una scheda del browser, e per uscire si chiude come qualunque programma.
 
@@ -135,6 +147,12 @@ python -m PyInstaller --clean --distpath . --workpath build/lavoro build/FantaHa
 
 Va lanciato **dalla cartella del progetto**: lo `.spec` ha percorsi relativi, e
 da un'altra cartella produce un eseguibile che non parte.
+
+Se accanto all'eseguibile c'è una copia vera di `app/web`, `motore/schema_*.sql`
+o `database/regole_lega.json`, vince quella su quella impacchettata. Serve a
+due cose opposte: lavorare sull'interfaccia senza ricostruire l'exe a ogni
+riga, e permettere di correggersi il proprio regolamento senza toccare il
+programma.
 
 ---
 

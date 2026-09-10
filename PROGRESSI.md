@@ -2812,9 +2812,28 @@ Sull'asta vera di quest'anno: 200 righe, 13 giocatori fermi, e in cima alla
 classifica del motore c'e' ancora **I Violentatori** con 2285 punti, +81 sul
 secondo.
 
+## Un file solo, e funziona
+
+`FantaHacked.exe` aveva bisogno di mezzo repository accanto per partire, e non
+lo diceva: spostato in una cartella vuota si apriva su una pagina bianca.
+L'interfaccia, i due schemi dei database e il regolamento predefinito adesso
+viaggiano **dentro** l'eseguibile: appartengono al programma, non all'utente.
+Se accanto all'exe c'e' una copia vera di quei file vince quella &mdash; cosi'
+si lavora sull'interfaccia senza ricostruire niente, e chi vuole puo'
+correggersi il proprio `regole_lega.json`.
+
+Mancava anche una riga: SQLite non crea le cartelle, e in una cartella vuota
+`motore/` non c'e'. L'errore che usciva era «unable to open database file»,
+che a chi ha appena fatto doppio clic non spiega niente.
+
+Provato per davvero: exe copiato da solo in una cartella vuota, scarica i
+dati, si crea `database/` e `motore/`, e apre l'interfaccia completa. Ventidue
+megabyte, nient'altro.
+
 ## Numeri
 
 - marchio: un file di geometria, **nove immagini** generate
+- l'eseguibile: **un file**, 22 MB, funziona in una cartella vuota
 - caratteri: **zero** richieste di rete per disegnare l'interfaccia
 - apk: **3,4 MB**, Android 7 in su
 - 47 + 23 + 264 verifiche Python, tutte superate

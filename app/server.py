@@ -19,10 +19,15 @@ def _radice():
 
 
 BASE = _radice()
-WEB = os.path.join(BASE, 'app', 'web')
 sys.path.insert(0, os.path.join(BASE, 'motore'))
+if getattr(sys, 'frozen', False):
+    sys.path.insert(0, os.path.join(getattr(sys, '_MEIPASS', BASE), 'motore'))
 
 import percorsi
+
+# L'interfaccia viaggia dentro l'eseguibile, ma una copia sul disco accanto
+# vince: cosi' ci si lavora senza ricostruire l'exe a ogni riga.
+WEB = percorsi.risorsa('app', 'web')
 import db as dbmod
 import regole as regmod
 import proiezioni as prmod

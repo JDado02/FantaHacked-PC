@@ -22,6 +22,31 @@ def dentro(*parti):
     return os.path.join(radice(), *parti)
 
 
+def risorsa(*parti):
+    """Un file che il programma **legge e basta**: interfaccia, schemi, regole.
+
+    Sono cose che appartengono al programma, non all'utente, e da qui in poi
+    viaggiano **dentro** l'eseguibile: cosi' `FantaHacked.exe` funziona anche
+    da solo, in una cartella vuota, senza portarsi dietro mezzo repository.
+    Prima ne aveva bisogno e non lo diceva: spostato l'exe altrove, si apriva
+    su una pagina bianca.
+
+    Se accanto all'eseguibile c'e' una copia vera di quel file, vince quella.
+    Serve a due cose opposte e utili tutte e due: lavorare sull'interfaccia
+    senza ricostruire l'exe a ogni riga, e permettere a chi vuole di
+    correggersi il proprio `regole_lega.json` senza toccare il programma.
+    """
+    fuori = os.path.join(radice(), *parti)
+    if os.path.exists(fuori):
+        return fuori
+    dentro_al_pacchetto = getattr(sys, '_MEIPASS', None)
+    if dentro_al_pacchetto:
+        candidato = os.path.join(dentro_al_pacchetto, *parti)
+        if os.path.exists(candidato):
+            return candidato
+    return fuori
+
+
 # Cartelle usate da tutto il resto.
 MOTORE   = dentro('motore')
 DATABASE = dentro('database')

@@ -192,7 +192,7 @@ class Regole(object):
 
 def carica(percorso=None):
     if percorso is None:
-        percorso = os.path.join(percorsi.DATABASE, 'regole_lega.json')
+        percorso = percorsi.risorsa('database', 'regole_lega.json')
     with open(percorso, encoding='utf-8') as f:
         return Regole(json.load(f))
 
