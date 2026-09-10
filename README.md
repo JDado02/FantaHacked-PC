@@ -19,29 +19,46 @@ informazioni* → *Esegui comunque*.
 <details>
 <summary>Se l'antivirus dice «Wacatac» o «Trojan»</summary>
 
-È un falso positivo, e vale la pena spiegare da dove viene invece di dire
-«fidati».
+È un falso positivo. Vale la pena spiegare da dove viene, perché «fidati» non
+è una risposta — e perché quello che ho scoperto misurandolo è più
+interessante di quello che pensavo.
 
-La prima versione pubblicata qui era un **eseguibile unico**. Un file unico di
-PyInstaller è un programmino che a ogni avvio si scompatta da solo in una
-cartella temporanea e poi esegue quello che ha appena scritto: descritta così,
-è la definizione di un dropper, e l'analisi automatica di Defender lo ha
-classificato `Trojan:Win32/Wacatac.B!ml`. Il suffisso `!ml` vuol dire proprio
-questo — nessuna firma di un virus conosciuto, solo un modello statistico che
-ha visto una forma sospetta. È il falso positivo più comune che capiti a chi
-distribuisce programmi Python.
+**Il primo caso.** La prima versione pubblicata era un **eseguibile unico**.
+Un file unico di PyInstaller è un programmino che a ogni avvio si scompatta da
+solo in una cartella temporanea e poi esegue quello che ha appena scritto:
+descritta così, è la definizione di un dropper. Defender l'ha classificato
+`Trojan:Win32/Wacatac.B!ml`. Il suffisso `!ml` dice il resto: nessuna firma di
+un virus conosciuto, solo un modello statistico che ha visto una forma
+sospetta.
 
-Quello che si scarica adesso è la **versione a cartella**: un avvio da cinque
-megabyte e accanto le sue librerie, come qualunque programma Windows normale.
-Non si scompatta niente, e sullo stesso computer con le stesse definizioni
-passa pulita. In più parte prima, perché non deve rifare l'estrazione a ogni
-doppio clic.
+**Il secondo caso, che ha spiegato il primo.** Passato alla versione a
+cartella, la segnalazione si è spostata su
+`_internal/app/web/index.html` — `Trojan:Script/Wacatac.H!ml`. Allora l'ho
+sezionato con lo scanner a riga di comando:
 
-Se dovesse succedere lo stesso a questa, l'unica cosa che risolve davvero è
-segnalarlo a Microsoft: si carica il file su
+- lo stesso `index.html`, identico byte per byte tranne i **terminatori di
+  riga**, è segnalato in CRLF e pulito in LF;
+- tagliato a metà, **nessuna delle due metà** fa scattare niente: il giudizio
+  è su tutto il file insieme;
+- ricompilare l'eseguibile lo fa passare pulito senza cambiare una riga di
+  codice.
+
+Cioè: il verdetto si attacca al singolo file, non al programma. Non esiste un
+modo di *progettare* un pacchetto che non venga mai segnalato. Esiste però il
+modo di non pubblicarne uno che lo è già, ed è `python build/controlla.py`:
+passa lo zip e la cartella a Defender e si rifiuta di dire «pubblica» finché
+non sono puliti. Da qui in poi nessuna versione esce senza quel controllo.
+
+Nel frattempo `.gitattributes` tiene i file a LF anche nella copia di lavoro,
+così quello che si impacchetta è **esattamente** quello che c'è nel
+repository: prima `core.autocrlf` li convertiva in CRLF all'uscita, e il file
+pubblicato non era più quello controllato.
+
+Se dovesse succedere di nuovo, l'unica cosa che corregge la diagnosi per tutti
+è segnalarla a Microsoft: si carica il file su
 [microsoft.com/wdsi/filesubmission](https://www.microsoft.com/en-us/wdsi/filesubmission)
-scegliendo *Software developer* e *Incorrectly detected*, e in un paio di
-giorni la diagnosi viene corretta per tutti.
+scegliendo *Software developer* e *Incorrectly detected*. Rispondono in un
+paio di giorni.
 
 </details>
 
@@ -120,6 +137,7 @@ FantaHacked.exe          l'eseguibile (si costruisce, non sta nel repository)
 │   ├── FantaHacked.spec           il file unico, per la chiavetta
 │   ├── FantaHacked_cartella.spec  la versione che si distribuisce
 │   ├── impacchetta.py             e lo zip che ne esce
+│   ├── controlla.py               che passa dall'antivirus prima di uscire
 │   └── marchio.py       il marchio, in nove misure, da una geometria sola
 └── simulazioni/         trecento aste per misurare ogni modifica
 ```
@@ -194,6 +212,7 @@ Quello che si distribuisce è la versione **a cartella**, poi impacchettata:
 ```bash
 python -m PyInstaller --clean --distpath build/dist --workpath build/lavoro build/FantaHacked_cartella.spec
 python build/impacchetta.py          # -> FantaHacked-Windows.zip
+python build/controlla.py            # e non si pubblica se non passa
 ```
 
 Il file unico serve ancora, per tenerlo su una chiavetta:

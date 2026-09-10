@@ -1,7 +1,26 @@
-* text=auto
-*.csv text
-*.py text
-*.md text
-*.json text
-*.sql text
+# Fine riga: LF dappertutto, anche nella copia di lavoro su Windows.
+#
+# Non e' pignoleria. `core.autocrlf=true` converte in CRLF quello che esce dal
+# repository, quindi il file impacchettato non era piu' quello committato; e
+# la differenza si e' vista nel modo peggiore: Windows Defender ha segnato
+# `app/web/index.html` come `Trojan:Script/Wacatac.H!ml` **nella versione
+# CRLF** e non in quella LF, a parita' di ogni altro byte. E' un giudizio
+# statistico su tutto il file - nessuna riga da sola lo fa scattare - e i
+# terminatori di riga bastano a ribaltarlo.
+#
+# Non e' una cura: e' rendere prevedibile quello che si pubblica. Cosa esce
+# dal pacchetto adesso lo si sa prima, e si puo' controllare.
+* text=auto eol=lf
+
+# I binari non si toccano.
+*.png  binary
+*.jpg  binary
+*.ico  binary
+*.pdf  binary
+*.db   binary
+*.gz   binary
+*.zip  binary
+*.exe  binary
+*.apk  binary
+*.xlsx binary
 *.xlsb binary
