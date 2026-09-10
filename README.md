@@ -16,49 +16,68 @@ e `motore/` dentro la sua cartella. Da lì in poi funziona anche senza rete.
 programma senza firma digitale a pagamento, e si passa con *Ulteriori
 informazioni* → *Esegui comunque*.
 
+Se invece l'antivirus lo **rimuove**, apri il riquadro qui sotto: è un falso
+positivo noto, la causa non è nel programma, e c'è una strada che funziona
+sempre.
+
 <details>
-<summary>Se l'antivirus dice «Wacatac» o «Trojan»</summary>
+<summary>⚠️ Se l'antivirus lo blocca — leggi qui, è successo e la causa non è nel programma</summary>
 
-È un falso positivo. Vale la pena spiegare da dove viene, perché «fidati» non
-è una risposta — e perché quello che ho scoperto misurandolo è più
-interessante di quello che pensavo.
+Windows Defender ha segnalato tre volte quello che pubblico qui: prima
+l'eseguibile (`Trojan:Win32/Wacatac.B!ml`), poi l'HTML dell'interfaccia
+(`Trojan:Script/Wacatac.H!ml`), poi di nuovo l'eseguibile
+(`Trojan:Win32/Sabsik.FL.A!ml`). Sono tutte diagnosi **automatiche** — il
+suffisso `!ml` vuol dire proprio questo: nessuna firma di un virus conosciuto,
+un modello statistico che ha visto una forma sospetta.
 
-**Il primo caso.** La prima versione pubblicata era un **eseguibile unico**.
-Un file unico di PyInstaller è un programmino che a ogni avvio si scompatta da
-solo in una cartella temporanea e poi esegue quello che ha appena scritto:
-descritta così, è la definizione di un dropper. Defender l'ha classificato
-`Trojan:Win32/Wacatac.B!ml`. Il suffisso `!ml` dice il resto: nessuna firma di
-un virus conosciuto, solo un modello statistico che ha visto una forma
-sospetta.
+**Cosa ho verificato, misurando invece di supporre**
 
-**Il secondo caso, che ha spiegato il primo.** Passato alla versione a
-cartella, la segnalazione si è spostata su
-`_internal/app/web/index.html` — `Trojan:Script/Wacatac.H!ml`. Allora l'ho
-sezionato con lo scanner a riga di comando:
+- lo stesso `index.html`, identico byte per byte tranne i terminatori di riga,
+  è segnalato in CRLF e pulito in LF;
+- tagliato a metà, nessuna delle due metà fa scattare niente: il giudizio è su
+  tutto il file insieme;
+- una scansione locale **non** è uno scaricamento: Windows mette sui file
+  scaricati un flusso `Zone.Identifier` e su quelli Defender applica
+  un'analisi più severa, con la parte in cloud. Senza quel marchio, file che
+  venivano rimossi risultavano puliti;
+- un eseguibile appena compilato passa pulito; **lo stesso file, dopo che è
+  circolato, viene bloccato.**
 
-- lo stesso `index.html`, identico byte per byte tranne i **terminatori di
-  riga**, è segnalato in CRLF e pulito in LF;
-- tagliato a metà, **nessuna delle due metà** fa scattare niente: il giudizio
-  è su tutto il file insieme;
-- ricompilare l'eseguibile lo fa passare pulito senza cambiare una riga di
-  codice.
+L'ultimo punto è quello che conta. Non è un problema di codice: è un problema
+di **reputazione**. Un eseguibile non firmato, che nessun altro al mondo ha
+mai eseguito, che apre un server locale e scarica file da internet, ha tutte
+le caratteristiche che un modello statistico associa a un programma
+malevolo — e nessuna prevalenza che dica il contrario. Cambiare i byte gli dà
+un'identità nuova e lo fa passare per un po'; poi il giudizio lo raggiunge di
+nuovo.
 
-Cioè: il verdetto si attacca al singolo file, non al programma. Non esiste un
-modo di *progettare* un pacchetto che non venga mai segnalato. Esiste però il
-modo di non pubblicarne uno che lo è già, ed è `python build/controlla.py`:
-passa lo zip e la cartella a Defender e si rifiuta di dire «pubblica» finché
-non sono puliti. Da qui in poi nessuna versione esce senza quel controllo.
+**Quindi: tre strade, in ordine di quanto reggono nel tempo.**
 
-Nel frattempo `.gitattributes` tiene i file a LF anche nella copia di lavoro,
-così quello che si impacchetta è **esattamente** quello che c'è nel
-repository: prima `core.autocrlf` li convertiva in CRLF all'uscita, e il file
-pubblicato non era più quello controllato.
+**1. Scaricare il sorgente invece del programma compilato.** Nessun
+eseguibile, nessun problema di reputazione. Serve
+[Python](https://www.python.org/downloads/) (spuntando *Add Python to PATH*):
 
-Se dovesse succedere di nuovo, l'unica cosa che corregge la diagnosi per tutti
-è segnalarla a Microsoft: si carica il file su
+> *Code* → *Download ZIP*, si estrae, doppio clic su **`Avvia FantaHacked.bat`**.
+
+Il programma è lo stesso, identico: l'eseguibile non è altro che questo
+sorgente più un Python impacchettato dentro.
+
+**2. Segnalare il falso positivo a Microsoft.** È l'unica cosa che corregge la
+diagnosi *per tutti* e in modo stabile: si carica il file su
 [microsoft.com/wdsi/filesubmission](https://www.microsoft.com/en-us/wdsi/filesubmission)
 scegliendo *Software developer* e *Incorrectly detected*. Rispondono in un
-paio di giorni.
+paio di giorni, e da lì in poi quel file resta pulito.
+
+**3. Firmare l'eseguibile con un certificato.** È la vera soluzione per
+distribuire programmi Windows, e costa: un certificato OV sta sui 200 € l'anno,
+uno EV sui 400 e dà reputazione immediata anche a SmartScreen. È l'unica cosa
+che elimina il problema all'origine, inclusi gli avvisi di SmartScreen.
+
+**Quello che c'è comunque da questa parte:** ogni versione passa da
+`python build/controlla.py`, che marchia i file come scaricati da internet
+— cioè li guarda come li vedrà chi li scarica — e si rifiuta di dire
+«pubblica» se anche uno solo è segnalato. Non evita che un giudizio arrivi
+dopo; evita di pubblicare qualcosa che è già segnalato adesso.
 
 </details>
 
