@@ -42,7 +42,7 @@ FONTI_MINIME = 3
 # Il giorno in cui le pagine sono state lette. Serve a contare gli infortuni
 # nel modo giusto: le giornate gia' giocate non le salta nessuno da qui in
 # avanti, e includerle farebbe sembrare un affaticamento un crociato.
-OGGI = '2026-09-07'
+OGGI = '2026-09-10'
 
 GIORNATE = 38
 

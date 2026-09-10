@@ -883,17 +883,28 @@ class Consigliere(object):
         dc = d['chiusura'] - primo['chiusura']
         chi = primo['nome']
         if dc < 0 and dp < 0:
-            return ("Rende %d punti meno di %s, ma ne costa %d in meno: e' il "
-                    "ripiego se %s vola oltre il tuo limite."
-                    % (-dp, chi, -dc, chi))
-        if dc < 0:
-            return ("Costa %d crediti meno di %s e rende quanto lui: a parita' "
-                    "di reparto e' l'affare piu' grosso della lista." % (-dc, chi))
-        if dp < 0:
-            return ("Rende %d punti meno di %s e costa %d crediti in piu': ha "
-                    "senso solo se %s va via prima." % (-dp, chi, dc, chi))
-        return ("Rende %d punti piu' di %s ma ne costa %d in piu'."
-                % (dp, chi, dc))
+            frase = ("Rende %d punti meno di %s, ma ne costa %d in meno: e' il "
+                     "ripiego se %s vola oltre il tuo limite."
+                     % (-dp, chi, -dc, chi))
+        elif dc < 0:
+            frase = ("Costa %d crediti meno di %s e rende quanto lui: a parita' "
+                     "di reparto e' l'affare piu' grosso della lista." % (-dc, chi))
+        elif dp < 0:
+            frase = ("Rende %d punti meno di %s e costa %d crediti in piu': ha "
+                     "senso solo se %s va via prima." % (-dp, chi, dc, chi))
+        else:
+            frase = ("Rende %d punti piu' di %s ma ne costa %d in piu'."
+                     % (dp, chi, dc))
+        # Un ripiego col limite a zero non e' una contraddizione: vuol dire che
+        # finche' il primo della fascia e' ancora in lista, quello slot rende di
+        # piu' aspettando lui. Ma sullo schermo restava solo la cifra, uno zero
+        # accanto alla parola "ripiego", e sembrava che il programma dicesse due
+        # cose opposte sullo stesso nome. Lo zero e' giusto; mancava la riga che
+        # spiega **quando** smette di essere zero.
+        if (d.get('max_bid') or 0) <= 0:
+            frase += (" Adesso il suo limite e' zero: conviene solo dopo che %s"
+                      " e' andato a qualcun altro." % chi)
+        return frase
 
     def _perche_evitare(self, x, d):
         """Perche' quel giocatore e' una trappola, in una riga."""

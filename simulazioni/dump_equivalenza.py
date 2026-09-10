@@ -138,7 +138,14 @@ def istantanea(v, o, c, st):
 def main():
     uscita = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
         BASE, 'pubblicazione', 'attesi.json')
-    con = dbmod.connetti()
+    # I dati sono quelli veri, l'asta no: questo script ne gioca una finta
+    # dall'inizio alla fine, e farlo sul file dell'asta vera vorrebbe dire
+    # cancellare quella di chi sta giocando.
+    with dbmod.asta_di_servizio() as con:
+        return _dump(con, uscita)
+
+
+def _dump(con, uscita):
     reg = regmod.carica()
     st = StatoAsta(con, reg)
     st.inizializza(NOMI[1:], mio_nome=NOMI[0])
@@ -169,8 +176,6 @@ def main():
     with io.open(uscita, 'w', encoding='utf-8') as f:
         json.dump(fuori, f, ensure_ascii=False, separators=(',', ':'))
     print('scritto %s (%.0f KB)' % (uscita, os.path.getsize(uscita) / 1024.0))
-    # Lo stato va lasciato pulito: questo script gioca un'asta finta.
-    st.inizializza(NOMI[1:], mio_nome=NOMI[0])
     return 0
 
 

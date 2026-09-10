@@ -44,7 +44,15 @@ def verifica(descrizione, condizione, dettaglio=''):
 
 
 def main():
-    con = dbmod.connetti()
+    # Le verifiche giocano aste vere e proprie: registrano acquisti, riempiono
+    # rose, ricominciano da capo. Girando sul file dell'asta normale
+    # cancellavano quella di chi stava giocando - ed e' successo. I dati sono
+    # quelli veri, l'asta e' un file temporaneo che sparisce alla fine.
+    with dbmod.asta_di_servizio() as con:
+        return _prove(con)
+
+
+def _prove(con):
     reg = regmod.carica()
     if con.execute('SELECT COUNT(*) FROM proiezioni').fetchone()[0] == 0:
         prmod.esegui(con, reg)

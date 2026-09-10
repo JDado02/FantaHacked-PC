@@ -3,28 +3,37 @@
 > File di ripresa. Se la sessione si interrompe, **leggi questo per primo**:
 > dice cos'è fatto, dove sta, e qual è il passo successivo.
 >
-> Ultimo aggiornamento: **9 settembre 2026 (nono giro) &mdash; due motori, e
-> la prova che dicono la stessa cosa.**
+> Ultimo aggiornamento: **10 settembre 2026 (decimo giro) &mdash; gli
+> infortuni riletti, e due difetti nel metro.**
 >
-> Il motore e' stato tradotto in JavaScript per l'applicazione Android, e la
-> traduzione e' verificata contro questo, numero per numero: **22.356
-> confronti e 44 liste, zero differenze**, con soglia a un milionesimo e zero
-> sugli interi.
+> I dati pubblicati sono di oggi: 53 indisponibili invece di 50, con Locatelli
+> fermo fino a gennaio e Felici fino a marzo. Un'installazione da zero scarica
+> e apre in **meno di un secondo**; il telefono prende gli stessi numeri.
 >
-> La prova ha trovato tre fragilita' **di questo motore**, non della
-> traduzione: un valore da 1,2e-14 che decideva quale riempitivo entrasse
-> nello zaino, pareggi risolti dall'ordine con cui SQLite restituiva le righe,
-> e liste che potevano cambiare ordine da sole. Tutte corrette qui.
+> Due difetti trovati misurando, e corretti:
+>
+> - **le prove cancellavano l'asta vera.** `test_motore.py` e i due script di
+>   confronto giocavano la loro asta finta sul database normale. Adesso c'e'
+>   `db.asta_di_servizio()`: dati veri, asta temporanea che sparisce da sola.
+> - **il simulatore poteva chiudere un'asta a meta'.** Se un reparto restava
+>   senza giocatori da chiamare, i reparti successivi non venivano chiamati
+>   affatto, e quell'asta finiva lo stesso nella media.
+>
+> Rimisurato su trecento aste: **288 vinte, zero rose incomplete**. Il calo da
+> 98/100 a 92/100 visto coi dati nuovi era rumore &mdash; sugli stessi semi i
+> dati vecchi davano 292/300 e i nuovi 288/300, McNemar p = 0,50.
 >
 > Il codice sta adesso in tre repository:
 > [FantaHacked-PC](https://github.com/JDado02/FantaHacked-PC),
 > [FantaHacked-Android](https://github.com/JDado02/FantaHacked-Android),
 > [DBFantaHacked](https://github.com/JDado02/DBFantaHacked).
 >
-> 47 + 23 + 264 verifiche superate, 98 aste vinte su 100.
+> 47 + 23 + 264 verifiche superate, 288 aste vinte su 300.
 >
-> *(giri precedenti: i dati che si scaricano e l'asta che resta locale; il
-> listone riletto a mercato chiuso e le due ripartizioni; la lista di serie A.)*
+> *(giri precedenti: gli infortuni riletti il 10 settembre e i due difetti nel
+> metro; i due motori e la prova che dicono la stessa cosa; i dati che si
+> scaricano e l'asta che resta locale; il listone riletto a mercato chiuso e le
+> due ripartizioni; la lista di serie A.)*
 ---
 
 ## Come si avvia e come si chiude
@@ -2488,3 +2497,150 @@ uno, e dimenticarsene falserebbe gli slot di tutti.
 - il pacchetto per il telefono: 190 KB, che GitHub manda compressi a 43
 - prima apertura da zero: **0,22 secondi** dallo scaricamento al primo consiglio
 - 47 + 23 + 264 verifiche Python, **22.356 + 44 confronti** di equivalenza
+
+---
+
+# 10 settembre: gli infortuni di tre giorni dopo, e due difetti nel metro
+
+Il pacchetto pubblicato il 7 settembre era stato letto il 7 settembre. Tre
+giorni dopo gli indisponibili non erano piu' gli stessi: e' l'unica parte del
+database che cambia da un giorno all'altro, ed e' anche quella che sposta di
+piu' i prezzi, perche' non tocca la media voto &mdash; tocca le **giornate**.
+
+## Cosa e' cambiato
+
+Riletta per intero la pagina degli infortunati: **53 indisponibili** invece di
+50. Otto sono rientrati (Mina, Havel, Cambiaso, McKennie, Sarr P., Patric,
+Pellegrini Lu., Chakvetadze) e undici sono nuovi. Due contano davvero:
+
+| | | |
+|---|---|---|
+| **Locatelli** | Juventus | menisco, rientro a gennaio: **15 giornate** |
+| **Felici** | Cagliari | crociato, rientro a marzo: **24 giornate** |
+
+Gli altri nove sono acciacchi da una o due giornate, che nei punti attesi si
+vedono appena. Fra le proiezioni di prima e quelle di adesso si spostano di
+piu' di otto punti **quindici giocatori su 593**; il piu' grosso e' Locatelli,
+da 196 a 127.
+
+## Le formazioni no, e la ragione va scritta
+
+La stessa rilettura si poteva fare sulle probabili formazioni, che intanto sono
+passate dalla terza giornata alla quarta. Non e' stata fatta, perche' la
+trascrizione **non ha superato il controllo**: confrontando gli undici estratti
+col listone, otto squadre su dieci verificate tornavano esatte e due no, con lo
+stesso giocatore schierato da due squadre diverse. Su una fonte che pesa il
+doppio delle altre, e a poche ore da un'asta, un errore cosi' vale piu' del
+guadagno di avere le probabili di una giornata dopo.
+
+Gli infortuni invece tornavano su 48 nomi su 50 &mdash; e le due differenze
+erano proprio i rientri. E' questa la differenza fra le due letture: non
+quanto sono fresche, ma se reggono un confronto con quello che gia' si sa.
+
+## L'asta che non arrivava mai al centrocampo
+
+Rimisurando su **trecento** aste invece di cento e' saltata fuori un'asta da
+1072 punti invece di 2280. Non era il motore: erano tutte e otto le squadre a
+fermarsi allo stesso punto, con tre portieri, otto difensori e quattordici
+caselle vuote.
+
+Il simulatore chiama i giocatori per reparto, e chi non riceve **nessuna**
+offerta esce dal giro &mdash; giusto: e' il riempitivo che nessuno vuole. Ma se
+capita agli ultimi rimasti di un reparto, il reparto si svuota mentre qualcuno
+ha ancora slot scoperti, e li' l'asta finiva: i due reparti successivi non
+venivano chiamati affatto. Quell'asta entrava comunque nella media, come se
+fosse una partita vera.
+
+Adesso il reparto vuoto si salta. Sullo stesso seme la rosa si chiude tutta e
+i crediti vanno a zero, e su trecento aste le rose incomplete sono **zero**.
+
+E' un difetto del metro, non del motore. Ma il metro e' quello con cui si e'
+deciso ogni cambiamento da tre settimane, e una misura che ogni tanto inventa
+un disastro rende impossibile distinguere un peggioramento vero dal rumore.
+
+## Le prove cancellavano l'asta vera
+
+L'altro difetto era peggiore, e si e' visto perche' e' successo.
+
+`test_motore.py`, i due script che fotografano i numeri per il confronto con il
+motore JavaScript e `analizza_asta.py` aprivano il database **normale** e ci
+chiamavano `inizializza()`: cioe' giocavano la loro asta finta sopra quella
+vera. Fra una verifica e l'altra, l'asta preparata coi nomi della lega e'
+sparita. Non e' stato un caso fortunato: e' successo mentre nessuno stava
+giocando. Fosse successo la sera dell'asta, sarebbe finita li'.
+
+La divisione in due database protegge **i dati** dagli aggiornamenti; non
+proteggeva **l'asta** dagli script. Adesso c'e' `db.asta_di_servizio()`: i dati
+sono quelli veri, l'asta e' un file temporaneo col numero di processo nel nome
+&mdash; cosi' due script in parallelo non si pestano i piedi &mdash; e sparisce
+da solo alla fine. Le quarantasette verifiche del motore passano tutte, e
+l'asta preparata e' ancora al suo posto, con gli otto nomi e zero acquisti.
+
+La frase «girano su copie usa e getta dei database: non toccano mai l'asta in
+corso» era nel README da ieri. Adesso e' vera.
+
+## Novantotto, novantadue, novantasei
+
+Le cento aste di prima ne davano 98 vinte; con i dati nuovi 92. Sei vittorie in
+meno sembra un peggioramento, e non lo e'.
+
+- la stessa serie rifatta **sui dati vecchi con lo stesso codice** ha ridato
+  esattamente 98, e i CSV rigenerati erano identici byte per byte a quelli
+  di ieri: la pipeline e' riproducibile, quindi la differenza e' nei dati;
+- guardando le aste una per una, otto sono passate da vinte a perse e due da
+  perse a vinte. Con dieci discordanze, otto da una parte e due dall'altra, il
+  test di McNemar da' **p = 0,11**;
+- il punteggio medio si e' mosso di **meno di mezzo punto percentuale per
+  tutte e otto le squadre**, non solo per il motore.
+
+Un'asta e' un sistema caotico: basta un rilancio diverso a meta' di un reparto
+perche' da li' in poi ogni squadra prenda giocatori diversi. Le singole aste si
+spostano di duecento punti in entrambe le direzioni; la media no.
+
+La misura buona e' quella lunga. Su **trecento** aste, col simulatore corretto:
+
+| dati | vinte | punti mediani | margine |
+|---|---|---|---|
+| 7 settembre | 292 su 300 (97%) | 2283 | +91 |
+| 10 settembre | **288 su 300 (96%)** | 2280 | +89 |
+
+Venti aste su trecento hanno cambiato esito, dodici in un verso e otto
+nell'altro: McNemar **p = 0,50**. Quattro vittorie di differenza su trecento
+sono un terzo di deviazione standard. Non e' successo niente &mdash; ed e'
+esattamente quello che ci si aspetta da dieci infortuni in piu' su
+seicento giocatori.
+
+Il confronto lo fa `simulazioni/confronta_esiti.py`, che e' nato qui: prende
+due serie con gli stessi semi e dice **quali** aste sono cambiate e di quanto
+si e' mosso il punteggio di ciascuna delle otto squadre.
+
+## Il ripiego che valeva zero
+
+Nella lista «da prendere», sotto il primo della fascia, comparivano righe con
+scritto *«e' il ripiego se Vicario vola oltre il tuo limite»* e accanto, in
+grande, uno **0**.
+
+Le due cose sembrano contraddirsi e non si contraddicono. Finche' Vicario e'
+ancora in lista, quello slot rende di piu' aspettando lui: qualunque prezzo
+pagato per il ripiego peggiora la rosa finale, e il limite giusto e'
+esattamente zero. Ma detta in cifre e basta, la riga sembra dire due cose
+opposte sullo stesso nome, e la sera dell'asta non c'e' tempo per chiedersi
+quale delle due vale.
+
+Lo zero e' rimasto. Sotto c'e' la riga che mancava: *«adesso il suo limite e'
+zero: conviene solo dopo che Vicario e' andato a qualcun altro»*. Nei due
+motori la stessa frase, coi file attesi rigenerati e riconfrontati.
+
+## Il giro completo, verificato oggi
+
+- pacchetto ricostruito e pubblicato: `generato_il` 2026-09-10, 593 giocatori
+- **installazione da zero**, su un profilo vuoto: 0,94 secondi dallo
+  scaricamento al motore pronto, 593 giocatori caricati
+- il telefono, svuotata la memoria locale, riscarica e mostra i numeri nuovi:
+  il limite su Vicario passa da 61 a 74, perche' il centrocampo che si libera
+  finisce altrove
+- 47 + 23 + 264 verifiche Python, tutte superate
+- 22.356 confronti e 44 liste fra i due motori: **zero differenze**
+- 33 verifiche sulle regole d'asta del telefono: zero fallite
+- 288 aste vinte su 300, zero rose incomplete, zero acquisti sopra il proprio
+  limite in 6.900 chiamate

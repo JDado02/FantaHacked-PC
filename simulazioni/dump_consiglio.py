@@ -58,7 +58,12 @@ def main():
         BASE, 'pubblicazione', 'attesi_consiglio.json')
     attesi = os.path.join(os.path.dirname(uscita), 'attesi.json')
     att = json.load(io.open(attesi, encoding='utf-8'))
-    con = dbmod.connetti()
+    # Come sopra: i dati veri, l'asta usa e getta.
+    with dbmod.asta_di_servizio() as con:
+        return _dump(con, att, uscita)
+
+
+def _dump(con, att, uscita):
     reg = regmod.carica()
     fuori = {'nomi': att['nomi'], 'tappe': []}
     for k, tappa in enumerate(att['tappe']):
@@ -77,8 +82,6 @@ def main():
     with io.open(uscita, 'w', encoding='utf-8') as f:
         json.dump(fuori, f, ensure_ascii=False, separators=(',', ':'))
     print('scritto %s (%.0f KB)' % (uscita, os.path.getsize(uscita) / 1024.0))
-    st = StatoAsta(con, reg)
-    st.inizializza(att['nomi'][1:], mio_nome=att['nomi'][0])
     return 0
 
 

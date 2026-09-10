@@ -28,7 +28,7 @@ cui sta. Due cose pero' non attraversano il confine, e sono trattate qui:
 
 Uso:  python db.py            ricrea i due database da zero
 """
-import csv, os, sqlite3, sys
+import contextlib, csv, os, sqlite3, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import percorsi
@@ -350,6 +350,40 @@ def crea_asta(percorso=None):
     con.commit()
     con.close()
     return percorso
+
+
+@contextlib.contextmanager
+def asta_di_servizio(dati=None):
+    """I dati veri, un'asta finta: per gli script che devono giocare un'asta.
+
+    Le prove, i confronti fra i due motori e le analisi hanno tutti bisogno di
+    un'asta su cui lavorare, e la creavano chiamando `inizializza()` sulla
+    connessione normale &mdash; cioe' **sul file dell'asta vera**, cancellando
+    quella di chi stava giocando. Non e' un rischio teorico: e' successo
+    mentre giravano le verifiche, e l'asta appena preparata e' sparita.
+
+    La divisione in due database protegge i dati dagli aggiornamenti; questo
+    protegge l'asta dagli script. Il file temporaneo porta nel nome il
+    processo, cosi' due script in parallelo non si pestano i piedi, e sparisce
+    da solo alla fine.
+    """
+    percorso = os.path.join(
+        MOTORE, 'servizio_%d_%d.db' % (os.getpid(), int(time.time() * 1000) % 100000))
+    crea_asta(percorso)
+    con = connetti(percorso, dati)
+    try:
+        yield con
+    finally:
+        try:
+            con.close()
+        except sqlite3.Error:
+            pass
+        for coda in ('', '-journal', '-wal', '-shm'):
+            try:
+                if os.path.exists(percorso + coda):
+                    os.remove(percorso + coda)
+            except OSError:
+                pass
 
 
 def crea(percorso=None, verboso=True, dati=None):

@@ -143,15 +143,30 @@ def gioca(seme, ancoraggio='mercato', patch_reg=None):
         miei_limiti = []          # (limite, prezzo pagato, ancora, ruolo)
         persi_di_un_soffio = 0    # gliel'ha soffiato qualcuno per <=2 crediti
 
+        # I reparti in cui non e' rimasto nessuno da chiamare. Serve perche'
+        # un giocatore che non riceve **nessuna** offerta esce dal giro: se
+        # capita agli ultimi rimasti di un reparto, quel reparto si svuota
+        # mentre qualcuno ha ancora slot scoperti. Prima l'asta finiva li',
+        # e i due reparti successivi non venivano chiamati affatto: tutte e
+        # otto le squadre restavano senza centrocampo e senza attacco, e
+        # quell'asta entrava lo stesso nella media come se fosse una partita
+        # vera. Su trecento aste e' successo una volta, e bastava a spostare
+        # la mediana. Adesso il reparto vuoto si salta e l'asta continua.
+        esauriti = set()
         while True:
-            fase = c.fase()
+            fase = None
+            for r in RUOLI:
+                if r not in esauriti and st.slot_residui_ruolo(r) > 0:
+                    fase = r
+                    break
             if fase is None:
                 break
             liberi = [x for x in v.disponibili(fase)
                       if not (reg.portieri_pacchetto and fase == 'P'
                               and not x.titolare_por)]
             if not liberi:
-                break
+                esauriti.add(fase)
+                continue
             finestra = sorted(liberi, key=lambda y: -ancora.get(y.id, 0))[:8]
             x = rng.choice(finestra)
 

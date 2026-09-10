@@ -138,11 +138,16 @@ def main():
     if not percorso:
         print('Uso: python analizza_asta.py <file rose.csv>')
         return 1
-    con = dbmod.connetti()
+    # Un'asta di servizio, non quella vera: qui si rileggono le rose da un
+    # file, e l'asta serve solo perche' il valutatore ne vuole una.
+    with dbmod.asta_di_servizio() as con:
+        return _analizza(con, percorso)
+
+
+def _analizza(con, percorso):
     reg = regmod.carica()
     st = StatoAsta(con, reg)
-    if not st.esiste():
-        st.inizializza(['A', 'B', 'C', 'D', 'E', 'F', 'G'], mio_nome='Io')
+    st.inizializza(['A', 'B', 'C', 'D', 'E', 'F', 'G'], mio_nome='Io')
     v = Valutatore(con, reg, st)
     rose, persi = carica(percorso, v)
     if persi:

@@ -7,8 +7,8 @@ Non è un listone con dei voti accanto. È un ottimizzatore: a ogni chiamata
 risponde alla domanda *«oltre quale prezzo comprarlo peggiora la mia rosa
 finale?»*, e la risposta cambia dopo ogni acquisto — tuo e degli altri.
 
-In cento aste simulate contro avversari che pagano i prezzi realmente pagati
-nelle aste vere, ne vince **98**.
+In **trecento** aste simulate contro avversari che pagano i prezzi realmente
+pagati nelle aste vere, ne vince **288**: 96%, e non esce mai dal podio.
 
 ---
 
@@ -28,8 +28,9 @@ una scheda del browser, e per uscire si chiude come qualunque programma.
    ricalcolano** su chi è già uscito, sulle rose di tutti e sui crediti
    rimasti a ciascuno.
 
-La regola che conta è una: **il limite è un muro, non un obiettivo.** Nelle
-cento aste il motore ha pagato in media il 61% del proprio massimo. Il foglio
+La regola che conta è una: **il limite è un muro, non un obiettivo.** In
+seimilanovecento acquisti non ha mai pagato un credito sopra il proprio
+limite, e nel 77% dei casi ha chiuso sotto il prezzo di mercato. Il foglio
 completo è in [`REGOLE_PER_L_ASTA.md`](REGOLE_PER_L_ASTA.md).
 
 ---
@@ -134,7 +135,7 @@ da un'altra cartella produce un eseguibile che non parte.
 python motore/test_motore.py           # 47 sul motore
 python motore/test_aggiornamento.py    # 23 sui due database e sull'aggiornamento
 python app/test_app.py                 # 264 sull'applicazione, contro un server vero
-python simulazioni/cento_aste.py 100   # cento aste complete
+python simulazioni/cento_aste.py 300   # trecento aste complete
 ```
 
 E le due che tengono allineati i due motori. Il motore Python fotografa i
@@ -151,5 +152,16 @@ milionesimo in relativo, e zero sugli interi &mdash; dove uno scarto non e'
 virgola mobile, e' una decisione diversa.
 
 Girano su copie usa e getta dei database: non toccano mai l'asta in corso.
+
+E una che serve quando cambiano i dati e il numero di vittorie si muove:
+
+```bash
+python simulazioni/confronta_esiti.py prima.json simulazioni/cento_aste_mercato.json
+```
+
+Confronta le stesse aste, seme per seme, e dice **quali** hanno cambiato esito
+e di quanto si è mosso il punteggio di ciascuna delle otto squadre. Serve a
+distinguere un peggioramento vero dal rumore: un'asta è un sistema caotico, e
+un rilancio diverso a metà reparto cambia da lì in poi la rosa di tutti.
 
 Nessuna dipendenza esterna: solo la libreria standard di Python 3.8+.

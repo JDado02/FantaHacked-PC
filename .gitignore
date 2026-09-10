@@ -9,6 +9,9 @@ motore/fanta.db.prima-della-divisione
 *.db.precedente
 *.db.parziale
 
+# L'asta usa e getta che prove e script si creano per non toccare quella vera.
+motore/servizio_*.db
+
 # Le copie usa e getta che le simulazioni creano per non pestarsi i piedi:
 # una per asta e per processo, cancellate a fine giro.
 simulazioni/cento_*.db

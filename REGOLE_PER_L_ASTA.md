@@ -35,8 +35,8 @@ salti gli acquisti altrui, tutti i numeri che leggi restano indietro — e la
 
 ## 3. Perdere giocatori è normale, non è un errore
 
-Nelle cento aste il motore si è fatto soffiare **11 giocatori per asta per due
-crediti o meno**. E ne ha vinte 99 su 100.
+In trecento aste il motore si è fatto soffiare **8 giocatori per asta per due
+crediti o meno**. E ne ha vinte 288 su 300.
 
 Ho provato a fargli rilanciare del 5, del 10 e del 20% oltre il proprio limite:
 peggiora sempre (−4, −6, −7 punti di stagione). **Lasciar perdere è il modo in
@@ -75,14 +75,15 @@ Quando una sezione è vuota, adesso ti dice **perché** lo è.
 
 ## 7. Non arrivare alla fine con crediti in mano
 
-I crediti non spesi valgono zero. Nelle cento aste il motore ne ha lasciati
-4,7 in media. Il pannello «La mia rosa» avvisa quando il piano ne lascia
+I crediti non spesi valgono zero. In trecento aste il motore ne ha lasciati
+7,8 in media, e non ha mai chiuso con una casella vuota. Il pannello «La mia rosa» avvisa quando il piano ne lascia
 indietro troppi: vuol dire che puoi alzare la mira su qualcuno.
 
 ## 8. Se sai qualcosa che il motore non sa, hai ragione tu
 
 Le gerarchie vengono da cinque guide e dalle formazioni della terza
-giornata, lette il **7 settembre**, a mercato chiuso. Un infortunio annunciato
+giornata, lette il **7 settembre** a mercato chiuso; gli infortuni sono
+riletti il **10 settembre**. Un infortunio annunciato
 un'ora prima dell'asta, un allenatore che ha parlato in conferenza: di quello
 il motore non sa niente.
 
