@@ -2627,9 +2627,16 @@ esattamente zero. Ma detta in cifre e basta, la riga sembra dire due cose
 opposte sullo stesso nome, e la sera dell'asta non c'e' tempo per chiedersi
 quale delle due vale.
 
-Lo zero e' rimasto. Sotto c'e' la riga che mancava: *«adesso il suo limite e'
-zero: conviene solo dopo che Vicario e' andato a qualcun altro»*. Nei due
-motori la stessa frase, coi file attesi rigenerati e riconfrontati.
+Adesso sotto c'e' la riga che mancava: *«adesso il suo limite e' zero:
+conviene solo dopo che Vicario e' andato a qualcun altro»*. Nei due motori la
+stessa frase, coi file attesi rigenerati e riconfrontati.
+
+E la cifra grande non e' piu' lo zero. Il programma per computer lo faceva
+gia': al posto del limite mostra **quanto dovrebbe chiudere**, in grigio e con
+la tilde, con la spiegazione nel titolo. Sul telefono restava uno zero in
+grande accanto alla parola «ripiego». Adesso le due applicazioni dicono la
+stessa cosa nello stesso modo, che non e' un dettaglio estetico: chi passa dal
+computer al telefono fra un'asta e l'altra non deve reimparare a leggerle.
 
 ## Il giro completo, verificato oggi
 
