@@ -2852,6 +2852,49 @@ Protect sulla firma di sviluppo; su Windows il blocco del browser sui file
 poco scaricati e SmartScreen sulla firma mancante. Sono cose diverse e
 conviene sapere quale sta parlando.
 
+## Wacatac, e cosa c'era davvero sotto
+
+Defender ha segnato l'eseguibile appena pubblicato come
+`Trojan:Win32/Wacatac.B!ml` e l'ha rimosso dal computer di chi lo aveva
+scaricato. Falso positivo &mdash; il programma e' compilato qui, dai sorgenti
+di questo repository &mdash; ma dirlo non serve a niente: serve capire perche'
+succede e togliere la causa.
+
+Il suffisso `!ml` e' la meta' della risposta: nessuna firma di un virus
+conosciuto, solo un modello statistico che ha visto una forma sospetta.
+L'altra meta' e' la forma stessa. Un eseguibile **onefile** di PyInstaller e'
+un programmino che a ogni avvio si scompatta da solo in una cartella
+temporanea e poi esegue quello che ha appena scritto: descritto cosi', e'
+esattamente un dropper.
+
+Invece di indovinare, misurato con `MpCmdRun` sullo stesso computer e con le
+stesse definizioni:
+
+| | esito |
+|---|---|
+| l'eseguibile pubblicato | **rilevato** |
+| lo stesso spec, ricompilato | pulito |
+| con UPX e senza UPX | pulito tutti e due |
+| la versione a cartella | pulito |
+| lo zip che si scarica | pulito |
+
+Due cose si leggono da qui. La prima: **UPX non c'entrava niente** &mdash; era
+il sospetto piu' ovvio, e le due compilazioni sono identiche in peso perche'
+UPX non era nemmeno installato. La seconda, piu' scomoda: **ricompilare fa
+sparire il problema**, il che vuol dire che il giudizio si attacca al singolo
+file e non alla forma. Ripubblicare e sperare sarebbe stato un rinvio, non una
+cura.
+
+Quindi il download di Windows adesso e' la **versione a cartella**: un avvio
+da cinque megabyte e accanto le sue librerie, come qualunque programma
+Windows normale. Niente da scompattare, e parte anche prima. Provata come la
+proverebbe chiunque: zip scaricato dal link, estratto, scansionato (pulito),
+avviato &mdash; scarica i dati di oggi e apre l'interfaccia.
+
+Nel README la spiegazione per esteso invece di un «fidati», e il link alla
+segnalazione a Microsoft, che e' l'unica cosa che corregge la diagnosi per
+tutti.
+
 ## Una riga che era falsa
 
 «Nessuna dipendenza esterna: solo la libreria standard di Python.» Non era
