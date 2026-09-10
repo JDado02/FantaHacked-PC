@@ -3,6 +3,27 @@
 Dice **fino a quanto conviene spingersi** su ogni giocatore, durante l'asta,
 mentre l'asta è in corso.
 
+## ⬇️ [Scarica FantaHacked.exe](https://github.com/JDado02/FantaHacked-PC/raw/main/FantaHacked.exe)
+
+**22 MB, Windows, un file solo.** Si mette dove si vuole — anche su una
+chiavetta — e si apre con un doppio clic: non c'è niente da installare e
+niente da configurare.
+
+Due avvisi, la prima volta, e sono due cose diverse:
+
+- **il browser** dice che il file «non viene scaricato spesso» e lo blocca:
+  nel riquadro dei download, `⋯` → *Mantieni*;
+- **Windows SmartScreen** dice «Windows ha protetto il PC», perché
+  l'eseguibile non ha una firma digitale a pagamento: *Ulteriori informazioni*
+  → *Esegui comunque*.
+
+Al primo avvio si scarica i dati dei giocatori (mezzo mega) e si crea accanto
+`database/` e `motore/`. Da lì in poi funziona anche senza rete.
+
+C'è anche [per Android](https://github.com/JDado02/FantaHacked-Android).
+
+---
+
 Non è un listone con dei voti accanto. È un ottimizzatore: a ogni chiamata
 risponde alla domanda *«oltre quale prezzo comprarlo peggiora la mia rosa
 finale?»*, e la risposta cambia dopo ogni acquisto — tuo e degli altri.
@@ -208,4 +229,11 @@ e di quanto si è mosso il punteggio di ciascuna delle otto squadre. Serve a
 distinguere un peggioramento vero dal rumore: un'asta è un sistema caotico, e
 un rilancio diverso a metà reparto cambia da lì in poi la rosa di tutti.
 
-Nessuna dipendenza esterna: solo la libreria standard di Python 3.8+.
+Una dipendenza sola, e conviene sapere perché: **numpy**. Lo zaino esatto
+gira su vettori interi, e con numpy un consiglio completo esce in 35
+millisecondi contro 58, e un limite in 2,4 contro 7,4. Senza, il motore non si
+limita a rallentare: pota il pool a 45 giocatori (`POOL_MAX_SENZA_NUMPY`) e
+**dà numeri diversi**. Tutte le misure di questo file — le trecento aste, le
+prove di equivalenza — sono fatte con numpy, ed è per questo che
+`FantaHacked.exe` se lo porta dentro. Tutto il resto è libreria standard di
+Python 3.8+.

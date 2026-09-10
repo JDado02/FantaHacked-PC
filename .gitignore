@@ -19,11 +19,17 @@ simulazioni/cento_*.db-journal
 simulazioni/*_[0-9]*_[0-9]*.db
 pubblicazione/
 
-# L'eseguibile e la cartella di lavoro di PyInstaller: 50 MB che si rifanno
-# con un comando.
-FantaHacked.exe
+# La cartella di lavoro di PyInstaller: si rifa' con un comando.
 build/lavoro/
 build/dist/
+
+# L'eseguibile invece **sta** nel repository, ed e' una scelta.
+# Serve un link che si apra da Windows e scarichi il programma senza dover
+# clonare niente: e' lo stesso motivo per cui l'apk sta nel repository
+# Android. Ventidue megabyte, uno solo, sovrascritto a ogni versione invece
+# che accumulato - il posto giusto sarebbe una release di GitHub, che pero'
+# vuole un token API mentre il push ha gia' le sue credenziali.
+!/FantaHacked.exe
 
 # Il pacchetto pronto da pubblicare: sta nel repository dei dati, non qui.
 pubblicazione/
