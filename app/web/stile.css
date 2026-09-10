@@ -10,28 +10,28 @@
 :root {
   color-scheme: dark;
 
-  --fondo:      #0A0F14;
-  --pannello:   #131B23;
-  --rilievo:    #1A242E;
-  --alto:       #22303C;
-  --linea:      #26343F;
-  --linea-tenue:#1D2831;
+  --fondo:      #090D12;
+  --pannello:   #121820;
+  --rilievo:    #171F28;
+  --alto:       #212C38;
+  --linea:      #253140;
+  --linea-tenue:#1B242E;
 
-  --inchiostro: #E8EFF5;
-  --secondario: #A9BAC9;
-  --muto:       #74889A;
-  --spento:     #4E6072;
+  --inchiostro: #EAF0F6;
+  --secondario: #A6B7C7;
+  --muto:       #7D90A2;
+  --spento:     #566B7E;
 
   /* L'unico accento: la luce dei riflettori. E' il colore del numero che decide. */
-  --ambra:      #F3B441;
+  --ambra:      #F5B63F;
   --ambra-cupa: #8C6415;
 
   /* Semantica del verdetto. Non si usano per nient'altro. */
-  --ok:         #47C98C;
+  --ok:         #46D093;
   --ok-cupo:    #14402C;
-  --attesa:     #F3B441;
+  --attesa:     #F5B63F;
   --attesa-cupa:#4A360F;
-  --stop:       #F0575C;
+  --stop:       #FF6069;
   --stop-cupo:  #45191B;
 
   /* Ruoli: tinte smorzate, servono solo a scandire la lettura. */
@@ -40,11 +40,22 @@
   --r-c: #42A08F;
   --r-a: #CB7F5E;
 
-  --raggio:   10px;
-  --raggio-s: 6px;
+  --raggio:   12px;
+  --raggio-s: 8px;
 
-  --display: "Oswald", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
-  --testo: "Source Sans 3", "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  /* I caratteri sono quelli del sistema, e non e' una rinuncia.
+     Prima venivano da Google: un foglio di stile esterno che, senza rete,
+     il browser aspetta prima di disegnare qualunque cosa - e questo
+     programma serve **in una stanza dove il wifi fa quello che vuole**.
+     Bahnschrift e Segoe stanno su ogni Windows dal 2015, sono ottimi, e
+     arrivano a costo zero.
+     Bahnschrift e' una grottesca stretta di scuola DIN: nei numeri grandi
+     tiene la colonna e si legge da lontano, che e' esattamente il mestiere
+     che le si chiede qui. */
+  --display: "Bahnschrift", "Segoe UI Variable Display", "Segoe UI Semibold",
+             "Segoe UI", Inter, system-ui, sans-serif;
+  --testo: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system,
+           Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -57,7 +68,7 @@ body {
   margin: 0;
   background: var(--fondo);
   color: var(--inchiostro);
-  font-family: var(--inchiostro);
+  font-family: var(--testo);
   font-size: 14px;
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
@@ -68,7 +79,7 @@ button, input, select { font-family: inherit; font-size: inherit; color: inherit
 :focus-visible { outline: 2px solid var(--ambra); outline-offset: 2px; }
 
 kbd {
-  font-family: var(--inchiostro); font-size: 11px; font-weight: 600;
+  font-family: var(--testo); font-size: 11px; font-weight: 600;
   background: var(--alto); color: var(--secondario);
   border: 1px solid var(--linea); border-bottom-width: 2px;
   border-radius: 4px; padding: 1px 5px;
@@ -141,9 +152,15 @@ kbd {
   box-shadow: 0 30px 70px rgba(0,0,0,.5);
 }
 
+/* Il marchio: tre rilanci che salgono e la riga che li ferma. E' la stessa
+   figura dell'icona del programma, dello stesso file, quindi non puo'
+   scostarsi da quella che si vede nella barra delle applicazioni. */
+.marchio-riga { display: flex; align-items: center; gap: 16px; }
+.marchio-segno { display: block; flex: none; }
+
 .marchio {
   font-family: var(--display); font-weight: 600;
-  font-size: 40px; letter-spacing: .012em; line-height: 1;
+  font-size: 38px; letter-spacing: -.005em; line-height: 1;
 }
 .marchio-f { color: var(--ambra); }
 
@@ -236,8 +253,9 @@ kbd {
   border-bottom: 1px solid var(--linea);
 }
 .barra-marchio {
-  font-family: var(--display); font-weight: 600; font-size: 21px;
-  letter-spacing: .01em;
+  display: flex; align-items: center; gap: 10px; flex: none;
+  font-family: var(--display); font-weight: 600; font-size: 20px;
+  letter-spacing: -.005em;
 }
 .barra-spazio { flex: 1; }
 
@@ -330,9 +348,12 @@ kbd {
 .squadra-barra i { display: block; height: 100%; background: var(--spento); }
 .squadra.io .squadra-barra i { background: var(--ambra); }
 
-.pallini { display: flex; gap: 8px; }
+/* Venticinque caselle piu' quattro etichette non stanno in una colonna da
+   duecento pixel: uscivano dal bordo della scheda, e i due reparti in fondo
+   - centrocampo e attacco - semplicemente non si vedevano. Adesso i gruppi
+   vanno a capo. */
+.pallini { display: flex; flex-wrap: wrap; gap: 5px 8px; }
 .gruppo-pallini { display: flex; align-items: center; gap: 2px; }
-.gruppo-pallini + .gruppo-pallini { margin-left: 7px; }
 .gruppo-pallini b {
   font-size: 9px; font-weight: 700; letter-spacing: .06em;
   color: var(--spento); margin-right: 3px;
@@ -343,7 +364,7 @@ kbd {
    quadratini piu' grandi, staccati fra un reparto e l'altro, e i vuoti hanno
    un contorno invece di sparire nel fondo. */
 .pallino {
-  width: 7px; height: 7px; border-radius: 2px;
+  width: 6px; height: 6px; border-radius: 2px;
   background: transparent;
   box-shadow: inset 0 0 0 1px var(--alto);
 }
@@ -743,7 +764,7 @@ kbd {
 .listone-intestazione .col { font-size: 10px; }
 .col.forte { color: var(--ambra); font-family: var(--display); font-size: 15px;
              font-weight: 500; }
-.listone-intestazione .col.forte { font-family: var(--inchiostro); font-size: 10px;
+.listone-intestazione .col.forte { font-family: var(--testo); font-size: 10px;
                                    font-weight: 400; }
 .listone-riga .venduto-a { max-width: 96px; overflow: hidden;
                            text-overflow: ellipsis; white-space: nowrap; }
@@ -817,9 +838,43 @@ kbd {
   * { transition: none !important; animation: none !important; }
 }
 
-@media (max-width: 1100px) {
-  .colonne { grid-template-columns: 210px minmax(0,1fr) 290px; }
+/* Tre colonne stanno in una finestra da milleduecento pixel in su, che e'
+   quella che il programma apre da solo. Sotto, invece di stringerle tutte e
+   tre finche' le frasi si spezzano a meta' parola, si toglie una colonna per
+   volta - prima le rose degli avversari, che si riaprono da un clic, poi la
+   colonna di destra. Il centro, dove sta il numero che decide, non si
+   restringe mai sotto una misura leggibile. */
+@media (max-width: 1200px) {
+  .colonne { grid-template-columns: 216px minmax(0,1fr) 316px; }
+  .rail, .destra { padding: 14px 11px 36px; }
+  .centro { padding: 16px 16px 52px; }
   .verdetto-numero { font-size: 52px; }
+  .barra { gap: 18px; padding: 0 14px; }
+  .fase strong, .turno strong { max-width: 130px; }
+}
+
+/* In una finestra stretta la barra non deve mai andare a capo: i crediti che
+   scivolano sotto il marchio sono il modo piu' rapido di guardare il numero
+   sbagliato. Si toglie invece il monte crediti della lega, che e' un contorno,
+   e restano i propri. */
+@media (max-width: 1080px) {
+  .barra { gap: 14px; }
+  .barra-marchio span { display: none; }
+  .metrica:not(.accento) { display: none; }
+}
+
+@media (max-width: 1000px) {
+  /* Via le squadre avversarie prima di tutto: dare il turno e correggere un
+     acquisto si fanno una volta ogni tanto, mentre "la mia rosa" e il numero
+     al centro si guardano a ogni chiamata. */
+  .colonne { grid-template-columns: minmax(0,1fr) 300px; }
+  .rail { display: none; }
+  .barra { gap: 16px; }
+}
+
+@media (max-width: 760px) {
+  .colonne { grid-template-columns: minmax(0,1fr); }
+  .destra { display: none; }
 }
 
 /* ------------------------------------------------- in positivo o in negativo

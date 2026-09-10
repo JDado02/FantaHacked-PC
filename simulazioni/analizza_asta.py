@@ -59,8 +59,89 @@ def carica(percorso, v):
             'presenze': int(round(x.presenze or 0)), 'mv': x.mv or 0.0,
             'punti': round((x.presenze or 0) * (x.fm or 0)),
             'base': x.prezzo_base or 1.0,
+            # Il resto serve solo al file aggiornato: la classifica non lo usa.
+            'id': x.id, 'fm': x.fm or 0.0, 'vor': x.vor or 0.0,
+            'grado': getattr(x, 'grado', '') or '',
+            'certezza': getattr(x, 'certezza', None),
+            'fuori_lista': 1 if getattr(x, 'fuori_lista', 0) else 0,
+            'rigorista': 1 if getattr(x, 'rigorista', 0) else 0,
+            'quotazione': int(r.get('Quotazione') or 0),
         })
     return rose, persi
+
+
+COLONNE_CSV = [
+    'squadra_fanta', 'ruolo', 'nome', 'squadra', 'prezzo', 'quotazione',
+    'valore', 'scarto', 'presenze_attese', 'mv_attesa', 'fantamedia_attesa',
+    'punti_attesi', 'vor', 'grado', 'certezza', 'rigorista', 'fuori_lista',
+    'stato', 'rientro_stimato', 'giornate_saltate', 'id',
+]
+
+
+def chi_e_fermo(con):
+    """Chi e' ai box e fino a quando, dal database dei dati.
+
+    Il giocatore che il valutatore tiene in memoria non porta con se' questa
+    riga: l'infortunio e' gia' dentro le presenze attese, che e' quello che
+    serve per fare i prezzi. Per **leggere** una rosa serve anche il motivo,
+    se no un attaccante da 12 presenze sembra semplicemente scarso.
+    """
+    fuori = {}
+    try:
+        righe = con.execute(
+            'SELECT id, stato, rientro_stimato, partite_saltate FROM gerarchie'
+        ).fetchall()
+    except Exception:
+        return fuori
+    for r in righe:
+        stato = r['stato'] or ''
+        if not stato or stato == 'ok':
+            continue
+        fuori[r['id']] = (stato, r['rientro_stimato'] or '',
+                          r['partite_saltate'] or 0)
+    return fuori
+
+
+def scrivi_csv(rose, percorso, fermi=None):
+    """Le stesse rose, ma con accanto quello che il motore sa **oggi**.
+
+    Il file dell'asta dice chi ha comprato chi e a quanto, e quello non
+    invecchia mai. Tutto il resto &mdash; presenze attese, fantamedia, valore,
+    chi e' fermo e fino a quando &mdash; cambia ogni volta che si aggiornano i
+    dati, e cinque giorni dopo l'asta e' gia' un'altra cosa. Qui le due meta'
+    finiscono in un file solo, che si riapre col foglio di calcolo.
+    """
+    righe = []
+    for squadra in sorted(rose):
+        for r in RUOLI:
+            for d in sorted(rose[squadra][r], key=lambda x: -x['prezzo']):
+                valore = int(round(d['base']))
+                righe.append({
+                    'squadra_fanta': squadra, 'ruolo': r, 'nome': d['nome'],
+                    'squadra': d['squadra'], 'prezzo': d['prezzo'],
+                    'quotazione': d['quotazione'],
+                    'valore': valore, 'scarto': valore - d['prezzo'],
+                    'presenze_attese': d['presenze'],
+                    'mv_attesa': round(d['mv'], 2),
+                    'fantamedia_attesa': round(d['fm'], 2),
+                    'punti_attesi': int(d['punti']),
+                    'vor': round(d['vor'], 1),
+                    'grado': d['grado'],
+                    'certezza': ('' if d['certezza'] is None
+                                 else round(d['certezza'], 2)),
+                    'rigorista': d['rigorista'],
+                    'fuori_lista': d['fuori_lista'],
+                    'stato': (fermi or {}).get(d['id'], ('', '', 0))[0],
+                    'rientro_stimato': (fermi or {}).get(d['id'], ('', '', 0))[1],
+                    'giornate_saltate': (fermi or {}).get(d['id'], ('', '', 0))[2],
+                    'id': d['id'],
+                })
+    with io.open(percorso, 'w', encoding='utf-8', newline='') as f:
+        w = csv.DictWriter(f, fieldnames=COLONNE_CSV)
+        w.writeheader()
+        for riga in righe:
+            w.writerow(riga)
+    return len(righe)
 
 
 QUANTI = {'P': 1, 'D': 4, 'C': 4, 'A': 2}
@@ -134,17 +215,25 @@ def undici(rosa, reg):
 
 
 def main():
-    percorso = sys.argv[1] if len(sys.argv) > 1 else None
+    argomenti = [a for a in sys.argv[1:] if not a.startswith('--')]
+    percorso = argomenti[0] if argomenti else None
     if not percorso:
-        print('Uso: python analizza_asta.py <file rose.csv>')
+        print('Uso: python analizza_asta.py <file rose.csv> [--csv [uscita]]')
         return 1
+    uscita = None
+    if '--csv' in sys.argv:
+        i = sys.argv.index('--csv')
+        prossimo = sys.argv[i + 1] if len(sys.argv) > i + 1 else None
+        uscita = (prossimo if prossimo and not prossimo.startswith('--')
+                  and prossimo != percorso
+                  else os.path.splitext(percorso)[0] + '_aggiornato.csv')
     # Un'asta di servizio, non quella vera: qui si rileggono le rose da un
     # file, e l'asta serve solo perche' il valutatore ne vuole una.
     with dbmod.asta_di_servizio() as con:
-        return _analizza(con, percorso)
+        return _analizza(con, percorso, uscita)
 
 
-def _analizza(con, percorso):
+def _analizza(con, percorso, uscita=None):
     reg = regmod.carica()
     st = StatoAsta(con, reg)
     st.inizializza(['A', 'B', 'C', 'D', 'E', 'F', 'G'], mio_nome='Io')
@@ -152,6 +241,10 @@ def _analizza(con, percorso):
     rose, persi = carica(percorso, v)
     if persi:
         print('Non trovati a listone: %s\n' % ', '.join(persi))
+    if uscita:
+        quante = scrivi_csv(rose, uscita, chi_e_fermo(con))
+        print('Rose aggiornate: %d righe in %s' % (quante, uscita))
+        print('')
 
     dati = []
     for squadra, rosa in rose.items():

@@ -975,6 +975,20 @@ class Valutatore(object):
         out.sort(key=lambda x: (-x.vor, x.id))
         return out[:n] if n else out
 
+    def scarta(self, giocatore_id):
+        """Toglie un giocatore dal listone tenuto in memoria.
+
+        E' stato chiamato e non l'ha voluto nessuno: non tocca ne' l'asta ne'
+        i dati, serve alle simulazioni per chiudere un giro senza rimettere in
+        lista chi e' gia' passato. Qui `self.g` e' l'unica copia e basterebbe
+        `pop`; il metodo esiste perche' nella traduzione JavaScript il listone
+        e' tenuto in due strutture parallele, e togliere da una sola faceva
+        girare la simulazione all'infinito. Le due API devono chiamarsi allo
+        stesso modo, se no la differenza torna alla prima persona che traduce
+        una riga guardando l'altra.
+        """
+        return self.g.pop(giocatore_id, None)
+
     def cerca(self, testo):
         t = testo.strip().lower()
         venduti = self.stato.venduti()

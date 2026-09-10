@@ -3,8 +3,25 @@
 > File di ripresa. Se la sessione si interrompe, **leggi questo per primo**:
 > dice cos'è fatto, dove sta, e qual è il passo successivo.
 >
-> Ultimo aggiornamento: **10 settembre 2026 (decimo giro) &mdash; gli
-> infortuni riletti, e due difetti nel metro.**
+> Ultimo aggiornamento: **10 settembre 2026 (undicesimo giro) &mdash; la
+> faccia del programma, l'apk, e duecento aste per parte.**
+>
+> L'interfaccia si vedeva in **Times New Roman**: il foglio di stile applicava
+> un colore al posto di un carattere, e il browser ripiegava in silenzio.
+> Corretto, e tolto il collegamento a Google Fonts: adesso disegnare
+> l'interfaccia non richiede **niente** alla rete. Marchio nuovo, generato da
+> uno script in nove misure; stessa tavolozza sui due programmi.
+>
+> **L'apk c'e'**: `app-debug.apk`, 3,4 MB, Android 7 in su.
+>
+> E la prova piu' grossa finora: **duecento aste giocate dal computer e
+> duecento dal telefono, con lo stesso generatore casuale e gli stessi semi.
+> 188 vinte per parte, 4800 numeri confrontati, zero differenze.**
+>
+> *(sotto, il giro precedente:)*
+>
+> **10 settembre (decimo giro) &mdash; gli infortuni riletti, e due difetti
+> nel metro.**
 >
 > I dati pubblicati sono di oggi: 53 indisponibili invece di 50, con Locatelli
 > fermo fino a gennaio e Felici fino a marzo. Un'installazione da zero scarica
@@ -2651,3 +2668,155 @@ computer al telefono fra un'asta e l'altra non deve reimparare a leggerle.
 - 33 verifiche sulle regole d'asta del telefono: zero fallite
 - 288 aste vinte su 300, zero rose incomplete, zero acquisti sopra il proprio
   limite in 6.900 chiamate
+
+---
+
+# 10 settembre, secondo giro: la faccia del programma, e l'apk
+
+## Il carattere sbagliato
+
+Il foglio di stile dichiarava due famiglie di caratteri e poi ne applicava una
+terza che non esisteva:
+
+```css
+body { font-family: var(--inchiostro); }   /* --inchiostro e' #E8EFF5 */
+```
+
+Un colore al posto di un carattere. Il browser scarta la dichiarazione senza
+dire niente e ripiega sul suo carattere predefinito, che su Windows e' **Times
+New Roman**. Tutto il programma &mdash; i verdetti, i numeri, le frasi &mdash;
+si e' visto in un carattere con le grazie per settimane, mentre il file
+prometteva una grottesca stretta.
+
+Sono tre dichiarazioni, tutte con lo stesso errore, e nessuna si nota
+leggendo il CSS: la riga e' scritta bene, e' il valore che e' di un altro
+tipo. Si e' vista solo chiedendo alla pagina che carattere stesse davvero
+usando.
+
+## E i caratteri, adesso, non si scaricano
+
+C'era anche un collegamento a Google Fonts. Un foglio di stile esterno
+**blocca il primo disegno della pagina** finche' non arriva o non scade: in una
+stanza d'asta col wifi che fa quello che vuole, e' esattamente il momento in
+cui non si vuole aspettare. Via il collegamento, e al suo posto i caratteri di
+sistema: **Bahnschrift** per i numeri &mdash; una grottesca stretta di scuola
+DIN, su ogni Windows dal 2015, che nelle cifre grandi tiene la colonna e si
+legge da lontano &mdash; e Segoe UI per il testo.
+
+Zero richieste alla rete per aprire l'interfaccia. Il programma ne fa una
+sola, per i dati, e sa gia' cosa fare se non risponde.
+
+## Un marchio che dice cosa fa il programma
+
+Tre barre che salgono e una riga ambra che le ferma. E' la tesi del programma
+in un segno: *il limite e' un muro*. L'ambra e' l'unico colore che
+nell'interfaccia vuol dire "questo e' il numero che decide", e nel marchio fa
+lo stesso mestiere.
+
+Lo disegna `build/marchio.py`, non una mano: la stessa geometria serve in
+sette misure &mdash; dai 16 pixel della barra delle applicazioni ai 512
+dell'icona Android &mdash; piu' due SVG e un vettore per il sistema Android,
+e ridisegnarla ogni volta vuol dire nove marchi leggermente diversi. Qui e'
+scritta una volta in una griglia da cento.
+
+## Due applicazioni, una faccia sola
+
+I colori del telefono e quelli del computer erano **simili**, che e' peggio di
+diversi: il verde del verdetto non era lo stesso verde. Adesso i due
+programmi partono dagli stessi valori. Chi passa dall'uno all'altro fra
+un'asta e l'altra non deve reimparare a leggerli.
+
+Sistemate anche due cose che si vedevano solo a finestra stretta: i
+venticinque quadratini della rosa uscivano dal bordo della scheda (centrocampo
+e attacco semplicemente non si vedevano), e a meno di mille pixel le tre
+colonne si stringevano finche' le frasi si spezzavano. Adesso i quadratini
+vanno a capo, e le colonne si tolgono una per volta &mdash; prima le rose
+degli avversari, che si riaprono con un clic; il centro, dove sta il numero
+che decide, non scende mai sotto una misura leggibile.
+
+## L'apk c'e'
+
+`app-debug.apk`, **3,4 MB**, `minSdk 24` (Android 7). Dentro c'e' tutta
+l'applicazione: interfaccia, motore, icone.
+
+Per arrivarci sono serviti l'SDK Android e l'allineamento di una libreria:
+appcompat chiedeva `kotlin-stdlib-jdk7/jdk8` 1.6.21 e webkit `kotlin-stdlib`
+1.8.22, che dalla 1.8 contiene gia' quei due &mdash; duecento classi
+duplicate e la compilazione ferma. Una riga di `kotlin-bom` le mette
+d'accordo. Nel frattempo e' sparito anche ConstraintLayout: per una WebView
+che riempie tutto un `FrameLayout` fa lo stesso, e una libreria in meno e' una
+libreria in meno.
+
+## Duecento aste per parte, e sono la stessa partita
+
+Le prove di equivalenza confrontavano i numeri in quattro momenti scelti a
+tavolino. Restava una domanda piu' grande: **giocando un'asta intera**,
+duecento chiamate una dopo l'altra, i due programmi finiscono con la stessa
+rosa?
+
+Per poterlo chiedere davvero, le due simulazioni devono giocare *la stessa*
+partita, non due partite simili: stesso ordine di chiamata, stesso avversario
+che si intestardisce, stesso rilancio da 41 crediti. Quindi il generatore
+casuale di Python &mdash; Mersenne Twister, `random`, `getrandbits`, `choice`,
+`uniform`, `normalvariate`, `lognormvariate`, `gammavariate` &mdash; e'
+tradotto in JavaScript riga per riga, comprese le condizioni di rifiuto:
+cambiarne una vorrebbe dire consumare un numero casuale in piu' o in meno, e
+da li' in poi le due aste divergerebbero senza che nessuno dei due programmi
+abbia sbagliato niente. Verificato su cinque semi: **35 confronti, zero
+differenze**.
+
+Poi duecento aste per parte, gli stessi semi:
+
+| | computer | telefono |
+|---|---|---|
+| vinte | 188 su 200 (94%) | **188 su 200 (94%)** |
+| punti mediani | 2279 | 2279 |
+| scarto dal secondo | +86 | +86 |
+| rose incomplete | 0 | 0 |
+| pagati sopra il proprio limite | 0 su 4600 | 0 |
+
+E il confronto asta per asta: **200 aste, 4800 numeri, zero differenze.**
+Dieci minuti su sei processi da una parte, due minuti e diciassette in una
+scheda del browser dall'altra.
+
+## Quello che la simulazione ha trovato
+
+Alla prima esecuzione la pagina si e' piantata. Non era lenta: era un giro
+che non si chiudeva.
+
+Nel motore JavaScript il listone e' tenuto in due strutture parallele &mdash;
+una mappa per cercare per id e un array per scorrerlo in ordine &mdash; mentre
+in Python e' un dizionario solo. Il simulatore, quando un giocatore non
+riceve **nessuna** offerta, lo toglie dal giro; togliendolo dalla mappa,
+l'array continuava a contenerlo, `disponibili()` continuava a proporlo, e
+l'asta lo richiamava all'infinito.
+
+Non e' un difetto che si vede in un'asta vera, dove non si toglie mai
+nessuno. Ma due strutture che descrivono la stessa cosa e possono
+disallinearsi sono un difetto comunque: adesso c'e' `scarta(id)`, che le
+aggiorna insieme, e la stessa funzione esiste anche in Python &mdash; dove
+tecnicamente basterebbe `pop` &mdash; perche' le due API si chiamino allo
+stesso modo. Se no la differenza torna alla prima persona che traduce una riga
+guardando l'altra.
+
+## Le rose, con i dati di oggi
+
+`analizza_asta.py --csv` scrive accanto al file dell'asta un file con quello
+che il motore sa **adesso**: valore contro prezzo pagato, presenze e
+fantamedia attese, VOR, gerarchia, rigoristi, e chi e' fermo e per quante
+giornate. Il file dell'asta non invecchia mai &mdash; chi ha comprato chi e a
+quanto e' un fatto; tutto il resto cambia a ogni aggiornamento, e cinque
+giorni dopo e' gia' un'altra cosa.
+
+Sull'asta vera di quest'anno: 200 righe, 13 giocatori fermi, e in cima alla
+classifica del motore c'e' ancora **I Violentatori** con 2285 punti, +81 sul
+secondo.
+
+## Numeri
+
+- marchio: un file di geometria, **nove immagini** generate
+- caratteri: **zero** richieste di rete per disegnare l'interfaccia
+- apk: **3,4 MB**, Android 7 in su
+- 47 + 23 + 264 verifiche Python, tutte superate
+- 22.356 numeri + 44 liste + 35 confronti sul caso: zero differenze
+- **200 aste per applicazione, 4800 numeri, zero differenze**

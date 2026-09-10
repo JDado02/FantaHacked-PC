@@ -193,7 +193,7 @@ def gioca(seme, ancoraggio='mercato', patch_reg=None):
             if mio >= 1:
                 offerte.append((mio, NOMI[0]))
             if not offerte:
-                v.g.pop(x.id, None)
+                v.scarta(x.id)
                 continue
 
             offerte.sort(reverse=True)
@@ -203,7 +203,7 @@ def gioca(seme, ancoraggio='mercato', patch_reg=None):
             pid = per_id[vincitore]
             prezzo = min(prezzo, st.liquidita(pid))
             if prezzo < 1:
-                v.g.pop(x.id, None)
+                v.scarta(x.id)
                 continue
             if vincitore == NOMI[0]:
                 miei_limiti.append((mio, prezzo, ancora.get(x.id, 0), fase))
@@ -212,7 +212,7 @@ def gioca(seme, ancoraggio='mercato', patch_reg=None):
             try:
                 st.registra(x.id, pid, prezzo)
             except ErroreAsta:
-                v.g.pop(x.id, None)
+                v.scarta(x.id)
                 continue
             speso[vincitore][fase] += prezzo
             if reg.portieri_pacchetto and fase == 'P':

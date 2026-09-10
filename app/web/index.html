@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FantaHacked</title>
-<link rel="icon" href="fantahacked.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap">
+<link rel="icon" href="fantahacked.ico" sizes="any">
+<link rel="icon" href="marchio.svg" type="image/svg+xml">
+<!-- Nessun carattere scaricato da fuori: un foglio di stile remoto, senza
+     rete, blocca il primo disegno della pagina finche' non scade. Questo
+     programma si apre in una stanza dove il wifi fa quello che vuole. -->
 <link rel="stylesheet" href="stile.css">
 </head>
 <body>
@@ -32,8 +33,13 @@
 <!-- =============================================== AVVIO / NUOVA ASTA -->
 <section id="avvio" class="avvio" hidden>
   <div class="avvio-carta">
-    <div class="marchio"><span class="marchio-f">Fanta</span>Hacked<span class="cursore"></span></div>
-    <p class="occhiello">Assistente d'asta &mdash; modalit&agrave; Classic</p>
+    <div class="marchio-riga">
+      <img class="marchio-segno grande" src="marchio-piatto.svg" alt="" width="52" height="52">
+      <div>
+        <div class="marchio"><span class="marchio-f">Fanta</span>Hacked<span class="cursore"></span></div>
+        <p class="occhiello">Assistente d'asta &mdash; modalit&agrave; Classic</p>
+      </div>
+    </div>
 
     <div id="avvio-regole" class="regole-strip"></div>
 
@@ -56,7 +62,10 @@
 <div id="app" class="guscio" hidden>
 
   <header class="barra">
-    <div class="barra-marchio"><span class="marchio-f">Fanta</span>Hacked<span class="cursore"></span></div>
+    <div class="barra-marchio">
+      <img class="marchio-segno" src="marchio-piatto.svg" alt="" width="26" height="26">
+      <span><span class="marchio-f">Fanta</span>Hacked</span>
+    </div>
 
     <div class="fase">
       <span class="fase-etichetta">Si chiamano</span>

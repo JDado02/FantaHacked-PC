@@ -10,6 +10,11 @@ finale?»*, e la risposta cambia dopo ogni acquisto — tuo e degli altri.
 In **trecento** aste simulate contro avversari che pagano i prezzi realmente
 pagati nelle aste vere, ne vince **288**: 96%, e non esce mai dal podio.
 
+Lo stesso motore gira anche sul telefono, e non è una versione ridotta:
+duecento aste giocate dal computer e duecento dal telefono, con lo stesso
+generatore casuale e gli stessi semi, danno **4.800 numeri identici e zero
+differenze**.
+
 ---
 
 ## Come si usa
@@ -53,8 +58,19 @@ FantaHacked.exe          l'eseguibile (si costruisce, non sta nel repository)
 ├── database/
 │   ├── pipeline/        ricostruisce i CSV dalle fonti, e li pubblica
 │   └── fonti/           le fonti grezze, così come sono state lette
-└── simulazioni/         cento aste per misurare ogni modifica
+├── build/
+│   ├── FantaHacked.spec come si costruisce l'eseguibile
+│   └── marchio.py       il marchio, in nove misure, da una geometria sola
+└── simulazioni/         trecento aste per misurare ogni modifica
 ```
+
+### Nessuna richiesta alla rete per disegnarsi
+
+I caratteri sono quelli del sistema — Bahnschrift per i numeri, Segoe per il
+testo — e non si scaricano da nessuna parte. Un foglio di stile esterno blocca
+il primo disegno della pagina finché non arriva o non scade, e la sera
+dell'asta il wifi della stanza fa quello che vuole. L'unica richiesta che il
+programma fa è per i dati dei giocatori, e sa già cosa fare se non risponde.
 
 ### I due database
 
@@ -136,6 +152,7 @@ python motore/test_motore.py           # 47 sul motore
 python motore/test_aggiornamento.py    # 23 sui due database e sull'aggiornamento
 python app/test_app.py                 # 264 sull'applicazione, contro un server vero
 python simulazioni/cento_aste.py 300   # trecento aste complete
+python build/marchio.py                # icone e SVG, se cambia il marchio
 ```
 
 E le due che tengono allineati i due motori. Il motore Python fotografa i
@@ -147,7 +164,16 @@ python simulazioni/dump_equivalenza.py  <FantaHacked-Android>/prove/attesi.json
 python simulazioni/dump_consiglio.py    <FantaHacked-Android>/prove/attesi_consiglio.json
 ```
 
-Oggi: **22.356 numeri e 44 liste, zero differenze.** La soglia e' un
+E una terza, che non guarda i numeri ma **le aste**: duecento partite intere
+giocate dai due motori con lo stesso generatore casuale e gli stessi semi.
+
+```bash
+python simulazioni/cento_aste.py 200
+# poi si copia simulazioni/cento_aste_mercato.json in
+# <FantaHacked-Android>/prove/attesi_aste.json e si apre prove/aste.html
+```
+
+Oggi: **22.356 numeri, 44 liste e 200 aste (4.800 numeri), zero differenze.** La soglia e' un
 milionesimo in relativo, e zero sugli interi &mdash; dove uno scarto non e'
 virgola mobile, e' una decisione diversa.
 
