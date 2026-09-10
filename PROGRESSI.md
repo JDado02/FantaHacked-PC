@@ -2830,10 +2830,43 @@ Provato per davvero: exe copiato da solo in una cartella vuota, scarica i
 dati, si crea `database/` e `motore/`, e apre l'interfaccia completa. Ventidue
 megabyte, nient'altro.
 
+## Si scaricano da GitHub, tutte e due
+
+Il punto di arrivo era questo: un link che si apre dal telefono o dal
+computer, scarica, e funziona. Niente clone, niente Python, niente cartelle.
+
+| | link | prova |
+|---|---|---|
+| Android | `FantaHacked-Android/raw/main/FantaHacked.apk` | 3,4 MB, `apksigner verify` &rarr; **Verifies**, firma v2 |
+| Windows | `FantaHacked-PC/raw/main/FantaHacked.exe` | 22 MB, scaricato e avviato in una cartella vuota: scarica i dati e apre l'interfaccia |
+
+Tutti e due i file sono stati **riscaricati dal link** e confrontati con
+l'originale: identici byte per byte. Il posto giusto per un binario sarebbe
+una release di GitHub, che pero' vuole un token API; il push le credenziali
+ce le ha gia', e un file alla radice fa la stessa cosa. Uno solo per
+piattaforma, sovrascritto a ogni versione invece che accumulato.
+
+Nei due README, in cima, il link e gli avvisi che i due sistemi fanno la prima
+volta: su Android il permesso di installare da fonte sconosciuta e Play
+Protect sulla firma di sviluppo; su Windows il blocco del browser sui file
+poco scaricati e SmartScreen sulla firma mancante. Sono cose diverse e
+conviene sapere quale sta parlando.
+
+## Una riga che era falsa
+
+«Nessuna dipendenza esterna: solo la libreria standard di Python.» Non era
+vero: **numpy** c'e' e conta. Misurato togliendolo: un consiglio completo
+passa da 35 a 58 millisecondi e un limite da 2,4 a 7,4 &mdash; ma soprattutto
+il motore, senza, non rallenta e basta: pota il pool a quarantacinque
+giocatori e **da' numeri diversi**. Tutte le misure di questo file sono fatte
+con numpy, ed e' per questo che l'eseguibile se lo porta dentro: sono
+quattordici megabyte su ventidue, e restano.
+
 ## Numeri
 
 - marchio: un file di geometria, **nove immagini** generate
 - l'eseguibile: **un file**, 22 MB, funziona in una cartella vuota
+- si scaricano da GitHub tutte e due, verificate riscaricandole
 - caratteri: **zero** richieste di rete per disegnare l'interfaccia
 - apk: **3,4 MB**, Android 7 in su
 - 47 + 23 + 264 verifiche Python, tutte superate
