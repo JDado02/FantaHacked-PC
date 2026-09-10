@@ -2895,6 +2895,48 @@ Nel README la spiegazione per esteso invece di un «fidati», e il link alla
 segnalazione a Microsoft, che e' l'unica cosa che corregge la diagnosi per
 tutti.
 
+### E il secondo giro, che ha spiegato il primo
+
+La versione a cartella e' stata segnalata a sua volta, ma su un altro file e
+con un'altra diagnosi: `Trojan:Script/Wacatac.H!ml` su
+`_internal/app/web/index.html`. Non piu' l'eseguibile: **l'HTML
+dell'interfaccia**. E Defender non si e' limitato a dirlo &mdash; ha bloccato
+il file in lettura, cioe' il programma non riusciva piu' a servire la propria
+pagina.
+
+Su un file di testo pero' si puo' fare quello che su un eseguibile non si
+poteva: sezionarlo. Con lo scanner a riga di comando, dimezzando:
+
+| | esito |
+|---|---|
+| `index.html` con CRLF | **rilevato** |
+| lo stesso file con LF, identico in tutto il resto | pulito |
+| solo la prima meta' | pulito |
+| solo la seconda meta' | pulito |
+| `app.js`, `stile.css` | puliti |
+
+Nessuna riga colpevole: il giudizio e' su **tutto il file insieme**, ed e'
+statistico al punto che i terminatori di riga bastano a ribaltarlo. Che e'
+anche la spiegazione del primo giro: non era la forma "onefile", era quel
+singolo binario &mdash; ricompilarlo bastava.
+
+Due conseguenze, e nessuna delle due e' «speriamo che passi».
+
+**I file restano a LF anche nella copia di lavoro.** Con `core.autocrlf=true`
+git li converte in CRLF all'uscita dal repository: quello che si impacchettava
+non era piu' quello che c'era scritto, e si pubblicava una cosa diversa da
+quella che si era guardata. Adesso `.gitattributes` lo impedisce.
+
+**E si controlla prima.** `build/controlla.py` passa il pacchetto a Defender e
+si rifiuta di dire «pubblica» finche' non e' pulito. Con una correzione
+imparata a spese proprie: **apre il pacchetto e guarda dentro**, file per
+file. La prima volta lo zip risultava pulito mentre l'`index.html` che aveva
+dentro veniva segnalato allo scaricamento &mdash; un controllo che guarda solo
+il contenitore non e' un controllo, e' una rassicurazione.
+
+Non si puo' progettare un pacchetto che nessun antivirus segnalera' mai. Si
+puo' non pubblicarne uno che lo e' gia', e quello dipende da noi.
+
 ## Una riga che era falsa
 
 «Nessuna dipendenza esterna: solo la libreria standard di Python.» Non era

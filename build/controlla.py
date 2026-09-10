@@ -57,6 +57,34 @@ def controlla(percorso, mp):
     return False, '\n      '.join(righe[:6]) or testo.strip()[:300]
 
 
+# Le nostre cose dentro il pacchetto. Le librerie di Python le scansiona
+# chiunque le abbia installate: quello che vale la pena guardare, e che
+# nessun altro ha mai guardato, e' l'interfaccia e i file di questo progetto.
+NOSTRI = ('_internal/app', '_internal/database', '_internal/motore')
+
+
+def da_controllare(percorso):
+    """Il pacchetto **aperto**, file per file.
+
+    Serve perche' scansionare lo zip non basta e la prima volta ha ingannato:
+    lo zip risultava pulito mentre l'`index.html` che aveva dentro veniva
+    segnalato al momento dello scaricamento. Un controllo che guarda solo il
+    contenitore non e' un controllo, e' una rassicurazione.
+    """
+    if os.path.isfile(percorso):
+        return [percorso]
+    fuori = []
+    avvio = os.path.join(percorso, 'FantaHacked.exe')
+    if os.path.exists(avvio):
+        fuori.append(avvio)
+    for pezzo in NOSTRI:
+        radice = os.path.join(percorso, *pezzo.split('/'))
+        for cartella, _sotto, nomi in os.walk(radice):
+            for n in sorted(nomi):
+                fuori.append(os.path.join(cartella, n))
+    return fuori
+
+
 def main(percorsi):
     mp = strumento()
     if not mp:
@@ -65,7 +93,11 @@ def main(percorsi):
     if not percorsi:
         percorsi = [os.path.join(BASE, 'FantaHacked-Windows.zip'),
                     os.path.join(BASE, 'build', 'dist', 'FantaHacked')]
-    percorsi = [p for p in percorsi if os.path.exists(p)]
+    aperti = []
+    for p in percorsi:
+        if os.path.exists(p):
+            aperti.extend(da_controllare(p))
+    percorsi = aperti
     if not percorsi:
         print('Niente da controllare: costruisci prima il pacchetto.')
         return 1
