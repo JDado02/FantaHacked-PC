@@ -9,6 +9,15 @@
 <!-- Nessun carattere scaricato da fuori: un foglio di stile remoto, senza
      rete, blocca il primo disegno della pagina finche' non scade. Questo
      programma si apre in una stanza dove il wifi fa quello che vuole. -->
+<!-- Questa pagina non puo' caricare niente da fuori, e lo dichiara. Non e'
+     una precauzione teorica: il programma promette di funzionare senza rete e
+     di non far uscire l'asta da questo computer, e una riga che lo impone e'
+     piu' solida di una che lo racconta. Il server locale e' l'unica origine
+     ammessa; gli stili in linea servono alle barre che si ridisegnano. -->
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';
+               img-src 'self' data:; connect-src 'self'; base-uri 'none';
+               form-action 'none'; object-src 'none'">
 <link rel="stylesheet" href="stile.css">
 </head>
 <body>

@@ -6,6 +6,11 @@
    la correttezza conta molto piu' della finezza: ridisegnare tutto elimina in
    partenza la classe di bug in cui la schermata mostra crediti che non
    esistono piu'.
+   Non esce da qui. Ogni `fetch` di questo file punta a `/api/...`, cioe' al
+   server che gira sul computer di chi sta giocando; la pagina dichiara in
+   `index.html` una politica dei contenuti che le vieta di caricare qualunque
+   cosa da un'altra origine. L'unica cosa che viaggia in rete la scarica il
+   programma, non questa pagina: i dati dei giocatori, una volta al giorno.
    ========================================================================== */
 
 'use strict';
