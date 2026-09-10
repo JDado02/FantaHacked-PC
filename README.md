@@ -3,22 +3,47 @@
 Dice **fino a quanto conviene spingersi** su ogni giocatore, durante l'asta,
 mentre l'asta è in corso.
 
-## ⬇️ [Scarica FantaHacked.exe](https://github.com/JDado02/FantaHacked-PC/raw/main/FantaHacked.exe)
+## ⬇️ [Scarica FantaHacked-Windows.zip](https://github.com/JDado02/FantaHacked-PC/raw/main/FantaHacked-Windows.zip)
 
-**22 MB, Windows, un file solo.** Si mette dove si vuole — anche su una
-chiavetta — e si apre con un doppio clic: non c'è niente da installare e
-niente da configurare.
+**22 MB, Windows.** Si estrae dove si vuole — anche su una chiavetta — e
+dentro c'è `FantaHacked.exe`: doppio clic e parte. Non c'è niente da
+installare e niente da configurare.
 
-Due avvisi, la prima volta, e sono due cose diverse:
+Al primo avvio si scarica i dati dei giocatori (mezzo mega) e crea `database/`
+e `motore/` dentro la sua cartella. Da lì in poi funziona anche senza rete.
 
-- **il browser** dice che il file «non viene scaricato spesso» e lo blocca:
-  nel riquadro dei download, `⋯` → *Mantieni*;
-- **Windows SmartScreen** dice «Windows ha protetto il PC», perché
-  l'eseguibile non ha una firma digitale a pagamento: *Ulteriori informazioni*
-  → *Esegui comunque*.
+**Windows SmartScreen** dirà «Windows ha protetto il PC»: succede a ogni
+programma senza firma digitale a pagamento, e si passa con *Ulteriori
+informazioni* → *Esegui comunque*.
 
-Al primo avvio si scarica i dati dei giocatori (mezzo mega) e si crea accanto
-`database/` e `motore/`. Da lì in poi funziona anche senza rete.
+<details>
+<summary>Se l'antivirus dice «Wacatac» o «Trojan»</summary>
+
+È un falso positivo, e vale la pena spiegare da dove viene invece di dire
+«fidati».
+
+La prima versione pubblicata qui era un **eseguibile unico**. Un file unico di
+PyInstaller è un programmino che a ogni avvio si scompatta da solo in una
+cartella temporanea e poi esegue quello che ha appena scritto: descritta così,
+è la definizione di un dropper, e l'analisi automatica di Defender lo ha
+classificato `Trojan:Win32/Wacatac.B!ml`. Il suffisso `!ml` vuol dire proprio
+questo — nessuna firma di un virus conosciuto, solo un modello statistico che
+ha visto una forma sospetta. È il falso positivo più comune che capiti a chi
+distribuisce programmi Python.
+
+Quello che si scarica adesso è la **versione a cartella**: un avvio da cinque
+megabyte e accanto le sue librerie, come qualunque programma Windows normale.
+Non si scompatta niente, e sullo stesso computer con le stesse definizioni
+passa pulita. In più parte prima, perché non deve rifare l'estrazione a ogni
+doppio clic.
+
+Se dovesse succedere lo stesso a questa, l'unica cosa che risolve davvero è
+segnalarlo a Microsoft: si carica il file su
+[microsoft.com/wdsi/filesubmission](https://www.microsoft.com/en-us/wdsi/filesubmission)
+scegliendo *Software developer* e *Incorrectly detected*, e in un paio di
+giorni la diagnosi viene corretta per tutti.
+
+</details>
 
 C'è anche [per Android](https://github.com/JDado02/FantaHacked-Android).
 
@@ -92,7 +117,9 @@ FantaHacked.exe          l'eseguibile (si costruisce, non sta nel repository)
 │   ├── pipeline/        ricostruisce i CSV dalle fonti, e li pubblica
 │   └── fonti/           le fonti grezze, così come sono state lette
 ├── build/
-│   ├── FantaHacked.spec come si costruisce l'eseguibile
+│   ├── FantaHacked.spec           il file unico, per la chiavetta
+│   ├── FantaHacked_cartella.spec  la versione che si distribuisce
+│   ├── impacchetta.py             e lo zip che ne esce
 │   └── marchio.py       il marchio, in nove misure, da una geometria sola
 └── simulazioni/         trecento aste per misurare ogni modifica
 ```
@@ -161,6 +188,15 @@ python database/pipeline/pubblica.py --pubblica
 ```
 
 ### Costruire l'eseguibile
+
+Quello che si distribuisce è la versione **a cartella**, poi impacchettata:
+
+```bash
+python -m PyInstaller --clean --distpath build/dist --workpath build/lavoro build/FantaHacked_cartella.spec
+python build/impacchetta.py          # -> FantaHacked-Windows.zip
+```
+
+Il file unico serve ancora, per tenerlo su una chiavetta:
 
 ```bash
 python -m PyInstaller --clean --distpath . --workpath build/lavoro build/FantaHacked.spec
