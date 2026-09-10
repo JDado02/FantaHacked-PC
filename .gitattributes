@@ -18,7 +18,6 @@
 # su ventitre'. Il link diretto al file continua a funzionare: `export-ignore`
 # toglie il file dall'archivio generato, non dal repository.
 FantaHacked-Windows.zip export-ignore
-build/ export-ignore
 simulazioni/cento_aste_mercato.json export-ignore
 
 # I binari non si toccano.
