@@ -34,7 +34,14 @@ def riassunto(cons):
         for d in lista:
             v = {'id': d['id'], 'nome': d['nome'], 'verdetto': d['verdetto'],
                  'max_bid': d['max_bid'], 'chiusura': d['chiusura'],
-                 'utilita': d['utilita'], 'categoria': d.get('categoria')}
+                 'utilita': d['utilita'], 'categoria': d.get('categoria'),
+                 # Da quando la fascia alta si ordina mettendo davanti chi
+                 # scende in campo, questi due decidono **l'ordine**: se il
+                 # telefono li calcolasse diversamente mostrerebbe gli stessi
+                 # nomi in un'altra fila, che e' un difetto piu' subdolo di un
+                 # numero sbagliato.
+                 'titolare_pieno': d.get('titolare_pieno'),
+                 'copre': d.get('copre')}
             for k in extra:
                 v[k] = d.get(k)
             out.append(v)
@@ -44,6 +51,12 @@ def riassunto(cons):
         'pressione': cons['pressione'],
         'indicazione': cons['indicazione'],
         'budget_ruolo': cons.get('budget_ruolo'),
+        'copertura': cons.get('copertura'),
+        'anticipo': cons.get('anticipo'),
+        'anticipo_nome': cons.get('anticipo_nome'),
+        'restano_nel_reparto': cons.get('restano_nel_reparto'),
+        'valutati': cons.get('valutati'),
+        'vuoti_testo': dict(cons.get('vuoti') or {}),
         'top': voci(cons['top']),
         'evitare': voci(cons['evitare']),
         'alternative': voci(cons['alternative']),

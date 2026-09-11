@@ -89,7 +89,10 @@ def esporta(dati=None, destinazione=None):
 if __name__ == '__main__':
     fuori = esporta(destinazione=sys.argv[1] if len(sys.argv) > 1 else None)
     for t in sorted(fuori):
-        if t == 'meta':
+        # `meta` e `regole` non sono tabelle a colonne: non hanno righe da
+        # contare, e chiederle faceva finire lo script con un errore **dopo**
+        # aver scritto il file. Il pacchetto era giusto, il comando diceva di no.
+        if t in ('meta', 'regole'):
             continue
         print('  %-14s %4d righe x %2d campi'
               % (t, len(fuori[t]['righe']), len(fuori[t]['campi'])))

@@ -3,8 +3,32 @@
 > File di ripresa. Se la sessione si interrompe, **leggi questo per primo**:
 > dice cos'è fatto, dove sta, e qual è il passo successivo.
 >
-> Ultimo aggiornamento: **10 settembre 2026 (undicesimo giro) &mdash; la
-> faccia del programma, l'apk, e duecento aste per parte.**
+> Ultimo aggiornamento: **11 settembre 2026 &mdash; il telefono fa tutto
+> quello che fa il computer.**
+>
+> L'app Android non e' piu' il motore con sopra un'interfaccia ridotta: ha
+> **tutte** le funzioni del programma per computer. Il regolamento si sceglie
+> dalla schermata iniziale (squadre, crediti, modificatore, portieri a
+> pacchetto) e rifa' tutti i prezzi; ci sono il listone ordinabile, le rose
+> degli avversari, il turno di chiamata, il piano di spesa coi nomi, l'undici
+> schierabile col rischio di restare in dieci, il bilancio, la rinomina e il
+> tasto **completa reparto** per i collaudi.
+>
+> Nel motore JavaScript sono entrati i due moduli nuovi, `formazione.js` e
+> `equilibrio.js`: *prima chi gioca, poi chi conviene* vale identico sui due
+> programmi.
+>
+> **Le prove, oggi:** 54.020 confronti numerici su sei momenti e quattro
+> regolamenti diversi, 102 liste, 74 verifiche sulle regole
+> dell'asta, 35 sul generatore casuale, e **500 aste intere giocate da
+> ogni parte con gli stessi semi: 16.000 numeri confrontati, zero
+> differenze**. Sul computer 63 + 305 + 23 + 12 verifiche superate.
+>
+> apk **3,4 MB**, `versionCode 2`, Android 7 in su.
+>
+> *(sotto, i giri precedenti:)*
+>
+> **10 settembre (undicesimo giro) &mdash; la faccia del programma, l'apk, e duecento aste per parte.**
 >
 > L'interfaccia si vedeva in **Times New Roman**: il foglio di stile applicava
 > un colore al posto di un carattere, e il browser ripiegava in silenzio.
@@ -45,7 +69,7 @@
 > [FantaHacked-Android](https://github.com/JDado02/FantaHacked-Android),
 > [DBFantaHacked](https://github.com/JDado02/DBFantaHacked).
 >
-> 47 + 23 + 264 verifiche superate, 288 aste vinte su 300.
+> 63 + 305 + 23 + 12 verifiche superate, 482 aste vinte su 500.
 >
 > *(giri precedenti: gli infortuni riletti il 10 settembre e i due difetti nel
 > metro; i due motori e la prova che dicono la stessa cosa; i dati che si
@@ -2668,6 +2692,158 @@ computer al telefono fra un'asta e l'altra non deve reimparare a leggerle.
 - 33 verifiche sulle regole d'asta del telefono: zero fallite
 - 288 aste vinte su 300, zero rose incomplete, zero acquisti sopra il proprio
   limite in 6.900 chiamate
+
+---
+
+---
+
+# 11 settembre: il telefono fa tutto quello che fa il computer
+
+Fino a ieri l'app per Android era **il motore** del programma per computer con
+sopra un'interfaccia ridotta: consigli, ricerca, rosa. Mancavano il listone
+ordinabile, le rose degli avversari, il turno di chiamata, il piano di spesa
+coi nomi, l'undici schierabile, il rischio di restare in dieci, il bilancio, la
+rinomina — e mancava il regolamento, che si sceglie dalla schermata iniziale da
+ieri sul computer e da oggi anche sul telefono.
+
+Adesso non manca niente. E non è «una versione simile»: dove il computer
+mostra un numero, il telefono mostra **lo stesso numero**, e c'è una prova che
+lo verifica uno per uno.
+
+## Le due cose nuove nel motore
+
+Il motore JavaScript era fermo alla versione del 10 settembre. Ci sono entrati
+i due moduli scritti stanotte per il computer, tradotti riga per riga:
+
+- **`formazione.js`** — quante caselle della formazione si riempiono davvero
+  ogni giornata. La rosa ha otto difensori, ma in campo ne vanno quattro: il
+  conto è una Poisson-binomiale esatta sulle presenze attese di chi hai preso,
+  e da lì esce la regola che ordina le liste (*prima chi gioca, poi chi
+  conviene*);
+- **`equilibrio.js`** — l'undici migliore con che modulo, le coperture reparto
+  per reparto, il rischio di restare in dieci, i rigoristi, quanto sei esposto
+  su una sola squadra di serie A. Era l'unico modulo del motore che non aveva
+  una traduzione, e quindi l'unico che nessuna prova confrontava.
+
+Più il reparto chiuso che non lascia più la pagina bianca, la fascia alta che
+mette davanti chi copre un posto fisso, e il tetto delle alternative che si
+alza fino al titolare più economico quando in formazione manca qualcuno.
+
+## Il regolamento, dal telefono
+
+Quattro valori sulla schermata iniziale: quante squadre, quanti crediti a
+testa, modificatore di difesa sì o no, secondo e terzo portiere in automatico.
+Toccarne uno rifà **tutti i prezzi**.
+
+Che si potesse fare non era ovvio, e vale la pena dire perché si può. L'app del
+telefono porta il motore di valutazione, non quello delle proiezioni: presenze
+attese, media voto e fantamedia arrivano già calcolate col pacchetto dei dati, e
+se il regolamento cambiasse quelle, cambiarlo dall'app vorrebbe dire mostrare
+numeri sbagliati senza modo di accorgersene. Ma quei quattro valori **non
+entrano nelle proiezioni**: un giocatore ha le stesse presenze attese in una
+lega da sei e in una da venti. Entrano solo nella valutazione, che lì c'è
+tutta. Un gol di difensore da 4 a 3 invece cambierebbe le proiezioni, e infatti
+resta nel file.
+
+Il regolamento viene poi **scritto dentro l'asta**, come sul computer: un'asta
+si gioca fino in fondo con le regole con cui è cominciata.
+
+## La prova che mancava
+
+Le prove di equivalenza confrontavano i due motori **su un regolamento solo**,
+quello del file. Da quando quattro valori si scelgono dall'applicazione, quella
+non basta più: il numero di squadre fissa il livello di rimpiazzo e i crediti
+fissano la scala dei prezzi, ed è esattamente lì che due implementazioni
+possono divergere senza che nessuna prova se ne accorga.
+
+Adesso il confronto si ripete su quattro regolamenti — sei squadre e
+quattrocento crediti col modificatore spento, venti squadre, dieci squadre coi
+portieri uno per uno, e quello del pacchetto:
+
+```
+regolamento partecipanti=6  crediti=400 modificatore=no    rimpiazzo P 5,598
+regolamento partecipanti=20 crediti=500                    rimpiazzo P 5,015
+regolamento partecipanti=10 crediti=300 pacchetto=no       rimpiazzo P 5,053
+regolamento del pacchetto                                  rimpiazzo P 5,418
+```
+
+Stessi numeri nelle due lingue, tutti e quattro.
+
+E due **scene costruite a mano** si sono aggiunte alle quattro tappe casuali,
+perché le situazioni su cui il programma ha davvero sbagliato non capitano per
+caso in una sequenza casuale:
+
+- *i miei portieri sono finiti e la lega no* — è il momento in cui lo schermo
+  restava bianco;
+- *la difesa è scoperta* — due difensori presi su quattro caselle, che è dove
+  «prima chi gioca» cambia l'ordine della lista.
+
+Una scena costruita a mano non è meno onesta di una casuale: è più onesta,
+perché è la scena su cui il programma ha sbagliato.
+
+## Quattro difetti trovati provando
+
+Nessuno dei quattro si vedeva leggendo il codice.
+
+**«30,5 presenze»: Python arrotonda a 30, JavaScript a 31.** L'ha trovato la
+prova piu' grossa, ed e' il difetto piu' istruttivo della giornata. Le
+cinquecento aste per parte sono venute identiche in tutto &mdash; stesse rose,
+stessi prezzi, stessi punti, stessa spesa per reparto &mdash; tranne nel
+punteggio nuovo, quello che conta solo chi si riesce a schierare. Su otto rose
+c'erano due giocatori con **esattamente** 30,5 e 28,5 presenze attese, e li' le
+due lingue si dividono: `round(30.5)` in Python fa 30, perche' a meta' strada
+va al pari piu' vicino; `Math.round(30.5)` in JavaScript fa 31.
+
+Non e' un caso di scuola. Le presenze attese nascono da `titolarita x 38`, e
+sul mezzo punto ci cadono spesso. C'era gia' una funzione che arrotonda come
+Python &mdash; scritta mesi fa per i costi dello zaino, dove un credito cambia
+il percorso della programmazione dinamica &mdash; e serviva anche qui: nel
+simulatore, e **nell'interfaccia**, perche' altrimenti il telefono scrive «31
+presenze attese» dove il computer scrive 30, sullo stesso giocatore.
+
+Adesso c'e' una verifica apposta che lo tiene fermo, e che cerca davvero nel
+listone i giocatori col mezzo punto.
+
+**`window.confirm()` dentro una WebView non chiede niente: risponde no.** Nel
+browser la conferma di «completa reparto» funzionava, e provandola lì sembrava
+a posto. Dentro l'apk no: una WebView senza `WebChromeClient` annulla le
+finestrelle di sistema, quindi il bottone non avrebbe fatto niente — senza dire
+perché. Sostituita con un foglio scorrevole come tutti gli altri
+dell'applicazione, che per di più si prova dal browser esattamente com'è sul
+telefono.
+
+**Due moduli fuori dalla lista di quelli da tenere offline.** `servizio.js`
+elenca i file che l'app mette da parte per aprirsi senza rete: i due nuovi non
+c'erano. Aggiunti, e alzata la versione della cache — altrimenti chi ha già la
+copia di prima non la rinfresca mai.
+
+**«In campo vanno 1 portieri».** Il plurale che non concorda, nella prima riga
+del pannello, su tutti e due i programmi. Piccolo, e si nota subito: una frase
+sgrammaticata in cima fa sembrare approssimativo anche il conto che c'è sotto.
+
+E una quinta cosa, che non era un difetto ma una svista nell'accorciare i nomi:
+l'undici mostrava una maglia con scritto **«N.»**. `cognome()` prendeva
+l'ultima parola, e in questo listone i nomi sono scritti *Cognome Iniziale.* —
+Molina N., Gaspar K. Tolto: un accorciamento che indovina a volte è peggio di
+nessun accorciamento.
+
+## E quattro attese sbagliate mie
+
+Le prove nuove sono fallite quattro volte, e nessuna era un difetto del
+programma. Vale la pena scriverle, perché sono il tipo di errore che rende
+verdi le prove sbagliate:
+
+- **«con più squadre il limite scende».** Sale. `max_bid` non è un prezzo, è
+  quanto quel giocatore vale *per la mia rosa*, e in una lega grande
+  l'alternativa che avrei al suo posto è molto peggiore.
+- **«quattro titolari coprono la difesa».** No: quattro giocatori da trenta
+  presenze coprono 3,16 caselle su 4, perché dietro non hanno nessuno. È
+  esattamente il punto di `formazione`, e la soglia che avevo messo lo
+  contraddiceva. Per chiudere il reparto serve il quinto.
+- **«il programma dice che la difesa è scoperta».** La scena non ci arrivava:
+  finché restano portieri da assegnare la fase è quella dei portieri, e il
+  programma parlava — correttamente — di portieri.
+- **«a rosa vuota ci sono dieci caselle da riempire».** Sono undici.
 
 ---
 

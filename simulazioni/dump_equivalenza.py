@@ -28,9 +28,19 @@ from asta import StatoAsta
 from valutazione import Valutatore
 from ottimizzatore import Ottimizzatore
 from strategia import Consigliere
+from equilibrio import Equilibrio
 
 NOMI = ['Davide', 'Luca', 'Windser', 'Jacopo', 'Giorgio', 'Viane', 'Fede', 'Canzia']
 TAPPE = [0, 10, 60, 190]
+
+# I regolamenti su cui si ripete il confronto. Non sono casi di scuola: sono
+# le quattro combinazioni che una lega vera puo' davvero avere.
+REGOLAMENTI = [
+    {'partecipanti': 6, 'crediti_iniziali': 400, 'modificatore_difesa': False},
+    {'partecipanti': 20, 'crediti_iniziali': 500},
+    {'partecipanti': 10, 'crediti_iniziali': 300, 'portieri_a_pacchetto': False},
+    {},
+]
 
 
 def scegli_acquisti(v, st, quanti, rng):
@@ -76,6 +86,84 @@ def scegli_acquisti(v, st, quanti, rng):
     return fatti
 
 
+def scena_portieri_miei(v, st):
+    """I miei tre portieri presi, gli altri no: la lega e' ancora sui portieri.
+
+    E' il buco che l'utente ha trovato: da qui in poi non posso piu' fare
+    un'offerta in questo reparto, e per sette chiamate il programma non aveva
+    niente da dire. Adesso dev'esserci il reparto successivo, dichiarato come
+    anticipo.
+    """
+    fatti = []
+    presidenti = [p['id'] for p in st.presidenti()]
+    io_id = st.io()['id']
+    for pid in [io_id, presidenti[1], presidenti[2]]:
+        fatti += _pacchetto_portiere(v, st, pid)
+    return fatti
+
+
+def scena_difesa_scoperta(v, st):
+    """Tutti i portieri assegnati e due miei difensori: la fase e' la difesa.
+
+    Con due difensori su quattro caselle la copertura manca, ed e' li' che
+    l'ordine della fascia alta cambia: davanti chi scende in campo, dietro chi
+    conviene. Serve che tutti i ventiquattro portieri siano andati, altrimenti
+    la fase resta ai portieri.
+    """
+    fatti = []
+    for p in st.presidenti():
+        while st.slot_residui(p['id'], 'P') > 0:
+            nuovi = _pacchetto_portiere(v, st, p['id'])
+            if not nuovi:
+                break
+            fatti += nuovi
+    io_id = st.io()['id']
+    # Due difensori qualunque fra i primi: quello che conta e' che siano due e
+    # non quattro.
+    presi = 0
+    for x in v.disponibili('D', 40):
+        if presi >= 2:
+            break
+        prezzo = max(1, min(int(round(x.prezzo_atteso or 1)),
+                            st.liquidita(io_id)))
+        try:
+            st.registra(x.id, io_id, prezzo, None)
+        except Exception:
+            continue
+        fatti.append([x.id, io_id, prezzo])
+        v.aggiorna()
+        presi += 1
+    return fatti
+
+
+def _pacchetto_portiere(v, st, pid):
+    """Un titolare piu' le sue riserve a un credito, come fa il programma."""
+    fatti = []
+    for x in v.disponibili('P', 60):
+        if st.slot_residui(pid, 'P') <= 0:
+            break
+        if v.pacchetto and not x.titolare_por:
+            continue
+        prezzo = max(1, min(int(round(x.prezzo_atteso or 1)), st.liquidita(pid)))
+        try:
+            st.registra(x.id, pid, prezzo, None)
+        except Exception:
+            continue
+        fatti.append([x.id, pid, prezzo])
+        v.aggiorna()
+        for rid in (v.riserve_di(x.id) if v.pacchetto else []):
+            if st.slot_residui(pid, 'P') <= 0:
+                break
+            try:
+                st.registra(rid, pid, 1, None)
+            except Exception:
+                continue
+            fatti.append([rid, pid, 1])
+            v.aggiorna()
+        break
+    return fatti
+
+
 def istantanea(v, o, c, st):
     """Tutto quello che la parte JavaScript deve saper riprodurre."""
     gio = {}
@@ -113,7 +201,13 @@ def istantanea(v, o, c, st):
             dec['verdetto'], dec['max_bid'], dec['chiusura'],
             round(dec['convenienza'], 6), round(dec['utilita'], 6),
         ]
+    # Il quadro della rosa: undici migliore, coperture, rischio di restare in
+    # dieci. E' l'unica parte del motore che guarda la squadra invece del
+    # singolo giocatore, e finche' non stava qui la sua traduzione non era
+    # verificata da niente.
+    quadro = Equilibrio(v, o).quadro()
     return {
+        'equilibrio': quadro,
         'globali': {
             'crediti_residui': v.crediti_residui,
             'slot_residui': v.slot_residui,
@@ -170,9 +264,48 @@ def _dump(con, uscita):
             'dati': istantanea(v, o, c, st),
         })
 
+    # Le due scene costruite: ognuna riparte da un'asta vuota, perche' quello
+    # che deve essere riproducibile e' la **situazione**, non la strada per
+    # arrivarci.
+    for k, scena in enumerate([scena_portieri_miei, scena_difesa_scoperta]):
+        st2 = StatoAsta(con, reg)
+        st2.inizializza(NOMI[1:], mio_nome=NOMI[0])
+        v2 = Valutatore(con, reg, st2)
+        acquisti = scena(v2, st2)
+        v2 = Valutatore(con, reg, st2)
+        o2 = Ottimizzatore(v2)
+        c2 = Consigliere(v2, o2)
+        print('  scena %s: %d acquisti, fase %s'
+              % (scena.__name__, len(acquisti), c2.fase()))
+        fuori['tappe'].append({
+            'acquisti': acquisti,
+            'dati': istantanea(v2, o2, c2, st2),
+        })
+
     cartella = os.path.dirname(uscita)
     if cartella and not os.path.isdir(cartella):
         os.makedirs(cartella)
+    # --- e adesso gli stessi conti con altri regolamenti -----------------
+    #
+    # Ad asta vuota, perche' quello che si sta verificando qui non e' la
+    # strategia ma la **scala**: rimpiazzo, curva dei prezzi, budget per
+    # reparto e limiti nascono tutti dal numero di squadre e dal monte crediti.
+    fuori['regolamenti'] = []
+    for modifiche in REGOLAMENTI:
+        reg2 = regmod.Regole(regmod.applica(regmod.carica()._d, modifiche))
+        st2 = StatoAsta(con, reg2)
+        st2.inizializza(NOMI[1:reg2.partecipanti], mio_nome=NOMI[0])
+        v2 = Valutatore(con, reg2, st2)
+        o2 = Ottimizzatore(v2)
+        c2 = Consigliere(v2, o2)
+        print('  regolamento %s: rimpiazzo P %.3f, opt %.1f'
+              % (modifiche or 'quello del file', v2.rimpiazzo_fm['P'], o2.opt()))
+        fuori['regolamenti'].append({
+            'modifiche': modifiche,
+            'nomi': NOMI[:reg2.partecipanti],
+            'dati': istantanea(v2, o2, c2, st2),
+        })
+
     with io.open(uscita, 'w', encoding='utf-8') as f:
         json.dump(fuori, f, ensure_ascii=False, separators=(',', ':'))
     print('scritto %s (%.0f KB)' % (uscita, os.path.getsize(uscita) / 1024.0))

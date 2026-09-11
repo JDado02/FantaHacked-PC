@@ -81,7 +81,7 @@ dopo; evita di pubblicare qualcosa che è già segnalato adesso.
 
 </details>
 
-C'è anche [per Android](https://github.com/JDado02/FantaHacked-Android).
+C'è anche [per Android](https://github.com/JDado02/FantaHacked-Android), con **le stesse funzioni** e gli stessi numeri: non una versione ridotta.
 
 ---
 
@@ -255,16 +255,16 @@ programma.
 
 | | |
 |---|---|
-| [FantaHacked-Android](https://github.com/JDado02/FantaHacked-Android) | la stessa cosa sul telefono: il motore tradotto in JavaScript |
+| [FantaHacked-Android](https://github.com/JDado02/FantaHacked-Android) | la stessa cosa sul telefono: motore **e** funzioni, il primo tradotto in JavaScript e confrontato numero per numero |
 | [DBFantaHacked](https://github.com/JDado02/DBFantaHacked) | i dati pubblicati, che entrambi scaricano |
 
 ## Le verifiche
 
 ```bash
-python motore/test_motore.py           # 47 sul motore
+python motore/test_motore.py           # 63 sul motore
 python motore/test_aggiornamento.py    # 23 sui due database e sull'aggiornamento
-python app/test_app.py                 # 264 sull'applicazione, contro un server vero
-python simulazioni/cento_aste.py 300   # trecento aste complete
+python app/test_app.py                 # 305 sull'applicazione, contro un server vero
+python simulazioni/cento_aste.py 500   # cinquecento aste complete
 python build/marchio.py                # icone e SVG, se cambia il marchio
 ```
 
@@ -277,16 +277,27 @@ python simulazioni/dump_equivalenza.py  <FantaHacked-Android>/prove/attesi.json
 python simulazioni/dump_consiglio.py    <FantaHacked-Android>/prove/attesi_consiglio.json
 ```
 
-E una terza, che non guarda i numeri ma **le aste**: duecento partite intere
-giocate dai due motori con lo stesso generatore casuale e gli stessi semi.
+La prima fotografa i numeri in **sei** momenti — quattro presi lungo un'asta
+qualunque e due scene costruite a mano: i miei portieri finiti mentre la lega
+è ancora sui portieri, e la difesa scoperta a metà reparto. Sono le due
+situazioni su cui il programma ha davvero sbagliato, e per caso in una
+sequenza casuale non capitano. Poi ripete tutto su **quattro regolamenti
+diversi** — da sei a venti squadre, col modificatore acceso e spento, coi
+portieri a pacchetto e senza — perché da quando quei valori si scelgono
+dall'interfaccia, verificarli su uno solo non dice più niente sugli altri.
+
+E una terza, che non guarda i numeri ma **le aste**: cinquecento partite
+intere giocate dai due motori con lo stesso generatore casuale e gli stessi
+semi.
 
 ```bash
-python simulazioni/cento_aste.py 200
+python simulazioni/cento_aste.py 500
 # poi si copia simulazioni/cento_aste_mercato.json in
-# <FantaHacked-Android>/prove/attesi_aste.json e si apre prove/aste.html
+# <FantaHacked-Android>/prove/attesi_aste.json e si apre prove/aste.html?n=500
 ```
 
-Oggi: **22.356 numeri, 44 liste e 200 aste (4.800 numeri), zero differenze.** La soglia e' un
+Oggi: **54.020 numeri, 102 liste e 500 aste (16.000 numeri), zero differenze**,
+su sei momenti dell'asta e quattro regolamenti. La soglia e' un
 milionesimo in relativo, e zero sugli interi &mdash; dove uno scarto non e'
 virgola mobile, e' una decisione diversa.
 
