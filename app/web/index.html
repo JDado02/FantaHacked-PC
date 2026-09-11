@@ -50,11 +50,50 @@
       </div>
     </div>
 
-    <div id="avvio-regole" class="regole-strip"></div>
+    <h2 class="titolo-sezione">Il regolamento</h2>
+    <p class="nota">Le quattro cose che cambiano da lega a lega. Toccarne una rif&agrave;
+       <b>tutti i prezzi</b>: il motore ricalcola il livello di rimpiazzo, il valore
+       e il limite di ogni giocatore sui dati aggiornati. Bonus, malus e scala del
+       modificatore restano in <code>database/regole_lega.json</code>.</p>
 
-    <h2 class="titolo-sezione">Le otto squadre</h2>
+    <div id="avvio-regole" class="regole-strip">
+      <div class="regola scelta">
+        <input id="reg-squadre" type="number" step="1" min="2" max="20"
+               inputmode="numeric" autocomplete="off">
+        <span>Squadre</span>
+      </div>
+      <div class="regola scelta">
+        <input id="reg-crediti" type="number" step="10" min="25" max="2000"
+               inputmode="numeric" autocomplete="off">
+        <span>Crediti a testa</span>
+      </div>
+      <div class="regola scelta leva-guscio">
+        <label class="leva">
+          <input id="reg-mod" type="checkbox">
+          <span class="leva-corpo"><span class="leva-pallino"></span></span>
+          <b id="reg-mod-testo">&mdash;</b>
+        </label>
+        <span id="reg-mod-nota">Modificatore difesa</span>
+      </div>
+      <div class="regola scelta leva-guscio larga">
+        <label class="leva">
+          <input id="reg-pacchetto" type="checkbox">
+          <span class="leva-corpo"><span class="leva-pallino"></span></span>
+          <b id="reg-pacchetto-testo">&mdash;</b>
+        </label>
+        <span>Secondo e terzo portiere in automatico</span>
+      </div>
+      <div class="regola"><b id="reg-rosa">&mdash;</b><span>Rosa</span></div>
+      <div class="regola"><b id="reg-monte">&mdash;</b><span>Crediti in gioco</span></div>
+    </div>
+    <p id="reg-pacchetto-nota" class="nota piccola spiega-regola"></p>
+
+    <p id="avvio-avviso" class="nota avviso" hidden></p>
+
+    <h2 id="titolo-squadre" class="titolo-sezione">Le squadre</h2>
     <p class="nota">Il primo nome &egrave; il tuo: tutti i consigli sono calcolati
-       dal tuo punto di vista. Gli altri sette sono avversari.</p>
+       dal tuo punto di vista. Gli altri sono avversari. I nomi sono gi&agrave;
+       compilati &mdash; sovrascrivili se vuoi quelli veri.</p>
 
     <form id="form-nuova" class="squadre-griglia" autocomplete="off"></form>
 
@@ -78,8 +117,16 @@
 
     <div class="fase">
       <span class="fase-etichetta">Si chiamano</span>
-      <strong id="fase-nome">&mdash;</strong>
-      <span id="fase-residui" class="fase-residui"></span>
+      <div class="fase-riga">
+        <strong id="fase-nome">&mdash;</strong>
+        <span id="fase-residui" class="fase-residui"></span>
+        <!-- Attrezzo da collaudo, non da asta: riempie il reparto in corso per
+             tutti, cosi' si arriva in un secondo al punto che si vuole
+             guardare. Chiede conferma perche' un clic di troppo, la sera
+             giusta, costerebbe la serata. -->
+        <button id="btn-completa" class="bottone minuscolo prova"
+                title="Assegna tutti gli slot che restano in questo reparto: a te i consigliati, agli altri i piu' cari fra i liberi. Serve per provare il programma.">completa reparto</button>
+      </div>
     </div>
 
     <div class="turno">

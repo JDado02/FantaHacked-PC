@@ -24,6 +24,7 @@ python demo.py          # listone valutato + simulazione di una chiamata
 | `regole.py` | Lettura e **validazione** di `regole_lega.json` |
 | `proiezioni.py` | Da statistiche storiche a punti attesi |
 | `modificatore.py` | Bonus atteso del modificatore di difesa |
+| `formazione.py` | Quante caselle della formazione si riempiono davvero ogni giornata |
 | `asta.py` | Stato dell'asta: acquisti, crediti, slot, annullamento |
 | `valutazione.py` | VOR, prezzo di mercato, concorrenti, chiusura attesa |
 
@@ -71,6 +72,33 @@ Due proprietà, entrambe verificate nei test:
 
 - comprare dall'alto **non muove** il rimpiazzo: si consuma un giocatore e uno slot
 - uno slot speso **sotto** la linea lo **alza**: un posto in meno per chi era sopra
+
+### 2b. Quante caselle riempi davvero (`formazione.py`)
+
+Il valore qui sopra è lineare nelle presenze, e sui punti del singolo è
+giusto. Restano fuori due cose, e decidono la stagione:
+
+- **la panchina non entra nel totale.** Sommando i migliori per reparto, il
+  quinto e il sesto difensore valgono zero. Ma giocano, e i punti li fanno —
+  tanti di più quanto più i titolari saltano.
+- **le caselle che non si riempiono valgono zero, non poco.** Quattro
+  difensori da diciotto presenze e nessun altro coprono meno di due caselle su
+  quattro: le altre due sono giornate giocate in dieci.
+
+`formazione.py` calcola l'una e l'altra in modo esatto: ogni giocatore prende
+voto con probabilità pari alle sue presenze attese diviso trentotto, il numero
+di disponibili di un reparto è una Poisson-binomiale, e da lì escono
+`posti_coperti` (quante caselle si riempiono) e `guadagno` (quante ne aggiunge
+un giocatore in più). Nessuna soglia scelta a mano.
+
+Da qui la regola che il pannello dei consigli segue durante l'asta: **finché il
+nucleo che scende in campo non è coperto, chi gioca viene prima di chi
+conviene.** Non perché il giocatore a mezzo servizio valga meno di quello che
+rende, ma perché finché il nucleo non c'è non ha nessuno dietro a coprirlo.
+
+Misurato su 400 aste giocate seguendo il pannello, con gli stessi semi nelle
+due varianti: 389 vittorie contro 371, **+11 punti di stagione in media**
+(t = 5,5) e sette centesimi di giornata in meno passati a schierare in dieci.
 
 ### 3. Prezzo di mercato
 

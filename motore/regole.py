@@ -3,19 +3,81 @@
 
 Le regole entrano ovunque nel motore: un valore sbagliato qui falsa ogni
 prezzo consigliato. Per questo vengono validate all'avvio, non usate a fiducia.
+
+Il file resta la base, ma non e' piu' l'ultima parola: tre valori &mdash;
+quante squadre, quanti crediti, modificatore di difesa si' o no &mdash; si
+scelgono dalla schermata iniziale del programma e arrivano qui come
+`modifiche`. Sono i tre che cambiano da lega a lega ogni anno e che nessuno ha
+voglia di andare a correggere in un file JSON la sera dell'asta. Tutto il
+resto (bonus, malus, scala del modificatore, ripartizione del mercato) sta
+ancora nel file, perche' cambiarlo alla cieca da un'interfaccia farebbe piu'
+danni che comodo.
 """
-import json, os, sys
+import copy, hashlib, json, os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import percorsi
 
 GIORNATE = 38
 
+# I tre valori che l'interfaccia puo' cambiare, e i loro limiti.
+# Il tetto sui crediti non e' un capriccio: l'ottimizzatore risolve uno zaino
+# con una riga per credito, quindi il costo del calcolo cresce con il budget.
+# Duemila e' gia' quattro volte la lega piu' ricca che si sia mai vista.
+MIN_PARTECIPANTI, MAX_PARTECIPANTI = 2, 20
+MAX_CREDITI = 2000
+
+
+def applica(base, modifiche):
+    """Il dizionario del file con sopra le scelte fatte dall'interfaccia."""
+    d = copy.deepcopy(base)
+    if not modifiche:
+        return d
+    for chiave in ('partecipanti', 'crediti_iniziali'):
+        if modifiche.get(chiave) is not None:
+            try:
+                d[chiave] = int(modifiche[chiave])
+            except (TypeError, ValueError):
+                raise ValueError('%s: "%s" non e\' un numero'
+                                 % (chiave, modifiche[chiave]))
+    if modifiche.get('modificatore_difesa') is not None:
+        md = d.setdefault('modificatore_difesa', {})
+        md['attivo'] = bool(modifiche['modificatore_difesa'])
+    if modifiche.get('portieri_a_pacchetto') is not None:
+        m = d.setdefault('mercato', {})
+        m['portieri_a_pacchetto'] = bool(modifiche['portieri_a_pacchetto'])
+    return d
+
+
+def impronta(d):
+    """Un'impronta del regolamento, ignorando i commenti.
+
+    I campi che iniziano con `_` sono note per chi compila il file: cambiarle
+    non cambia un solo punto atteso, e non deve far ricalcolare niente.
+
+    Sta qui e non in `aggiornamento` perche' deve poter guardare le regole
+    **davvero in uso** &mdash; file piu' scelte dell'interfaccia &mdash; e non
+    solo quelle scritte sul disco: da quando i tre valori si cambiano a
+    programma acceso, un'impronta presa dal file direbbe "niente e' cambiato"
+    proprio mentre qualcosa e' cambiato.
+    """
+    def pulisci(x):
+        if isinstance(x, dict):
+            return dict((k, pulisci(v)) for k, v in x.items()
+                        if not k.startswith('_'))
+        if isinstance(x, list):
+            return [pulisci(v) for v in x]
+        return x
+
+    testo = json.dumps(pulisci(d), sort_keys=True, ensure_ascii=False)
+    return hashlib.sha256(testo.encode('utf-8')).hexdigest()[:16]
+
 
 class Regole(object):
 
     def __init__(self, d):
         self._d = d
+        self.firma = impronta(d)
         self.partecipanti     = int(d['partecipanti'])
         self.crediti          = int(d['crediti_iniziali'])
         r = d['rosa']
@@ -132,11 +194,15 @@ class Regole(object):
     # ---------------------------------------------------------------- validita'
     def _valida(self):
         e = []
-        if not 2 <= self.partecipanti <= 20:
-            e.append('partecipanti fuori scala: %d' % self.partecipanti)
+        if not MIN_PARTECIPANTI <= self.partecipanti <= MAX_PARTECIPANTI:
+            e.append('le squadre devono essere fra %d e %d, non %d'
+                     % (MIN_PARTECIPANTI, MAX_PARTECIPANTI, self.partecipanti))
         if self.crediti < self.slot_totali:
             e.append('crediti (%d) inferiori agli slot di rosa (%d): impossibile '
                      'riempire la rosa' % (self.crediti, self.slot_totali))
+        if self.crediti > MAX_CREDITI:
+            e.append('crediti oltre il massimo gestibile (%d): il calcolo del '
+                     'limite lavora su una riga per credito' % MAX_CREDITI)
         for r, n in self.slot.items():
             if n < 1:
                 e.append('slot %s non valido: %d' % (r, n))
@@ -161,7 +227,14 @@ class Regole(object):
             if attivo and not self._d.get('modificatore_' + nome, {}).get('scala'):
                 e.append('modificatore di %s attivo ma scala vuota' % nome)
         if e:
-            raise ValueError('regole_lega.json non valido:\n  - ' + '\n  - '.join(e))
+            raise ValueError('regolamento non valido:\n  - ' + '\n  - '.join(e))
+
+    def impostazioni(self):
+        """I tre valori che l'interfaccia mostra e lascia cambiare."""
+        return {'partecipanti': self.partecipanti,
+                'crediti_iniziali': self.crediti,
+                'modificatore_difesa': self.mod_dif_attivo,
+                'portieri_a_pacchetto': self.portieri_pacchetto}
 
     def bonus_modificatore(self, media):
         """Bonus a gradini per una data media dei voti difensivi."""
@@ -190,11 +263,12 @@ class Regole(object):
              if self.mod_dif_attivo else '')
 
 
-def carica(percorso=None):
+def carica(percorso=None, modifiche=None):
+    """Le regole del file, con sopra le scelte fatte dall'interfaccia."""
     if percorso is None:
         percorso = percorsi.risorsa('database', 'regole_lega.json')
     with open(percorso, encoding='utf-8') as f:
-        return Regole(json.load(f))
+        return Regole(applica(json.load(f), modifiche))
 
 
 if __name__ == '__main__':

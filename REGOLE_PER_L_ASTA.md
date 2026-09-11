@@ -55,7 +55,30 @@ e vale solo se rispetta due condizioni che il motore ha già controllato:
 Chiami, spingi fino a quel numero, e **ti fermi lì**. Serve a bruciare i loro
 crediti prima che tocchi ai tuoi obiettivi.
 
-## 5. Le coppie si prendono in due
+## 5. Prima chi gioca, poi chi conviene
+
+In campo vanno **quattro difensori e quattro centrocampisti ogni domenica**, non
+otto. Finché il pannello dice che ne copri meno di quattro, la domanda non è
+quale sia l'affare migliore: è chi ti fa arrivare a quattro.
+
+La barra **«in campo ogni giornata»**, sotto la frase dei consigli, è quel
+numero. Rossa: la formazione non sta in piedi. Ambra: ci sei quasi. Verde: da
+qui in avanti i posti sono panchina, e lì un affare vale più di un nome.
+
+Chi non copre un posto fisso porta la targhetta **da panchina** e resta sotto i
+titolari finché la barra non diventa verde. Non sparisce — a volte è l'occasione
+vera — ma non ti viene proposto al posto di uno che gioca.
+
+> **Misurato.** Quattrocento aste giocate seguendo il pannello, gli stessi semi
+> con e senza questa regola: 389 vittorie contro 371, **+11 punti di stagione**
+> in media. Non è un'opinione sul fantacalcio, è la differenza che fa.
+
+E quando i crediti di un reparto sono finiti: sul listone restano quasi sempre
+**titolari da tre o quattro crediti** con trenta presenze attese. Sono loro i
+riempitivi giusti, non il giocatore da rotazione con la fantamedia alta — che è
+alta proprio perché gioca solo le partite giuste.
+
+## 6. Le coppie si prendono in due
 
 Il riquadro in cima ai consigli resta lì finché la coppia non è chiusa. Se hai
 il titolare, il suo compagno di maglia copre le giornate in cui lui non gioca —
@@ -64,7 +87,7 @@ ed è quasi sempre un giocatore che costa pochissimo.
 Coi **portieri a pacchetto**: chiami il titolare e ti arrivano anche secondo e
 terzo a 1 credito. È una chiamata, non tre.
 
-## 6. Se tutti i consigliati volano via
+## 7. Se tutti i consigliati volano via
 
 Succede, ed è previsto. Sotto **top acquisti** c'è sempre qualcuno — anche
 quando nessuno è un affare, il motore promuove i migliori dentro i crediti che
@@ -73,13 +96,13 @@ quelli che puoi prendere *tutti*, non uno solo svenandoti.
 
 Quando una sezione è vuota, adesso ti dice **perché** lo è.
 
-## 7. Non arrivare alla fine con crediti in mano
+## 8. Non arrivare alla fine con crediti in mano
 
 I crediti non spesi valgono zero. In trecento aste il motore ne ha lasciati
 7,8 in media, e non ha mai chiuso con una casella vuota. Il pannello «La mia rosa» avvisa quando il piano ne lascia
 indietro troppi: vuol dire che puoi alzare la mira su qualcuno.
 
-## 8. Se sai qualcosa che il motore non sa, hai ragione tu
+## 9. Se sai qualcosa che il motore non sa, hai ragione tu
 
 Le gerarchie vengono da cinque guide e dalle formazioni della terza
 giornata, lette il **7 settembre** a mercato chiuso; gli infortuni sono
@@ -91,7 +114,7 @@ Il suo mestiere è dirti **quanto vale un giocatore e fino a dove conviene
 spingersi**. Chi gioca domenica, se hai un'informazione fresca, lo sai meglio
 tu.
 
-## 9. Il cartellino rosso vuol dire zero, non "poco"
+## 10. Il cartellino rosso vuol dire zero, non "poco"
 
 Sessantaquattro nomi del listone portano il cartellino **FUORI LISTA**. Due sono
 esclusi dalla lista di serie A della Juventus (Milik, Thuram K.); gli altri
@@ -111,5 +134,5 @@ stagione, per due giocatori di movimento), va tolto a mano dal file
 
 ## In una riga
 
-Registra tutto, lascia spingere gli altri, fermati al numero, e non aver paura
-di perdere giocatori.
+Registra tutto, prima chi gioca e poi chi conviene, lascia spingere gli altri,
+fermati al numero, e non aver paura di perdere giocatori.

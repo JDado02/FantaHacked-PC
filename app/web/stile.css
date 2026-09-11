@@ -134,9 +134,13 @@ kbd {
 
 /* =============================================================== AVVIO */
 
+/* `align-items: center` con la barra di scorrimento taglia la testa alla carta
+   quando questa e' piu' alta della finestra: il centraggio spinge il bordo
+   superiore sopra lo zero, e li' non si scorre. Con venti squadre in elenco
+   succede davvero. `margin: auto` centra allo stesso modo ma non taglia. */
 .avvio {
   position: fixed; inset: 0; overflow-y: auto;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: flex-start; justify-content: center;
   padding: 32px 20px;
   background:
     radial-gradient(1100px 520px at 50% -10%, #16222E 0%, transparent 62%),
@@ -144,7 +148,7 @@ kbd {
 }
 
 .avvio-carta {
-  width: 100%; max-width: 720px;
+  width: 100%; max-width: 720px; margin: auto;
   background: var(--pannello);
   border: 1px solid var(--linea);
   border-radius: 16px;
@@ -179,8 +183,8 @@ kbd {
 }
 
 .regole-strip {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin: 24px 0 4px; padding: 14px 16px;
+  display: flex; flex-wrap: wrap; gap: 15px 22px;
+  margin: 18px 0 4px; padding: 15px 18px;
   background: var(--rilievo); border: 1px solid var(--linea-tenue);
   border-radius: var(--raggio);
 }
@@ -194,6 +198,88 @@ kbd {
   color: var(--muto);
 }
 
+/* --------------------------------------------------- regolamento, da scegliere
+   Le voci che si possono cambiare devono *sembrare* diverse da quelle che si
+   possono solo leggere, senza per questo diventare un modulo: restano le
+   stesse cifre grandi della striscia, con un filo di bordo sotto che dice
+   "questa si tocca". */
+.regola.scelta { min-width: 104px; }
+.regola.scelta input[type="number"] {
+  width: 100%; max-width: 96px;
+  background: transparent; border: none;
+  border-bottom: 1px dashed var(--linea);
+  border-radius: 0; padding: 0 0 2px;
+  color: var(--inchiostro);
+  font-family: var(--display); font-weight: 500; font-size: 20px;
+  font-variant-numeric: tabular-nums; line-height: 1.15;
+  transition: border-color .15s, color .15s;
+}
+.regola.scelta input[type="number"]:hover { border-bottom-color: var(--secondario); }
+.regola.scelta input[type="number"]:focus {
+  outline: none; border-bottom-color: var(--ambra); border-bottom-style: solid;
+}
+/* Le frecce restano: sono il modo piu' rapido di passare da otto a dieci. */
+.regola.scelta input[type="number"]::-webkit-inner-spin-button { opacity: .45; }
+.regola.scelta input[type="number"]:hover::-webkit-inner-spin-button,
+.regola.scelta input[type="number"]:focus::-webkit-inner-spin-button { opacity: 1; }
+
+.regole-strip.in-corso { opacity: .55; pointer-events: none; }
+.regole-strip.in-corso, .regole-strip { transition: opacity .12s; }
+
+.leva-guscio { min-width: 190px; }
+.leva-guscio.larga { min-width: 250px; }
+.spiega-regola { margin: 9px 2px 0; color: var(--muto); }
+.leva {
+  display: flex; align-items: center; gap: 9px;
+  cursor: pointer; line-height: 1.15; padding-bottom: 3px;
+}
+.leva input { position: absolute; opacity: 0; width: 0; height: 0; }
+.leva-corpo {
+  flex: none; width: 38px; height: 21px; border-radius: 11px;
+  background: var(--alto); border: 1px solid var(--linea);
+  transition: background .15s, border-color .15s;
+}
+.leva-pallino {
+  display: block; width: 15px; height: 15px; border-radius: 50%;
+  background: var(--muto); margin: 2px 0 0 2px;
+  transition: transform .15s, background .15s;
+}
+.leva.accesa .leva-corpo { background: var(--ambra-cupa); border-color: var(--ambra); }
+.leva.accesa .leva-pallino { background: var(--ambra); transform: translateX(17px); }
+.leva input:focus-visible + .leva-corpo { outline: 2px solid var(--ambra); outline-offset: 2px; }
+.leva b {
+  font-family: var(--display); font-weight: 500; font-size: 20px;
+  color: var(--muto); transition: color .15s;
+}
+.leva.accesa b { color: var(--inchiostro); }
+
+/* Le liste di un reparto che non e' quello in chiamata: va detto forte, o si
+   compra un difensore credendo di star guardando i portieri. */
+.anticipo-strip {
+  margin: 10px 0 2px; padding: 9px 12px;
+  background: var(--rilievo); border: 1px dashed var(--linea);
+  border-radius: var(--raggio-s);
+  font-size: 12.5px; line-height: 1.5; color: var(--secondario);
+}
+.anticipo-tag {
+  display: inline-block; margin-right: 7px; padding: 1px 7px;
+  border-radius: 999px; background: var(--ambra-cupa); color: #17120A;
+  font-size: 10px; font-weight: 700; letter-spacing: .09em;
+  text-transform: uppercase; vertical-align: 1px;
+}
+
+.nota.avviso {
+  margin: 12px 0 0; padding: 10px 13px;
+  border-left: 2px solid var(--ambra);
+  background: var(--rilievo); border-radius: 0 var(--raggio-s) var(--raggio-s) 0;
+  color: var(--secondario);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leva-corpo, .leva-pallino, .leva b, .regole-strip,
+  .regola.scelta input[type="number"] { transition: none; }
+}
+
 .titolo-sezione {
   font-family: var(--display); font-weight: 500;
   font-size: 15px; letter-spacing: .1em; text-transform: uppercase;
@@ -205,6 +291,9 @@ kbd {
   display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px;
   margin-top: 16px;
 }
+/* Oltre la dozzina due colonne diventano un elenco lunghissimo. */
+.squadre-griglia.fitta { grid-template-columns: repeat(3, 1fr); gap: 9px 12px; }
+.squadre-griglia.fitta .campo input { padding: 7px 9px; }
 .campo { display: flex; flex-direction: column; gap: 4px; }
 .campo label {
   font-size: 11px; letter-spacing: .09em; text-transform: uppercase;
@@ -272,7 +361,23 @@ kbd {
   display: block; max-width: 220px;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-.fase-residui { color: var(--muto); font-size: 12px; margin-left: 6px; }
+/* Il ruolo e quanti ne restano stanno **sulla stessa riga**, come il nome di
+   chi chiama e il bottone accanto. Prima "24 ancora da assegnare" era uno span
+   dopo uno `strong` in display:block: andava a capo da solo e ci finiva pure
+   rientrato di sei pixel, allineato con niente. */
+.fase-riga { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+/* I comandi da collaudo si vedono che sono da collaudo: tratteggiati e
+   scoloriti, si accendono solo quando ci passi sopra. Non devono somigliare a
+   un bottone che si preme per sbaglio la sera dell'asta. */
+.bottone.prova {
+  border: 1px dashed var(--linea); color: var(--spento);
+  background: transparent; opacity: .75;
+}
+.bottone.prova:hover { opacity: 1; color: var(--secondario);
+                       border-color: var(--secondario); background: transparent; }
+.bottone.prova:disabled { opacity: .45; cursor: progress; }
+.fase-riga .fase-residui { flex: none; }
+.fase-residui { color: var(--muto); font-size: 12px; white-space: nowrap; }
 .turno-riga { display: flex; align-items: baseline; gap: 8px; }
 .turno.mio strong { color: var(--ambra); }
 
@@ -488,6 +593,54 @@ kbd {
   font-size: 10px; font-weight: 600; letter-spacing: .03em;
   color: var(--muto); vertical-align: 1px;
 }
+/* Compare solo finche' il reparto non regge la formazione: e' un avvertimento,
+   non un'etichetta permanente. Quando i titolari ci sono, uno da panchina e'
+   esattamente quello che serve, e la targhetta sparisce da sola. */
+.tag-panchina {
+  display: inline-block; margin-left: 6px; padding: 1px 6px;
+  border-radius: 3px; border: 1px solid var(--ambra-cupa);
+  background: rgba(245,182,63,.10);
+  font-size: 10px; font-weight: 600; letter-spacing: .03em;
+  color: var(--ambra); vertical-align: 1px; cursor: help;
+}
+
+/* Chi e' in cima perche' copre un posto in formazione, non perche' convenga.
+   Verde come i verdetti buoni: e' un consiglio da seguire, non un avviso. */
+.tag-copre {
+  display: inline-block; margin-left: 6px; padding: 1px 6px;
+  border-radius: 3px; border: 1px solid var(--ok);
+  background: rgba(70,208,147,.10);
+  font-size: 10px; font-weight: 600; letter-spacing: .03em;
+  color: var(--ok); vertical-align: 1px; cursor: help;
+}
+
+/* --------------------------------------------- quante caselle si riempiono */
+.copertura {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 11px; padding-top: 10px;
+  border-top: 1px solid var(--linea-tenue);
+  font-size: 11.5px; color: var(--muto); cursor: help;
+}
+.cop-testa {
+  flex: none; font-size: 10px; letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.cop-barra {
+  flex: 1; height: 6px; min-width: 60px; border-radius: 3px;
+  background: var(--alto); overflow: hidden;
+}
+.cop-barra i { display: block; height: 100%; background: var(--ok);
+               transition: width .2s; }
+.copertura.cosi .cop-barra i { background: var(--ambra); }
+.copertura.male .cop-barra i { background: var(--stop); }
+.cop-cifra {
+  flex: none; font-family: var(--display); font-size: 15px;
+  font-variant-numeric: tabular-nums; color: var(--inchiostro);
+}
+.copertura.cosi .cop-cifra { color: var(--ambra); }
+.copertura.male .cop-cifra { color: var(--stop); }
+.cop-cifra .fioco { font-family: var(--testo); font-size: 11px; }
+@media (prefers-reduced-motion: reduce) { .cop-barra i { transition: none; } }
 
 .numeri {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));

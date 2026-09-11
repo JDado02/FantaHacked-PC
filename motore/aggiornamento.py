@@ -53,10 +53,10 @@ ATTESA_PACCHETTO = 60
 
 # --------------------------------------------------------- firma del regolamento
 def firma_regole(percorso=None):
-    """Un'impronta del regolamento, ignorando i commenti.
+    """L'impronta del regolamento **scritto sul disco**.
 
-    I campi che iniziano con `_` sono note per chi compila il file: cambiarle
-    non cambia un solo punto atteso, e non deve far ricalcolare niente.
+    Il calcolo vero sta in `regole.impronta`: qui resta solo la lettura del
+    file, per chi non ha gia' in mano un oggetto `Regole`.
     """
     percorso = percorso or os.path.join(percorsi.DATABASE, 'regole_lega.json')
     try:
@@ -64,17 +64,8 @@ def firma_regole(percorso=None):
             d = json.load(f)
     except Exception:
         return ''
-
-    def pulisci(x):
-        if isinstance(x, dict):
-            return dict((k, pulisci(v)) for k, v in x.items()
-                        if not k.startswith('_'))
-        if isinstance(x, list):
-            return [pulisci(v) for v in x]
-        return x
-
-    testo = json.dumps(pulisci(d), sort_keys=True, ensure_ascii=False)
-    return hashlib.sha256(testo.encode('utf-8')).hexdigest()[:16]
+    import regole as regmod
+    return regmod.impronta(d)
 
 
 def _meta(con, chiave):
@@ -95,9 +86,24 @@ def _scrivi_meta(con, chiave, valore):
         pass
 
 
+def segna_firma_regole(con, reg):
+    """Registra su quale regolamento sono calcolate le proiezioni che ci sono.
+
+    Serve a chi le ricalcola per conto suo &mdash; database vuoto, prima
+    installazione &mdash; per non farle rifare da capo al primo controllo.
+    """
+    _scrivi_meta(con, 'regole_firma', reg.firma if reg is not None
+                 else firma_regole())
+
+
 def assicura_proiezioni(con, reg=None, verboso=False):
-    """Se le proiezioni non sono le tue, le rifa'. Restituisce True se ha lavorato."""
-    attesa = firma_regole()
+    """Se le proiezioni non sono le tue, le rifa'. Restituisce True se ha lavorato.
+
+    L'impronta viene dalle regole **in uso**, non dal file: da quando squadre,
+    crediti e modificatore si scelgono dalla schermata iniziale, le due cose
+    possono differire, e quella che conta e' la prima.
+    """
+    attesa = reg.firma if reg is not None else firma_regole()
     try:
         quante = con.execute('SELECT COUNT(*) FROM proiezioni').fetchone()[0]
     except sqlite3.OperationalError:

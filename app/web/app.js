@@ -20,6 +20,11 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
 const RUOLI = ['P', 'D', 'C', 'A'];
 const NOME_RUOLO = { P: 'Portieri', D: 'Difensori', C: 'Centrocampisti', A: 'Attaccanti' };
+// Il singolare serve dove il numero e' uno: "in campo va 1 portiere",
+// non "vanno 1 portieri". E' la prima riga del pannello, e una frase
+// sgrammaticata li' fa sembrare approssimativo anche il conto sotto.
+const NOME_SINGOLARE = { P: 'portiere', D: 'difensore',
+                         C: 'centrocampista', A: 'attaccante' };
 
 const S = {
   stato: null,        // riepilogo dal server
@@ -252,42 +257,153 @@ function nomiRicordati() {
   catch (e) { return []; }
 }
 
-function mostraAvvio(stato) {
-  const reg = stato.regole;
-  $('#avvio-regole').innerHTML = [
-    ['Squadre', reg.partecipanti],
-    ['Crediti', reg.crediti],
-    ['Rosa', `${reg.slot.P}-${reg.slot.D}-${reg.slot.C}-${reg.slot.A}`],
-    ['Slot', reg.slot_totali],
-    ['Mod. difesa', reg.modificatore ? 'attivo' : 'no'],
-  ].map(([e, v]) => `<div class="regola"><b>${esc(v)}</b><span>${esc(e)}</span></div>`).join('');
+/* ---------------------------------------------------- il regolamento
 
-  const n = reg.partecipanti;
+ * Quattro cose si scelgono da qui, e nessuna delle quattro e' cosmetica.
+ * Quante squadre siamo decide **quanti giocatori verranno assegnati**, cioe'
+ * il livello di rimpiazzo, cioe' quanto vale ogni giocatore; quanti crediti
+ * abbiamo decide la scala dei prezzi; il modificatore sposta il valore fra
+ * reparti; e i portieri a pacchetto cambiano il reparto in una scelta sola.
+ * Il motore rifa' i conti dall'inizio a ogni cambiamento, sui dati aggiornati.
+ *
+ * I comandi stanno nell'HTML e non vengono mai ridisegnati: un `innerHTML` a
+ * ogni modifica toglierebbe il fuoco dal campo mentre lo si sta usando, e con
+ * le frecce di un campo numerico si perderebbe al primo clic. Qui si
+ * riscrivono solo i valori. */
+
+function aggiornaImpostazioni(stato) {
+  const imp = stato.impostazioni;
+  const sq = $('#reg-squadre'), cr = $('#reg-crediti'), md = $('#reg-mod');
+  sq.min = imp.min_partecipanti; sq.max = imp.max_partecipanti;
+  cr.min = imp.min_crediti;      cr.max = imp.max_crediti;
+  sq.value = imp.partecipanti;
+  cr.value = imp.crediti;
+  md.checked = imp.modificatore;
+  $('#reg-mod-testo').textContent = imp.modificatore ? 'attivo' : 'spento';
+  $('#reg-mod').closest('.leva').classList.toggle('accesa', imp.modificatore);
+  $('#reg-mod-nota').textContent = imp.modificatore
+    ? 'Modificatore difesa · ' + imp.mod_componenti
+    : 'Modificatore difesa';
+
+  const pac = $('#reg-pacchetto');
+  pac.checked = imp.pacchetto;
+  $('#reg-pacchetto-testo').textContent = imp.pacchetto ? 'sì' : 'no';
+  pac.closest('.leva').classList.toggle('accesa', imp.pacchetto);
+  // Non e' una comodita' di registrazione: cambia il reparto. A pacchetto i
+  // portieri sono **otto scelte su venti squadre**, e chi prende il titolare
+  // ha chiuso il reparto; senza, sono ventiquattro giocatori da comprare uno
+  // per uno, e il secondo portiere e' una decisione vera. Il motore conta i
+  // due casi in modo diverso, quindi va detto cosa si sta scegliendo.
+  $('#reg-pacchetto-nota').innerHTML = imp.pacchetto
+    ? `Chi si aggiudica il portiere titolare di una squadra di serie A prende
+       anche il secondo e il terzo <b>a 1 credito</b>: il programma li registra
+       da solo. Il reparto diventa una chiamata sola, non tre.`
+    : `Ogni portiere si compra per conto suo, come gli altri ruoli: il
+       programma non assegna niente in automatico e i ${imp.slot.P} portieri
+       sono ${imp.slot.P} scelte separate.`;
+  $('#reg-rosa').textContent =
+    `${imp.slot.P}-${imp.slot.D}-${imp.slot.C}-${imp.slot.A}`;
+  $('#reg-monte').textContent = imp.crediti_totali;
+  $('#titolo-squadre').textContent = 'Le ' + PAROLA_NUMERO(imp.partecipanti) + ' squadre';
+
+  // Un'asta gia' cominciata si gioca con le regole con cui e' cominciata.
+  // Se i numeri qui sopra non sono piu' quelli, bisogna dirlo: altrimenti si
+  // cambia il budget, si preme "Riprendi", e si passa la serata a leggere
+  // prezzi calcolati su un'altra lega.
+  const avviso = $('#avvio-avviso');
+  avviso.hidden = !imp.diverse_dall_asta;
+  if (imp.diverse_dall_asta) {
+    const in_corso = stato.regole;
+    avviso.innerHTML = `L&rsquo;asta gi&agrave; in corso continua con le sue regole
+      (${in_corso.partecipanti} squadre, ${in_corso.crediti} crediti,
+      modificatore ${in_corso.modificatore ? 'attivo' : 'spento'}, portieri
+      ${in_corso.portieri_pacchetto ? 'a pacchetto' : 'uno per uno'}).
+      Questi numeri valgono per la <b>prossima</b>: premi <b>Nuova asta</b> per usarli.`;
+  }
+}
+
+const PAROLA_NUMERO = (n) => ({
+  2: 'due', 3: 'tre', 4: 'quattro', 5: 'cinque', 6: 'sei', 7: 'sette',
+  8: 'otto', 9: 'nove', 10: 'dieci', 11: 'undici', 12: 'dodici',
+  13: 'tredici', 14: 'quattordici', 15: 'quindici', 16: 'sedici',
+  17: 'diciassette', 18: 'diciotto', 19: 'diciannove', 20: 'venti',
+}[n] || n);
+
+/* I nomi gia' scritti a mano non si perdono quando cambia il numero di
+ * squadre: si passano di mano al ridisegno. Quelli che arrivano dal server
+ * riempiono solo le caselle nuove. */
+function disegnaNomiSquadre(stato, correnti) {
+  const n = stato.impostazioni.partecipanti;
+  const dalServer = stato.nomi_predefiniti || [];
+  const salvati = nomiRicordati();
   const form = $('#form-nuova');
+  form.classList.toggle('fitta', n > 12);
   form.innerHTML = Array.from({ length: n }, (_, i) => `
     <div class="campo${i === 0 ? ' mio' : ''}">
       <label for="sq${i}">${i === 0 ? 'La tua squadra' : 'Avversario ' + i}</label>
       <input id="sq${i}" type="text" maxlength="24"
-             placeholder="${i === 0 ? 'Il tuo nome' : 'Nome squadra ' + i}">
+             placeholder="${i === 0 ? 'Il tuo nome' : 'Squadra ' + i}">
     </div>`).join('');
-
-  const dalServer = stato.nomi_predefiniti || [];
-  const salvati = nomiRicordati();
   $$('#form-nuova input').forEach((c, i) => {
-    const valore = dalServer[i] || salvati[i];
+    const valore = (correnti && correnti[i]) || dalServer[i] || salvati[i];
     if (valore) c.value = valore;
     c.addEventListener('input', ricordaNomi);
   });
+  ricordaNomi();
+}
 
+function mostraAvvio(stato) {
+  aggiornaImpostazioni(stato);
+  disegnaNomiSquadre(stato);
   $('#btn-riprendi').hidden = !stato.iniziata;
   $('#avvio').hidden = false;
   $('#app').hidden = true;
   setTimeout(() => $('#sq0').focus(), 60);
 }
 
+/* Salvataggio del regolamento. Il server puo' correggere quello che arriva
+ * (venti squadre e' il massimo, i crediti non possono stare sotto il numero di
+ * slot): la risposta e' la verita', e i campi si riallineano a lei. */
+let salvandoRegole = null;
+
+async function salvaRegole() {
+  const err = $('#avvio-errore');
+  const corpo = {
+    partecipanti: parseInt($('#reg-squadre').value, 10),
+    crediti: parseInt($('#reg-crediti').value, 10),
+    modificatore: $('#reg-mod').checked,
+    pacchetto: $('#reg-pacchetto').checked,
+  };
+  if (!Number.isFinite(corpo.partecipanti) || !Number.isFinite(corpo.crediti)) {
+    return;                       // campo svuotato a meta' digitazione
+  }
+  const correnti = $$('#form-nuova input').map((c) => c.value);
+  $('#avvio-regole').classList.add('in-corso');
+  try {
+    salvandoRegole = post('/api/regole', corpo);
+    S.stato = await salvandoRegole;
+    err.hidden = true;
+    aggiornaImpostazioni(S.stato);
+    disegnaNomiSquadre(S.stato, correnti);
+  } catch (e) {
+    err.textContent = e.message;
+    err.hidden = false;
+    // Il valore rifiutato non puo' restare li' a farsi credere: accanto al
+    // motivo del rifiuto tornano i numeri che valgono davvero.
+    if (S.stato && S.stato.impostazioni) aggiornaImpostazioni(S.stato);
+  } finally {
+    salvandoRegole = null;
+    $('#avvio-regole').classList.remove('in-corso');
+  }
+}
+
 async function nuovaAsta() {
+  // Cliccando "Nuova asta" con il cursore ancora dentro i crediti, il campo
+  // perde il fuoco e parte il salvataggio del regolamento: l'asta deve nascere
+  // **dopo** che quel salvataggio e' finito, o nascerebbe con i numeri vecchi.
+  if (salvandoRegole) { try { await salvandoRegole; } catch (e) { /* gia' detto */ } }
   const campi = $$('#form-nuova input');
-  const nomi = campi.map((c, i) => c.value.trim() || (i === 0 ? 'La mia squadra' : 'Squadra ' + i));
+  const nomi = campi.map((c, i) => c.value.trim() || (i === 0 ? 'Io' : 'Squadra ' + i));
   const err = $('#avvio-errore');
   const doppioni = nomi.filter((x, i) => nomi.indexOf(x) !== i);
   if (doppioni.length) {
@@ -684,6 +800,28 @@ async function caricaPiano() {
  * acquisto altrui per farlo cambiare. Adesso il reparto si vede intero, in
  * fila per quanto sposta la rosa, con accanto il numero che spiega perche' uno
  * sta sopra l'altro. */
+/* Quante caselle della formazione riempie il reparto che hai in mano.
+ *
+ * Non e' "quanti giocatori ho": e' quanti ne prendono voto la domenica. Otto
+ * difensori che giocano meta' campionato coprono meno di quattro che giocano
+ * sempre, e finora quella differenza non si vedeva da nessuna parte &mdash;
+ * la si scopriva a stagione iniziata, schierando in dieci. */
+function coperturaBarra(cop, ruolo) {
+  if (!cop || !cop.servono) return '';
+  const quota = Math.max(0, Math.min(1, cop.coperti / cop.servono));
+  const stato = cop.mancano >= 1.5 ? 'male' : cop.mancano >= 0.5 ? 'cosi' : 'bene';
+  const nome = cop.servono === 1
+    ? NOME_SINGOLARE[ruolo] : NOME_RUOLO[ruolo].toLowerCase();
+  return `
+    <div class="copertura ${stato}"
+         title="Ogni giocatore prende voto in una giornata qualunque con la probabilita' delle sue presenze attese. Questa e' la media delle caselle che riesci a riempire fra i ${esc(nome)} titolari, contando anche la panchina.">
+      <span class="cop-testa">In campo ogni giornata</span>
+      <span class="cop-barra"><i style="width:${Math.round(100 * quota)}%"></i></span>
+      <span class="cop-cifra">${cop.coperti.toFixed(1)}<span class="fioco"> / ${
+        cop.servono} ${esc(nome)}</span></span>
+    </div>`;
+}
+
 async function caricaConsiglio() {
   const box = $('#vista-consiglio');
   const mio = apriRichiesta('consiglio');
@@ -705,7 +843,16 @@ async function caricaConsiglio() {
     // significhi trovarsi in una lista o nell'altra.
     const CLASSE = { OCCASIONE: 'ottimo', PRENDILO: 'ottimo',
                      'AL PREZZO GIUSTO': 'attenzione', 'DA UN CREDITO': 'attenzione' };
-    const reparto = NOME_RUOLO[c.fase].toLowerCase();
+    /* Le liste possono riguardare un reparto **diverso** da quello che si sta
+       chiamando: quando i miei slot in questo sono pieni non posso piu'
+       offrire, e il motore manda avanti il prossimo. Tutti i testi vanno
+       scritti sul reparto elencato, non sulla fase. */
+    const ruoloElenco = c.anticipo || c.fase;
+    const reparto = NOME_RUOLO[ruoloElenco].toLowerCase();
+    /* Il reparto regge la formazione, o mancano ancora giocatori che scendono
+       in campo tutte le domeniche? Finche' manca qualcuno, ogni riga deve dire
+       da che parte sta: e' l'informazione che separa un affare da un buco. */
+    const scoperto = !!(c.copertura && c.copertura.mancano >= 0.5);
 
     const voce = (d, cat, i) => `
       <button class="consiglio-voce ${cat}" data-giocatore="${d.id}">
@@ -730,6 +877,10 @@ async function caricaConsiglio() {
           ${grado(d.gerarchia, true)}${rigore(d.gerarchia)}
           ${d.categoria === 'coppia'
             ? '<span class="tag-coppia">chiude una coppia</span>' : ''}
+          ${scoperto && !d.titolare_pieno
+            ? `<span class="tag-panchina" title="Con ${d.presenze} presenze attese su 38 non copre un posto fisso: va bene come quinto o sesto, non come titolare. In questo reparto te ne mancano ancora.">da panchina</span>` : ''}
+          ${d.categoria === 'copertura'
+            ? `<span class="tag-copre" title="E' qui perche' copre una casella della formazione, non perche' sia un affare: ${d.presenze} presenze attese, e costa quanto chi ne gioca la meta'.">copre un posto</span>` : ''}
           ${cat !== 'svuota' && d.convenienza != null
             ? `<span class="utilita ${d.convenienza >= 0 ? '' : 'meno'}"
                      title="Punti di stagione che rende in ${d.convenienza >= 0 ? 'piu' : 'meno'}' di quello che quei crediti comprano fra i ${esc(reparto)}. E' il numero che decide in quale sezione finisce."
@@ -773,9 +924,18 @@ async function caricaConsiglio() {
       <div class="titolo-centro">Chi chiamare</div>
       <div class="riquadro indicazione-strip">
         <p class="indicazione">${esc(c.indicazione)}</p>
+        ${coperturaBarra(c.copertura, ruoloElenco)}
         ${c.scarsita ? `<div class="avviso" style="margin-top:10px;font-size:12px">
           ${esc(c.scarsita)}</div>` : ''}
       </div>
+
+      ${c.anticipo ? `<div class="anticipo-strip">
+        <span class="anticipo-tag">in anticipo</span>
+        Qui sotto ci sono i <b>${esc(NOME_RUOLO[c.anticipo].toLowerCase())}</b>,
+        non i ${esc(NOME_RUOLO[c.fase].toLowerCase())}: nel reparto che si sta
+        chiamando hai gi&agrave; gli slot pieni e non puoi rilanciare.
+        Servono a scegliere gli obiettivi &mdash; i prezzi si assestano quando
+        toccher&agrave; a questo reparto.</div>` : ''}
 
       ${coppieBlocco(c.coppie, c.fase)}
 
@@ -1286,6 +1446,62 @@ async function salvaRinomina() {
   }
 }
 
+/* Il regolamento si salva quando il campo si chiude (`change`, non `input`):
+ * altrimenti si rifarebbero tutti i prezzi a ogni tasto, e digitando "500" si
+ * passerebbe per una lega da 5 crediti e una da 50. */
+document.addEventListener('change', (ev) => {
+  if (ev.target.closest('#avvio-regole')) salvaRegole();
+});
+
+/* Riempie il reparto in corso per tutte le squadre. E' un attrezzo da
+ * collaudo: serve ad arrivare in un secondo al punto dell'asta che si vuole
+ * guardare, invece di registrare a mano quaranta acquisti ogni volta.
+ *
+ * Chiede conferma con i numeri davanti, perche' quello che fa non si annulla
+ * in blocco: gli acquisti si tolgono uno alla volta. E dice quanto ci mettera'
+ * &mdash; il motore rifa' tutti i conti dopo ogni assegnazione, che e' il
+ * motivo per cui lo stato a cui si arriva e' uno stato vero e non una
+ * scorciatoia. */
+async function completaReparto() {
+  const st = S.stato;
+  if (!st || !st.fase) { brindisi("L'asta è già conclusa.", true); return; }
+  const reparto = NOME_RUOLO[st.fase].toLowerCase();
+  const restano = st.mercato.residui_ruolo[st.fase];
+  const miei = st.regole.slot[st.fase] - (st.io.rosa[st.fase] || []).length;
+  const messaggio = [
+    `Completo i ${reparto} per tutte le squadre: ${restano} caselle da riempire`
+      + (miei > 0
+        ? `, ${miei} delle quali tue — prendo i primi della lista dei consigli,`
+          + ' uno alla volta, coi conti rifatti dopo ognuno.'
+        : ', tutte ad altre squadre.'),
+    '',
+    'Ci mette qualche secondo, e non si annulla in blocco: gli acquisti si',
+    'tolgono uno alla volta.',
+    '',
+    'Procedo?',
+  ].join('\n');
+  if (!confirm(messaggio)) return;
+
+  const b = $('#btn-completa');
+  const prima = b.textContent;
+  b.disabled = true;
+  b.textContent = 'sto riempiendo…';
+  try {
+    S.stato = await post('/api/completa_reparto');
+    const c = S.stato.completati || {};
+    disegna();
+    // Con i portieri a pacchetto le due cifre non coincidono, e dirlo evita
+    // di far sembrare che ne abbia registrati meno di quelli annunciati.
+    brindisi(`${NOME_RUOLO[c.ruolo].toLowerCase()} completati: ${c.caselle} caselle`
+      + (c.caselle !== c.quanti ? ` in ${c.quanti} chiamate.` : ' riempite.'));
+  } catch (e) {
+    brindisi(e.message, true);
+  } finally {
+    b.disabled = false;
+    b.textContent = prima;
+  }
+}
+
 document.addEventListener('click', async (ev) => {
   const t = ev.target;
 
@@ -1302,6 +1518,8 @@ document.addEventListener('click', async (ev) => {
     disegnaScheda();
     return;
   }
+
+  if (t.closest('#btn-completa')) { ev.preventDefault(); completaReparto(); return; }
 
   if (t.closest('#btn-rinomina')) { ev.preventDefault(); apriRinomina(); return; }
   if (t.closest('#btn-rinomina-ok')) { ev.preventDefault(); salvaRinomina(); return; }
@@ -1428,7 +1646,14 @@ document.addEventListener('keydown', (ev) => {
     return;
   }
   if (ev.key === 'Enter' && ev.target.id === 'prezzo') { ev.preventDefault(); registra(); return; }
-  if (ev.key === 'Enter' && ev.target.tagName === 'INPUT' && $('#avvio').hidden === false) {
+  // Invio dentro il regolamento **non** fa partire l'asta: conferma il numero
+  // e basta. Premerlo dopo aver scritto i crediti e ritrovarsi dentro un'asta
+  // creata con quelli vecchi era il modo piu' facile di sbagliare serata.
+  if (ev.key === 'Enter' && ev.target.closest('#avvio-regole')) {
+    ev.preventDefault(); ev.target.blur(); return;
+  }
+  if (ev.key === 'Enter' && ev.target.closest('#form-nuova')
+      && $('#avvio').hidden === false) {
     ev.preventDefault(); nuovaAsta(); return;
   }
   // Cifre 1..8: scelgono chi si e' aggiudicato il giocatore sotto esame.

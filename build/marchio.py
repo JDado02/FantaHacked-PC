@@ -161,15 +161,21 @@ def scrivi(dove_android=None):
         disegna(dim).save(p)
         print('scritto', p)
 
+    # `newline='\n'` e non il predefinito: su Windows quello scriverebbe CRLF,
+    # e questi file finiscono dentro il pacchetto che si scarica. Windows
+    # Defender ha gia' segnalato una volta un file dell'interfaccia **nella
+    # versione CRLF** e non in quella LF, a parita' di ogni altro byte: e'
+    # `.gitattributes` a dire che qui dentro si scrive LF, e chi genera file
+    # deve rispettarlo come tutti gli altri.
     p = os.path.join(BASE, 'app', 'web', 'marchio.svg')
-    with open(p, 'w', encoding='utf-8') as f:
+    with open(p, 'w', encoding='utf-8', newline='\n') as f:
         f.write(svg())
     print('scritto', p)
 
     # Lo stesso marchio, senza sfondo: serve nell'intestazione, dove il fondo
     # ce l'ha gia' la pagina.
     p = os.path.join(BASE, 'app', 'web', 'marchio-piatto.svg')
-    with open(p, 'w', encoding='utf-8') as f:
+    with open(p, 'w', encoding='utf-8', newline='\n') as f:
         f.write(svg(con_sfondo=False))
     print('scritto', p)
 
@@ -179,7 +185,8 @@ def scrivi(dove_android=None):
             disegna(dim).save(os.path.join(web, nome))
             print('scritto', os.path.join(web, nome))
         for nome, con in (('marchio.svg', True), ('marchio-piatto.svg', False)):
-            with open(os.path.join(web, nome), 'w', encoding='utf-8') as f:
+            with open(os.path.join(web, nome), 'w', encoding='utf-8',
+                      newline='\n') as f:
                 f.write(svg(con_sfondo=con))
             print('scritto', os.path.join(web, nome))
         # L'icona dell'applicazione Android: il sistema ci mette lui lo sfondo
@@ -197,11 +204,11 @@ def scrivi(dove_android=None):
         print('scritte le icone mipmap in', res)
 
         p = os.path.join(res, 'drawable', 'ic_launcher_foreground.xml')
-        with open(p, 'w', encoding='utf-8') as f:
+        with open(p, 'w', encoding='utf-8', newline='\n') as f:
             f.write(vettore_android())
         print('scritto', p)
         p = os.path.join(res, 'values', 'ic_launcher_background.xml')
-        with open(p, 'w', encoding='utf-8') as f:
+        with open(p, 'w', encoding='utf-8', newline='\n') as f:
             f.write('<?xml version="1.0" encoding="utf-8"?>\n<resources>\n'
                     '    <color name="ic_launcher_background">%s</color>\n'
                     '</resources>\n' % _esa(FONDO))

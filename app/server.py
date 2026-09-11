@@ -74,6 +74,28 @@ def scrivi_preferenze(d):
         pass
 
 
+def nome_predefinito(i):
+    """Il nome con cui si presenta la casella numero i della schermata iniziale.
+
+    Non un segnaposto grigio: un valore vero, gia' dentro il campo. Chi apre il
+    programma per provarlo deve poter premere "Nuova asta" e trovarsi dentro,
+    e chi i nomi li vuole scrivere li sovrascrive, che e' un gesto piu' breve
+    di digitarne otto da zero.
+    """
+    return 'Io' if i == 0 else 'Squadra %d' % i
+
+
+def _una_riga(e):
+    """Un errore di validazione del regolamento, detto in una riga sola.
+
+    `Regole` elenca tutto quello che non va, uno per riga, perche' chi compila
+    il file a mano vuole vederli tutti insieme. In un riquadro d'errore alto
+    due righe quella lista diventa illeggibile.
+    """
+    righe = [r.strip(' -') for r in str(e).splitlines() if r.strip(' -')]
+    return '; '.join(righe[1:]) if len(righe) > 1 else (righe[0] if righe else str(e))
+
+
 class Sessione(object):
     """Tutto lo stato vivo, dietro un lucchetto.
 
@@ -92,11 +114,78 @@ class Sessione(object):
         self.aggiornamento = aggmod.aggiorna(
             attivo=not os.environ.get('FANTAHACKED_NIENTE_RETE'))
         self.con = dbmod.connetti(check_same_thread=False)
-        self.reg = regmod.carica()
-        # Le proiezioni si rifanno quando non ci sono, e anche quando ci sono
-        # ma sono di una versione del motore che non calcolava ancora la
-        # gerarchia di reparto: un database vecchio non deve far girare il
-        # programma senza sapere chi gioca.
+        # Due regolamenti, non uno.
+        #
+        #   `reg_nuova` e' quello scelto dalla schermata iniziale: quante
+        #   squadre, quanti crediti, modificatore di difesa, portieri a
+        #   pacchetto. E' quello con cui partira' la **prossima** asta.
+        #
+        #   `reg` e' quello con cui si sta giocando **questa**. Un'asta si
+        #   gioca fino in fondo con le regole con cui e' cominciata: sono
+        #   scritte nella sua riga di database dal primo istante. Cambiare i
+        #   crediti a meta' serata e vedersi ricalcolare all'indietro tutti i
+        #   limiti gia' spesi non sarebbe una comodita', sarebbe un modo di
+        #   perdere l'asta.
+        self.modifiche = self._modifiche_salvate()
+        self.reg_nuova = regmod.carica(modifiche=self.modifiche)
+        self.reg = self.reg_nuova
+        self.stato = StatoAsta(self.con, self.reg)
+        if self.stato.esiste():
+            self.reg = self._regole_dell_asta()
+            self.stato.reg = self.reg
+        self._assicura_proiezioni()
+        self.v = self.o = self.c = self.e = None
+        self.versione = 0
+        self._consiglio = None
+        if self.stato.esiste():
+            self._monta()
+
+    # ------------------------------------------------------------ regolamento
+    CAMPI_REGOLE = ('partecipanti', 'crediti_iniziali', 'modificatore_difesa',
+                    'portieri_a_pacchetto')
+
+    def _modifiche_salvate(self):
+        d = leggi_preferenze().get('regole')
+        if not isinstance(d, dict):
+            return {}
+        return dict((k, d[k]) for k in self.CAMPI_REGOLE if k in d)
+
+    def _regole_dell_asta(self):
+        """Le regole con cui l'asta in corso e' stata creata.
+
+        Se per qualsiasi motivo non si riescono a rileggere &mdash; file di
+        una versione precedente, riga rovinata &mdash; si torna a quelle
+        scelte adesso: un'asta con dei numeri e' meglio di un programma che
+        non parte. In un caso pero' non si puo' cedere, ed e' il numero di
+        squadre: quello lo dicono i presidenti che ci sono davvero in tabella,
+        e da lui dipende il livello di rimpiazzo, cioe' ogni prezzo.
+        """
+        reg = None
+        try:
+            r = self.con.execute(
+                'SELECT regole_json FROM asta WHERE id=1').fetchone()
+            if r and r['regole_json']:
+                reg = regmod.Regole(json.loads(r['regole_json']))
+        except Exception:
+            reg = None
+        if reg is None:
+            reg = self.reg_nuova
+        quanti = self.con.execute(
+            'SELECT COUNT(*) FROM presidenti').fetchone()[0]
+        if quanti and reg.partecipanti != quanti:
+            reg = regmod.Regole(regmod.applica(reg._d,
+                                               {'partecipanti': quanti}))
+        return reg
+
+    def _assicura_proiezioni(self):
+        """Le proiezioni devono essere calcolate sul regolamento in uso.
+
+        Si rifanno quando non ci sono, e anche quando ci sono ma sono di una
+        versione del motore che non calcolava ancora la gerarchia di reparto:
+        un database vecchio non deve far girare il programma senza sapere chi
+        gioca. E si rifanno quando il regolamento e' cambiato &mdash; anche
+        sui dati appena scaricati, che arrivano calcolati su quello standard.
+        """
         vuote = self.con.execute(
             'SELECT COUNT(*) FROM proiezioni').fetchone()[0] == 0
         senza_gerarchia = self.con.execute(
@@ -104,19 +193,37 @@ class Sessione(object):
         ).fetchone()[0] == 0
         if vuote or senza_gerarchia:
             prmod.esegui(self.con, self.reg)
+            aggmod.segna_firma_regole(self.con, self.reg)
         else:
-            # E si rifanno anche quando il regolamento e' cambiato: le
-            # proiezioni ne dipendono, e fino a ieri chi correggeva
-            # `regole_lega.json` continuava a vedere i numeri di prima senza
-            # che niente glielo dicesse. Vale pure per i dati appena
-            # scaricati, che arrivano calcolati sul regolamento standard.
             aggmod.assicura_proiezioni(self.con, self.reg)
-        self.stato = StatoAsta(self.con, self.reg)
-        self.v = self.o = self.c = self.e = None
-        self.versione = 0
-        self._consiglio = None
-        if self.stato.esiste():
-            self._monta()
+
+    def imposta_regole(self, scelte):
+        """Cambia i tre valori scelti dalla schermata iniziale.
+
+        Vale per la prossima asta. Se non ce n'e' una in corso, vale subito:
+        tutti i prezzi si rifanno addosso ai nuovi numeri prima ancora che si
+        prema "Nuova asta", cosi' quello che si vede nella striscia in alto e'
+        gia' quello con cui si giochera'.
+        """
+        with self.lock:
+            proposta = dict(self.modifiche)
+            for k in self.CAMPI_REGOLE:
+                if scelte.get(k) is not None:
+                    proposta[k] = scelte[k]
+            try:
+                nuove = regmod.carica(modifiche=proposta)
+            except ValueError as e:
+                raise ErroreAsta(_una_riga(e))
+            self.reg_nuova = nuove
+            self.modifiche = nuove.impostazioni()
+            pref = leggi_preferenze()
+            pref['regole'] = self.modifiche
+            scrivi_preferenze(pref)
+            if not self.stato.esiste():
+                self.reg = nuove
+                self.stato.reg = nuove
+                self._assicura_proiezioni()
+            return self.riepilogo()
 
     # --------------------------------------------------------------- ciclo
     def _monta(self):
@@ -156,24 +263,42 @@ class Sessione(object):
         un riempimento, non un vincolo &mdash; ma non vanno ridigitati ogni
         anno, e soprattutto non spariscono riavviando il programma.
         """
-        salvati = leggi_preferenze().get('squadre')
-        if isinstance(salvati, list) and salvati:
-            return [str(n) for n in salvati][:self.reg.partecipanti]
+        quante = self.reg_nuova.partecipanti
+        # Prima i nomi dell'asta che c'e' **adesso**, poi quelli salvati.
+        # Normalmente sono la stessa cosa: sia "nuova asta" sia "rinomina"
+        # scrivono anche nelle preferenze. Divergono solo quando il file delle
+        # preferenze e' stato sovrascritto per sbaglio &mdash; e' successo, con
+        # il collaudo che ci ha messo dentro otto nomi finti &mdash; e in quel
+        # caso il database dell'asta e' la copia buona, non quel file.
         try:
             righe = self.stato.presidenti()
         except Exception:
-            return []
-        if not righe:
-            return []
-        mio = [p['nome'] for p in righe if p['io']]
-        altri = [p['nome'] for p in righe if not p['io']]
-        return (mio + altri)[:self.reg.partecipanti]
+            righe = []
+        nomi = ([p['nome'] for p in righe if p['io']]
+                + [p['nome'] for p in righe if not p['io']])
+        if not nomi:
+            salvati = leggi_preferenze().get('squadre')
+            nomi = [str(n) for n in salvati] if isinstance(salvati, list) else []
+        # Tagliati se le squadre sono diventate meno, completati se sono
+        # diventate di piu': cambiare il numero non deve lasciare caselle vuote.
+        nomi = nomi[:quante]
+        while len(nomi) < quante:
+            nomi.append(nome_predefinito(len(nomi)))
+        return nomi
 
     def nuova(self, mio_nome, avversari):
         with self.lock:
-            nomi = [self._nome(n, '') for n in (avversari or [])]
-            nomi = [n for n in nomi if n]
-            mio = self._nome(mio_nome, 'La mia squadra')
+            # La nuova asta nasce con le regole scelte adesso, non con quelle
+            # della precedente.
+            self.reg = self.reg_nuova
+            self.stato.reg = self.reg
+            self._assicura_proiezioni()
+            grezzi = list(avversari or [])
+            nomi = [self._nome(n, nome_predefinito(i + 1))
+                    for i, n in enumerate(grezzi[:self.reg.partecipanti - 1])]
+            while len(nomi) < self.reg.partecipanti - 1:
+                nomi.append(nome_predefinito(len(nomi) + 1))
+            mio = self._nome(mio_nome, nome_predefinito(0))
             self.stato.inizializza(nomi, mio_nome=mio)
             pref = leggi_preferenze()
             pref['squadre'] = [mio] + nomi
@@ -272,6 +397,137 @@ class Sessione(object):
             presi.append({'id': rid, 'nome': x.nome if x else str(rid)})
         return presi
 
+    # --------------------------------------------------- riempire un reparto
+    #
+    # Serve a provare il programma, non a giocarci: portare un'asta al punto
+    # che si vuole guardare vuol dire registrare a mano decine di acquisti, e
+    # chi lo fa per collaudare una modifica lo fa dieci volte di seguito.
+    #
+    # Non e' una simulazione a parte: passa dagli stessi metodi che usa
+    # l'interfaccia, un acquisto alla volta, e fra un acquisto e l'altro il
+    # motore rifa' tutti i conti. E' l'unico modo perche' lo stato a cui si
+    # arriva sia uno stato **vero** &mdash; se il riempimento prendesse una
+    # scorciatoia, quello che si osserva dopo non direbbe niente sul programma
+    # che gira la sera dell'asta.
+
+    def _chi_tocca(self, ruolo):
+        """A chi assegnare il prossimo: a chi ne manca di piu', poi per numero.
+
+        Distribuisce come farebbe un giro di chiamate, e a parita' segue
+        l'ordine dei presidenti: il risultato e' lo stesso a ogni esecuzione,
+        che per uno strumento di collaudo conta piu' del realismo.
+        """
+        migliore, quanti_migliore = None, 0
+        for p in self.stato.presidenti():
+            n = self.stato.slot_residui(p['id'], ruolo)
+            if n > quanti_migliore:
+                migliore, quanti_migliore = p['id'], n
+        return migliore
+
+    def _miglior_libero(self, ruolo):
+        """Il piu' caro fra i liberi del reparto: e' l'ordine con cui va via."""
+        liberi = [x for x in self.v.disponibili(ruolo)
+                  if not (self.reg.portieri_pacchetto and ruolo == 'P'
+                          and not x.titolare_por)]
+        if not liberi:
+            return None
+        return max(liberi, key=lambda x: ((x.prezzo_atteso or 0), -x.id))
+
+    def _primo_consigliato(self, ruolo):
+        """Chi chiamerei io: il primo della lista, come farebbe una persona."""
+        venduti = self.stato.venduti()
+        try:
+            d = self.consiglio()
+        except Exception:
+            d = {}
+        for sezione in ('top', 'alternative'):
+            for voce in (d.get(sezione) or []):
+                x = self.v.g.get(voce['id'])
+                if x is None or x.ruolo != ruolo or x.id in venduti:
+                    continue
+                if (self.reg.portieri_pacchetto and ruolo == 'P'
+                        and not x.titolare_por):
+                    continue
+                return x
+        return self._miglior_libero(ruolo)
+
+    def _prezzo_riempimento(self, x, presidente_id):
+        """Quanto farlo pagare: la chiusura attesa, dentro quello che ha.
+
+        Sui **miei** acquisti si aggiunge il tetto del motore. Non e' un
+        dettaglio da poco per uno strumento di collaudo: senza, il riempimento
+        mi farebbe pagare sopra il limite su mezza rosa, e il pannello
+        "dentro i tuoi limiti" che si sta andando a guardare direbbe che ho
+        sbagliato l'asta &mdash; sarebbe lo strumento di misura a produrre il
+        difetto che dovrebbe misurare. Sui giocatori consigliati il tetto sta
+        sopra la chiusura per costruzione, quindi non cambia niente: cambia
+        solo sugli slot riempiti per forza.
+        """
+        prezzo = int(round(self.v.prezzo_chiusura(x)))
+        if presidente_id == self.stato.io()['id']:
+            try:
+                limite = int(self.o.max_bid(x)[0])
+            except Exception:
+                limite = 0
+            if limite >= 1:
+                prezzo = min(prezzo, limite)
+        return max(1, min(prezzo, self.stato.liquidita(presidente_id)))
+
+    def completa_reparto(self, massimo=400):
+        """Assegna tutti gli slot ancora aperti del reparto in chiamata.
+
+        Prima i miei, se me ne mancano, prendendo ogni volta **il primo della
+        lista dei consigli** &mdash; cioe' quello che chiamerei guardando lo
+        schermo. Poi quelli degli altri, il giocatore piu' caro fra i liberi a
+        chi ne ha di piu' da riempire, che e' l'ordine con cui un reparto si
+        svuota davvero.
+
+        Il prezzo e' la chiusura attesa del momento, mai oltre quello che il
+        compratore puo' permettersi tenendo un credito per ogni slot che gli
+        resta.
+        """
+        with self.lock:
+            ruolo = self.c.fase()
+            if ruolo is None:
+                raise ErroreAsta("l'asta e' gia' conclusa: non c'e' nessun "
+                                 "reparto da completare")
+            fatti = []
+            caselle = self.stato.slot_residui_ruolo(ruolo)
+            while (self.stato.slot_residui_ruolo(ruolo) > 0
+                   and len(fatti) < massimo):
+                io = self.stato.io()['id']
+                mio = self.stato.slot_residui(io, ruolo) > 0
+                presidente = io if mio else self._chi_tocca(ruolo)
+                if presidente is None:
+                    break
+                x = (self._primo_consigliato(ruolo) if mio
+                     else self._miglior_libero(ruolo))
+                if x is None:
+                    break
+                prezzo = self._prezzo_riempimento(x, presidente)
+                try:
+                    esito = self.acquisto(x.id, presidente, prezzo)
+                except ErroreAsta:
+                    # Uno slot che non si riesce a riempire non deve bloccare
+                    # gli altri: si toglie di mezzo quel giocatore e si va
+                    # avanti, altrimenti il giro non finisce piu'.
+                    self.v.scarta(x.id)
+                    continue
+                fatti.append({'nome': x.nome, 'prezzo': prezzo,
+                              'presidente': presidente, 'mio': mio,
+                              'extra': [e['nome']
+                                        for e in (esito.get('pacchetto') or [])]})
+            r = self.riepilogo()
+            # Due numeri diversi, e con i portieri a pacchetto non coincidono:
+            # otto chiamate riempiono ventiquattro caselle. Il messaggio prima
+            # e quello dopo devono parlare della stessa cosa, o sembra che il
+            # programma ne abbia registrati meno di quelli che ha detto.
+            r['completati'] = {
+                'ruolo': ruolo, 'quanti': len(fatti),
+                'caselle': caselle - self.stato.slot_residui_ruolo(ruolo),
+                'acquisti': fatti[-12:]}
+            return r
+
     def annulla(self, giocatore_id=None):
         with self.lock:
             if giocatore_id:
@@ -322,6 +578,7 @@ class Sessione(object):
         with self.lock:
             if not self.pronta():
                 return {'iniziata': False, 'regole': self._regole(),
+                        'impostazioni': self._impostazioni(),
                         'nomi_predefiniti': self.nomi_predefiniti(),
                         'dati': self._dati()}
             v, o, st = self.v, self.o, self.stato
@@ -343,6 +600,7 @@ class Sessione(object):
                 'versione': self.versione,
                 'dati': self._dati(),
                 'regole': self._regole(),
+                'impostazioni': self._impostazioni(),
                 'nomi_predefiniti': self.nomi_predefiniti(),
                 'fase': fase,
                 'fase_nome': NOME_RUOLO.get(fase, 'Asta conclusa'),
@@ -421,6 +679,36 @@ class Sessione(object):
                 atteso += int(round(x.prezzo_base or x.prezzo_atteso
                                     or x.prezzo_mercato or 1))
         return self._bilancio(speso, atteso)
+
+    def _impostazioni(self):
+        """Quello che serve alla schermata iniziale per disegnare i comandi.
+
+        Sono le regole della **prossima** asta, che non e' detto siano quelle
+        di quella in corso: `diverse_dall_asta` dice se le due divergono, cosi'
+        la pagina puo' avvisare invece di far credere che i numeri appena
+        cambiati valgano gia' per l'asta di stasera.
+        """
+        r = self.reg_nuova
+        fuori = bool(self.stato.esiste()
+                     and (self.reg.partecipanti != r.partecipanti
+                          or self.reg.crediti != r.crediti
+                          or self.reg.mod_dif_attivo != r.mod_dif_attivo
+                          or self.reg.portieri_pacchetto != r.portieri_pacchetto))
+        return {
+            'partecipanti': r.partecipanti,
+            'crediti': r.crediti,
+            'modificatore': r.mod_dif_attivo,
+            'pacchetto': r.portieri_pacchetto,
+            'slot': r.slot, 'slot_totali': r.slot_totali,
+            'crediti_totali': r.crediti_totali,
+            'min_partecipanti': regmod.MIN_PARTECIPANTI,
+            'max_partecipanti': regmod.MAX_PARTECIPANTI,
+            'min_crediti': r.slot_totali,
+            'max_crediti': regmod.MAX_CREDITI,
+            'mod_componenti': '%d portiere + %d difensori' % (r.mod_dif_n_por,
+                                                              r.mod_dif_n_dif),
+            'diverse_dall_asta': fuori,
+        }
 
     def _regole(self):
         r = self.reg
@@ -871,6 +1159,24 @@ class Gestore(BaseHTTPRequestHandler):
                 # pagina puo' essere chiusa dalla schermata di configurazione.
                 Gestore.congedo = time.time()
                 return self._json({'ok': True})
+            if u.path == '/api/regole':
+                # Prima del controllo su `pronta()`: si cambiano proprio dalla
+                # schermata di configurazione, quando l'asta non c'e' ancora.
+                scelte = {}
+                if dati.get('partecipanti') is not None:
+                    scelte['partecipanti'] = _intero(
+                        dati['partecipanti'], 'squadre',
+                        minimo=regmod.MIN_PARTECIPANTI,
+                        massimo=regmod.MAX_PARTECIPANTI)
+                if dati.get('crediti') is not None:
+                    scelte['crediti_iniziali'] = _intero(
+                        dati['crediti'], 'crediti',
+                        minimo=1, massimo=regmod.MAX_CREDITI)
+                if dati.get('modificatore') is not None:
+                    scelte['modificatore_difesa'] = bool(dati['modificatore'])
+                if dati.get('pacchetto') is not None:
+                    scelte['portieri_a_pacchetto'] = bool(dati['pacchetto'])
+                return self._json(s.imposta_regole(scelte))
             if u.path == '/api/nuova':
                 avversari = dati.get('avversari')
                 if avversari is not None and not isinstance(avversari, list):
@@ -898,6 +1204,8 @@ class Gestore(BaseHTTPRequestHandler):
                                                   'presidente')))
             if u.path == '/api/avanza':
                 return self._json(s.avanza())
+            if u.path == '/api/completa_reparto':
+                return self._json(s.completa_reparto())
             if u.path == '/api/spegni':
                 self._json({'ok': True})
                 threading.Timer(0.4, self.server.shutdown).start()

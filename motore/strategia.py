@@ -28,6 +28,7 @@ gli altri prima di scoprirmi.
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import formazione
 
 RUOLI = ('P', 'D', 'C', 'A')
 GIORNATE = 38
@@ -40,13 +41,74 @@ MARGINE_MINIMO = 0.08
 # che separa l'alternativa affidabile dalla scommessa.
 CERTEZZA_RIPIEGO = 0.45
 
+# Quanti giocatori di ogni reparto scendono in campo ogni giornata sta in
+# `formazione.IN_CAMPO`, con il conto che ci si fa sopra. Qui non se ne tiene
+# una seconda copia: due numeri per la stessa cosa e' come finiscono per
+# divergere.
+
+# Sotto questa quota di presenze attese un giocatore **non copre** un posto da
+# titolare. Puo' essere un ottimo affare, e spesso lo e' proprio perche' costa
+# poco; ma se la difesa e' fatta di quattro come lui, un giorno su tre uno di
+# loro non prende voto e la casella la riempie la panchina, o non la riempie
+# nessuno. Ventitre' giornate su trentotto e' il confine sotto cui un titolare
+# smette di essere una certezza.
+QUOTA_TITOLARE = 0.60
+
+# Per chi il posto non ce l'ha ancora &mdash; ballottaggio, rotazione &mdash;
+# la soglia e' piu' alta, e non e' pignoleria.
+#
+# Per il conto della copertura basterebbe la media: `E[min(n, disponibili)]`
+# dipende solo dalle probabilita', non da quanto siamo sicuri di averle
+# indovinate. Ma qui la domanda e' un'altra: **su chi posso contare per
+# costruire la formazione**, e li' l'incertezza sulla stima conta eccome. Le
+# ventisette presenze attese di un ballottaggio non sono ventisette partite
+# quasi certe: sono la media fra il vincere il posto e giocarne trentaquattro e
+# il perderlo e giocarne dodici. Un titolare da ventisette e' un'altra cosa.
+# Quindi chi non ha il posto entra fra quelli su cui contare solo se la
+# proiezione e' molto alta comunque.
+QUOTA_TITOLARE_INCERTO = 0.75
+
+# E sotto questa quota un giocatore non e' una scommessa, e' uno slot buttato.
+# Vale **sempre**, anche a reparto coperto, dove per il resto e' giusto andare
+# a caccia di affari: uno che gioca dieci partite non copre niente e non rende
+# niente, e la fantamedia alta che a volte porta e' quella di dieci partite
+# scelte bene. Non sparisce dalle liste &mdash; a volte e' l'unico che resta
+# &mdash; ma non puo' stare sopra a chi gioca.
+QUOTA_MINIMA_UTILE = 0.40
+
+# Manopola di misura, non di gusto: a `False` i consigli tornano a essere
+# ordinati solo per resa, com'erano prima. Serve a `simulazioni/cento_aste.py`
+# per giocare le stesse aste nei due modi e vedere se mettere i titolari
+# davanti fa vincere di piu' o e' solo un'opinione. In tutto il resto del
+# programma resta acceso.
+PRIMA_I_TITOLARI = True
+
 # Quanti giocatori del reparto si valutano davvero prima di mettere in fila i
 # consigli. Il prezzo massimo costa qualche millisecondo a testa, e valutare
 # tutti e centonovanta i difensori vorrebbe dire mezzo secondo a ogni acquisto.
 # Novanta, presi per valore sopra il rimpiazzo, coprono chiunque possa essere
-# un'occasione: sotto quella soglia ci sono solo riempitivi da un credito, che
-# infatti compaiono comunque fra le alternative.
+# un'occasione.
 QUANTI_VALUTATI = 90
+
+# **Ma il valore sopra il rimpiazzo non e' il solo modo di essere utili.**
+#
+# Prendere i primi novanta per VOR sembrava innocuo &mdash; "sotto ci sono solo
+# riempitivi da un credito" &mdash; e invece taglia fuori proprio la categoria
+# che serve di piu' quando i crediti sono finiti: il **titolare fisso con
+# fantamedia normale**. Il suo VOR e' quasi zero per costruzione, perche' la
+# sua fantamedia sfiora quella del rimpiazzo; ma gioca trentuno partite e costa
+# quattro crediti. Un giocatore da rotazione con fantamedia alta ha VOR piu'
+# grande, entra fra i novanta, e finiva consigliato al posto suo.
+#
+# Successo davvero, su un'asta vera: con tre slot di difesa da riempire e nove
+# crediti in cassa, il pannello proponeva un giocatore da diciannove presenze e
+# uno da sei, mentre erano liberi a quattro crediti due titolari da trentuno.
+# Quelli non erano nemmeno stati guardati.
+#
+# Percio' al gruppo si aggiungono i piu' economici fra chi copre un posto
+# fisso. Costano qualche millisecondo in piu' e sono la risposta giusta a
+# meta' delle serate d'asta.
+QUANTI_TITOLARI_ECONOMICI = 24
 
 # Le tre fasce si tagliano sulla **convenienza**: quanti punti di stagione
 # rende in piu' (o in meno) di quello che quei crediti comprano nel suo stesso
@@ -115,6 +177,84 @@ class Consigliere(object):
     def aggiorna(self):
         self.v.aggiorna()
         self.o.aggiorna()
+
+    # --------------------------------------------- chi copre un posto in campo
+    @staticmethod
+    def gioca_sempre(x):
+        """Su questo giocatore ci si puo' costruire la formazione?
+
+        Le presenze attese, con una soglia piu' severa per chi il posto non ce
+        l'ha ancora. Non si guarda `certezza`: quella misura quanto
+        **concordano le fonti** sulla gerarchia, non quanto gioca il giocatore,
+        e usarla come filtro buttava fuori Molina &mdash; titolare con
+        ventinove presenze attese &mdash; solo perche' le guide non erano
+        d'accordo fra loro.
+        """
+        quota = formazione.quota(x)
+        if getattr(x, 'grado', None) == 'titolare':
+            return quota >= QUOTA_TITOLARE
+        return quota >= QUOTA_TITOLARE_INCERTO
+
+    def quote_mie(self, ruolo):
+        """Quanto giocano i giocatori che ho gia' in quel reparto."""
+        io = self.stato.io()['id']
+        fuori = []
+        for a in self.stato.acquisti():
+            if a['presidente_id'] != io or a['ruolo'] != ruolo:
+                continue
+            x = self.v.g.get(a['giocatore_id'])
+            if x is not None:
+                fuori.append(formazione.quota(x))
+        return fuori
+
+    def copertura(self, ruolo):
+        """Quante caselle della formazione riempie gia' il reparto che ho.
+
+        E' la domanda che il programma non si faceva, e che invece decide la
+        stagione: la rosa ha otto difensori, ma in campo ne vanno quattro ogni
+        domenica. Se quei quattro giocano meta' campionato, la fantamedia alta
+        che li aveva fatti sembrare un affare non la vedi mai: vedi la casella
+        vuota, o il sesto difensore preso da un credito.
+
+        Il conto e' esatto, non a soglie: `formazione` mette insieme le
+        probabilita' di prendere voto e ne ricava quante caselle si riempiono
+        in media. Finche' ne mancano, chi gioca viene prima di chi conviene.
+        """
+        quote = self.quote_mie(ruolo)
+        in_campo = formazione.IN_CAMPO.get(ruolo, 0)
+        r = formazione.relazione(quote, in_campo)
+        io = self.stato.io()['id']
+        slot = self.stato.slot_residui(io, ruolo)
+        # Non si puo' chiedere di coprire piu' di quanto restino slot.
+        mancano = min(r['mancano'], float(slot))
+        return {'coperti': round(r['coperti'], 2),
+                'servono': r['servono'],
+                'mancano': round(mancano, 2),
+                'mancano_interi': int(round(mancano)),
+                'rischio_buco': round(r['rischio_buco'], 3),
+                'slot_residui': slot,
+                'titolari': self._quanti_titolari(ruolo)}
+
+    def _quanti_titolari(self, ruolo):
+        io = self.stato.io()['id']
+        n = 0
+        for a in self.stato.acquisti():
+            if a['presidente_id'] != io or a['ruolo'] != ruolo:
+                continue
+            x = self.v.g.get(a['giocatore_id'])
+            if x is not None and self.gioca_sempre(x):
+                n += 1
+        return n
+
+    def guadagno_copertura(self, x, quote=None, riferimento=None):
+        """Quante caselle in piu' riempirebbe, rispetto a un tappabuchi."""
+        ruolo = x.ruolo
+        if quote is None:
+            quote = self.quote_mie(ruolo)
+        if riferimento is None:
+            riferimento = self.v.quota_riempitivo(ruolo)
+        return formazione.guadagno(quote, formazione.IN_CAMPO.get(ruolo, 0),
+                                   formazione.quota(x), riferimento)
 
     # ------------------------------------------------------------- contesto
     def fase(self):
@@ -569,18 +709,102 @@ class Consigliere(object):
           **svuotare**     non lo voglio, ma far pagare lui e' far pagare loro
           **coppie**       chi completa una maglia che ho gia' meta' in rosa
         """
-        ruolo = self.fase()
-        if ruolo is None:
+        fase = self.fase()
+        if fase is None:
             return {'fase': None, 'top': [], 'evitare': [], 'alternative': [],
                     'svuotare': [], 'coppie': self._coppie_aperte(),
                     'prendere': [], 'ripiego': [], 'pressione': 1.0,
                     'indicazione': 'Asta finita.'}
+        if self.stato.slot_residui(self.stato.io()['id'], fase) > 0:
+            return self._consiglio_ruolo(fase, quanti)
+        return self._reparto_chiuso(fase, quanti)
 
+    def _reparto_chiuso(self, fase, quanti):
+        """Il mio reparto e' pieno, quello della lega no: cosa dire adesso.
+
+        Succede sempre, e a lungo: coi portieri a pacchetto la mia scelta e'
+        **una**, e poi restano sette pacchetti da assegnare agli altri, sette
+        chiamate durante le quali non posso fare niente. Finora lo schermo
+        rispondeva a quel momento in due modi, tutti e due sbagliati.
+
+        Prima suggeriva chi "far pagare agli altri" &mdash; e sono offerte che
+        non posso fare: con lo slot pieno il rilancio non me lo accetta
+        nessuno, e l'intera sicurezza di quel consiglio ("se si fermano te lo
+        aggiudichi sotto il suo valore") si regge su un acquisto che non puo'
+        avvenire. Poi, quando restava un solo avversario in gara, spariva anche
+        quello e la pagina restava **bianca**: proprio nel reparto piu' lungo
+        da guardare, il programma smetteva di dire qualsiasi cosa.
+
+        La risposta giusta e' che quei minuti non sono morti: sono il tempo in
+        cui si prepara il reparto dopo. Quindi si mostra quello, dicendo chiaro
+        che e' un anticipo e che i prezzi si assesteranno quando tocchera'.
+        """
+        prossimo = None
+        for r in RUOLI:
+            if self.stato.slot_residui(self.stato.io()['id'], r) > 0:
+                prossimo = r
+                break
+        restano = self.stato.slot_residui_ruolo(fase)
+        nome_fase = _nome_ruolo(fase).lower()
+        if prossimo is None:
+            d = self._consiglio_ruolo(fase, quanti)
+            d.update({'top': [], 'evitare': [], 'alternative': [],
+                      'svuotare': [], 'prendere': [], 'ripiego': [],
+                      'indicazione': (
+                          'La tua rosa e\' completa: non puoi piu\' fare '
+                          'offerte. Restano %d %s da assegnare agli altri, e '
+                          'quando avranno finito l\'asta sara\' chiusa.'
+                          % (restano, nome_fase))})
+            return d
+        d = self._consiglio_ruolo(prossimo, quanti)
+        # Nemmeno qui si puo' offrire: durante i portieri non si chiama un
+        # difensore. La lista serve a sapere su chi andare, non a muoversi ora.
+        d['svuotare'] = []
+        vuoti = dict(d.get('vuoti') or {})
+        vuoti['svuotare'] = (
+            'Non ancora: si sta chiamando un altro reparto, e finche\' dura non '
+            'puoi ne\' prendere ne\' far pagare un %s. Quando tocchera\' a '
+            'loro questa sezione torna.' % _nome_singolare(prossimo))
+        d['vuoti'] = vuoti
+        d['fase'] = fase
+        d['anticipo'] = prossimo
+        d['anticipo_nome'] = _nome_ruolo(prossimo)
+        d['restano_nel_reparto'] = restano
+        d['indicazione'] = (
+            'Hai chiuso i %s: con gli slot pieni non puoi piu\' rilanciare in '
+            'questo reparto, e ne restano %d da assegnare agli altri. Intanto '
+            'guarda avanti: %s'
+            % (nome_fase, restano,
+               d.get('indicazione', '')[0].lower() + d.get('indicazione', '')[1:]
+               if d.get('indicazione') else ''))
+        return d
+
+    def _da_valutare(self, ruolo):
+        """I giocatori del reparto su cui vale la pena fare i conti.
+
+        I primi per valore sopra il rimpiazzo, piu' i piu' economici fra quelli
+        che coprono un posto in formazione: le due domande sono diverse e la
+        seconda non si risponde con la classifica della prima.
+        """
+        fuori = self.v.disponibili(ruolo, QUANTI_VALUTATI)
+        gia = set(x.id for x in fuori)
+        extra = [x for x in self.v.disponibili(ruolo)
+                 if x.id not in gia and self.gioca_sempre(x)]
+        extra.sort(key=lambda x: ((x.prezzo_base or 99), -formazione.quota(x), x.id))
+        return fuori + extra[:QUANTI_TITOLARI_ECONOMICI]
+
+    def _consiglio_ruolo(self, ruolo, quanti=12):
+        """Le liste per **un** reparto. Di solito e' quello in chiamata; quando
+        i miei slot li' sono pieni e' invece il prossimo che mi serve."""
         v, o, stato = self.v, self.o, self.stato
         io = stato.io()['id']
         serve = o.serve.get(ruolo, 0)
         pressione = self.pressione()
         liquidita = stato.liquidita(io)
+        posso_offrire = stato.slot_residui(io, ruolo) > 0
+        cop = self.copertura(ruolo)
+        quote_mie = self.quote_mie(ruolo)
+        riempitivo = v.quota_riempitivo(ruolo)
 
         # Il verdetto e' quello che uscira' aprendo la scheda: le liste non
         # decidono niente per conto loro, si limitano a raggruppare. Cosi' un
@@ -595,7 +819,7 @@ class Consigliere(object):
         # piu' niente da far pagare a nessuno e niente puo' essere una
         # trappola, perche' qualunque nome lo paghi un credito.
         conc_max = 0
-        for x in v.disponibili(ruolo, QUANTI_VALUTATI):
+        for x in self._da_valutare(ruolo):
             d = self.decisione(x)
             conc = d.pop('concorrenti')
             d['concorrenti'] = len(conc)
@@ -610,6 +834,11 @@ class Consigliere(object):
             # giocatore che cambia la squadra, che e' esattamente il rovescio
             # di quello che serve sapere quando tocca chiamare.
             d['punteggio'] = utilita + 0.25 * max(0, margine)
+            # Copre un posto in formazione, o e' un giocatore da panchina?
+            # Finche' il nucleo non e' pieno la differenza viene prima di
+            # qualunque conto sul prezzo, e va detta su ogni riga.
+            d['titolare_pieno'] = self.gioca_sempre(x)
+            d['copre'] = round(self.guadagno_copertura(x, quote_mie, riempitivo), 3)
 
             conv = d['convenienza']
             if (d['verdetto'] in VALE
@@ -631,7 +860,10 @@ class Consigliere(object):
             # Non lo voglio a quel prezzo. Se pero' costa caro e ci sono
             # avversari che se lo contenderanno, chiamarlo brucia i loro
             # crediti prima che tocchi ai miei obiettivi.
-            if d['categoria'] not in ('occasione', 'giusto'):
+            # Serve pero' uno slot libero in quel ruolo: senza, l'offerta non
+            # e' rischiosa, e' **impossibile** &mdash; nessuno accetta il
+            # rilancio di chi ha gia' la casella piena.
+            if posso_offrire and d['categoria'] not in ('occasione', 'giusto'):
                 e = self._svuota(x, d, conc, liquidita)
                 if e is not None:
                     svuotare.append(e)
@@ -640,7 +872,38 @@ class Consigliere(object):
         # sposta la rosa, non per convenienza: la convenienza dice se merita di
         # stare in quella fascia, ma se devo scegliere un portiere solo voglio
         # in cima quello che mi fa fare piu' punti, non quello che costa meno.
-        top.sort(key=lambda d: (-d['punteggio'], -d['convenienza'], d['id']))
+        # **Prima chi gioca.** Finche' mancano titolari al nucleo, un giocatore
+        # da panchina non puo' stare sopra uno su cui si costruisce la
+        # formazione, per quanto convenga: il primo fa risparmiare crediti, il
+        # secondo fa giocare la squadra. Quando il nucleo e' coperto la
+        # distinzione sparisce da sola e si torna a ordinare per resa, che a
+        # quel punto e' la domanda giusta &mdash; i posti dal quinto in giu'
+        # sono panchina per definizione, e li' un affare vale piu' di un nome.
+        # Il criterio e' netto apposta: copre un posto fisso o no. Si era
+        # provato a graduarlo con le caselle guadagnate, ed e' un numero giusto
+        # ma inservibile per mettere in fila: in un listone pieno di titolari da
+        # un credito il guadagno **marginale** di chiunque e' un decimo di
+        # casella, e a quel punto ordinare per decimi vuol dire ordinare per
+        # rumore. Quello che serve qui e' la domanda dell'utente, che e' binaria:
+        # su questo ci costruisco la difesa, o e' uno da panchina?
+        def prima_chi_gioca(d):
+            gioca_poco = ((d.get('presenze') or 0) / float(GIORNATE)
+                          < QUOTA_MINIMA_UTILE)
+            fuori = PRIMA_I_TITOLARI and (
+                (cop['mancano'] >= 0.5 and not d.get('titolare_pieno'))
+                or gioca_poco)
+            # Il punteggio si arrotonda al punto intero, e **a parita' gioca
+            # chi gioca di piu'**. Non e' un dettaglio estetico: negli ultimi
+            # slot di un reparto la resa di tutti collassa fra zero e uno, e
+            # ordinare per decimi di punto vuol dire ordinare per l'errore di
+            # stima. Li' la domanda vera e' un'altra, ed e' quante domeniche
+            # quel giocatore ci sara'.
+            return (1 if fuori else 0,
+                    -round(d['punteggio']),
+                    -(d.get('presenze') or 0),
+                    -d['convenienza'], d['id'])
+
+        top.sort(key=prima_chi_gioca)
         svuotare.sort(key=lambda d: (-d['punteggio'], d['id']))
         # Da evitare in ordine di pericolo, non di bruttezza: la trappola vera
         # e' quella su cui la stanza spendera' davvero. Chi perde venti punti
@@ -662,13 +925,13 @@ class Consigliere(object):
         for posto, d in enumerate(top[:quanti], start=1):
             d['posto_fascia'] = posto
             if posto > 1:
-                d['perche'] = self._confronto(d, top[0])
+                d['perche'] = self._confronto(d, top[0], cop['mancano'])
 
         # Fra i "gia' visti" vanno anche quelli da evitare: `_alternative`
         # ripesca dal fondo del listone quando le alternative vere sono poche,
         # e da li' rientrava chi era gia' stato classificato trappola.
         in_alto = in_top | set(d['id'] for d in evitare)
-        alternative = self._alternative(ruolo, serve, neutri, in_alto)
+        alternative = self._alternative(ruolo, serve, neutri, in_alto, cop)
         # Stessa ragione della riga sopra su `in_top`, e mancava: un giocatore
         # che sta fra le alternative e' uno che **potresti prendere**, e
         # spingerne il prezzo per far spendere gli altri e' l'indicazione
@@ -715,6 +978,33 @@ class Consigliere(object):
             obbligati = len(promossi)
             alternative = [d for d in alternative if d['id'] not in promossi]
 
+        # **E quando la fascia alta c'e' ma e' tutta panchina.**
+        #
+        # E' il caso che ha fatto scrivere tutto questo, ed e' diverso dal
+        # precedente: la lista non e' vuota, e' piena di gente che gioca poco.
+        # Succede a fine reparto, quando i crediti che restano comprano solo
+        # giocatori da pochi crediti: fra quelli, chi ha la fantamedia piu'
+        # alta e' quasi sempre un giocatore da rotazione &mdash; alta proprio
+        # perche' gioca solo le partite giuste &mdash; e finisce in cima. Ma se
+        # in formazione manca ancora un titolare, la risposta giusta non e'
+        # quella: e' il difensore da trentuno presenze che costa uguale.
+        if cop['mancano'] >= 0.5 and PRIMA_I_TITOLARI and alternative:
+            if not any(d.get('titolare_pieno') for d in top[:max(1, quanti // 3)]):
+                da_promuovere = [d for d in alternative if d.get('titolare_pieno')]
+                for d in da_promuovere[:max(1, cop['mancano_interi'])]:
+                    e = dict(d)
+                    e['categoria'] = 'copertura'
+                    e['perche'] = (
+                        'Copre un posto in formazione: %d presenze attese, e a '
+                        '%d crediti costa quanto chi ne gioca la meta\'. In '
+                        'questo reparto ne copri %.1f su %d, e finche\' non '
+                        'sono coperte questa e\' la spesa che rende di piu\'.'
+                        % (d['presenze'], max(1, d['chiusura']),
+                           cop['coperti'], cop['servono']))
+                    top.insert(0, e)
+                promossi = set(d['id'] for d in top)
+                alternative = [d for d in alternative if d['id'] not in promossi]
+
         # Chi chiude una coppia sta in un riquadro suo, in cima a tutto, e
         # non dentro le tre fasce: e' un'informazione che vale a prescindere da
         # quanto quel giocatore renda da solo &mdash; anzi, di solito rende
@@ -758,9 +1048,10 @@ class Consigliere(object):
             'fase': ruolo,
             'serve': serve,
             'pressione': round(pressione, 2),
+            'copertura': cop,
             'indicazione': self._indicazione(ruolo, serve, pressione,
                                              top, svu, obbligati,
-                                             self._budget_ruolo(ruolo)),
+                                             self._budget_ruolo(ruolo), cop),
             'top': fuori,
             'evitare': evitare[:quanti],
             'alternative': alt,
@@ -771,7 +1062,7 @@ class Consigliere(object):
             # quanto la lista.
             'vuoti': self._perche_vuoto(ruolo, top, evitare, alt, svu, conc_max),
             'coppie': coppie,
-            'valutati': min(QUANTI_VALUTATI, len(v.disponibili(ruolo))),
+            'valutati': len(self._da_valutare(ruolo)),
             'liberi_nel_ruolo': len(v.disponibili(ruolo)),
             'scarsita': scarsita,
             'budget_ruolo': self._budget_ruolo(ruolo),
@@ -827,7 +1118,7 @@ class Consigliere(object):
                 'sono.')
         return out
 
-    def _alternative(self, ruolo, serve, neutri, gia_visti):
+    def _alternative(self, ruolo, serve, neutri, gia_visti, copertura=None):
         """Il piano B: chi posso prendere **tutti**, non uno solo svenandomi.
 
         E' la domanda che ci si fa a meta' asta: se questi quattro difensori
@@ -846,23 +1137,46 @@ class Consigliere(object):
         # Fino a una volta e mezzo la spesa media per slot: sopra, prendendolo,
         # si sbilancia il reparto e gli altri slot restano scoperti.
         tetto = max(2.0, per_slot * 1.5)
+        # Il tetto serve a non sbilanciare il reparto, ma non deve poter
+        # nascondere l'unica cosa che manca. Se in formazione restano caselle
+        # scoperte, si alza almeno fino al **titolare fisso piu' economico**
+        # disponibile: nove crediti su tre slot facevano un tetto di quattro e
+        # mezzo, e con quello un difensore da trentuno presenze a otto crediti
+        # non compariva da nessuna parte, mentre uno da diciannove a quattro
+        # stava in cima.
+        if copertura and copertura['mancano'] >= 0.5:
+            prezzi = [d['chiusura'] for d in neutri
+                      if d.get('titolare_pieno') and (d.get('chiusura') or 0) > 0]
+            if prezzi:
+                tetto = max(tetto, float(min(prezzi)))
 
-        def gioca(d):
-            g = d.get('gerarchia') or {}
-            return (g.get('grado') == 'titolare'
-                    and (g.get('certezza') or 0) >= CERTEZZA_RIPIEGO)
+        # La stessa definizione usata dalla fascia alta: un titolare qui e un
+        # titolare li' devono essere la stessa cosa, o le due liste si
+        # contraddicono sullo stesso nome.
+        gioca = lambda d: bool(PRIMA_I_TITOLARI and d.get('titolare_pieno'))
 
+
+        # `resa > 0` era l'ultimo cancello, ed e' quello che teneva fuori
+        # proprio i giocatori giusti. Negli ultimi slot di un reparto la resa
+        # in punti di **chiunque** e' zero virgola qualcosa: la panchina pesa
+        # poco per costruzione. Fra due che rendono zero, pero', non sono
+        # uguali: uno gioca trentuno partite e l'altro diciannove, e finche'
+        # in formazione manca una casella quella differenza e' l'unica che
+        # conta. Quindi chi copre un posto fisso entra anche a resa zero.
+        scoperto = bool(copertura and copertura['mancano'] >= 0.5)
         out = [d for d in neutri
                if d['id'] not in gia_visti and d['chiusura'] <= tetto
-               and d['resa'] > 0]
+               and (d['resa'] > 0 or (scoperto and d.get('titolare_pieno')))]
         out.sort(key=lambda d: (0 if gioca(d) else 1, -d['punteggio'], d['id']))
         for d in out:
             g = d.get('gerarchia') or {}
+            coda = ('' if gioca(d) else
+                    " Da panchina, pero': non contarlo fra i titolari.")
             d['perche'] = ('%s, %d presenze attese e %.2f di fantamedia: a %d '
-                           'crediti costa quello che vale.'
+                           'crediti costa quello che vale.%s'
                            % (g.get('etichetta') or 'Da verificare',
                               d['presenze'], d['fantamedia'],
-                              max(1, d['chiusura'])))
+                              max(1, d['chiusura']), coda))
 
         # Il fondo del listone non passa dalla valutazione completa: se le
         # alternative vere sono poche, si pesca li' con la vecchia regola.
@@ -873,11 +1187,16 @@ class Consigliere(object):
                 d['categoria'] = 'alternativa'
                 d['perche'] = d.get('frase', '')
                 d.setdefault('punteggio', d.get('utilita', 0))
+                g = d.get('gerarchia') or {}
+                d.setdefault('titolare_pieno',
+                             g.get('grado') == 'titolare'
+                             and (g.get('certezza') or 0) >= CERTEZZA_RIPIEGO
+                             and (g.get('quota') or 0) >= QUOTA_TITOLARE)
                 out.append(d)
         return out
 
     @staticmethod
-    def _confronto(d, primo):
+    def _confronto(d, primo, mancano=0):
         """Come sta questo rispetto al migliore della fascia, in una riga."""
         dp = round(d['resa'] - primo['resa'])
         dc = d['chiusura'] - primo['chiusura']
@@ -904,6 +1223,13 @@ class Consigliere(object):
         if (d.get('max_bid') or 0) <= 0:
             frase += (" Adesso il suo limite e' zero: conviene solo dopo che %s"
                       " e' andato a qualcun altro." % chi)
+        # E se non copre un posto in formazione va detto qui, sulla riga, non
+        # lasciato dedurre da un'etichetta grigia: e' la differenza fra un
+        # affare e un buco in difesa una domenica su tre.
+        if mancano >= 0.5 and not d.get('titolare_pieno'):
+            frase += (" Attenzione pero': gioca circa %d giornate su 38, quindi"
+                      " non copre un posto fisso, e in questo reparto ti manca"
+                      " ancora chi lo copra." % (d.get('presenze') or 0))
         return frase
 
     def _perche_evitare(self, x, d):
@@ -1126,9 +1452,24 @@ class Consigliere(object):
                 % (chi, voce['tetto_sicuro']))
 
     def _indicazione(self, ruolo, serve, pressione, prendere, svuotare,
-                     obbligati=0, budget=0):
+                     obbligati=0, budget=0, copertura=None):
         nome = {'P': 'portieri', 'D': 'difensori',
                 'C': 'centrocampisti', 'A': 'attaccanti'}[ruolo]
+        # **Prima di ogni altra cosa: la formazione sta in piedi?** Con il
+        # nucleo scoperto la domanda non e' quale sia l'affare migliore, e'
+        # quanti titolari mancano ancora. E' l'unico caso in cui una frase
+        # sulla pressione o sui prezzi sarebbe un consiglio giusto dato nel
+        # momento sbagliato.
+        if copertura and copertura['mancano'] >= 0.5 and serve > 0:
+            quanti = copertura['servono']
+            return ('In campo va%s %d %s ogni giornata e con la rosa di adesso '
+                    'ne copri %.1f. Prima chi gioca, poi chi conviene: uno da '
+                    "meta' campionato al posto di uno fisso non ti fa "
+                    'risparmiare crediti, ti lascia scoperto una domenica su '
+                    'tre.'
+                    % ('' if quanti == 1 else 'nno', quanti,
+                       nome if quanti != 1 else _nome_singolare(ruolo),
+                       copertura['coperti']))
         # Quando la fascia alta e' vuota la cosa da dire non e' "non conviene
         # nessuno": e' **dove sono finiti i crediti**. Senza quella frase il
         # piano sembra un'omissione invece che una scelta.

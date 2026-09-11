@@ -975,6 +975,27 @@ class Valutatore(object):
         out.sort(key=lambda x: (-x.vor, x.id))
         return out[:n] if n else out
 
+    def quota_riempitivo(self, ruolo):
+        """Quanto gioca il tappabuchi che troveresti comunque, in quel reparto.
+
+        Serve come **metro di paragone** quando si chiede quante giornate in
+        piu' copre un giocatore: il confronto giusto non e' con la casella
+        vuota &mdash; a fine asta uno da un credito lo si trova sempre &mdash;
+        ma con quello che prenderesti al suo posto senza spendere niente.
+
+        Si guarda chi costa fino a due crediti e si prende il quarto migliore
+        per presenze attese, non il primo: i migliori fra i riempitivi se li
+        prende qualcun altro, e contare sul migliore in assoluto sarebbe un
+        ottimismo che poi si paga a fine reparto.
+        """
+        import formazione
+        quote = sorted(
+            (formazione.quota(x) for x in self.disponibili(ruolo)
+             if (x.prezzo_base or 1) <= 2), reverse=True)
+        if not quote:
+            return 0.0
+        return quote[min(3, len(quote) - 1)]
+
     def scarta(self, giocatore_id):
         """Toglie un giocatore dal listone tenuto in memoria.
 

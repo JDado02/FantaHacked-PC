@@ -34,6 +34,7 @@ from valutazione import Valutatore
 from ottimizzatore import Ottimizzatore
 from strategia import Consigliere
 from modificatore import Modificatore
+import formazione
 
 import cinque_aste as base
 import copertura
@@ -47,6 +48,14 @@ NOMI = base.NOMI
 # funzione la chiama lui, non chi le prova.
 MARGINE = 0.0     # di quanto rilanciare oltre il proprio limite
 FIDUCIA = None    # sovrascrive fiducia_nel_mercato
+# Come scelgo **chi chiamare** quando tocca a me. E' la manopola che serve a
+# giudicare i consigli, non il motore: con 'casuale' esce un giocatore preso
+# dalla finestra di mercato e io mi limito a rilanciare fino al mio limite
+# &mdash; e' cosi' che sono state misurate tutte le aste fin qui, e misura
+# `max_bid`. Con 'consiglio' invece, quando tocca a me, chiamo il primo della
+# lista dei consigli: e' quello che fa una persona davanti allo schermo, ed e'
+# l'unico modo di sapere se l'ordine di quella lista vale qualcosa.
+SCELTA = 'casuale'
 
 
 def punteggio(rosa, reg):
@@ -70,6 +79,35 @@ def punteggio(rosa, reg):
         return totale
     n_por = reg.mod_dif_n_por
     n_dif = reg.mod_dif_n_dif
+    por = sorted(rosa['P'], key=lambda d: -(d.get('mv') or 0))[:n_por]
+    dif = sorted(rosa['D'], key=lambda d: -(d.get('mv') or 0))[:n_dif]
+    scelti = por + dif
+    if len(scelti) < n_por + n_dif:
+        return totale
+    media = sum(d.get('mv') or 0 for d in scelti) / float(len(scelti))
+    return totale + mod.punti_stagione(media)
+
+
+def punteggio_schierato(rosa, reg):
+    """Lo stesso punteggio, ma contando solo quello che si riesce a schierare.
+
+    `punteggio` qui sopra somma i punti dei migliori per reparto: dice quanto
+    vale la rosa **se giocassero tutti sempre**. E' il metro con cui il motore
+    e' stato giudicato fino a ieri, e ha un buco preciso: un difensore da
+    diciotto presenze e fantamedia alta ci entra come uno da trentadue, perche'
+    `presenze x fantamedia` e' lo stesso numero. Nelle venti giornate in cui il
+    primo non c'e', pero', quella casella o la riempie il quinto difensore o
+    resta vuota &mdash; e questo metro non lo vedeva.
+
+    Qui si conta giornata per giornata: chi ha preso voto, chi entra nei posti
+    disponibili, e zero per le caselle che non si riescono a riempire. E' il
+    numero da guardare per decidere se una modifica al motore serve davvero.
+    """
+    totale = formazione.punti_stagione(rosa)
+    mod = Modificatore(reg)
+    if not mod.attivo:
+        return totale
+    n_por, n_dif = reg.mod_dif_n_por, reg.mod_dif_n_dif
     por = sorted(rosa['P'], key=lambda d: -(d.get('mv') or 0))[:n_por]
     dif = sorted(rosa['D'], key=lambda d: -(d.get('mv') or 0))[:n_dif]
     scelti = por + dif
@@ -169,6 +207,12 @@ def gioca(seme, ancoraggio='mercato', patch_reg=None):
                 continue
             finestra = sorted(liberi, key=lambda y: -ancora.get(y.id, 0))[:8]
             x = rng.choice(finestra)
+            # Un giro su `partecipanti` la chiamata e' mia, e allora scelgo io.
+            # E' l'unico punto in cui i consigli entrano nella simulazione.
+            if SCELTA == 'consiglio' and st.slot_residui(io_id, fase) > 0                     and rng.random() < 1.0 / reg.partecipanti:
+                scelto = _chiamata_mia(c, v, reg, fase, st, io_id)
+                if scelto is not None:
+                    x = scelto
 
             offerte = []
             for nome in NOMI[1:]:
@@ -239,6 +283,10 @@ def gioca(seme, ancoraggio='mercato', patch_reg=None):
                     'prezzo': a['prezzo'],
                     'presenze': int(round(g.presenze)) if g else 0,
                     'punti': round(g.presenze * g.fm) if g else 0,
+                    # La fantamedia serve al punteggio "schierato", che conta
+                    # i punti giornata per giornata invece di sommare quelli
+                    # dei migliori dando per scontato che giochino sempre.
+                    'fm': round(g.fm, 3) if g else 0.0,
                     # La media voto serve per il modificatore di difesa, che
                     # in questa lega vale fino a sei punti a giornata e che il
                     # punteggio finale ignorava del tutto.
@@ -251,6 +299,8 @@ def gioca(seme, ancoraggio='mercato', patch_reg=None):
         esito = {
             'seme': seme,
             'punti': dict((n, punteggio(rose[n], reg)) for n in NOMI),
+            'schierati': dict((n, punteggio_schierato(rose[n], reg))
+                              for n in NOMI),
             'senza_modificatore': dict((n, base.undici_atteso(rose[n]))
                                        for n in NOMI),
             'spesa': dict((r, sum(d['prezzo'] for d in rose[NOMI[0]][r]))
@@ -288,8 +338,37 @@ def offerta(rng, x, ruolo, carattere, liquidita, slot_ruolo, speso_ruolo,
     return int(max(0, min(round(valore), liquidita)))
 
 
+def _chiamata_mia(c, v, reg, fase, st, io_id):
+    """Il giocatore che il pannello mette per primo, cioe' quello che chiamerei.
+
+    Se la lista alta e' vuota si guarda quella di mezzo; se e' vuota pure
+    quella si torna al giocatore uscito a caso, che e' quello che farebbe
+    chiunque quando il programma non ha niente da dire.
+    """
+    try:
+        d = c.consiglio(quanti=3)
+    except Exception:
+        return None
+    for sezione in ('top', 'alternative'):
+        for voce in (d.get(sezione) or []):
+            x = v.g.get(voce['id'])
+            if x is None or x.ruolo != fase:
+                continue
+            if x.id in st.venduti():
+                continue
+            if reg.portieri_pacchetto and fase == 'P' and not x.titolare_por:
+                continue
+            return x
+    return None
+
+
 def _lavoro(argomenti):
-    seme, ancoraggio = argomenti
+    seme, ancoraggio = argomenti[0], argomenti[1]
+    if len(argomenti) > 2:
+        globals()['SCELTA'] = argomenti[2]
+    if len(argomenti) > 3:
+        import strategia
+        strategia.PRIMA_I_TITOLARI = argomenti[3]
     try:
         return gioca(seme, ancoraggio)
     except Exception as e:                      # una sola asta non deve
@@ -299,14 +378,19 @@ def _lavoro(argomenti):
 def main():
     quante = int(sys.argv[1]) if len(sys.argv) > 1 else 100
     ancoraggio = sys.argv[2] if len(sys.argv) > 2 else 'mercato'
+    scelta = sys.argv[3] if len(sys.argv) > 3 else 'casuale'
+    titolari = (sys.argv[4] != 'no') if len(sys.argv) > 4 else True
     semi = [1000 + 7 * i for i in range(quante)]
     avvio = time.time()
     n = max(1, min(6, (os.cpu_count() or 2) - 1))
     with multiprocessing.Pool(n) as pool:
-        esiti = pool.map(_lavoro, [(s, ancoraggio) for s in semi])
+        esiti = pool.map(_lavoro,
+                         [(s, ancoraggio, scelta, titolari) for s in semi])
     rotte = [e for e in esiti if 'errore' in e]
     esiti = [e for e in esiti if 'errore' not in e]
     fuori = os.path.join(QUI, 'cento_aste_%s.json' % ancoraggio)
+    print('chi chiamo: %s   prima i titolari: %s'
+          % (scelta, 'si' if titolari else 'no'))
     with open(fuori, 'w', encoding='utf-8') as f:
         json.dump({'ancoraggio': ancoraggio, 'esiti': esiti}, f)
     print('%d aste in %.0f s su %d processi   (%d rotte)'
@@ -328,6 +412,16 @@ def relazione(esiti, ancoraggio):
         scarti.append(mio - max(altri))
         punti.append(mio)
     vinte = sum(1 for p in piazzamenti if p == 1)
+    # Lo stesso conto con il metro che tiene conto di chi gioca davvero.
+    piaz_s, punti_s = [], []
+    for e in esiti:
+        d = e.get('schierati') or {}
+        if not d:
+            continue
+        mio = d[io]
+        altri = [p for n, p in d.items() if n != io]
+        piaz_s.append(1 + sum(1 for p in altri if p > mio))
+        punti_s.append(mio)
     print('\n%s' % ('=' * 68))
     print('CENTO ASTE  (avversari ancorati a: %s)' % ancoraggio)
     print('=' * 68)
@@ -341,6 +435,14 @@ def relazione(esiti, ancoraggio):
           % (statistics.median(punti), min(punti), max(punti)))
     print('  scarto dal secondo %+.0f punti mediano   (peggiore %+.0f)'
           % (statistics.median(scarti), min(scarti)))
+    if piaz_s:
+        print('')
+        print('  Con il metro che conta solo chi si riesce a schierare')
+        print('    vinte            %d su %d  (%.0f%%)'
+              % (sum(1 for p in piaz_s if p == 1), len(piaz_s),
+                 100.0 * sum(1 for p in piaz_s if p == 1) / len(piaz_s)))
+        print('    piazzamento medio  %.2f' % (sum(piaz_s) / len(piaz_s)))
+        print('    punti mediani      %.0f' % statistics.median(punti_s))
 
     print('\n  Come spende il motore')
     for r in RUOLI:

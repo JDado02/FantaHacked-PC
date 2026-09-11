@@ -1023,9 +1023,316 @@ def collauda(c):
     st = c.post('/api/nuova', {'mio_nome': 'Davide', 'avversari': nomi})
     verifica('si puo\' ricominciare da capo', st['fase'] == 'P' and st['io']['crediti'] == 500)
 
+    collauda_regolamento(c, nomi)
+    collauda_reparto_chiuso(c, nomi)
+    collauda_titolari(c, nomi)
+    collauda_ultimi_slot(c, nomi)
+    collauda_completa_reparto(c, nomi)
+
     print('\n%s   %d superati, %d falliti'
           % ('TUTTO OK' if not fail else 'CI SONO ERRORI', ok, fail))
     return 1 if fail else 0
+
+
+def collauda_regolamento(c, nomi):
+    """[9] Squadre, crediti e modificatore si scelgono dalla schermata iniziale.
+
+    Non e' un pannello di preferenze: sono i tre valori da cui dipende ogni
+    prezzo che il programma dice. Quante squadre siamo decide quanti giocatori
+    verranno assegnati, cioe' il livello di rimpiazzo; quanti crediti abbiamo
+    decide la scala. Quindi non basta controllare che il numero venga salvato:
+    va controllato che i **prezzi cambino**, e soprattutto che non cambino per
+    l'asta gia' cominciata, che si gioca fino in fondo con le sue regole.
+    """
+    print('\n[9] Il regolamento si sceglie dalla schermata iniziale')
+    torna = lambda: c.post('/api/regole', {'partecipanti': 8, 'crediti': 500,
+                                           'modificatore': True})
+
+    st = torna()
+    imp = st.get('impostazioni') or {}
+    verifica('lo stato porta con se\' le impostazioni modificabili',
+             imp.get('partecipanti') == 8 and imp.get('crediti') == 500
+             and imp.get('modificatore') is True, repr(imp))
+    verifica('e i limiti entro cui si possono muovere',
+             imp.get('min_partecipanti') == 2 and imp.get('max_partecipanti') == 20
+             and imp.get('min_crediti') == imp.get('slot_totali'), repr(imp))
+
+    # --- l'asta in corso non si tocca ---------------------------------------
+    c.post('/api/nuova', {'mio_nome': 'Davide', 'avversari': nomi})
+    prima = c.get('/api/listone?ruolo=D&n=20')['righe'][0]
+    st = c.post('/api/regole', {'partecipanti': 12, 'crediti': 300,
+                                'modificatore': False})
+    verifica('l\'asta in corso resta con le sue regole',
+             st['regole']['partecipanti'] == 8 and st['regole']['crediti'] == 500
+             and len(st['presidenti']) == 8)
+    verifica('e con i suoi prezzi',
+             c.get('/api/listone?ruolo=D&n=20')['righe'][0]['valore']
+             == prima['valore'])
+    verifica('la pagina sa che le nuove regole non sono quelle in corso',
+             st['impostazioni']['diverse_dall_asta'] is True)
+    verifica('i nomi si allungano fino al nuovo numero di squadre',
+             len(st['nomi_predefiniti']) == 12
+             and st['nomi_predefiniti'][-1] == 'Squadra 11',
+             repr(st['nomi_predefiniti']))
+
+    # --- la nuova asta le usa ------------------------------------------------
+    st = c.post('/api/nuova', {'mio_nome': 'Davide',
+                               'avversari': nomi + ['Iris', 'Luca', 'Mara', 'Nadia']})
+    verifica('la nuova asta nasce con le squadre scelte', len(st['presidenti']) == 12)
+    verifica('e con i crediti scelti', st['io']['crediti'] == 300)
+    verifica('adesso regole e impostazioni coincidono',
+             st['impostazioni']['diverse_dall_asta'] is False)
+    dopo = c.get('/api/listone?ruolo=D&n=20')['righe'][0]
+    verifica('e i prezzi sono rifatti da capo',
+             dopo['mercato'] != prima['mercato'],
+             'prima %s, dopo %s' % (prima['mercato'], dopo['mercato']))
+
+    # --- il modificatore, da solo -------------------------------------------
+    # A parita' di tutto il resto: e' il parametro che sposta di piu' il valore
+    # di un difensore, ed e' l'unico modo di vedere se e' davvero collegato.
+    valori = {}
+    for acceso in (True, False):
+        c.post('/api/regole', {'partecipanti': 8, 'crediti': 500,
+                               'modificatore': acceso})
+        c.post('/api/nuova', {'mio_nome': 'Davide', 'avversari': nomi})
+        valori[acceso] = c.get('/api/listone?ruolo=D&n=20')['righe'][0]['valore']
+    verifica('spegnere il modificatore toglie valore al miglior difensore',
+             valori[False] < valori[True],
+             'acceso %s, spento %s' % (valori[True], valori[False]))
+
+    # --- quello che non si puo' chiedere ------------------------------------
+    st = c.post('/api/regole', {'partecipanti': 99, 'crediti': 500,
+                                'modificatore': True})
+    verifica('novantanove squadre diventano il massimo, non un errore',
+             st['impostazioni']['partecipanti'] == 20)
+    st = c.post('/api/regole', {'partecipanti': 8, 'crediti': 5,
+                                'modificatore': True})
+    verifica('cinque crediti per venticinque slot vengono rifiutati',
+             'errore' in st and 'slot' in st['errore'], repr(st.get('errore')))
+    # Nella stessa richiesta c'era anche un valore buono (otto squadre): non
+    # deve passare nemmeno quello. Un regolamento accettato a meta' sarebbe
+    # peggio di uno rifiutato, perche' nessuno se ne accorgerebbe.
+    imp = c.get('/api/stato')['impostazioni']
+    verifica('un regolamento rifiutato non lascia passare i suoi pezzi buoni',
+             imp['crediti'] == 500 and imp['partecipanti'] == 20, repr(imp))
+    torna()
+
+
+def _primo_libero(c, ruolo):
+    for x in c.get('/api/listone?ruolo=%s&n=200' % ruolo)['righe']:
+        if not x.get('venduto'):
+            return x
+    return None
+
+
+def collauda_reparto_chiuso(c, nomi):
+    """[10] Quando il mio reparto e' pieno la pagina non resta bianca.
+
+    Il caso vero, raccontato da chi lo usa: preso Vicario, coi portieri a
+    pacchetto la rosa dei portieri e' gia' finita al primo acquisto. Restano
+    sette pacchetti da assegnare agli altri, e per tutte e sette le chiamate lo
+    schermo non aveva niente da dire &mdash; anzi, suggeriva rilanci che con lo
+    slot pieno nessuno accetterebbe, e all'ultimo avversario si svuotava del
+    tutto.
+    """
+    print('')
+    print('[10] Col reparto chiuso i consigli continuano')
+    c.post('/api/regole', {'partecipanti': 8, 'crediti': 500,
+                           'modificatore': True, 'pacchetto': True})
+    st = c.post('/api/nuova', {'mio_nome': 'Davide', 'avversari': nomi})
+    io_id = [p['id'] for p in st['presidenti'] if p['io']][0]
+    altri = [p['id'] for p in st['presidenti'] if not p['io']]
+
+    por = _primo_libero(c, 'P')
+    r = c.post('/api/acquisto', {'id': por['id'], 'presidente': io_id,
+                                 'prezzo': 40})
+    verifica('col pacchetto il portiere si porta dietro le riserve',
+             len(r.get('pacchetto') or []) == 2, repr(r.get('pacchetto')))
+    verifica('e chiude il reparto in una chiamata sola',
+             r['io']['slot_residui'] == 22 and r['io']['rosa']['P'].__len__() == 3)
+
+    co = c.get('/api/consiglio')
+    verifica('la fase resta quella dei portieri', co.get('fase') == 'P')
+    verifica('ma i consigli passano al reparto successivo',
+             co.get('anticipo') == 'D' and len(co.get('top') or []) > 0,
+             'anticipo=%s top=%d' % (co.get('anticipo'), len(co.get('top') or [])))
+    verifica('e non propone rilanci che non potrei fare',
+             not co.get('svuotare'))
+
+    # Adesso i portieri agli altri, fino all'ultimo: la pagina non deve mai
+    # restare senza niente da dire.
+    vuoti = 0
+    for pid in altri:
+        x = _primo_libero(c, 'P')
+        if x is None:
+            break
+        if 'errore' in c.post('/api/acquisto', {'id': x['id'], 'presidente': pid,
+                                                'prezzo': 20}):
+            break
+        co = c.get('/api/consiglio')
+        if not (co.get('top') or co.get('alternative') or co.get('coppie')):
+            vuoti += 1
+    verifica('nessuna chiamata lascia la pagina senza consigli', vuoti == 0,
+             '%d chiamate a vuoto' % vuoti)
+    st = c.get('/api/stato')
+    verifica('e alla fine si passa ai difensori', st.get('fase') == 'D')
+
+
+def collauda_titolari(c, nomi):
+    """[11] Prima chi gioca, poi chi conviene.
+
+    Il difetto segnalato: presi due difensori forti, la lista continuava con
+    gente da meta' campionato messa sopra a dei titolari, perche' costavano
+    poco e "convenivano". Un difensore da diciotto presenze non copre un posto
+    in formazione, e finche' il posto non e' coperto quella non e' una
+    convenienza, e' un buco rimandato.
+    """
+    print('')
+    print('[11] Prima i titolari, poi gli affari')
+    co = c.get('/api/consiglio')
+    cop = co.get('copertura') or {}
+    verifica('il motore dice quante caselle riempie il reparto',
+             cop.get('servono') == 4 and 'coperti' in cop, repr(cop))
+    verifica('a difesa vuota non ne copre nessuna', cop.get('coperti') == 0)
+
+    top = co.get('top') or []
+    verifica('ogni consigliato dice se copre un posto fisso',
+             all('titolare_pieno' in d for d in top))
+    titolari = [i for i, d in enumerate(top) if d.get('titolare_pieno')]
+    panchinari = [i for i, d in enumerate(top) if not d.get('titolare_pieno')]
+    verifica('e i titolari stanno tutti sopra quelli da panchina',
+             not titolari or not panchinari or max(titolari) < min(panchinari),
+             ' '.join('%s%s' % (d['nome'][:9],
+                                '' if d.get('titolare_pieno') else '(panca)')
+                      for d in top))
+
+    # Comprati i titolari, la copertura sale e la distinzione si spegne.
+    io_id = [p['id'] for p in c.get('/api/stato')['presidenti'] if p['io']][0]
+    presi = 0
+    for d in top:
+        if not d.get('titolare_pieno') or presi >= 4:
+            continue
+        prezzo = max(1, min(int(d.get('chiusura') or 1), 40))
+        if 'errore' in c.post('/api/acquisto', {'id': d['id'],
+                                                'presidente': io_id,
+                                                'prezzo': prezzo}):
+            continue
+        presi += 1
+    co = c.get('/api/consiglio')
+    cop2 = co.get('copertura') or {}
+    verifica('comprando titolari la copertura sale',
+             presi >= 2 and cop2.get('coperti', 0) > 1.0,
+             'presi %d, coperti %s' % (presi, cop2.get('coperti')))
+
+
+def collauda_ultimi_slot(c, nomi):
+    """[12] Budget della difesa finito, slot ancora aperti.
+
+    E' il caso raccontato da chi lo usa, e va riprodotto per intero: due
+    difensori forti pagati cari, il piano del reparto esaurito, e tre caselle
+    da riempire con pochi crediti. Li' il pannello proponeva un giocatore da
+    diciannove presenze e uno da sei, mentre erano liberi a quattro crediti dei
+    titolari da trentuno &mdash; che non entravano nemmeno fra i valutati,
+    perche' il valore sopra il rimpiazzo di un titolare con fantamedia normale
+    e' quasi zero per costruzione.
+    """
+    print('')
+    print('[12] Coi crediti finiti guida chi gioca, non chi ha la media alta')
+    c.post('/api/regole', {'partecipanti': 8, 'crediti': 500,
+                           'modificatore': True, 'pacchetto': True})
+    st = c.post('/api/nuova', {'mio_nome': 'Davide', 'avversari': nomi})
+    io_id = [p['id'] for p in st['presidenti'] if p['io']][0]
+    for pid in [p['id'] for p in st['presidenti']]:
+        x = _primo_libero(c, 'P')
+        if x:
+            c.post('/api/acquisto', {'id': x['id'], 'presidente': pid,
+                                     'prezzo': 25})
+    # Due difensori pagati sopra il piano: da qui in poi si compra col resto.
+    spesi = 0
+    for d in (c.get('/api/consiglio').get('top') or []):
+        if spesi >= 2:
+            break
+        if 'errore' not in c.post('/api/acquisto',
+                                  {'id': d['id'], 'presidente': io_id,
+                                   'prezzo': max(35, int(d.get('chiusura') or 35))}):
+            spesi += 1
+    verifica('si riesce a spendere il budget della difesa su due nomi',
+             spesi == 2)
+    co = c.get('/api/consiglio')
+    cop = co.get('copertura') or {}
+    top = co.get('top') or []
+    liberi = [x for x in c.get('/api/listone?ruolo=D&n=200')['righe']
+              if not x.get('venduto') and (x.get('presenze') or 0) >= 28
+              and (x.get('chiusura') or 99) <= 8]
+    verifica('restano titolari da pochi crediti sul listone',
+             len(liberi) >= 3, '%d liberi' % len(liberi))
+    verifica('il reparto risulta ancora scoperto',
+             cop.get('mancano', 0) >= 0.5, repr(cop))
+    verifica("e in cima ci va chi copre un posto, non chi gioca meta' anno",
+             bool(top) and all(d.get('titolare_pieno') for d in top[:2]),
+             ' '.join('%s(%s%s)' % (d['nome'][:10], d.get('presenze'),
+                                    '' if d.get('titolare_pieno') else ' panca')
+                      for d in top[:3]))
+    verifica('nessuno che gioca meno di quindici giornate apre la lista',
+             not top or (top[0].get('presenze') or 0) >= 15,
+             '%s con %s presenze' % (top[0]['nome'] if top else '-',
+                                     top[0].get('presenze') if top else '-'))
+
+
+def collauda_completa_reparto(c, nomi):
+    """[13] Il tasto che riempie il reparto in corso.
+
+    E' un attrezzo da collaudo, e proprio per questo deve essere fatto bene:
+    se lo stato a cui porta non e' uno stato **vero** &mdash; rose coerenti,
+    crediti che tornano, nessuno oltre il budget &mdash; tutto quello che si
+    guarda dopo averlo premuto non dice niente sul programma.
+    """
+    print('')
+    print('[13] Completa reparto')
+    st = c.post('/api/nuova', {'mio_nome': 'Davide', 'avversari': nomi})
+    io_id = [p['id'] for p in st['presidenti'] if p['io']][0]
+
+    st = c.post('/api/completa_reparto')
+    comp = st.get('completati') or {}
+    verifica('riempie il reparto in corso per tutti',
+             comp.get('ruolo') == 'P' and st['mercato']['residui_ruolo']['P'] == 0,
+             repr(comp))
+    verifica("e la mia rosa di quel reparto e' completa",
+             len(st['io']['rosa']['P']) == st['regole']['slot']['P'])
+    verifica('la fase passa al reparto successivo', st['fase'] == 'D')
+    verifica("nessuno e' andato sotto zero",
+             all(p['crediti'] >= 0 for p in st['presidenti']))
+
+    # I miei acquisti devono restare dentro i limiti che il motore dava: se il
+    # riempimento mi facesse strapagare, il pannello del bilancio direbbe che
+    # ho sbagliato l'asta, e sarebbe colpa dello strumento di misura.
+    rosa = c.get('/api/rosa?presidente=%d' % io_id)
+    verifica('quello che compra per me resta dentro i miei limiti',
+             (rosa.get('bilancio') or {}).get('sopra_limite') == 0,
+             repr((rosa.get('bilancio') or {}).get('sopra_limite')))
+
+    # Secondo giro: stavolta comincio io, e il tasto completa il resto.
+    d = c.get('/api/listone?ruolo=D&n=20')['righe'][0]
+    c.post('/api/acquisto', {'id': d['id'], 'presidente': io_id,
+                             'prezzo': d['chiusura']})
+    st = c.post('/api/completa_reparto')
+    verifica("riempie anche partendo da un reparto gia' cominciato",
+             st['mercato']['residui_ruolo']['D'] == 0
+             and len(st['io']['rosa']['D']) == st['regole']['slot']['D'])
+    verifica('e ogni squadra ha il reparto al completo',
+             all(p['slot']['D'] == st['regole']['slot']['D']
+                 for p in st['presidenti']))
+
+    st = c.post('/api/completa_reparto')
+    st = c.post('/api/completa_reparto')
+    verifica("due giri dopo, l'asta e' finita",
+             st.get('fase') is None, repr(st.get('fase')))
+    verifica('con tutte le rose piene',
+             all(p['residui'] == 0 for p in st['presidenti']))
+    fuori = c.post('/api/completa_reparto')
+    verifica('e premerlo ad asta chiusa lo dice, non esplode',
+             'errore' in fuori and 'conclusa' in fuori['errore'],
+             repr(fuori.get('errore')))
 
 
 if __name__ == '__main__':

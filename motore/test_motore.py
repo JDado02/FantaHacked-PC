@@ -452,12 +452,132 @@ def _prove(con):
     print('       (simulazione: %d giocatori assegnati, %d crediti spesi su %d)'
           % (assegnati, speso, reg.crediti_totali))
 
+    prove_squadre(con)
+    prove_copertura()
+
     stato.inizializza(['Bea', 'Chiara', 'Dario', 'Elena', 'Fabio', 'Gaia', 'Hugo'],
                       mio_nome='Davide')
     con.close()
     print('\n%s   %d superati, %d falliti' % ('TUTTO OK' if not fail else 'CI SONO ERRORI',
                                               ok, fail))
     return 1 if fail else 0
+
+
+def prove_squadre(con):
+    """[8] Cambiare il numero di squadre deve cambiare i numeri.
+
+    Non e' un'impostazione cosmetica: da quante squadre siamo dipende quanti
+    giocatori verranno assegnati in tutto, e quindi **chi e' il rimpiazzo
+    gratis** di ognuno. In una lega da sei il ventesimo portiere resta sul
+    listone e ti costa un credito; in una da venti quel portiere e' titolare
+    da qualcuno. Il valore di un giocatore e' la distanza da quel rimpiazzo,
+    quindi cresce con la lega; e il prezzo cresce anche di piu', perche' i
+    crediti in gioco si moltiplicano mentre i giocatori forti restano quelli.
+
+    Qui si controllano le **direzioni**, non i numeri: i numeri cambiano ogni
+    volta che si aggiorna il database, le direzioni no.
+    """
+    from ottimizzatore import Ottimizzatore
+    print('')
+    print('[8] Il numero di squadre cambia prezzi e strategia')
+    misure = {}
+    for n in (6, 10, 16):
+        reg = regmod.carica(modifiche={'partecipanti': n})
+        st = StatoAsta(con, reg).inizializza(
+            ['S%d' % i for i in range(1, n)], mio_nome='Io')
+        v = Valutatore(con, reg, st)
+        o = Ottimizzatore(v)
+        top = {}
+        for r in ('P', 'D', 'C', 'A'):
+            x = v.disponibili(r, 1)[0]
+            top[r] = {'nome': x.nome, 'vor': x.vor,
+                      'mercato': x.prezzo_atteso or 0}
+        misure[n] = {'reg': reg, 'rimpiazzo': dict(v.rimpiazzo_fm), 'top': top,
+                     'consigliati': len([x for x in v.disponibili('P', 40)
+                                         if o.max_bid(x)[0] >= 1])}
+    verifica('i crediti in gioco seguono il numero di squadre',
+             all(misure[n]['reg'].crediti_totali == n * 500 for n in misure))
+    verifica("con piu' squadre il rimpiazzo gratis peggiora",
+             misure[6]['rimpiazzo']['P'] > misure[10]['rimpiazzo']['P']
+             > misure[16]['rimpiazzo']['P'],
+             ' '.join('%d:%.2f' % (n, misure[n]['rimpiazzo']['P']) for n in misure))
+    for r in ('P', 'C', 'A'):
+        verifica("il migliore fra i %s vale di piu' in una lega piu' grande" % r,
+                 misure[6]['top'][r]['vor'] < misure[16]['top'][r]['vor'],
+                 '%s: 6 sq %.1f, 16 sq %.1f' % (r, misure[6]['top'][r]['vor'],
+                                                misure[16]['top'][r]['vor']))
+        verifica("e costa di piu' (%s)" % r,
+                 misure[6]['top'][r]['mercato'] < misure[16]['top'][r]['mercato'],
+                 '%s: 6 sq %.0f, 16 sq %.0f' % (r, misure[6]['top'][r]['mercato'],
+                                                misure[16]['top'][r]['mercato']))
+    verifica("in una lega grande vale la pena puntare su piu' portieri",
+             misure[16]['consigliati'] > misure[6]['consigliati'],
+             '6 sq: %d, 16 sq: %d' % (misure[6]['consigliati'],
+                                      misure[16]['consigliati']))
+    reg = regmod.carica()
+    StatoAsta(con, reg).inizializza(
+        ['Bea', 'Chiara', 'Dario', 'Elena', 'Fabio', 'Gaia', 'Hugo'],
+        mio_nome='Davide')
+
+
+def prove_copertura():
+    """[9] Quante caselle della formazione si riempiono davvero.
+
+    E' il conto che manca a `presenze x fantamedia`, e le tre verifiche qui
+    sotto sono i tre casi in cui quella formula sbaglia: la panchina che serve,
+    il reparto di gente a mezzo servizio, e il rendimento che si ferma da solo
+    quando il reparto e' pieno.
+    """
+    import formazione
+    print('')
+    print('[9] Le caselle che si riempiono ogni giornata')
+    fisso = [30 / 38.0] * 4
+    mezzo = [18 / 38.0] * 4
+    verifica("quattro titolari coprono piu' di quattro da meta' campionato",
+             formazione.posti_coperti(fisso, 4)
+             > formazione.posti_coperti(mezzo, 4) + 1.0)
+    verifica('la panchina aggiunge copertura, ma meno dei titolari',
+             (formazione.posti_coperti(fisso + [10 / 38.0] * 4, 4)
+              > formazione.posti_coperti(fisso, 4))
+             and (formazione.posti_coperti(fisso + [10 / 38.0] * 4, 4)
+                  < formazione.posti_coperti(fisso, 4) + 0.6))
+    verifica('oltre le caselle in campo il guadagno si spegne',
+             formazione.guadagno([30 / 38.0] * 8, 4, 30 / 38.0) < 0.02)
+    verifica("un titolare copre piu' di uno da rotazione",
+             formazione.guadagno(fisso[:2], 4, 30 / 38.0)
+             > formazione.guadagno(fisso[:2], 4, 16 / 38.0) + 0.15)
+    # E il punteggio "schierato" deve vedere quello che il conto vecchio non
+    # vedeva. Il vecchio sommava i punti dei quattro migliori: due rose che
+    # hanno gli stessi quattro migliori gli risultano identiche, anche se una
+    # ha la panchina e l'altra no. Ma la panchina gioca, e i punti li fa.
+    soli = {'D': [{'fm': 6.4, 'presenze': 30} for _ in range(4)]}
+    con_panchina = {'D': soli['D'] + [{'fm': 5.8, 'presenze': 12}
+                                      for _ in range(4)]}
+    a = formazione.punti_stagione(soli, {'D': 4})
+    b = formazione.punti_stagione(con_panchina, {'D': 4})
+    verifica('la panchina vale punti, e il conto vecchio non la contava',
+             b > a + 50, '%.0f senza panchina, %.0f con' % (a, b))
+    # E quanto valga la panchina dipende da **quanto mancano i titolari**: e'
+    # tutta qui la differenza fra i due modi di contare, e vale la pena
+    # scriverla come verifica perche' e' controintuitiva. Con quattro titolari
+    # veri la panchina prende poco campo e rende poco; con quattro che giocano
+    # meta' campionato entra il doppio delle volte e rende il doppio. Quindi il
+    # rischio non e' che un giocatore discontinuo valga meno di quanto dicono i
+    # suoi punti: e' che **senza panchina** quelle giornate non le copra
+    # nessuno. Il conto vecchio, che la panchina non la guardava affatto, non
+    # poteva vedere ne' l'una ne' l'altra cosa.
+    panca = [{'fm': 5.8, 'presenze': 12} for _ in range(4)]
+    fissi = [{'fm': 6.0, 'presenze': 32} for _ in range(4)]
+    saltuari = [{'fm': 6.0 * 32 / 18.0, 'presenze': 18} for _ in range(4)]
+    resa_panca = lambda t: (formazione.punti_stagione({'D': t + panca}, {'D': 4})
+                            - formazione.punti_stagione({'D': t}, {'D': 4}))
+    verifica("la panchina rende di piu' dietro a titolari discontinui",
+             resa_panca(saltuari) > 2 * resa_panca(fissi),
+             '%.0f dietro ai fissi, %.0f dietro ai saltuari'
+             % (resa_panca(fissi), resa_panca(saltuari)))
+    verifica('senza panchina il reparto discontinuo lascia caselle vuote',
+             formazione.relazione([18 / 38.0] * 4, 4)['coperti'] < 2.2
+             and formazione.relazione([32 / 38.0] * 4, 4)['coperti'] > 3.2)
 
 
 if __name__ == '__main__':
