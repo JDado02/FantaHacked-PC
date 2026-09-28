@@ -22,15 +22,17 @@ import math, os, sqlite3, statistics, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db as dbmod
 import regole as regmod
+import stagione
 import titolarita as titmod
 
-GIORNATE = 38
+GIORNATE = stagione.GIORNATE
 MINUTI_STAGIONE = GIORNATE * 90
 
-# Peso delle stagioni. Il rendimento recente conta di piu', ma non e' tutto.
-PESO_RENDIMENTO = {'2025-26': 1.00, '2024-25': 0.55, '2023-24': 0.30}
-# Per il minutaggio la memoria e' piu' corta: i ruoli in rosa cambiano in fretta.
-PESO_MINUTAGGIO = {'2025-26': 1.00, '2024-25': 0.35, '2023-24': 0.15}
+# Peso delle stagioni, e quali siano: sta tutto in `stagione.py`. Il
+# rendimento recente conta di piu', ma non e' tutto; per il minutaggio la
+# memoria e' piu' corta, perche' i ruoli in rosa cambiano in fretta.
+PESO_RENDIMENTO = stagione.PESO_RENDIMENTO
+PESO_MINUTAGGIO = stagione.PESO_MINUTAGGIO
 
 # Forza della regressione verso la media di ruolo, espressa in minuti di prior.
 # 900 minuti = dieci partite intere: sotto quella soglia la stima e' dominata
@@ -96,7 +98,7 @@ class Calibrazione(object):
 
     def _rigori(self):
         r = self._q("""SELECT SUM(rc) rc, SUM(rpiu) rp FROM statistiche
-                       WHERE stagione = ?""", '2025-26')[0]
+                       WHERE stagione = ?""", stagione.ULTIMA_CONCLUSA)[0]
         self.rigori_per_squadra = (r['rc'] or 0) / 20.0
         self.conversione_rigori = (r['rp'] or 0) / float(r['rc']) if r['rc'] else 0.75
 
@@ -136,7 +138,7 @@ class Calibrazione(object):
                               FROM giocatori g JOIN statistiche s USING(id)
                               WHERE s.stagione = ? AND g.ruolo = ? AND g.qi > 0
                                 AND s.minuti IS NOT NULL AND s.mv IS NOT NULL""",
-                           '2025-26', ruolo)
+                           stagione.ULTIMA_CONCLUSA, ruolo)
             if len(rows) < 8:
                 self.fit_minuti[ruolo] = (MINUTI_STAGIONE * 0.4, 0.0)
                 self.fit_mv[ruolo] = (self.mv_ruolo.get(ruolo, 6.0), 0.0)
@@ -156,9 +158,46 @@ def _retta(xs, ys):
     return (my - b * mx, b)
 
 
-def _shrink(somma_valore, somma_peso, prior, k):
-    """Media regressa verso il prior. `somma_peso` e' in minuti."""
-    return (somma_valore + prior * k) / (somma_peso + k)
+def _shrink(somma_valore, somma_peso, prior, k, campione=None):
+    """Media regressa verso il prior. `somma_peso` e' in minuti.
+
+    `campione` e' quanti minuti *veri* stanno dietro la media, se diverso da
+    `somma_peso`. Serve per la stagione in corso, che pesa piu' di uno: il
+    peso dice quanto conta rispetto alle altre stagioni, ma non puo' far
+    finta che cinque partite siano sette e mezza. Senza questa distinzione
+    un esordiente con quattro partite e quattro gol veniva regresso verso la
+    media come se ne avesse giocate sei.
+    """
+    if campione is None or somma_peso <= 0:
+        return (somma_valore + prior * k) / (somma_peso + k)
+    media = somma_valore / somma_peso
+    return (media * campione + prior * k) / (campione + k)
+
+
+def _campione(peso):
+    """Quanto vale un minuto di quella stagione come campione: mai piu' di uno."""
+    return min(1.0, peso)
+
+
+def giornate_giocate(con):
+    """Le giornate della stagione in corso gia' disputate alla data dei dati.
+
+    La data sta nel file dei dati (`meta.data_riferimento`), scritta dalla
+    pipeline: e' il giorno delle ultime letture. Un file dei dati di prima
+    non ce l'ha, e allora la stagione in corso non entra nei conti - che e'
+    esattamente come si comportava il programma prima.
+    """
+    try:
+        r = con.execute(
+            "SELECT valore FROM meta WHERE chiave = 'data_riferimento'").fetchone()
+        oggi = r[0] if r else ''
+        if not oggi:
+            return 0
+        cal = [(x[0], x[1]) for x in con.execute(
+            'SELECT giornata, data FROM calendario')]
+    except Exception:
+        return 0
+    return stagione.giornate_giocate(cal, oggi)
 
 
 # ---------------------------------------------------------------- proiezione
@@ -168,6 +207,7 @@ class Proiettore(object):
         self.con = con
         self.reg = reg
         self.cal = cal or Calibrazione(con)
+        self.giocate = giornate_giocate(con)
 
     def _rigoristi(self):
         """Chi tira i rigori **quest'anno**, non chi li tirava l'anno scorso.
@@ -213,14 +253,19 @@ class Proiettore(object):
         cal, reg, ruolo = self.cal, self.reg, p['ruolo']
 
         # --- minutaggio atteso -------------------------------------------
-        sm = sw = 0.0
+        sm = sw = sc = 0.0
         for stag, peso in PESO_MINUTAGGIO.items():
             m = (p['st'].get(stag) or {}).get('minuti')
             if m is None:
                 m = (p['av'].get(stag) or {}).get('minuti')
-            if m is not None:
-                sm += peso * m
-                sw += peso * MINUTI_STAGIONE
+            # Una stagione cominciata da cinque giornate ha messo a
+            # disposizione cinque partite di minuti, non trentotto: e' su
+            # quelle che si misura quanto uno sta giocando adesso.
+            disponibili = stagione.minuti_disponibili(stag, self.giocate)
+            if m is not None and disponibili > 0:
+                sm += peso * min(float(m), disponibili)
+                sw += peso * disponibili
+                sc += _campione(peso) * disponibili
 
         a, b = cal.fit_minuti[ruolo]
         minuti_da_quota = max(0.0, min(MINUTI_STAGIONE, a + b * math.log(max(p['qi'], 1))))
@@ -228,7 +273,7 @@ class Proiettore(object):
             quota_storica = sm / sw
             # La quotazione porta l'informazione sul ruolo previsto quest'anno,
             # lo storico porta quella sul rendimento passato: si combinano.
-            peso_storico = min(1.0, sw / (sw + K_QUOTA * 1.0))
+            peso_storico = min(1.0, sc / (sc + K_QUOTA * 1.0))
             minuti = (peso_storico * quota_storica * MINUTI_STAGIONE
                       + (1 - peso_storico) * minuti_da_quota)
             metodo = 'storico'
@@ -241,14 +286,16 @@ class Proiettore(object):
         # Denominatori separati per fonte. Le statistiche coprono 2 stagioni,
         # i dati avanzati 3: usare un denominatore unico diluirebbe la media
         # voto con minuti per cui il voto non esiste.
-        peso_st = peso_av = 0.0
+        peso_st = peso_av = camp_st = camp_av = 0.0
         for stag, peso in PESO_RENDIMENTO.items():
             s, v = p['st'].get(stag), p['av'].get(stag)
             if s and s.get('minuti'):
                 peso_st += peso * s['minuti']
+                camp_st += _campione(peso) * s['minuti']
             if v and v.get('minuti'):
                 peso_av += peso * v['minuti']
-        peso_min = max(peso_st, peso_av)
+                camp_av += _campione(peso) * v['minuti']
+        peso_min = max(camp_st, camp_av)
 
         # --- media voto ---------------------------------------------------
         num = 0.0
@@ -257,7 +304,7 @@ class Proiettore(object):
             if s and s.get('mv') is not None and s.get('minuti'):
                 num += peso * s['minuti'] * s['mv']
         if peso_st > 0:
-            mv = _shrink(num, peso_st, cal.mv_ruolo.get(ruolo, 6.0), K_MV)
+            mv = _shrink(num, peso_st, cal.mv_ruolo.get(ruolo, 6.0), K_MV, camp_st)
         else:
             am, bm = cal.fit_mv[ruolo]
             mv = am + bm * math.log(max(p['qi'], 1))
@@ -272,7 +319,7 @@ class Proiettore(object):
                 pg_num += peso * s['minuti']
                 pg_den += peso * s['pg']
         mpg_pers = (pg_num / pg_den) if pg_den else mpg
-        mpg_eff = _shrink(mpg_pers * peso_st, peso_st, mpg, K_MV)
+        mpg_eff = _shrink(mpg_pers * peso_st, peso_st, mpg, K_MV, camp_st)
         presenze = min(float(GIORNATE), minuti / max(mpg_eff, 20.0))
 
         # --- tassi offensivi ---------------------------------------------
@@ -282,8 +329,9 @@ class Proiettore(object):
             if v and v.get('minuti'):
                 npxg += peso * (v.get('npxg') or 0.0)
                 xa += peso * (v.get('xa') or 0.0)
-        npxg90 = _shrink(npxg * 90.0, peso_av, cal.npxg90.get(ruolo, 0.0), K_TASSI)
-        xa90 = _shrink(xa * 90.0, peso_av, cal.xa90.get(ruolo, 0.0), K_TASSI)
+        npxg90 = _shrink(npxg * 90.0, peso_av, cal.npxg90.get(ruolo, 0.0), K_TASSI,
+                         camp_av)
+        xa90 = _shrink(xa * 90.0, peso_av, cal.xa90.get(ruolo, 0.0), K_TASSI, camp_av)
 
         novanta = minuti / 90.0
         gol_azione = npxg90 * novanta
@@ -312,8 +360,10 @@ class Proiettore(object):
             if s and s.get('minuti'):
                 amm_num += peso * (s.get('amm') or 0)
                 esp_num += peso * (s.get('esp') or 0)
-        amm90 = _shrink(amm_num * 90.0, peso_st, cal.amm90.get(ruolo, 0.15), K_TASSI)
-        esp90 = _shrink(esp_num * 90.0, peso_st, cal.esp90.get(ruolo, 0.01), K_TASSI)
+        amm90 = _shrink(amm_num * 90.0, peso_st, cal.amm90.get(ruolo, 0.15), K_TASSI,
+                        camp_st)
+        esp90 = _shrink(esp_num * 90.0, peso_st, cal.esp90.get(ruolo, 0.01), K_TASSI,
+                        camp_st)
         amm = amm90 * novanta
         esp = esp90 * novanta
 
@@ -330,7 +380,7 @@ class Proiettore(object):
                 s = p['st'].get(stag)
                 if s and s.get('minuti'):
                     rp_num += peso * (s.get('rp') or 0)
-            rp = _shrink(rp_num * 90.0, peso_st, 0.02, K_TASSI) * novanta
+            rp = _shrink(rp_num * 90.0, peso_st, 0.02, K_TASSI, camp_st) * novanta
 
         # --- bonus totali ----------------------------------------------------
         bonus = (gol_azione * reg.gol_ruolo[ruolo]
@@ -412,8 +462,16 @@ def applica_consenso(con, righe):
     non ha niente da dire e non deve trascinare giu' il numero. Se si dividono,
     torna a contare, perche' li' l'incertezza e' vera.
 
-    Gli infortuni in corso sono gia' dentro `presenze_web`: le giornate che il
-    giocatore salta da oggi al rientro stimato le conta il calendario.
+    Gli infortuni in corso sono dentro `presenze_web`: le giornate che il
+    giocatore salta da oggi al rientro stimato le conta il calendario. **E
+    valgono anche per lo storico.** Prima la parte che resta allo storico -
+    un terzo, quando le guide si dividono - non sapeva niente dell'infortunio:
+    uno fermo fino a gennaio, tredici giornate su trentatre, teneva una ventina
+    di presenze perche' l'anno scorso ne aveva fatte trenta. Lo storico dice
+    quanto gioca quando c'e'; quante volte ci sara' lo dice il calendario, per
+    tutte e due le parti della media. E chi le guide non nominano ma e' in
+    infermeria scende lo stesso: prima, senza un numero delle guide, veniva
+    saltato del tutto.
     """
     try:
         web = dict((r['id'], dict(r)) for r in con.execute(
@@ -423,6 +481,7 @@ def applica_consenso(con, righe):
         return righe                      # database senza gerarchie: si tira dritto
     if not web:
         return righe
+    rimanenti = max(1, GIORNATE - giornate_giocate(con))
 
     for r in righe:
         g = web.get(r['id'])
@@ -444,17 +503,26 @@ def applica_consenso(con, righe):
                           'imbattuto_attese'):
                 r[campo] = 0.0
             continue
-        if g['presenze_web'] is None:
-            continue
         prima = r['presenze_attese'] or 0.0
         if prima <= 0:
             continue
-        citato = (g['fonti'] or 0) > 0
-        # Chi le guide non nominano non guadagna nulla dall'accordo: il peso
-        # resta quello base, e comunque puo' solo scendere.
-        peso = _peso_web(g['accordo']) if citato else PESO_WEB
-        mescolata = peso * g['presenze_web'] + (1 - peso) * prima
-        dopo = mescolata if citato else min(prima, mescolata)
+        try:
+            saltate = float(g.get('partite_saltate') or 0)
+        except (TypeError, ValueError):
+            saltate = 0.0
+        disponibile = max(0.0, rimanenti - saltate) / rimanenti
+        if g['presenze_web'] is None:
+            if disponibile >= 1:
+                continue
+            dopo = prima * disponibile
+        else:
+            citato = (g['fonti'] or 0) > 0
+            # Chi le guide non nominano non guadagna nulla dall'accordo: il
+            # peso resta quello base, e comunque puo' solo scendere.
+            peso = _peso_web(g['accordo']) if citato else PESO_WEB
+            mescolata = (peso * g['presenze_web']
+                         + (1 - peso) * prima * disponibile)
+            dopo = mescolata if citato else min(prima, mescolata)
         if abs(dopo - prima) < 0.05:
             continue
         k = max(0.0, dopo / prima)

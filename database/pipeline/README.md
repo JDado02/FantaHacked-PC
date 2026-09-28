@@ -21,6 +21,9 @@ e `../manifest.json`.
 |---|---|
 | `build.py` | Pipeline completa: lettura fonti, abbinamento, scrittura, validazione |
 | `nomi.py` | Normalizzazione e abbinamento dei nomi fra fonti diverse |
+| `consenso.py` | Gerarchie, infortuni, rigoristi e accoppiate dal consenso delle fonti web |
+| `esporta_json.py` | Lo stesso pacchetto in JSON, per l'app sul telefono |
+| `pubblica.py` | Costruisce `dati.db.gz`, `dati.json` e `manifest.json` e li pubblica |
 
 ---
 
@@ -37,14 +40,40 @@ e `../manifest.json`.
 | `calendario_seriea_AAAA_AA.csv` | `https://fixturedownload.com/download/serie-a-AAAA-UTC.csv` | 380 partite |
 | `seed_prezzi_asta.csv` | Prezzi medi d'asta, normalizzati su 1000 crediti | Facoltativo ma consigliato |
 
-### 2. Aggiornare le costanti in testa a `build.py`
+### 2. Aggiornare la stagione in `motore/stagione.py`
 
 ```python
-STAGIONE_CORRENTE = '2026-27'
-STAGIONI_STORICHE = ['2025-26', '2024-25', '2023-24']
+CORRENTE = '2026-27'
+CONCLUSE = ['2025-26', '2024-25', '2023-24']
+PESO_RENDIMENTO = {...}     # quanto conta ogni stagione
+PESO_MINUTAGGIO = {...}
+```
+
+E in testa a `build.py` solo quale file copre quale stagione:
+
+```python
 LISTONE_SEASON    = {...}   # quale file copre quale stagione
 UNDERSTAT_SEASON  = {...}   # anno nell'URL -> etichetta stagione
 ```
+
+Prima le stagioni erano scritte a mano in cinque file diversi; dimenticarne
+uno non dava errori, dava numeri calcolati sulla stagione sbagliata.
+
+### A campionato iniziato
+
+Le letture del web vanno in `../fonti/web/letture/AAAA-MM-GG/`, una cartella
+per giorno, e le mette al loro posto `aggiorna_letture.py`:
+
+```bash
+python ../fonti/web/aggiorna_letture.py     # l'ultima lettura
+python build.py
+python consenso.py
+```
+
+La stagione in corso entra nei conti con i minuti che ha messo a
+disposizione fino al giorno della lettura, gli infortuni si contano in
+giornate saltate sulle giornate che restano, e le guide d'agosto pesano meno
+man mano che ci sono partite vere da guardare.
 
 > **Verifica sempre a quale stagione corrisponde ogni listone** invece di
 > fidarti del nome del file. Il modo rapido: confrontare la colonna `gf` con i

@@ -1119,7 +1119,10 @@ if __name__ == '__main__':
     from asta import StatoAsta
     from valutazione import Valutatore
 
-    con = dbmod.connetti()
+    # Un'asta di servizio: `inizializza()` sulla connessione normale
+    # cancellerebbe l'asta vera.
+    _servizio = dbmod.asta_di_servizio()
+    con = _servizio.__enter__()
     reg = regmod.carica()
     if con.execute('SELECT COUNT(*) FROM proiezioni').fetchone()[0] == 0:
         prmod.esegui(con, reg)
@@ -1158,4 +1161,4 @@ if __name__ == '__main__':
               % (r, d['slot'], d['crediti'],
                  ', '.join('%s %d' % (t['nome'], t['costo'])
                            for t in d['obiettivi'][:6])))
-    con.close()
+    _servizio.__exit__(None, None, None)

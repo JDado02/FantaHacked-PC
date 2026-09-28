@@ -20,11 +20,22 @@ un'altra Douvikas. Prendere una fonte sola vuol dire ereditarne gli errori
 senza accorgersene; prenderne cinque vuol dire sapere **dove** il dubbio c'e'
 davvero, e quello e' precisamente cio' che serve sapere quando si rilancia.
 
-Uso:  python raccolta_2026_27.py     riscrive i CSV normalizzati qui accanto
+**E' la lettura del 3 settembre, e resta tale.** Le letture successive (7,
+10 e 28 settembre) non sono qui dentro: stanno in `letture/<data>/` e le
+mette nei CSV `aggiorna_letture.py`. Finche' questo script scriveva nella
+cartella dei CSV veri, rilanciarlo - come diceva di fare la guida alla
+ricostruzione - riportava le formazioni alla terza giornata e gli infortuni a
+inizio settembre, cancellando tutto quello che era stato letto dopo senza un
+avviso. Adesso scrive in `storico/2026-09-03/`, dove serve solo a vedere
+com'era la prima raccolta.
+
+Uso:  python raccolta_2026_27.py     riscrive la lettura del 3 settembre
+                                     in storico/2026-09-03/
 """
 import csv, os, re
 
-QUI = os.path.dirname(os.path.abspath(__file__))
+QUI = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                   'storico', '2026-09-03')
 
 DATA_RACCOLTA = '2026-09-03'
 
@@ -457,6 +468,8 @@ def _riga(s):
 
 def scrivi():
     percorsi = []
+    if not os.path.isdir(QUI):
+        os.makedirs(QUI)
 
     p = os.path.join(QUI, 'formazioni_tipo.csv')
     with open(p, 'w', encoding='utf-8', newline='') as f:

@@ -1433,6 +1433,15 @@ class Consigliere(object):
         # andato via da solo. Spingere li' non fa spendere niente a nessuno:
         # fa solo correre il rischio di aggiudicarselo.
         tetto = min(tetto, int(d['chiusura']))
+        # E nemmeno sopra quanto si prevede che costi adesso. `prezzo_base` e'
+        # il prezzo della stanza calcolato a inizio asta, e puo' stare qualche
+        # credito sopra il costo atteso: con i dati del 28 settembre il
+        # pannello proponeva di spingere Svilar fino a 53 mentre la sua scheda
+        # diceva "costo atteso 52". Aggiudicarselo a quel tetto voleva dire
+        # pagarlo piu' di quanto sarebbe costato, che e' proprio il rischio
+        # che questo tetto deve togliere.
+        if d.get('costo_atteso'):
+            tetto = min(tetto, max(1, int(d['costo_atteso']) - 1))
         e = dict(d)
         e['brucia'] = tetto
         e['tetto_sicuro'] = tetto

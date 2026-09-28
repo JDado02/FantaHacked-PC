@@ -1,532 +1,532 @@
 id,nome,prezzo_medio_per_1000,mediana_per_1000,p25,p75,n_campioni,partecipanti,fonte
 3,RADUNOVIC,1.8,,,,,,tabella_prezzi_medi_asta_seed
 4,SPORTIELLO,1.8,,,,,,tabella_prezzi_medi_asta_seed
-22,DE ROON,3,,,,,,tabella_prezzi_medi_asta_seed
-133,SKORUPSKI,23.2,,,,,,tabella_prezzi_medi_asta_seed
-152,ZIELINSKI,53.5,,,,,,tabella_prezzi_medi_asta_seed
+22,DE ROON,3.0,,,,,,tabella_prezzi_medi_asta_seed
+133,SKORUPSKI,17.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.76)
+152,ZIELINSKI,49.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.92)
 158,LEZZERINI,1.8,,,,,,tabella_prezzi_medi_asta_seed
-184,BERNARDESCHI,21.9,,,,,,tabella_prezzi_medi_asta_seed
+184,BERNARDESCHI,27.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.25)
 219,SOMMARIVA,1.8,,,,,,tabella_prezzi_medi_asta_seed
 252,BIRAGHI,1.9,,,,,,tabella_prezzi_medi_asta_seed
-254,DIMARCO,134.3,,,,,,tabella_prezzi_medi_asta_seed
+254,DIMARCO,117.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
 256,JUAN JESUS,2.2,,,,,,tabella_prezzi_medi_asta_seed
-294,RUGANI,2,,,,,,tabella_prezzi_medi_asta_seed
-309,DYBALA,138,,,,,,tabella_prezzi_medi_asta_seed
+294,RUGANI,2.0,,,,,,tabella_prezzi_medi_asta_seed
+309,DYBALA,164.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.19)
 327,PATRIC,1.7,,,,,,tabella_prezzi_medi_asta_seed
-333,CATALDI,2.1,,,,,,tabella_prezzi_medi_asta_seed
+333,CATALDI,1.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.76)
 418,GOLDANIGA,1.8,,,,,,tabella_prezzi_medi_asta_seed
 460,ROMAGNOLI,3.3,,,,,,tabella_prezzi_medi_asta_seed
 487,DE SILVESTRI,1.6,,,,,,tabella_prezzi_medi_asta_seed
 526,DUNCAN,2.3,,,,,,tabella_prezzi_medi_asta_seed
-530,PELLEGRINI LO.,3.6,,,,,,tabella_prezzi_medi_asta_seed
-531,BERARDI,100.4,,,,,,tabella_prezzi_medi_asta_seed
-536,POLITANO,30.200000000000003,,,,,,tabella_prezzi_medi_asta_seed
+530,PELLEGRINI LO.,2.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.68)
+531,BERARDI,97.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.97)
+536,POLITANO,33.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.12)
 543,PADELLI,1.8,,,,,,tabella_prezzi_medi_asta_seed
-554,ZAPPACOSTA,19,,,,,,tabella_prezzi_medi_asta_seed
-572,MERET,78.60000000000001,,,,,,tabella_prezzi_medi_asta_seed
-608,ZAPATA D.,3.4,,,,,,tabella_prezzi_medi_asta_seed
+554,ZAPPACOSTA,15.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.79)
+572,MERET,66.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.85)
+608,ZAPATA D.,3.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
 610,GOLLINI,1.8,,,,,,tabella_prezzi_medi_asta_seed
-632,ZACCAGNI,82.3,,,,,,tabella_prezzi_medi_asta_seed
-779,CRISTANTE,6.7,,,,,,tabella_prezzi_medi_asta_seed
+632,ZACCAGNI,113.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.38)
+779,CRISTANTE,7.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.06)
 791,SABELLI,2.1,,,,,,tabella_prezzi_medi_asta_seed
-801,GAGLIARDINI,1,,,,,,tabella_prezzi_medi_asta_seed
-827,LOCATELLI,8.1,,,,,,tabella_prezzi_medi_asta_seed
-1850,KESSIÈ,33.6,,,,,,tabella_prezzi_medi_asta_seed
-1852,SPINAZZOLA,22.8,,,,,,tabella_prezzi_medi_asta_seed
-1870,BARELLA,61.400000000000006,,,,,,tabella_prezzi_medi_asta_seed
-1871,DEIOLA,2.2,,,,,,tabella_prezzi_medi_asta_seed
+801,GAGLIARDINI,1.0,,,,,,tabella_prezzi_medi_asta_seed
+827,LOCATELLI,4.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.53)
+1850,KESSIÈ,24.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.73)
+1852,SPINAZZOLA,19.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.87)
+1870,BARELLA,63.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.03)
+1871,DEIOLA,2.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.15)
 1926,DI GENNARO,1.8,,,,,,tabella_prezzi_medi_asta_seed
 1930,PINSOGLIO,1.8,,,,,,tabella_prezzi_medi_asta_seed
-1933,MANDRAGORA,5.8,,,,,,tabella_prezzi_medi_asta_seed
-2012,MILIK,2.3,,,,,,tabella_prezzi_medi_asta_seed
-2038,PINAMONTI,104.2,,,,,,tabella_prezzi_medi_asta_seed
-2061,SIMEONE,113.4,,,,,,tabella_prezzi_medi_asta_seed
-2077,PASALIC,6.2,,,,,,tabella_prezzi_medi_asta_seed
-2097,KEAN,200,,,,,,tabella_prezzi_medi_asta_seed
-2120,BASTONI,53.3,,,,,,tabella_prezzi_medi_asta_seed
+1933,MANDRAGORA,9.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.61)
+2012,MILIK,0.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.40)
+2038,PINAMONTI,80.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.78)
+2061,SIMEONE,84.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.74)
+2077,PASALIC,5.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.85)
+2097,KEAN,152.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.76)
+2120,BASTONI,50.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
 2127,SATALINO,1.7,,,,,,tabella_prezzi_medi_asta_seed
-2134,FALCONE,15.4,,,,,,tabella_prezzi_medi_asta_seed
-2137,SCAMACCA,146.7,,,,,,tabella_prezzi_medi_asta_seed
-2155,CUTRONE,8.8,,,,,,tabella_prezzi_medi_asta_seed
-2167,ORSOLINI,122.6,,,,,,tabella_prezzi_medi_asta_seed
-2170,MILINKOVIC-SAVIC V.,11.4,,,,,,tabella_prezzi_medi_asta_seed
-2188,MARUSIC,3.3,,,,,,tabella_prezzi_medi_asta_seed
-2194,CALHANOGLU,147.79999999999998,,,,,,tabella_prezzi_medi_asta_seed
+2134,FALCONE,13.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.90)
+2137,SCAMACCA,133.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.91)
+2155,CUTRONE,6.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.75)
+2167,ORSOLINI,96.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.79)
+2170,MILINKOVIC-SAVIC V.,20.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.80)
+2188,MARUSIC,2.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.84)
+2194,CALHANOGLU,134.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.91)
 2263,LAZZARI,2.1,,,,,,tabella_prezzi_medi_asta_seed
-2296,MANCINI,47.300000000000004,,,,,,tabella_prezzi_medi_asta_seed
-2379,RABIOT,88.4,,,,,,tabella_prezzi_medi_asta_seed
+2296,MANCINI,50.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.07)
+2379,RABIOT,86.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.97)
 2423,PULISIC,118.6,,,,,,tabella_prezzi_medi_asta_seed
-2514,STONES,26.5,,,,,,tabella_prezzi_medi_asta_seed
-2517,DE BRUYNE,80.60000000000001,,,,,,tabella_prezzi_medi_asta_seed
-2521,DE GEA,42.1,,,,,,tabella_prezzi_medi_asta_seed
+2514,STONES,16.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.63)
+2517,DE BRUYNE,67.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.84)
+2521,DE GEA,36.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.86)
 2528,MATIC,2.6,,,,,,tabella_prezzi_medi_asta_seed
-2529,MKHITARYAN,2.8,,,,,,tabella_prezzi_medi_asta_seed
-2606,MODRIC,24.8,,,,,,tabella_prezzi_medi_asta_seed
-2640,KOLASINAC,2.6,,,,,,tabella_prezzi_medi_asta_seed
-2724,BUONGIORNO,4.4,,,,,,tabella_prezzi_medi_asta_seed
-2728,PELLEGRINI LU.,2,,,,,,tabella_prezzi_medi_asta_seed
-2741,PESSINA,3,,,,,,tabella_prezzi_medi_asta_seed
-2764,MARTINEZ L.,374,,,,,,tabella_prezzi_medi_asta_seed
-2765,ODGAARD,5.3,,,,,,tabella_prezzi_medi_asta_seed
-2766,ZANIOLO,59.1,,,,,,tabella_prezzi_medi_asta_seed
-2788,BREMER,62.4,,,,,,tabella_prezzi_medi_asta_seed
+2529,MKHITARYAN,3.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.07)
+2606,MODRIC,22.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.90)
+2640,KOLASINAC,3.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.23)
+2724,BUONGIORNO,3.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.75)
+2728,PELLEGRINI LU.,2.0,,,,,,tabella_prezzi_medi_asta_seed
+2741,PESSINA,3.0,,,,,,tabella_prezzi_medi_asta_seed
+2764,MARTINEZ L.,432.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.16)
+2765,ODGAARD,4.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.82)
+2766,ZANIOLO,52.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
+2788,BREMER,81.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.31)
 2809,VIGORITO,1.8,,,,,,tabella_prezzi_medi_asta_seed
-2814,PROVEDEL,11.299999999999999,,,,,,tabella_prezzi_medi_asta_seed
+2814,PROVEDEL,11.3,,,,,,tabella_prezzi_medi_asta_seed
 2815,TERRACCIANO,1.8,,,,,,tabella_prezzi_medi_asta_seed
-2816,DI LORENZO,42.7,,,,,,tabella_prezzi_medi_asta_seed
-2832,BOGA,17,,,,,,tabella_prezzi_medi_asta_seed
+2816,DI LORENZO,40.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.95)
+2832,BOGA,13.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.81)
 2845,CONTINI,1.8,,,,,,tabella_prezzi_medi_asta_seed
-2848,FRATTESI,60.3,,,,,,tabella_prezzi_medi_asta_seed
-2857,TRAORÈ HJ.,2.5,,,,,,tabella_prezzi_medi_asta_seed
+2848,FRATTESI,88.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.48)
+2857,TRAORÈ HJ.,2.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
 2874,GHIDOTTI,1.7,,,,,,tabella_prezzi_medi_asta_seed
-4137,DIEGO CARLOS,4.7,,,,,,tabella_prezzi_medi_asta_seed
-4147,CALETA-CAR,1.9,,,,,,tabella_prezzi_medi_asta_seed
-4159,AKANJI,49.6,,,,,,tabella_prezzi_medi_asta_seed
-4177,PAVARD,3.9,,,,,,tabella_prezzi_medi_asta_seed
-4179,GONZALEZ N.,22.8,,,,,,tabella_prezzi_medi_asta_seed
-4199,LOFTUS-CHEEK,4.7,,,,,,tabella_prezzi_medi_asta_seed
-4210,MINA,8.8,,,,,,tabella_prezzi_medi_asta_seed
-4220,ZAMBO ANGUISSA,22.599999999999998,,,,,,tabella_prezzi_medi_asta_seed
-4236,MURIC,7.6,,,,,,tabella_prezzi_medi_asta_seed
+4137,DIEGO CARLOS,3.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.68)
+4147,CALETA-CAR,1.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.80)
+4159,AKANJI,43.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
+4177,PAVARD,3.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
+4179,GONZALEZ N.,23.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.02)
+4199,LOFTUS-CHEEK,4.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.95)
+4210,MINA,7.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
+4220,ZAMBO ANGUISSA,15.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.70)
+4236,MURIC,5.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.75)
 4260,WINKS,2.1,,,,,,tabella_prezzi_medi_asta_seed
-4263,KABASELE,3.2,,,,,,tabella_prezzi_medi_asta_seed
-4287,LOBOTKA,5.8999999999999995,,,,,,tabella_prezzi_medi_asta_seed
-4312,MAIGNAN,89.2,,,,,,tabella_prezzi_medi_asta_seed
-4317,N'DICKA,33.8,,,,,,tabella_prezzi_medi_asta_seed
+4263,KABASELE,2.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
+4287,LOBOTKA,7.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.18)
+4312,MAIGNAN,92.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.04)
+4317,N'DICKA,26.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.79)
 4349,NICOLUSSI CAVIGLIA,2.5,,,,,,tabella_prezzi_medi_asta_seed
-4359,PICCOLI,27.400000000000002,,,,,,tabella_prezzi_medi_asta_seed
-4360,CAPRILE,16.2,,,,,,tabella_prezzi_medi_asta_seed
-4364,GAETANO,13.899999999999999,,,,,,tabella_prezzi_medi_asta_seed
-4371,RASPADORI,70,,,,,,tabella_prezzi_medi_asta_seed
+4359,PICCOLI,37.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.35)
+4360,CAPRILE,18.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.17)
+4364,GAETANO,11.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.80)
+4371,RASPADORI,31.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.45)
 4374,WALUKIEWICZ,2.4,,,,,,tabella_prezzi_medi_asta_seed
-4375,TERZIC,2.2,,,,,,tabella_prezzi_medi_asta_seed
+4375,TERZIC,1.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.77)
 4378,RANIERI L.,2.5,,,,,,tabella_prezzi_medi_asta_seed
-4387,ADORANTE,2.3,,,,,,tabella_prezzi_medi_asta_seed
-4401,GABBIA,6.2,,,,,,tabella_prezzi_medi_asta_seed
-4409,RRAHMANI,41.9,,,,,,tabella_prezzi_medi_asta_seed
-4431,CARNESECCHI,84.5,,,,,,tabella_prezzi_medi_asta_seed
-4433,ZORTEA,7.9,,,,,,tabella_prezzi_medi_asta_seed
-4436,CAMBIAGHI,5.7,,,,,,tabella_prezzi_medi_asta_seed
+4387,ADORANTE,1.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.69)
+4401,GABBIA,4.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.75)
+4409,RRAHMANI,43.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.04)
+4431,CARNESECCHI,85.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.02)
+4433,ZORTEA,7.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.92)
+4436,CAMBIAGHI,5.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.90)
 4459,ROVELLA,2.7,,,,,,tabella_prezzi_medi_asta_seed
-4463,ESPOSITO SE.,40.7,,,,,,tabella_prezzi_medi_asta_seed
-4465,FAGIOLI,3.7,,,,,,tabella_prezzi_medi_asta_seed
+4463,ESPOSITO SE.,41.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.02)
+4465,FAGIOLI,4.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.08)
 4468,BLEVE,1.8,,,,,,tabella_prezzi_medi_asta_seed
-4479,ELMAS,4.3,,,,,,tabella_prezzi_medi_asta_seed
-4485,THIAM,2.3,,,,,,tabella_prezzi_medi_asta_seed
+4479,ELMAS,3.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.81)
+4485,THIAM,1.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.80)
 4502,GALLO,4.5,,,,,,tabella_prezzi_medi_asta_seed
 4518,RUSSO A.,1.8,,,,,,tabella_prezzi_medi_asta_seed
-4657,CELIK,16.299999999999997,,,,,,tabella_prezzi_medi_asta_seed
-4664,BADIASHILE,7.9,,,,,,tabella_prezzi_medi_asta_seed
-4705,BALERDI,2.7,,,,,,tabella_prezzi_medi_asta_seed
-4734,MIRANDA J.,17.1,,,,,,tabella_prezzi_medi_asta_seed
-4751,TOMORI,2.5,,,,,,tabella_prezzi_medi_asta_seed
-4777,MCTOMINAY,151.10000000000002,,,,,,tabella_prezzi_medi_asta_seed
-4807,HERMOSO,18.599999999999998,,,,,,tabella_prezzi_medi_asta_seed
-4817,PEDRAZA,4,,,,,,tabella_prezzi_medi_asta_seed
-4845,CORREIA T.,2.8,,,,,,tabella_prezzi_medi_asta_seed
-4856,CHUKWUEZE,18.599999999999998,,,,,,tabella_prezzi_medi_asta_seed
+4657,CELIK,17.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.10)
+4664,BADIASHILE,4.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.57)
+4705,BALERDI,3.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.44)
+4734,MIRANDA J.,16.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.96)
+4751,TOMORI,2.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.92)
+4777,MCTOMINAY,83.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.56)
+4807,HERMOSO,24.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.29)
+4817,PEDRAZA,3.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.84)
+4845,CORREIA T.,2.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.76)
+4856,CHUKWUEZE,19.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.04)
 4867,TURATI,1.8,,,,,,tabella_prezzi_medi_asta_seed
-4870,ADOPO,2.6,,,,,,tabella_prezzi_medi_asta_seed
-4871,THURAM,258.29999999999995,,,,,,tabella_prezzi_medi_asta_seed
-4887,BELLANOVA,9.9,,,,,,tabella_prezzi_medi_asta_seed
-4892,SAELEMAEKERS,21.5,,,,,,tabella_prezzi_medi_asta_seed
-4896,MALDINI,15.7,,,,,,tabella_prezzi_medi_asta_seed
-4911,DOUGLAS LUIZ,8.9,,,,,,tabella_prezzi_medi_asta_seed
-4923,COLOMBO,59.3,,,,,,tabella_prezzi_medi_asta_seed
+4870,ADOPO,2.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
+4871,THURAM,284.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.10)
+4887,BELLANOVA,9.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.95)
+4892,SAELEMAEKERS,19.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
+4896,MALDINI,30.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.92)
+4911,DOUGLAS LUIZ,9.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.05)
+4923,COLOMBO,60.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.02)
 4925,CARBONI A.,2.4,,,,,,tabella_prezzi_medi_asta_seed
-4947,BRESCIANINI,2.6,,,,,,tabella_prezzi_medi_asta_seed
-4952,MONTERISI,3.5,,,,,,tabella_prezzi_medi_asta_seed
+4947,BRESCIANINI,2.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.81)
+4952,MONTERISI,3.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
 4957,MONTIPÒ,1.9,,,,,,tabella_prezzi_medi_asta_seed
-4964,VICARIO,92.1,,,,,,tabella_prezzi_medi_asta_seed
+4964,VICARIO,86.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
 4970,MESSIAS,2.4,,,,,,tabella_prezzi_medi_asta_seed
-4973,MCKENNIE,53.699999999999996,,,,,,tabella_prezzi_medi_asta_seed
-4976,KALULU,42.5,,,,,,tabella_prezzi_medi_asta_seed
-4994,VOJVODA,24,,,,,,tabella_prezzi_medi_asta_seed
-4998,MOLINA N.,65.10000000000001,,,,,,tabella_prezzi_medi_asta_seed
-5007,ILIC,2.3,,,,,,tabella_prezzi_medi_asta_seed
-5010,ISMAJLI,2.8,,,,,,tabella_prezzi_medi_asta_seed
-5022,PAVLOVIC,41.6,,,,,,tabella_prezzi_medi_asta_seed
-5029,GEUBBELS,12.200000000000001,,,,,,tabella_prezzi_medi_asta_seed
-5036,CAQUERET,2.4,,,,,,tabella_prezzi_medi_asta_seed
-5116,MARTINEZ JO.,91.39999999999999,,,,,,tabella_prezzi_medi_asta_seed
-5119,SAMARDZIC,41.300000000000004,,,,,,tabella_prezzi_medi_asta_seed
+4973,MCKENNIE,47.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
+4976,KALULU,37.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
+4994,VOJVODA,23.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.96)
+4998,MOLINA N.,54.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.84)
+5007,ILIC,2.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.20)
+5010,ISMAJLI,2.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
+5022,PAVLOVIC,42.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.02)
+5029,GEUBBELS,8.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.71)
+5036,CAQUERET,1.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.73)
+5116,MARTINEZ JO.,85.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
+5119,SAMARDZIC,34.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.84)
 5131,GILMOUR,1.8,,,,,,tabella_prezzi_medi_asta_seed
-5172,JONES C.,31.7,,,,,,tabella_prezzi_medi_asta_seed
-5273,ESTUPINAN,3,,,,,,tabella_prezzi_medi_asta_seed
-5295,MUSAH,2.4,,,,,,tabella_prezzi_medi_asta_seed
+5172,JONES C.,23.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.73)
+5273,ESTUPINAN,3.0,,,,,,tabella_prezzi_medi_asta_seed
+5295,MUSAH,2.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.05)
 5298,POBEGA,2.1,,,,,,tabella_prezzi_medi_asta_seed
 5301,LUIS HENRIQUE,2.6,,,,,,tabella_prezzi_medi_asta_seed
 5307,VALENTI,2.5,,,,,,tabella_prezzi_medi_asta_seed
-5319,SOHM,2.3,,,,,,tabella_prezzi_medi_asta_seed
+5319,SOHM,2.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
 5320,PALEARI,2.5,,,,,,tabella_prezzi_medi_asta_seed
 5336,NZOLA,3.9,,,,,,tabella_prezzi_medi_asta_seed
-5365,DRAGUSIN,16.1,,,,,,tabella_prezzi_medi_asta_seed
+5365,DRAGUSIN,15.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.96)
 5399,ANTOV,1.9,,,,,,tabella_prezzi_medi_asta_seed
-5422,ZALEWSKI,5.5,,,,,,tabella_prezzi_medi_asta_seed
+5422,ZALEWSKI,3.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.70)
 5424,AMEY,1.9,,,,,,tabella_prezzi_medi_asta_seed
-5436,RAIMONDO,14.5,,,,,,tabella_prezzi_medi_asta_seed
+5436,RAIMONDO,29.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (2.03)
 5449,PARISI,2.2,,,,,,tabella_prezzi_medi_asta_seed
 5453,RICCI S.,2.5,,,,,,tabella_prezzi_medi_asta_seed
 5457,MALEH,2.6,,,,,,tabella_prezzi_medi_asta_seed
 5462,CIERVO,2.2,,,,,,tabella_prezzi_medi_asta_seed
 5481,MAZZOCCHI,2.5,,,,,,tabella_prezzi_medi_asta_seed
 5498,CASALE,1.9,,,,,,tabella_prezzi_medi_asta_seed
-5500,CANCELLIERI,4.8999999999999995,,,,,,tabella_prezzi_medi_asta_seed
+5500,CANCELLIERI,4.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.90)
 5504,COULIBALY L.,2.7,,,,,,tabella_prezzi_medi_asta_seed
 5507,BUSIO,5.6,,,,,,tabella_prezzi_medi_asta_seed
-5514,VASQUEZ,15.9,,,,,,tabella_prezzi_medi_asta_seed
-5520,CAMBIASO,22.5,,,,,,tabella_prezzi_medi_asta_seed
-5526,SCALVINI,19.400000000000002,,,,,,tabella_prezzi_medi_asta_seed
+5514,VASQUEZ,15.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
+5520,CAMBIASO,14.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.65)
+5526,SCALVINI,16.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.85)
 5527,ZANOLI,2.3,,,,,,tabella_prezzi_medi_asta_seed
-5555,KAMARA H.,12.8,,,,,,tabella_prezzi_medi_asta_seed
-5559,DA CUNHA,66.69999999999999,,,,,,tabella_prezzi_medi_asta_seed
-5562,THURAM K.,12.7,,,,,,tabella_prezzi_medi_asta_seed
+5555,KAMARA H.,15.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.18)
+5559,DA CUNHA,53.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.80)
+5562,THURAM K.,8.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.67)
 5578,KOSSOUNOU,3.9,,,,,,tabella_prezzi_medi_asta_seed
-5585,MALEN,409.7,,,,,,tabella_prezzi_medi_asta_seed
-5589,KONÈ M.,34.1,,,,,,tabella_prezzi_medi_asta_seed
-5603,PONGRACIC,2,,,,,,tabella_prezzi_medi_asta_seed
-5620,TAVARES N.,10,,,,,,tabella_prezzi_medi_asta_seed
-5637,DAVIS K.,138,,,,,,tabella_prezzi_medi_asta_seed
-5641,CHALOBAH T.,32.800000000000004,,,,,,tabella_prezzi_medi_asta_seed
-5674,BASIC,2.9,,,,,,tabella_prezzi_medi_asta_seed
+5585,MALEN,398.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.97)
+5589,KONÈ M.,39.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.17)
+5603,PONGRACIC,2.0,,,,,,tabella_prezzi_medi_asta_seed
+5620,TAVARES N.,16.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.67)
+5637,DAVIS K.,144.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.04)
+5641,CHALOBAH T.,26.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.81)
+5674,BASIC,2.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.75)
 5675,THEATE,6.5,,,,,,tabella_prezzi_medi_asta_seed
-5678,HOLM,3,,,,,,tabella_prezzi_medi_asta_seed
-5680,SARR P.,5.3,,,,,,tabella_prezzi_medi_asta_seed
-5685,KOOPMEINERS,3.4,,,,,,tabella_prezzi_medi_asta_seed
-5687,VLASIC,64.60000000000001,,,,,,tabella_prezzi_medi_asta_seed
-5694,BETO,77,,,,,,tabella_prezzi_medi_asta_seed
-5695,HAPS,3.8,,,,,,tabella_prezzi_medi_asta_seed
+5678,HOLM,2.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
+5680,SARR P.,4.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
+5685,KOOPMEINERS,3.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.15)
+5687,VLASIC,51.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.79)
+5694,BETO,75.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.98)
+5695,HAPS,3.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
 5701,OBERT,4.2,,,,,,tabella_prezzi_medi_asta_seed
 5707,PIANA,1.8,,,,,,tabella_prezzi_medi_asta_seed
 5725,KONE B.,1.9,,,,,,tabella_prezzi_medi_asta_seed
-5734,SOULÈ,35.8,,,,,,tabella_prezzi_medi_asta_seed
-5735,VOLPATO,7.3,,,,,,tabella_prezzi_medi_asta_seed
-5739,DE WINTER,6.2,,,,,,tabella_prezzi_medi_asta_seed
-5742,DRAMEH,2.1,,,,,,tabella_prezzi_medi_asta_seed
-5750,OSTIGARD,32.7,,,,,,tabella_prezzi_medi_asta_seed
-5751,PATTERSON,2.2,,,,,,tabella_prezzi_medi_asta_seed
-5757,CITTADINI,2.1,,,,,,tabella_prezzi_medi_asta_seed
-5761,ZHEGROVA,3.7,,,,,,tabella_prezzi_medi_asta_seed
+5734,SOULÈ,45.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.28)
+5735,VOLPATO,6.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.83)
+5739,DE WINTER,6.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.12)
+5742,DRAMEH,2.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
+5750,OSTIGARD,22.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.67)
+5751,PATTERSON,1.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
+5757,CITTADINI,2.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.23)
+5761,ZHEGROVA,4.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.23)
 5791,FRENDRUP,3.2,,,,,,tabella_prezzi_medi_asta_seed
-5792,EDERSON D.S.,37.699999999999996,,,,,,tabella_prezzi_medi_asta_seed
-5800,GUDMUNDSSON A.,37.3,,,,,,tabella_prezzi_medi_asta_seed
-5812,TERRACCIANO F.,3,,,,,,tabella_prezzi_medi_asta_seed
-5820,BERTOLA,2.6,,,,,,tabella_prezzi_medi_asta_seed
-5823,BALDANZI,21.6,,,,,,tabella_prezzi_medi_asta_seed
-5831,GATTI,2.7,,,,,,tabella_prezzi_medi_asta_seed
-5833,GILA,37,,,,,,tabella_prezzi_medi_asta_seed
-5838,BIRINDELLI,3.7,,,,,,tabella_prezzi_medi_asta_seed
-5840,OLIVERA,3,,,,,,tabella_prezzi_medi_asta_seed
-5841,SVILAR,104.7,,,,,,tabella_prezzi_medi_asta_seed
-5844,THORSTVEDT,7.8,,,,,,tabella_prezzi_medi_asta_seed
-5851,DOIG,3.1,,,,,,tabella_prezzi_medi_asta_seed
-5858,FERGUSON,3.9,,,,,,tabella_prezzi_medi_asta_seed
+5792,EDERSON D.S.,37.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.98)
+5800,GUDMUNDSSON A.,35.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.96)
+5812,TERRACCIANO F.,3.0,,,,,,tabella_prezzi_medi_asta_seed
+5820,BERTOLA,2.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
+5823,BALDANZI,17.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.79)
+5831,GATTI,2.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.07)
+5833,GILA,36.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.97)
+5838,BIRINDELLI,3.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.06)
+5840,OLIVERA,2.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.83)
+5841,SVILAR,110.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.06)
+5844,THORSTVEDT,6.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.82)
+5851,DOIG,3.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.13)
+5858,FERGUSON,3.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.96)
 5862,VALERI,15.7,,,,,,tabella_prezzi_medi_asta_seed
 5872,HELGASON,2.8,,,,,,tabella_prezzi_medi_asta_seed
-5877,CARLOS AUGUSTO,8.7,,,,,,tabella_prezzi_medi_asta_seed
+5877,CARLOS AUGUSTO,11.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.28)
 5878,COLPANI,10.1,,,,,,tabella_prezzi_medi_asta_seed
 5880,CIURRIA,2.3,,,,,,tabella_prezzi_medi_asta_seed
-5882,MOTA,3.3,,,,,,tabella_prezzi_medi_asta_seed
-5885,DODÒ,8.200000000000001,,,,,,tabella_prezzi_medi_asta_seed
-5888,CASADEI,13.4,,,,,,tabella_prezzi_medi_asta_seed
-5918,SULEMANA K.,2.3,,,,,,tabella_prezzi_medi_asta_seed
+5882,MOTA,3.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.15)
+5885,DODÒ,4.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.52)
+5888,CASADEI,9.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.69)
+5918,SULEMANA K.,1.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.69)
 5946,SOW,2.7,,,,,,tabella_prezzi_medi_asta_seed
-5951,KOLO MUANI,257.1,,,,,,tabella_prezzi_medi_asta_seed
-5982,SPENCE,41.300000000000004,,,,,,tabella_prezzi_medi_asta_seed
+5951,KOLO MUANI,192.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.75)
+5982,SPENCE,21.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.52)
 5994,EBOSSE,2.2,,,,,,tabella_prezzi_medi_asta_seed
-5995,DE KETELAERE,82.5,,,,,,tabella_prezzi_medi_asta_seed
-5998,ZERBIN,2.4,,,,,,tabella_prezzi_medi_asta_seed
+5995,DE KETELAERE,56.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.69)
+5998,ZERBIN,2.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
 6005,ILKHAN,2.2,,,,,,tabella_prezzi_medi_asta_seed
-6010,FAZZINI,9.9,,,,,,tabella_prezzi_medi_asta_seed
-6015,BERISHA M.,2.6,,,,,,tabella_prezzi_medi_asta_seed
-6020,ELLERTSSON,2.4,,,,,,tabella_prezzi_medi_asta_seed
-6021,ABANKWAH,2.2,,,,,,tabella_prezzi_medi_asta_seed
+6010,FAZZINI,10.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.07)
+6015,BERISHA M.,2.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
+6020,ELLERTSSON,2.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.90)
+6021,ABANKWAH,2.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.27)
 6024,SULEMANA I.,1.9,,,,,,tabella_prezzi_medi_asta_seed
-6039,CABAL,2,,,,,,tabella_prezzi_medi_asta_seed
-6042,LUCUMÌ,18.700000000000003,,,,,,tabella_prezzi_medi_asta_seed
-6046,HIEN,3.4,,,,,,tabella_prezzi_medi_asta_seed
-6052,HOJLUND,286.9,,,,,,tabella_prezzi_medi_asta_seed
+6039,CABAL,2.0,,,,,,tabella_prezzi_medi_asta_seed
+6042,LUCUMÌ,19.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.05)
+6046,HIEN,3.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
+6052,HOJLUND,265.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.92)
 6054,MORO N.,2.2,,,,,,tabella_prezzi_medi_asta_seed
-6060,LAURIENTÈ,66.4,,,,,,tabella_prezzi_medi_asta_seed
-6145,NGONGE,3.2,,,,,,tabella_prezzi_medi_asta_seed
+6060,LAURIENTÈ,61.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
+6145,NGONGE,2.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.83)
 6149,CARBONI F.,1.9,,,,,,tabella_prezzi_medi_asta_seed
-6151,PERRONE,11,,,,,,tabella_prezzi_medi_asta_seed
-6164,VITINHA O.,14.4,,,,,,tabella_prezzi_medi_asta_seed
+6151,PERRONE,10.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.95)
+6164,VITINHA O.,12.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
 6170,GINEITIS,2.2,,,,,,tabella_prezzi_medi_asta_seed
-6190,PISILLI,5.7,,,,,,tabella_prezzi_medi_asta_seed
+6190,PISILLI,8.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.46)
 6191,BELAHYANE,1.6,,,,,,tabella_prezzi_medi_asta_seed
-6202,BEUKEMA,3.3,,,,,,tabella_prezzi_medi_asta_seed
-6204,KVERNADZE,7.9,,,,,,tabella_prezzi_medi_asta_seed
-6206,FABBIAN,3.2,,,,,,tabella_prezzi_medi_asta_seed
-6207,ALMQVIST,2.3,,,,,,tabella_prezzi_medi_asta_seed
+6202,BEUKEMA,2.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.71)
+6204,KVERNADZE,15.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.90)
+6206,FABBIAN,4.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.31)
+6207,ALMQVIST,2.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.06)
 6212,ZARRAGA,1.8,,,,,,tabella_prezzi_medi_asta_seed
-6215,LUCCA,5.2,,,,,,tabella_prezzi_medi_asta_seed
-6217,BISSECK,34.1,,,,,,tabella_prezzi_medi_asta_seed
-6218,ORISTANIO,3,,,,,,tabella_prezzi_medi_asta_seed
-6219,BOLOCA,2,,,,,,tabella_prezzi_medi_asta_seed
-6225,EL AZZOUZI O.,2.3,,,,,,tabella_prezzi_medi_asta_seed
-6229,TOURÈ E.,23.8,,,,,,tabella_prezzi_medi_asta_seed
+6215,LUCCA,4.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
+6217,BISSECK,32.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.95)
+6218,ORISTANIO,3.0,,,,,,tabella_prezzi_medi_asta_seed
+6219,BOLOCA,2.0,,,,,,tabella_prezzi_medi_asta_seed
+6225,EL AZZOUZI O.,2.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
+6229,TOURÈ E.,20.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.86)
 6238,OYONO A.,2.4,,,,,,tabella_prezzi_medi_asta_seed
 6241,GELLI F.,2.3,,,,,,tabella_prezzi_medi_asta_seed
 6243,BORRELLI,2.2,,,,,,tabella_prezzi_medi_asta_seed
 6246,LIPANI,2.3,,,,,,tabella_prezzi_medi_asta_seed
-6248,STANKOVIC F.,4.2,,,,,,tabella_prezzi_medi_asta_seed
-6252,FOLORUNSHO,3,,,,,,tabella_prezzi_medi_asta_seed
-6274,DIOUF,31.8,,,,,,tabella_prezzi_medi_asta_seed
-6294,NDOUR,7.1000000000000005,,,,,,tabella_prezzi_medi_asta_seed
-6320,DOEKHI,8.200000000000001,,,,,,tabella_prezzi_medi_asta_seed
-6344,SANCHEZ RO.,5.8,,,,,,tabella_prezzi_medi_asta_seed
-6372,MOREIRA,39.1,,,,,,tabella_prezzi_medi_asta_seed
+6248,STANKOVIC F.,3.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.81)
+6252,FOLORUNSHO,2.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.91)
+6274,DIOUF,40.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.27)
+6294,NDOUR,6.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
+6320,DOEKHI,7.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.86)
+6344,SANCHEZ RO.,3.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.57)
+6372,MOREIRA,50.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.30)
 6397,RAMOS G.,316.2,,,,,,tabella_prezzi_medi_asta_seed
-6398,ISAKSEN,12.9,,,,,,tabella_prezzi_medi_asta_seed
+6398,ISAKSEN,12.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.96)
 6403,CHRISTENSEN O.,1.8,,,,,,tabella_prezzi_medi_asta_seed
 6410,KABA,1.8,,,,,,tabella_prezzi_medi_asta_seed
-6415,PALMISANI,2.4,,,,,,tabella_prezzi_medi_asta_seed
-6434,YILDIZ,89.39999999999999,,,,,,tabella_prezzi_medi_asta_seed
-6435,KRSTOVIC,104.3,,,,,,tabella_prezzi_medi_asta_seed
-6462,OKOYE,27,,,,,,tabella_prezzi_medi_asta_seed
-6482,MANDAS,32.7,,,,,,tabella_prezzi_medi_asta_seed
-6485,KRISTENSEN T.,12.200000000000001,,,,,,tabella_prezzi_medi_asta_seed
-6495,COMUZZO,6.5,,,,,,tabella_prezzi_medi_asta_seed
-6496,BARTESAGHI,14.8,,,,,,tabella_prezzi_medi_asta_seed
+6415,PALMISANI,3.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.53)
+6434,YILDIZ,63.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.71)
+6435,KRSTOVIC,86.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.83)
+6462,OKOYE,24.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.91)
+6482,MANDAS,36.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.12)
+6485,KRISTENSEN T.,9.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.76)
+6495,COMUZZO,5.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.83)
+6496,BARTESAGHI,9.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.63)
 6503,STANKOVIC A.,2.8,,,,,,tabella_prezzi_medi_asta_seed
-6506,FINI,2.4,,,,,,tabella_prezzi_medi_asta_seed
-6519,CAMARDA,3.7,,,,,,tabella_prezzi_medi_asta_seed
-6530,GHEDJEMIS,5.8999999999999995,,,,,,tabella_prezzi_medi_asta_seed
-6531,JIMENEZ A.,20.7,,,,,,tabella_prezzi_medi_asta_seed
-6534,PERRI,4.8,,,,,,tabella_prezzi_medi_asta_seed
-6537,GOGLICHIDZE,1,,,,,,tabella_prezzi_medi_asta_seed
-6549,PIEROTTI,2.8,,,,,,tabella_prezzi_medi_asta_seed
-6556,NOSLIN,2.6,,,,,,tabella_prezzi_medi_asta_seed
+6506,FINI,2.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
+6519,CAMARDA,2.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.68)
+6530,GHEDJEMIS,7.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.29)
+6531,JIMENEZ A.,31.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.52)
+6534,PERRI,3.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.68)
+6537,GOGLICHIDZE,1.0,,,,,,tabella_prezzi_medi_asta_seed
+6549,PIEROTTI,2.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
+6556,NOSLIN,7.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (3.00)
 6569,STOLZ,1.8,,,,,,tabella_prezzi_medi_asta_seed
-6572,CASTRO S.,49.3,,,,,,tabella_prezzi_medi_asta_seed
+6572,CASTRO S.,29.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.60)
 6592,FORSON O.,2.2,,,,,,tabella_prezzi_medi_asta_seed
-6593,AKINSANMIRO,2.2,,,,,,tabella_prezzi_medi_asta_seed
+6593,AKINSANMIRO,2.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.12)
 6598,MUTANDWA,1.9,,,,,,tabella_prezzi_medi_asta_seed
-6601,KAMBWALA,1.8,,,,,,tabella_prezzi_medi_asta_seed
-6618,CISSÈ A.,16.2,,,,,,tabella_prezzi_medi_asta_seed
-6629,DELE-BASHIRU,2.1,,,,,,tabella_prezzi_medi_asta_seed
-6631,GHILARDI,2.5,,,,,,tabella_prezzi_medi_asta_seed
+6601,KAMBWALA,1.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.77)
+6618,CISSÈ A.,21.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.34)
+6629,DELE-BASHIRU,1.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.67)
+6631,GHILARDI,2.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
 6632,GASPAR K.,3.1,,,,,,tabella_prezzi_medi_asta_seed
-6638,MARIN R.,3.2,,,,,,tabella_prezzi_medi_asta_seed
+6638,MARIN R.,4.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.38)
 6640,FELICI,2.2,,,,,,tabella_prezzi_medi_asta_seed
 6642,COCO,4.4,,,,,,tabella_prezzi_medi_asta_seed
-6646,ADAMS C.,15,,,,,,tabella_prezzi_medi_asta_seed
+6646,ADAMS C.,11.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.79)
 6650,SHERRI,1.8,,,,,,tabella_prezzi_medi_asta_seed
-6659,LUCCHESI,2,,,,,,tabella_prezzi_medi_asta_seed
-6660,MARCANDALLI,5.8,,,,,,tabella_prezzi_medi_asta_seed
+6659,LUCCHESI,2.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.06)
+6660,MARCANDALLI,5.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
 6662,CORVI,4.4,,,,,,tabella_prezzi_medi_asta_seed
 6664,DELPRATO,12.5,,,,,,tabella_prezzi_medi_asta_seed
-6666,BERNABÈ,12.3,,,,,,tabella_prezzi_medi_asta_seed
-6669,BONNY,20.9,,,,,,tabella_prezzi_medi_asta_seed
+6666,BERNABÈ,10.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.82)
+6669,BONNY,21.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.05)
 6671,GRANDI,1.7,,,,,,tabella_prezzi_medi_asta_seed
-6672,IDZES,4.5,,,,,,tabella_prezzi_medi_asta_seed
+6672,IDZES,3.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.79)
 6673,SVERKO,1.8,,,,,,tabella_prezzi_medi_asta_seed
-6675,DOVBYK,69.5,,,,,,tabella_prezzi_medi_asta_seed
-6677,ADZIC,9.5,,,,,,tabella_prezzi_medi_asta_seed
-6678,LIBERALI,7.2,,,,,,tabella_prezzi_medi_asta_seed
+6675,DOVBYK,47.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.68)
+6677,ADZIC,19.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (2.00)
+6678,LIBERALI,4.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.58)
 6680,KARLSTROM,2.6,,,,,,tabella_prezzi_medi_asta_seed
 6681,SAGRADO,2.6,,,,,,tabella_prezzi_medi_asta_seed
-6684,EKKELENKAMP,40.300000000000004,,,,,,tabella_prezzi_medi_asta_seed
+6684,EKKELENKAMP,44.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.11)
 6717,KONÈ I.,2.8,,,,,,tabella_prezzi_medi_asta_seed
-6727,COUTO,27.099999999999998,,,,,,tabella_prezzi_medi_asta_seed
-6752,WOLTEMADE,135.3,,,,,,tabella_prezzi_medi_asta_seed
+6727,COUTO,30.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.13)
+6752,WOLTEMADE,83.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.62)
 6766,KELLY L.,5.8,,,,,,tabella_prezzi_medi_asta_seed
-6783,UNAI GOMEZ,3.9,,,,,,tabella_prezzi_medi_asta_seed
-6809,MARIANUCCI,2,,,,,,tabella_prezzi_medi_asta_seed
+6783,UNAI GOMEZ,3.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.86)
+6809,MARIANUCCI,2.0,,,,,,tabella_prezzi_medi_asta_seed
 6813,TORRIANI,1.8,,,,,,tabella_prezzi_medi_asta_seed
 6815,FADERA,2.6,,,,,,tabella_prezzi_medi_asta_seed
 6821,HAINAUT,2.9,,,,,,tabella_prezzi_medi_asta_seed
-6822,EKHATOR,2.4,,,,,,tabella_prezzi_medi_asta_seed
-6826,DEMBELÈ A.,2,,,,,,tabella_prezzi_medi_asta_seed
-6827,NJIE,5.1000000000000005,,,,,,tabella_prezzi_medi_asta_seed
-6831,NERES,10.9,,,,,,tabella_prezzi_medi_asta_seed
-6833,MBANGULA,3.9,,,,,,tabella_prezzi_medi_asta_seed
-6844,ROWE,46.199999999999996,,,,,,tabella_prezzi_medi_asta_seed
-6867,VALLE,9.9,,,,,,tabella_prezzi_medi_asta_seed
-6869,RAMON,33.5,,,,,,tabella_prezzi_medi_asta_seed
-6875,PAZ N.,166.3,,,,,,tabella_prezzi_medi_asta_seed
+6822,EKHATOR,1.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.73)
+6826,DEMBELÈ A.,2.0,,,,,,tabella_prezzi_medi_asta_seed
+6827,NJIE,5.1,,,,,,tabella_prezzi_medi_asta_seed
+6831,NERES,9.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
+6833,MBANGULA,2.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.64)
+6844,ROWE,41.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
+6867,VALLE,9.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.96)
+6869,RAMON,36.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.08)
+6875,PAZ N.,168.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.01)
 6883,JEAN,3.9,,,,,,tabella_prezzi_medi_asta_seed
-6884,CONCEICAO,68.1,,,,,,tabella_prezzi_medi_asta_seed
+6884,CONCEICAO,70.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.03)
 6889,ANJORIN,1.7,,,,,,tabella_prezzi_medi_asta_seed
-6890,MORENO M.,2,,,,,,tabella_prezzi_medi_asta_seed
+6890,MORENO M.,2.0,,,,,,tabella_prezzi_medi_asta_seed
 6892,SCHINGTIENNE,2.5,,,,,,tabella_prezzi_medi_asta_seed
-6893,KEMPF,5.6,,,,,,tabella_prezzi_medi_asta_seed
+6893,KEMPF,5.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
 6895,DOMINGUEZ B.,2.6,,,,,,tabella_prezzi_medi_asta_seed
-6896,VAN DER BREMPT,2.5,,,,,,tabella_prezzi_medi_asta_seed
-6898,KEITA M.,2.4,,,,,,tabella_prezzi_medi_asta_seed
-6903,HASA,2,,,,,,tabella_prezzi_medi_asta_seed
+6896,VAN DER BREMPT,1.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.69)
+6898,KEITA M.,2.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.05)
+6903,HASA,2.0,,,,,,tabella_prezzi_medi_asta_seed
 6904,YEBOAH J.,16.6,,,,,,tabella_prezzi_medi_asta_seed
-6908,ATTA,70,,,,,,tabella_prezzi_medi_asta_seed
-6917,MASINI,2.6,,,,,,tabella_prezzi_medi_asta_seed
-6925,PALMA,2.8,,,,,,tabella_prezzi_medi_asta_seed
-6956,SOLET,46.9,,,,,,tabella_prezzi_medi_asta_seed
-6966,BUTEZ,79,,,,,,tabella_prezzi_medi_asta_seed
-6967,DIAO,46.300000000000004,,,,,,tabella_prezzi_medi_asta_seed
-6977,OTOA,2,,,,,,tabella_prezzi_medi_asta_seed
+6908,ATTA,57.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.82)
+6917,MASINI,3.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.38)
+6925,PALMA,2.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.81)
+6956,SOLET,32.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.69)
+6966,BUTEZ,68.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.87)
+6967,DIAO,60.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.31)
+6977,OTOA,2.0,,,,,,tabella_prezzi_medi_asta_seed
 6980,VENTURINO,2.3,,,,,,tabella_prezzi_medi_asta_seed
-6985,CANDÈ,2.1,,,,,,tabella_prezzi_medi_asta_seed
-6986,RENSCH,3.1,,,,,,tabella_prezzi_medi_asta_seed
-6989,TIAGO GABRIEL,10.7,,,,,,tabella_prezzi_medi_asta_seed
+6985,CANDÈ,1.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.92)
+6986,RENSCH,2.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.95)
+6989,TIAGO GABRIEL,11.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.08)
 6990,VEIGA D.,2.9,,,,,,tabella_prezzi_medi_asta_seed
-6994,PEREZ K.,2.4,,,,,,tabella_prezzi_medi_asta_seed
-7001,N'DRI,2.7,,,,,,tabella_prezzi_medi_asta_seed
-7012,PROVSTGAARD,2.7,,,,,,tabella_prezzi_medi_asta_seed
+6994,PEREZ K.,2.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.95)
+7001,N'DRI,2.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
+7012,PROVSTGAARD,2.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
 7014,SMOLCIC I.,2.4,,,,,,tabella_prezzi_medi_asta_seed
-7017,DOUVIKAS,155.20000000000002,,,,,,tabella_prezzi_medi_asta_seed
-7023,PELLEGRINO M.,64.19999999999999,,,,,,tabella_prezzi_medi_asta_seed
-7036,BAKOLA,3.3,,,,,,tabella_prezzi_medi_asta_seed
+7017,DOUVIKAS,116.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.75)
+7023,PELLEGRINO M.,79.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.24)
+7036,BAKOLA,3.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.16)
 7048,DE MARZI,1.8,,,,,,tabella_prezzi_medi_asta_seed
-7060,CACCIAMANI,7.2,,,,,,tabella_prezzi_medi_asta_seed
-7068,VITIK,2.4,,,,,,tabella_prezzi_medi_asta_seed
+7060,CACCIAMANI,7.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.03)
+7068,VITIK,2.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
 7069,FORTINI,3.4,,,,,,tabella_prezzi_medi_asta_seed
-7070,SUCIC P.,11.9,,,,,,tabella_prezzi_medi_asta_seed
-7071,ESPOSITO F.P.,137.2,,,,,,tabella_prezzi_medi_asta_seed
-7078,MASTANTUONO,72.3,,,,,,tabella_prezzi_medi_asta_seed
-7092,JOVANOVIC,1,,,,,,tabella_prezzi_medi_asta_seed
-7120,LANG,3.9,,,,,,tabella_prezzi_medi_asta_seed
+7070,SUCIC P.,11.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.92)
+7071,ESPOSITO F.P.,139.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.02)
+7078,MASTANTUONO,98.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.36)
+7092,JOVANOVIC,1.0,,,,,,tabella_prezzi_medi_asta_seed
+7120,LANG,3.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
 7125,IDRISSI R.,2.2,,,,,,tabella_prezzi_medi_asta_seed
-7126,BATURINA,103,,,,,,tabella_prezzi_medi_asta_seed
+7126,BATURINA,147.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.44)
 7127,ADDAI,2.3,,,,,,tabella_prezzi_medi_asta_seed
-7129,RODRIGUEZ JE.,17.6,,,,,,tabella_prezzi_medi_asta_seed
-7131,FLORIANI MUSSOLINI,3.5,,,,,,tabella_prezzi_medi_asta_seed
+7129,RODRIGUEZ JE.,13.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.78)
+7131,FLORIANI MUSSOLINI,3.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.07)
 7138,ORDONEZ C.,2.6,,,,,,tabella_prezzi_medi_asta_seed
-7146,TOURÈ I.,2.1,,,,,,tabella_prezzi_medi_asta_seed
-7154,ODENTHAL,2.5,,,,,,tabella_prezzi_medi_asta_seed
+7146,TOURÈ I.,1.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.79)
+7154,ODENTHAL,2.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.85)
 7156,PIERAGNOLO,1.9,,,,,,tabella_prezzi_medi_asta_seed
 7161,BAYO V.,1.9,,,,,,tabella_prezzi_medi_asta_seed
-7162,GIOVANE,2.3,,,,,,tabella_prezzi_medi_asta_seed
-7165,LITETA,2,,,,,,tabella_prezzi_medi_asta_seed
+7162,GIOVANE,1.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.50)
+7165,LITETA,2.0,,,,,,tabella_prezzi_medi_asta_seed
 7172,PESSINA MAS.,1.8,,,,,,tabella_prezzi_medi_asta_seed
 7175,JOAO MARIO,3.9,,,,,,tabella_prezzi_medi_asta_seed
-7181,WESLEY,80.4,,,,,,tabella_prezzi_medi_asta_seed
+7181,WESLEY,85.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.07)
 7182,NDABA,2.2,,,,,,tabella_prezzi_medi_asta_seed
 7183,ABOUKHLAL,2.4,,,,,,tabella_prezzi_medi_asta_seed
-7198,PIOTROWSKI,2.7,,,,,,tabella_prezzi_medi_asta_seed
+7198,PIOTROWSKI,2.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.85)
 7202,NDIAYE,2.1,,,,,,tabella_prezzi_medi_asta_seed
-7203,JASHARI,2.8,,,,,,tabella_prezzi_medi_asta_seed
+7203,JASHARI,2.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
 7208,MILLER L.,2.1,,,,,,tabella_prezzi_medi_asta_seed
-7212,HEGGEM,4.4,,,,,,tabella_prezzi_medi_asta_seed
-7213,FRIGAN,2.2,,,,,,tabella_prezzi_medi_asta_seed
-7219,BERNASCONI,17.8,,,,,,tabella_prezzi_medi_asta_seed
-7220,BELGHALI,5.4,,,,,,tabella_prezzi_medi_asta_seed
-7223,VERGARA,17.6,,,,,,tabella_prezzi_medi_asta_seed
+7212,HEGGEM,4.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.95)
+7213,FRIGAN,2.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.91)
+7219,BERNASCONI,14.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.83)
+7220,BELGHALI,3.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.72)
+7223,VERGARA,13.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.75)
 7232,FERNANDEZ T.,2.2,,,,,,tabella_prezzi_medi_asta_seed
-7235,TROILO,3,,,,,,tabella_prezzi_medi_asta_seed
+7235,TROILO,3.0,,,,,,tabella_prezzi_medi_asta_seed
 7238,KOUADIO,2.4,,,,,,tabella_prezzi_medi_asta_seed
 7240,SIEBERT,2.2,,,,,,tabella_prezzi_medi_asta_seed
 7248,GORTER,2.2,,,,,,tabella_prezzi_medi_asta_seed
 7252,STULIC,2.8,,,,,,tabella_prezzi_medi_asta_seed
-7253,BELLA-KOTCHAP,3.3,,,,,,tabella_prezzi_medi_asta_seed
-7255,BRITSCHGI,2.2,,,,,,tabella_prezzi_medi_asta_seed
-7260,ZIOLKOWSKI,2.1,,,,,,tabella_prezzi_medi_asta_seed
+7253,BELLA-KOTCHAP,2.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
+7255,BRITSCHGI,2.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.13)
+7260,ZIOLKOWSKI,1.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.92)
 7268,RODRIGUEZ JU.,2.8,,,,,,tabella_prezzi_medi_asta_seed
-7272,GUEYE,2.2,,,,,,tabella_prezzi_medi_asta_seed
-7274,ZÈ PEDRO,2.7,,,,,,tabella_prezzi_medi_asta_seed
+7272,GUEYE,2.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.25)
+7274,ZÈ PEDRO,3.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.11)
 7276,CREMASCHI,1.8,,,,,,tabella_prezzi_medi_asta_seed
-7294,VALDEPENAS,15.299999999999999,,,,,,tabella_prezzi_medi_asta_seed
-7301,TORNQVIST,1.8,,,,,,tabella_prezzi_medi_asta_seed
+7294,VALDEPENAS,10.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.71)
+7301,TORNQVIST,1.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.87)
 7311,ROMANO,4.2,,,,,,tabella_prezzi_medi_asta_seed
 7312,ARIZALA,2.5,,,,,,tabella_prezzi_medi_asta_seed
-7314,TAYLOR K.,31.7,,,,,,tabella_prezzi_medi_asta_seed
-7317,TREPY,1.9,,,,,,tabella_prezzi_medi_asta_seed
+7314,TAYLOR K.,26.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.83)
+7317,TREPY,1.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.86)
 7318,GANDELMAN,2.4,,,,,,tabella_prezzi_medi_asta_seed
 7319,FOFANA SA.,1.7,,,,,,tabella_prezzi_medi_asta_seed
 7322,NGOM,2.7,,,,,,tabella_prezzi_medi_asta_seed
 7326,HELLAND,2.4,,,,,,tabella_prezzi_medi_asta_seed
-7329,OBRADOR,4.3,,,,,,tabella_prezzi_medi_asta_seed
-7332,BIJLOW,11.6,,,,,,tabella_prezzi_medi_asta_seed
-7337,MOTTA,2,,,,,,tabella_prezzi_medi_asta_seed
-7341,AMORIM,2.5,,,,,,tabella_prezzi_medi_asta_seed
-7342,ELPHEGE,3,,,,,,tabella_prezzi_medi_asta_seed
+7329,OBRADOR,3.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.78)
+7332,BIJLOW,9.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.80)
+7337,MOTTA,2.0,,,,,,tabella_prezzi_medi_asta_seed
+7341,AMORIM,2.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
+7342,ELPHEGE,2.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.94)
 7345,PRZYBOREK,1.8,,,,,,tabella_prezzi_medi_asta_seed
-7347,BOWIE,20.5,,,,,,tabella_prezzi_medi_asta_seed
-7349,KULENOVIC,2,,,,,,tabella_prezzi_medi_asta_seed
-7351,SANTOS A.,64,,,,,,tabella_prezzi_medi_asta_seed
+7347,BOWIE,21.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.03)
+7349,KULENOVIC,2.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.29)
+7351,SANTOS A.,40.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.64)
 7357,LAHDO,1.9,,,,,,tabella_prezzi_medi_asta_seed
 7363,SIVIERO,1.8,,,,,,tabella_prezzi_medi_asta_seed
-7374,MENDY P.,4,,,,,,tabella_prezzi_medi_asta_seed
+7374,MENDY P.,5.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.47)
 7408,LISMAN,1.8,,,,,,tabella_prezzi_medi_asta_seed
-7409,MEICHTRY,2.5,,,,,,tabella_prezzi_medi_asta_seed
-7410,VIERY,4,,,,,,tabella_prezzi_medi_asta_seed
-7411,DAFFARA,2.5,,,,,,tabella_prezzi_medi_asta_seed
-7412,MILLA,5.8999999999999995,,,,,,tabella_prezzi_medi_asta_seed
+7409,MEICHTRY,2.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.88)
+7410,VIERY,4.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.06)
+7411,DAFFARA,1.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.58)
+7412,MILLA,5.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
 7413,PUCZKA,2.3,,,,,,tabella_prezzi_medi_asta_seed
-7414,KAIKI,9.5,,,,,,tabella_prezzi_medi_asta_seed
+7414,KAIKI,11.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.22)
 7418,CHAKVETADZE,2.1,,,,,,tabella_prezzi_medi_asta_seed
-7436,ALAJBEGOVIC,57,,,,,,tabella_prezzi_medi_asta_seed
-7449,RRAHMANI AL.,2.3,,,,,,tabella_prezzi_medi_asta_seed
-7453,HAVEL,2.1,,,,,,tabella_prezzi_medi_asta_seed
+7436,ALAJBEGOVIC,54.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.96)
+7449,RRAHMANI AL.,1.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.78)
+7453,HAVEL,1.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.90)
 7454,GOMES,1.7,,,,,,tabella_prezzi_medi_asta_seed
 7456,EL AZZOUZI A.,1.8,,,,,,tabella_prezzi_medi_asta_seed
-7457,MASCARDI,2.6,,,,,,tabella_prezzi_medi_asta_seed
+7457,MASCARDI,1.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.60)
 7463,DESPLANCHES,1.8,,,,,,tabella_prezzi_medi_asta_seed
-7464,OULAI,3.9,,,,,,tabella_prezzi_medi_asta_seed
+7464,OULAI,3.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.91)
 7466,LOLIC,1.7,,,,,,tabella_prezzi_medi_asta_seed
 7467,CALVANI,2.3,,,,,,tabella_prezzi_medi_asta_seed
-7469,BRACAGLIA,3.6,,,,,,tabella_prezzi_medi_asta_seed
-7472,CALÒ,14.7,,,,,,tabella_prezzi_medi_asta_seed
-7473,CICHELLA,2.3,,,,,,tabella_prezzi_medi_asta_seed
+7469,BRACAGLIA,4.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.10)
+7472,CALÒ,19.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.31)
+7473,CICHELLA,1.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.82)
 7474,KOUTSOUPIAS,2.1,,,,,,tabella_prezzi_medi_asta_seed
 7475,STRAJNAR,1.6,,,,,,tabella_prezzi_medi_asta_seed
 7476,BAKOUNE,2.1,,,,,,tabella_prezzi_medi_asta_seed
 7477,COLOMBO L.,2.6,,,,,,tabella_prezzi_medi_asta_seed
-7478,FRANJIC,2.1,,,,,,tabella_prezzi_medi_asta_seed
+7478,FRANJIC,1.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.92)
 7481,DAGASSO,1.8,,,,,,tabella_prezzi_medi_asta_seed
 7482,LAUBERBACH,1.8,,,,,,tabella_prezzi_medi_asta_seed
 7483,ALHASSANE,2.5,,,,,,tabella_prezzi_medi_asta_seed
-7484,ADAMS A.,32.300000000000004,,,,,,tabella_prezzi_medi_asta_seed
-7485,MANGAS,6.5,,,,,,tabella_prezzi_medi_asta_seed
-7523,VARELA G.,22.9,,,,,,tabella_prezzi_medi_asta_seed
-7525,DIAWARA S.,2,,,,,,tabella_prezzi_medi_asta_seed
-7526,COMERT,2.5,,,,,,tabella_prezzi_medi_asta_seed
-7528,AMONDARAIN,2.4,,,,,,tabella_prezzi_medi_asta_seed
-7529,KOULIERAKIS,8.5,,,,,,tabella_prezzi_medi_asta_seed
+7484,ADAMS A.,30.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.95)
+7485,MANGAS,9.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.50)
+7523,VARELA G.,37.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.64)
+7525,DIAWARA S.,2.0,,,,,,tabella_prezzi_medi_asta_seed
+7526,COMERT,2.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.06)
+7528,AMONDARAIN,2.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.07)
+7529,KOULIERAKIS,5.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.70)
 7531,POZZI,1.7,,,,,,tabella_prezzi_medi_asta_seed
-7532,KOFLER,2.1,,,,,,tabella_prezzi_medi_asta_seed
+7532,KOFLER,1.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.69)
 7533,HAPPONEN,1.8,,,,,,tabella_prezzi_medi_asta_seed
 7534,RENZETTI,1.8,,,,,,tabella_prezzi_medi_asta_seed
 7535,FITZ-JIM,3.7,,,,,,tabella_prezzi_medi_asta_seed
-7536,DIALLO O.,2.2,,,,,,tabella_prezzi_medi_asta_seed
-7537,MITAJ,2.6,,,,,,tabella_prezzi_medi_asta_seed
-7538,HALHAL,2.2,,,,,,tabella_prezzi_medi_asta_seed
+7536,DIALLO O.,1.7,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.76)
+7537,MITAJ,2.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.80)
+7538,HALHAL,1.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.80)
 7540,AKPOGUMA,2.2,,,,,,tabella_prezzi_medi_asta_seed
-7546,ROBINSON J.,2.3,,,,,,tabella_prezzi_medi_asta_seed
-7547,KEVIN CARLOS,11.799999999999999,,,,,,tabella_prezzi_medi_asta_seed
-7548,AURELIO,2,,,,,,tabella_prezzi_medi_asta_seed
-7550,GRILLITSCH,2,,,,,,tabella_prezzi_medi_asta_seed
-7551,SCHMID,4.2,,,,,,tabella_prezzi_medi_asta_seed
+7546,ROBINSON J.,4.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.80)
+7547,KEVIN CARLOS,7.2,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.61)
+7548,AURELIO,2.0,,,,,,tabella_prezzi_medi_asta_seed
+7550,GRILLITSCH,1.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.93)
+7551,SCHMID,6.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.43)
 7553,OMAR FAYED,1.7,,,,,,tabella_prezzi_medi_asta_seed
-7554,ROMERO D.,15.299999999999999,,,,,,tabella_prezzi_medi_asta_seed
-7556,MORA,82.69999999999999,,,,,,tabella_prezzi_medi_asta_seed
+7554,ROMERO D.,17.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.17)
+7556,MORA,55.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.67)
 7557,PENEV,1.7,,,,,,tabella_prezzi_medi_asta_seed
 7560,PISSERI,1.7,,,,,,tabella_prezzi_medi_asta_seed
-7561,LONTANI,3,,,,,,tabella_prezzi_medi_asta_seed
-7563,FAVASULI,2.4,,,,,,tabella_prezzi_medi_asta_seed
+7561,LONTANI,3.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.25)
+7563,FAVASULI,3.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.31)
 7564,LEYSEN F.,2.2,,,,,,tabella_prezzi_medi_asta_seed
 7568,DE MARTIS,1.8,,,,,,tabella_prezzi_medi_asta_seed
 7571,LAERKE,1.9,,,,,,tabella_prezzi_medi_asta_seed
 7572,COMOTTO,3.3,,,,,,tabella_prezzi_medi_asta_seed
-7573,CINQUEGRANO,2.4,,,,,,tabella_prezzi_medi_asta_seed
-7574,FOE ONDOA,1.8,,,,,,tabella_prezzi_medi_asta_seed
+7573,CINQUEGRANO,4.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.78)
+7574,FOE ONDOA,2.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.29)
 7575,MOUT,2.1,,,,,,tabella_prezzi_medi_asta_seed
-7579,MASSOLIN,3,,,,,,tabella_prezzi_medi_asta_seed
-7580,SUTALO J.,3.7,,,,,,tabella_prezzi_medi_asta_seed
+7579,MASSOLIN,3.0,,,,,,tabella_prezzi_medi_asta_seed
+7580,SUTALO J.,3.9,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.04)
 7599,LULLI,4.4,,,,,,tabella_prezzi_medi_asta_seed
-7600,OSMAJIC,2.9,,,,,,tabella_prezzi_medi_asta_seed
-7602,FATAH,2.1,,,,,,tabella_prezzi_medi_asta_seed
+7600,OSMAJIC,3.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.24)
+7602,FATAH,1.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.68)
 7603,GRABARA,2.7,,,,,,tabella_prezzi_medi_asta_seed
 7604,MAYE,1.7,,,,,,tabella_prezzi_medi_asta_seed
-7605,TCHATO,2.1,,,,,,tabella_prezzi_medi_asta_seed
-7610,BIRLIGEA,2.1,,,,,,tabella_prezzi_medi_asta_seed
+7605,TCHATO,1.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.85)
+7610,BIRLIGEA,1.1,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.50)
 7611,MROZEK,1.8,,,,,,tabella_prezzi_medi_asta_seed
-7612,BOBCEK,3.9,,,,,,tabella_prezzi_medi_asta_seed
+7612,BOBCEK,1.6,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.42)
 7615,DROBNIC,1.9,,,,,,tabella_prezzi_medi_asta_seed
-7618,HUTCHINSON,5.6,,,,,,tabella_prezzi_medi_asta_seed
-7619,MONTEIRO J.,2.6,,,,,,tabella_prezzi_medi_asta_seed
-7620,ZEBALLOS,3.8,,,,,,tabella_prezzi_medi_asta_seed
-7621,SUGAWARA,1.9,,,,,,tabella_prezzi_medi_asta_seed
-7622,ROBINHO JUNIOR,0,,,,,,tabella_prezzi_medi_asta_seed
-7623,GNONTO,4.1000000000000005,,,,,,tabella_prezzi_medi_asta_seed
-7624,BRAGANCA,2,,,,,,tabella_prezzi_medi_asta_seed
-7625,GONCALVES P.,32,,,,,,tabella_prezzi_medi_asta_seed
+7618,HUTCHINSON,3.5,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.63)
+7619,MONTEIRO J.,2.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.89)
+7620,ZEBALLOS,4.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (1.04)
+7621,SUGAWARA,1.3,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.70)
+7622,ROBINHO JUNIOR,0.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.75)
+7623,GNONTO,3.0,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.73)
+7624,BRAGANCA,1.8,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.92)
+7625,GONCALVES P.,24.4,,,,,,tabella_prezzi_medi_asta_seed x FVM 2026-09-28/2026-09-10 (0.76)

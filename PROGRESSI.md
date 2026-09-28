@@ -3133,3 +3133,129 @@ quattordici megabyte su ventidue, e restano.
 - 47 + 23 + 264 verifiche Python, tutte superate
 - 22.356 numeri + 44 liste + 35 confronti sul caso: zero differenze
 - **200 aste per applicazione, 4800 numeri, zero differenze**
+
+---
+
+# 28 settembre: i dati di oggi, a campionato iniziato
+
+L'asta e' mercoledi' 30, e i dati erano fermi al 10 settembre. In mezzo ci
+sono tre giornate giocate (cinque in tutto, l'ultima il 20), una sosta per le
+nazionali e una ventina di infortuni nuovi. E per la prima volta la stagione
+in corso ha **partite vere** da far entrare nei conti.
+
+## Cosa si e' letto
+
+Tutto da fantacalcio.it e understat, il 28 settembre, e archiviato cosi'
+com'e' uscito dalle pagine in `database/fonti/web/letture/2026-09-28/`:
+
+| lettura | righe |
+|---|---|
+| probabili formazioni della 6ª giornata, tutte e venti le squadre, con panchina e percentuali | 482 |
+| listone con quotazioni e FVM aggiornati | 599 (6 nuovi, fra cui Neto alla Juventus) |
+| statistiche 2026-27: partite a voto, media, fantamedia, gol, rigori calciati | 414 |
+| xG e minuti 2026-27 (understat) | 448 |
+| infortunati e indisponibili, con rientro stimato | 51 |
+| rigoristi, tre per squadra | 60 |
+
+Le mette al loro posto `database/fonti/web/aggiorna_letture.py`. Prima c'era
+solo `raccolta_2026_27.py`, che conteneva la lettura del 3 settembre e
+riscriveva i CSV da capo: rilanciarlo, come diceva questo file, cancellava in
+silenzio le letture del 7 e del 10. Adesso scrive in `storico/2026-09-03/`, e
+ogni lettura nuova ha la sua cartella.
+
+## La stagione in corso entra nei conti
+
+Le stagioni, i loro pesi e la data dei dati erano scritti a mano in cinque
+posti. Ora stanno in `motore/stagione.py`, e il resto li legge da li'.
+
+La stagione in corso pesa 1,5 sul rendimento e 2 sul minutaggio, ma **sui
+minuti che ha messo a disposizione**: cinque giornate sono 450 minuti, non
+3420. Contata come intera, chi le ha giocate tutte e cinque avrebbe fatto un
+settimo di stagione, cioe' la riserva. E il peso piu' alto di uno dice quanto
+conta rispetto alle altre stagioni, non quanti minuti ci sono: nella
+regressione verso la media quattro partite restano quattro partite.
+
+Le guide d'agosto restano, ma pesano meno: le formazioni probabili della
+giornata e chi e' sceso davvero in campo contano il doppio.
+
+## Gli infortuni valgono anche per lo storico
+
+Le giornate che un infortunato salta si contano sulle 33 che restano, non
+sulle 38. E valgono per **tutte e due** le parti della media fra guide e
+storico: prima la parte dello storico non sapeva dell'infortunio, e
+Locatelli, fermo fino a gennaio, teneva venti presenze perche' l'anno scorso
+ne aveva fatte trenta. Ora sono 16; Buongiorno scende a 12,5, Yildiz a 15,6.
+
+## I rigoristi: uno solo, quello giusto
+
+L'interfaccia mostrava come rigorista quello dedotto dalla stagione scorsa
+(11 giocatori), le proiezioni usavano quello delle guide (23): 16 discordanze,
+fra cui Nkunku, che e' fuori dalla lista di serie A. Ora il file dei dati porta il
+consenso delle fonti, pesate per data (la lista di fantacalcio.it e chi ha
+calciato davvero quest'anno contano di piu' delle guide d'agosto): **venti
+rigoristi, uno per squadra**, e zero discordanze.
+
+## I prezzi d'asta riportati a oggi
+
+La tabella dei prezzi medi d'asta e' di inizio settembre. Da allora il
+mercato ha cambiato idea su parecchi: l'FVM di Kvernadze e' raddoppiato,
+quello di Raimondo pure, Raspadori ha perso piu' di meta' del valore. Il
+motore quei prezzi li usa due volte, per la curva di quanto costera' un
+giocatore e, con `fiducia_nel_mercato`, come parere del mercato su quanto
+vale. Adesso ogni prezzo e' moltiplicato per quanto e' cambiato il suo FVM
+dal 10 settembre (fra un terzo e il triplo): 337 prezzi su 531 si sono
+mossi.
+
+## Le correzioni
+
+- **`motore/db.py` non cancella piu' l'asta.** Rifa' il file dei dati; l'asta
+  solo se manca, o con `--asta-nuova`. Lo stesso per `demo.py` e per la prova
+  di `ottimizzatore.py`, che giocavano sull'asta vera: ora usano
+  `asta_di_servizio()`.
+- **Un sito qualunque non puo' piu' scrivere nell'asta.** Il server accettava
+  richieste da qualsiasi pagina aperta nel browser: un modulo nascosto poteva
+  registrare acquisti o cancellare l'asta. Ora controlla `Host`, `Origin` e il
+  tipo del contenuto; il congedo della pagina, che parte con `sendBeacon`,
+  passa lo stesso.
+- **Una seconda pubblicazione nello stesso giorno arriva.** Il manifest porta
+  anche la `versione` (data e ora della pubblicazione), e il programma
+  confronta quella. Se i file sono identici a quelli pubblicati la versione
+  resta la stessa e non si pubblica niente.
+- **Interfaccia:** «questo e' un portier» diventa «un portiere»; cliccare nei
+  campi per correggere i nomi non passa piu' il turno a quella squadra; la
+  decima squadra si sceglie col tasto 0, e oltre la decima i pulsanti non
+  promettono scorciatoie che non ci sono.
+- **Il tetto di «falli pagare agli altri»** non supera piu' il costo atteso:
+  proponeva di spingere Svilar fino a 53 mentre la sua scheda diceva 52.
+
+## Due prove che dicevano una cosa diversa da quella che volevano dire
+
+- «Il portiere dato titolare da tutte le guide gioca sopra le 30» filtrava
+  sulla `certezza` del posto, non sull'accordo delle guide. Il Napoli ha
+  alternato Meret e Milinkovic-Savic nelle prime giornate: Meret e' primo di
+  molto, ma nessuno gli da' trentacinque partite. Ora la prova guarda
+  l'accordo, che e' quello che il suo commento dichiarava.
+- «Il piano B propone titolari sicuri» usava `sicuro`, che dipende dalla
+  certezza; il motore sceglie con `gioca_sempre`, che guarda grado e presenze
+  e che e' documentato proprio per non usare la certezza. Perri, titolare del
+  Torino con tre partite su cinque, e' un ripiego giusto.
+
+## Numeri
+
+- 63 + 27 + 294 verifiche, tutte superate (la prova di chiusura richiede
+  Edge o Chrome e va lanciata su Windows)
+- cento aste con i dati del 10 settembre: 92 vinte, +88 sul secondo
+- cento aste con i dati di oggi: **100 vinte, +138 sul secondo**, zero rose
+  incomplete, zero acquisti sopra il limite. Ma **26 crediti avanzati in
+  media**, contro 7: il modello crede molto nei titolari delle neopromosse
+  partiti forte (Varela, Kvernadze, Calo', Mangas), la stanza simulata li
+  paga coi prezzi d'inizio settembre, e la rosa si riempie prima di aver
+  speso. In un'asta vera quei nomi costeranno di piu'.
+
+## Da portare sul telefono
+
+L'applicazione Android legge gli stessi dati, quindi rigoristi, infortuni e
+prezzi aggiornati valgono anche li'. Del motore e' cambiata una riga di
+`strategia.py` (il tetto di «falli pagare», `_svuota`): prima di rigenerare
+`attesi_consiglio.json` va tradotta anche in JavaScript, o il confronto
+segnera' quella differenza.

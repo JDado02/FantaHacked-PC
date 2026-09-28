@@ -11,6 +11,7 @@ id,titolarita,quota_minuti_2025_26,ballottaggio_con,rigorista,fonte_rigorista,ca
 252,,0.145,,0,derivato_da_rigori_calciati_2025-26,,,,,,,,Juventus Lazio Lecce
 254,,0.792,,0,derivato_da_rigori_calciati_2025-26,,,,,Top,Mod.,Calci Piazzati,Milan Sassuolo Juventus
 256,,0.488,,0,derivato_da_rigori_calciati_2025-26,,,,,titolare,Inaffidabile,,Cagliari Monza Bologna
+283,,,,,,,,,,,aggiunto dal listone ufficiale del 2026-09-28,,
 294,,0.169,,0,derivato_da_rigori_calciati_2025-26,,,,,,Affidabile,Scommessa,Torino Genoa Roma
 309,,0.398,,2,derivato_da_rigori_calciati_2025-26,,,,,Semi-Top,Calci Piazzati,Infortuni,Lazio Napoli Juventus
 313,,0.268,,2,derivato_da_rigori_calciati_2025-26,,,,,,aggiunto dal listone ufficiale del 7 settembre 2026,,
@@ -64,6 +65,7 @@ id,titolarita,quota_minuti_2025_26,ballottaggio_con,rigorista,fonte_rigorista,ca
 2297,,,,0,derivato_da_rigori_calciati_2025-26,,,,,,aggiunto dal listone ufficiale del 7 settembre 2026,,
 2379,,0.744,,0,derivato_da_rigori_calciati_2025-26,,,,,Semi-Top,Affidabile,Bonus,Inter Parma Cagliari
 2401,,,,0,derivato_da_rigori_calciati_2025-26,,,,,,aggiunto dal listone ufficiale del 7 settembre 2026,,
+2404,,,,,,,,,,,aggiunto dal listone ufficiale del 2026-09-28,,
 2423,,0.471,,2,derivato_da_rigori_calciati_2025-26,,,,,Top,Titolare,Bonus,Inter Parma Cagliari
 2514,,,,,,,,,,,,,Milan Sassuolo Juventus
 2517,,0.344,,1,derivato_da_rigori_calciati_2025-26,,,,,Semi-Top,Affidabile,Bonus,Roma Bologna Frosinone
@@ -148,7 +150,7 @@ id,titolarita,quota_minuti_2025_26,ballottaggio_con,rigorista,fonte_rigorista,ca
 4892,,0.824,,0,derivato_da_rigori_calciati_2025-26,,,,,Terza,Infortuni,Affidabile,Inter Parma Cagliari
 4896,,0.276,,0,derivato_da_rigori_calciati_2025-26,,,,,Quarta,Bonus,Infortuni,Atalanta Fiorentina Venezia
 4911,,,,0,derivato_da_rigori_calciati_2025-26,,,,,Scomm.,Scommessa,,Torino Genoa Roma
-4923,,,,2,derivato_da_rigori_calciati_2025-26,,,,,Terza,Rigorista,Titolare,Juventus Bologna Como
+4923,,0.694,,2,derivato_da_rigori_calciati_2025-26,,,,,Terza,Rigorista,Titolare,Juventus Bologna Como
 4925,,,,,,,,,,titolare,Bonus,Infortuni,Lecce Venezia Atalanta
 4929,,,,0,derivato_da_rigori_calciati_2025-26,,,,,,aggiunto dal listone ufficiale del 7 settembre 2026,,
 4947,,0.298,,0,derivato_da_rigori_calciati_2025-26,,,,,,Subentrante,Affidabile,Cagliari Como Lazio
@@ -241,6 +243,7 @@ id,titolarita,quota_minuti_2025_26,ballottaggio_con,rigorista,fonte_rigorista,ca
 5840,,0.401,,0,derivato_da_rigori_calciati_2025-26,,,,,Scommessa,Jolly,,Roma Bologna Frosinone
 5841,,1.0,,0,derivato_da_rigori_calciati_2025-26,,,,,0° TOP A,Titolare,Mod.,Lazio Napoli Juventus
 5844,,0.716,,0,derivato_da_rigori_calciati_2025-26,,,,,Scomm.,Bonus,Infortuni,Inter Parma Bologna
+5850,,0.148,,0,derivato_da_rigori_calciati_2025-26,,,,,,aggiunto dal listone ufficiale del 2026-09-28,,
 5851,,0.563,,0,derivato_da_rigori_calciati_2025-26,,,,,titolare,Inaffidabile,Bonus,Inter Parma Bologna
 5858,,0.461,,0,derivato_da_rigori_calciati_2025-26,,,,,Titolare,Infortuni,Affidabile,Atalanta Lecce Napoli
 5862,,0.771,,0,derivato_da_rigori_calciati_2025-26,,,,,Semi-Top,Bonus,Mod.,Lecce Sassuolo Milan
@@ -264,7 +267,7 @@ id,titolarita,quota_minuti_2025_26,ballottaggio_con,rigorista,fonte_rigorista,ca
 6015,,0.261,,0,derivato_da_rigori_calciati_2025-26,,,,,Scomm.,Infortuni,Affidabile,Parma Bologna Fiorentina
 6020,,0.81,,0,derivato_da_rigori_calciati_2025-26,,,,,Titolare,Scommessa,Subentrante,Juventus Bologna Como
 6021,,,,,,,,,,jolly,Mod.,,Genoa Lecce Milan
-6024,,,,0,derivato_da_rigori_calciati_2025-26,,,,,,,,Inter Parma Bologna
+6024,,0.253,,0,derivato_da_rigori_calciati_2025-26,,,,,,,,Inter Parma Bologna
 6039,,0.077,,0,derivato_da_rigori_calciati_2025-26,,,,,Scommessa,Jolly,,Torino Genoa Roma
 6042,,0.667,,0,derivato_da_rigori_calciati_2025-26,,,,,jolly,Mod.,Cartellini,Torino Genoa Roma
 6046,,0.57,,0,derivato_da_rigori_calciati_2025-26,,,,,Scommessa,Cartellini,Mod.,Frosinone Bologna Cagliari
@@ -302,6 +305,7 @@ id,titolarita,quota_minuti_2025_26,ballottaggio_con,rigorista,fonte_rigorista,ca
 6271,,0.28,,0,derivato_da_rigori_calciati_2025-26,,,,,,aggiunto dal listone ufficiale del 7 settembre 2026,,
 6274,,0.135,,0,derivato_da_rigori_calciati_2025-26,,,,,Semi-Top,Scommessa,Bonus,Milan Sassuolo Juventus
 6294,,0.548,,0,derivato_da_rigori_calciati_2025-26,,,,,Scomm.,Scommessa,,Cagliari Como Lazio
+6319,,,,,,,,,,,aggiunto dal listone ufficiale del 2026-09-28,,
 6320,,,,,,,,,,Terza,,,Roma Genoa Torino
 6344,,,,,,,,,,2° Fascia C,,,Fiorentina Frosinone Genoa
 6372,,,,,,,,,,Scomm.,Scommessa,Bonus,Inter Parma Cagliari
@@ -414,7 +418,7 @@ id,titolarita,quota_minuti_2025_26,ballottaggio_con,rigorista,fonte_rigorista,ca
 7012,,0.443,,0,derivato_da_rigori_calciati_2025-26,,,,,Quarta,Scommessa,,Roma Genoa Torino
 7014,,0.493,,0,derivato_da_rigori_calciati_2025-26,,,,,Scommessa,Cartellini,Inaffidabile,Fiorentina Frosinone Genoa
 7017,,0.666,,2,derivato_da_rigori_calciati_2025-26,,,,,Semi-Top,Scommessa,Bonus,Fiorentina Frosinone Genoa
-7023,,,,2,derivato_da_rigori_calciati_2025-26,,,,,Scomm.,Bonus,,Cagliari Como Lazio
+7023,,0.881,,2,derivato_da_rigori_calciati_2025-26,,,,,Scomm.,Bonus,,Cagliari Como Lazio
 7027,,,,0,derivato_da_rigori_calciati_2025-26,,,,,,aggiunto dal listone ufficiale del 7 settembre 2026,,
 7036,,0.034,,0,derivato_da_rigori_calciati_2025-26,,,,,Quarta,Affidabile,,Inter Parma Bologna
 7048,,,,,,,,,,R,,,Lazio Napoli Juventus
@@ -592,3 +596,5 @@ id,titolarita,quota_minuti_2025_26,ballottaggio_con,rigorista,fonte_rigorista,ca
 7626,,,,,,,,,,R,,,Frosinone Bologna Cagliari
 7627,,,,,,,,,,,aggiunto dal listone ufficiale del 7 settembre 2026,,
 7628,,,,,,,,,,,aggiunto dal listone ufficiale del 7 settembre 2026,,
+7629,,,,,,,,,,,aggiunto dal listone ufficiale del 2026-09-28,,
+7647,,,,,,,,,,,aggiunto dal listone ufficiale del 2026-09-28,,

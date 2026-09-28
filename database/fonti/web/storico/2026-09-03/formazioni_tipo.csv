@@ -1,0 +1,879 @@
+fonte,squadra,modulo,posto,giocatore
+fantacalcio.it,Genoa,3-4-2-1,1,Bijlow
+fantacalcio.it,Genoa,3-4-2-1,2,Marcandalli
+fantacalcio.it,Genoa,3-4-2-1,3,Ostigard
+fantacalcio.it,Genoa,3-4-2-1,4,Vasquez
+fantacalcio.it,Genoa,3-4-2-1,5,Ellertsson
+fantacalcio.it,Genoa,3-4-2-1,6,Frendrup
+fantacalcio.it,Genoa,3-4-2-1,7,Sow
+fantacalcio.it,Genoa,3-4-2-1,8,Mitaj
+fantacalcio.it,Genoa,3-4-2-1,9,Baldanzi
+fantacalcio.it,Genoa,3-4-2-1,10,Vitinha O.
+fantacalcio.it,Genoa,3-4-2-1,11,Colombo
+fantacalcio.it,Como,4-2-3-1,1,Butez
+fantacalcio.it,Como,4-2-3-1,2,Couto
+fantacalcio.it,Como,4-2-3-1,3,Chalobah T.
+fantacalcio.it,Como,4-2-3-1,4,Ramon
+fantacalcio.it,Como,4-2-3-1,5,Valle
+fantacalcio.it,Como,4-2-3-1,6,Da Cunha
+fantacalcio.it,Como,4-2-3-1,7,Perrone
+fantacalcio.it,Como,4-2-3-1,8,Diao
+fantacalcio.it,Como,4-2-3-1,9,Paz N.
+fantacalcio.it,Como,4-2-3-1,10,Baturina
+fantacalcio.it,Como,4-2-3-1,11,Kean
+fantacalcio.it,Fiorentina,4-3-2-1,1,De Gea
+fantacalcio.it,Fiorentina,4-3-2-1,2,Jimenez A.
+fantacalcio.it,Fiorentina,4-3-2-1,3,Dragusin
+fantacalcio.it,Fiorentina,4-3-2-1,4,Viery
+fantacalcio.it,Fiorentina,4-3-2-1,5,Valdepenas
+fantacalcio.it,Fiorentina,4-3-2-1,6,Ndour
+fantacalcio.it,Fiorentina,4-3-2-1,7,Oulai
+fantacalcio.it,Fiorentina,4-3-2-1,8,Atta
+fantacalcio.it,Fiorentina,4-3-2-1,9,Mastantuono
+fantacalcio.it,Fiorentina,4-3-2-1,10,Njie
+fantacalcio.it,Fiorentina,4-3-2-1,11,Pellegrino M.
+fantacalcio.it,Torino,3-4-2-1,1,Perri
+fantacalcio.it,Torino,3-4-2-1,2,Comuzzo
+fantacalcio.it,Torino,3-4-2-1,3,Coco
+fantacalcio.it,Torino,3-4-2-1,4,Comert
+fantacalcio.it,Torino,3-4-2-1,5,Belghali
+fantacalcio.it,Torino,3-4-2-1,6,Gineitis
+fantacalcio.it,Torino,3-4-2-1,7,Fitz-Jim
+fantacalcio.it,Torino,3-4-2-1,8,Cacciamani
+fantacalcio.it,Torino,3-4-2-1,9,Adams C.
+fantacalcio.it,Torino,3-4-2-1,10,Vlasic
+fantacalcio.it,Torino,3-4-2-1,11,Simeone
+fantacalcio.it,Inter,3-5-2,1,Martinez Jo.
+fantacalcio.it,Inter,3-5-2,2,Bisseck
+fantacalcio.it,Inter,3-5-2,3,Akanji
+fantacalcio.it,Inter,3-5-2,4,Bastoni
+fantacalcio.it,Inter,3-5-2,5,Diouf
+fantacalcio.it,Inter,3-5-2,6,Barella
+fantacalcio.it,Inter,3-5-2,7,Calhanoglu
+fantacalcio.it,Inter,3-5-2,8,Zielinski
+fantacalcio.it,Inter,3-5-2,9,Dimarco
+fantacalcio.it,Inter,3-5-2,10,Martinez L.
+fantacalcio.it,Inter,3-5-2,11,Esposito F.P.
+fantacalcio.it,Napoli,4-3-3,1,Meret
+fantacalcio.it,Napoli,4-3-3,2,Di Lorenzo
+fantacalcio.it,Napoli,4-3-3,3,Rrahmani
+fantacalcio.it,Napoli,4-3-3,4,Marin R.
+fantacalcio.it,Napoli,4-3-3,5,Spinazzola
+fantacalcio.it,Napoli,4-3-3,6,Zambo Anguissa
+fantacalcio.it,Napoli,4-3-3,7,Lobotka
+fantacalcio.it,Napoli,4-3-3,8,De Bruyne
+fantacalcio.it,Napoli,4-3-3,9,Politano
+fantacalcio.it,Napoli,4-3-3,10,Hojlund
+fantacalcio.it,Napoli,4-3-3,11,Santos A.
+fantacalcio.it,Roma,3-4-2-1,1,Svilar
+fantacalcio.it,Roma,3-4-2-1,2,Mancini
+fantacalcio.it,Roma,3-4-2-1,3,Ghilardi
+fantacalcio.it,Roma,3-4-2-1,4,Hermoso
+fantacalcio.it,Roma,3-4-2-1,5,Molina N.
+fantacalcio.it,Roma,3-4-2-1,6,Kone M.
+fantacalcio.it,Roma,3-4-2-1,7,Cristante
+fantacalcio.it,Roma,3-4-2-1,8,Wesley
+fantacalcio.it,Roma,3-4-2-1,9,Dybala
+fantacalcio.it,Roma,3-4-2-1,10,Mora
+fantacalcio.it,Roma,3-4-2-1,11,Malen
+fantacalcio.it,Atalanta,4-3-3,1,Carnesecchi
+fantacalcio.it,Atalanta,4-3-3,2,Bellanova
+fantacalcio.it,Atalanta,4-3-3,3,Kossounou
+fantacalcio.it,Atalanta,4-3-3,4,Scalvini
+fantacalcio.it,Atalanta,4-3-3,5,Bernasconi
+fantacalcio.it,Atalanta,4-3-3,6,Samardzic
+fantacalcio.it,Atalanta,4-3-3,7,Gaetano
+fantacalcio.it,Atalanta,4-3-3,8,Ederson D.S.
+fantacalcio.it,Atalanta,4-3-3,9,De Ketelaere
+fantacalcio.it,Atalanta,4-3-3,10,Scamacca
+fantacalcio.it,Atalanta,4-3-3,11,Rowe
+fantacalcio.it,Frosinone,4-2-3-1,1,Palmisani
+fantacalcio.it,Frosinone,4-2-3-1,2,Oyono A.
+fantacalcio.it,Frosinone,4-2-3-1,3,Calvani
+fantacalcio.it,Frosinone,4-2-3-1,4,Monterisi
+fantacalcio.it,Frosinone,4-2-3-1,5,Bracaglia
+fantacalcio.it,Frosinone,4-2-3-1,6,Masini
+fantacalcio.it,Frosinone,4-2-3-1,7,Calo
+fantacalcio.it,Frosinone,4-2-3-1,8,Fini
+fantacalcio.it,Frosinone,4-2-3-1,9,Schmid
+fantacalcio.it,Frosinone,4-2-3-1,10,Kvernadze
+fantacalcio.it,Frosinone,4-2-3-1,11,Raimondo
+fantacalcio.it,Venezia,3-5-2,1,Stankovic F.
+fantacalcio.it,Venezia,3-5-2,2,Schingtienne
+fantacalcio.it,Venezia,3-5-2,3,Bella-Kotchap
+fantacalcio.it,Venezia,3-5-2,4,Halhal
+fantacalcio.it,Venezia,3-5-2,5,Mazzocchi
+fantacalcio.it,Venezia,3-5-2,6,Perez K.
+fantacalcio.it,Venezia,3-5-2,7,Busio
+fantacalcio.it,Venezia,3-5-2,8,Basic
+fantacalcio.it,Venezia,3-5-2,9,Haps
+fantacalcio.it,Venezia,3-5-2,10,Yeboah J.
+fantacalcio.it,Venezia,3-5-2,11,Adams A.
+fantacalcio.it,Parma,3-5-2,1,Corvi
+fantacalcio.it,Parma,3-5-2,2,Delprato
+fantacalcio.it,Parma,3-5-2,3,Troilo
+fantacalcio.it,Parma,3-5-2,4,Diego Carlos
+fantacalcio.it,Parma,3-5-2,5,Britschgi
+fantacalcio.it,Parma,3-5-2,6,Bernabe
+fantacalcio.it,Parma,3-5-2,7,Keita M.
+fantacalcio.it,Parma,3-5-2,8,Ordonez C.
+fantacalcio.it,Parma,3-5-2,9,Valeri
+fantacalcio.it,Parma,3-5-2,10,Romero D.
+fantacalcio.it,Parma,3-5-2,11,Toure E.
+fantacalcio.it,Monza,3-4-2-1,1,Tornqvist
+fantacalcio.it,Monza,3-4-2-1,2,Ziolkowski
+fantacalcio.it,Monza,3-4-2-1,3,Lucchesi
+fantacalcio.it,Monza,3-4-2-1,4,Carboni A.
+fantacalcio.it,Monza,3-4-2-1,5,Birindelli
+fantacalcio.it,Monza,3-4-2-1,6,Akinsanmiro
+fantacalcio.it,Monza,3-4-2-1,7,Folorunsho
+fantacalcio.it,Monza,3-4-2-1,8,Mangas
+fantacalcio.it,Monza,3-4-2-1,9,Colpani
+fantacalcio.it,Monza,3-4-2-1,10,Ngonge
+fantacalcio.it,Monza,3-4-2-1,11,Cutrone
+fantacalcio.it,Bologna,4-3-3,1,Skorupski
+fantacalcio.it,Bologna,4-3-3,2,Zortea
+fantacalcio.it,Bologna,4-3-3,3,Heggem
+fantacalcio.it,Bologna,4-3-3,4,Theate
+fantacalcio.it,Bologna,4-3-3,5,Miranda J.
+fantacalcio.it,Bologna,4-3-3,6,Odgaard
+fantacalcio.it,Bologna,4-3-3,7,Ferguson
+fantacalcio.it,Bologna,4-3-3,8,Pobega
+fantacalcio.it,Bologna,4-3-3,9,Bernardeschi
+fantacalcio.it,Bologna,4-3-3,10,Piccoli
+fantacalcio.it,Bologna,4-3-3,11,Cambiaghi
+fantacalcio.it,Sassuolo,4-3-3,1,Muric
+fantacalcio.it,Sassuolo,4-3-3,2,Van Der Brempt
+fantacalcio.it,Sassuolo,4-3-3,3,Idzes
+fantacalcio.it,Sassuolo,4-3-3,4,Leysen F.
+fantacalcio.it,Sassuolo,4-3-3,5,Doig
+fantacalcio.it,Sassuolo,4-3-3,6,Adzic
+fantacalcio.it,Sassuolo,4-3-3,7,Matic
+fantacalcio.it,Sassuolo,4-3-3,8,Bakola
+fantacalcio.it,Sassuolo,4-3-3,9,Berardi
+fantacalcio.it,Sassuolo,4-3-3,10,Bowie
+fantacalcio.it,Sassuolo,4-3-3,11,Lauriente
+fantamaster-g3,Juventus,4-2-3-1,1,Vicario
+fantamaster-g3,Juventus,4-2-3-1,2,Kalulu
+fantamaster-g3,Juventus,4-2-3-1,3,Bremer
+fantamaster-g3,Juventus,4-2-3-1,4,Lucumi
+fantamaster-g3,Juventus,4-2-3-1,5,Celik
+fantamaster-g3,Juventus,4-2-3-1,6,Douglas Luiz
+fantamaster-g3,Juventus,4-2-3-1,7,Locatelli
+fantamaster-g3,Juventus,4-2-3-1,8,Conceicao
+fantamaster-g3,Juventus,4-2-3-1,9,Nico Gonzalez
+fantamaster-g3,Juventus,4-2-3-1,10,Boga
+fantamaster-g3,Juventus,4-2-3-1,11,Kolo Muani
+fantamaster-g3,Milan,3-4-2-1,1,Maignan
+fantamaster-g3,Milan,3-4-2-1,2,Gila
+fantamaster-g3,Milan,3-4-2-1,3,De Winter
+fantamaster-g3,Milan,3-4-2-1,4,Pavlovic
+fantamaster-g3,Milan,3-4-2-1,5,Chukwueze
+fantamaster-g3,Milan,3-4-2-1,6,Musah
+fantamaster-g3,Milan,3-4-2-1,7,Modric
+fantamaster-g3,Milan,3-4-2-1,8,Bartesaghi
+fantamaster-g3,Milan,3-4-2-1,9,Rabiot
+fantamaster-g3,Milan,3-4-2-1,10,Cisse
+fantamaster-g3,Milan,3-4-2-1,11,Goncalo Ramos
+fantamaster-g3,Cagliari,4-3-3,1,Caprile
+fantamaster-g3,Cagliari,4-3-3,2,Ze Pedro
+fantamaster-g3,Cagliari,4-3-3,3,Deiola
+fantamaster-g3,Cagliari,4-3-3,4,Rodriguez
+fantamaster-g3,Cagliari,4-3-3,5,Obert
+fantamaster-g3,Cagliari,4-3-3,6,Adopo
+fantamaster-g3,Cagliari,4-3-3,7,Winks
+fantamaster-g3,Cagliari,4-3-3,8,Romano
+fantamaster-g3,Cagliari,4-3-3,9,Maldini
+fantamaster-g3,Cagliari,4-3-3,10,Mendy
+fantamaster-g3,Cagliari,4-3-3,11,Fazzini
+fantamaster-g3,Lecce,3-5-2,1,Falcone
+fantamaster-g3,Lecce,3-5-2,2,Tiago Gabriel
+fantamaster-g3,Lecce,3-5-2,3,Gaspar
+fantamaster-g3,Lecce,3-5-2,4,Siebert
+fantamaster-g3,Lecce,3-5-2,5,Veiga
+fantamaster-g3,Lecce,3-5-2,6,Coulibaly
+fantamaster-g3,Lecce,3-5-2,7,Ilic
+fantamaster-g3,Lecce,3-5-2,8,Gorter
+fantamaster-g3,Lecce,3-5-2,9,Gallo
+fantamaster-g3,Lecce,3-5-2,10,Pierotti
+fantamaster-g3,Lecce,3-5-2,11,Stulic
+fantamaster-g3,Udinese,3-4-2-1,1,Okoye
+fantamaster-g3,Udinese,3-4-2-1,2,Abankwah
+fantamaster-g3,Udinese,3-4-2-1,3,Kabasele
+fantamaster-g3,Udinese,3-4-2-1,4,Solet
+fantamaster-g3,Udinese,3-4-2-1,5,Vojvoda
+fantamaster-g3,Udinese,3-4-2-1,6,Piotrowski
+fantamaster-g3,Udinese,3-4-2-1,7,Karlstrom
+fantamaster-g3,Udinese,3-4-2-1,8,Kamara
+fantamaster-g3,Udinese,3-4-2-1,9,Unai Gomez
+fantamaster-g3,Udinese,3-4-2-1,10,Ekkelenkamp
+fantamaster-g3,Udinese,3-4-2-1,11,Davis
+fantamaster-g3,Lazio,4-3-3,1,Mandas
+fantamaster-g3,Lazio,4-3-3,2,Floriani Mussolini
+fantamaster-g3,Lazio,4-3-3,3,Doekhi
+fantamaster-g3,Lazio,4-3-3,4,Provstgaard
+fantamaster-g3,Lazio,4-3-3,5,Nuno Tavares
+fantamaster-g3,Lazio,4-3-3,6,Taylor
+fantamaster-g3,Lazio,4-3-3,7,Belahyane
+fantamaster-g3,Lazio,4-3-3,8,Frattesi
+fantamaster-g3,Lazio,4-3-3,9,Gudmundsson
+fantamaster-g3,Lazio,4-3-3,10,Pinamonti
+fantamaster-g3,Lazio,4-3-3,11,Zaccagni
+sosfanta,Atalanta,4-3-3,1,Carnesecchi
+sosfanta,Atalanta,4-3-3,2,Zappacosta
+sosfanta,Atalanta,4-3-3,3,Kristensen
+sosfanta,Atalanta,4-3-3,4,Scalvini
+sosfanta,Atalanta,4-3-3,5,Bernasconi
+sosfanta,Atalanta,4-3-3,6,Kessie
+sosfanta,Atalanta,4-3-3,7,Gaetano
+sosfanta,Atalanta,4-3-3,8,Ederson
+sosfanta,Atalanta,4-3-3,9,De Ketelaere
+sosfanta,Atalanta,4-3-3,10,Scamacca
+sosfanta,Atalanta,4-3-3,11,Rowe
+sosfanta,Bologna,4-3-3,1,Skorupski
+sosfanta,Bologna,4-3-3,2,Zortea
+sosfanta,Bologna,4-3-3,3,Heggem
+sosfanta,Bologna,4-3-3,4,Theate
+sosfanta,Bologna,4-3-3,5,Miranda
+sosfanta,Bologna,4-3-3,6,Pobega
+sosfanta,Bologna,4-3-3,7,Moro
+sosfanta,Bologna,4-3-3,8,Odgaard
+sosfanta,Bologna,4-3-3,9,Orsolini
+sosfanta,Bologna,4-3-3,10,Dovbyk
+sosfanta,Bologna,4-3-3,11,Cambiaghi
+sosfanta,Cagliari,4-3-3,1,Caprile
+sosfanta,Cagliari,4-3-3,2,Ze Pedro
+sosfanta,Cagliari,4-3-3,3,Mina
+sosfanta,Cagliari,4-3-3,4,Rodriguez
+sosfanta,Cagliari,4-3-3,5,Obert
+sosfanta,Cagliari,4-3-3,6,Adopo
+sosfanta,Cagliari,4-3-3,7,Winks
+sosfanta,Cagliari,4-3-3,8,Romano
+sosfanta,Cagliari,4-3-3,9,Maldini
+sosfanta,Cagliari,4-3-3,10,Kevin Carlos
+sosfanta,Cagliari,4-3-3,11,Fazzini
+sosfanta,Como,4-2-3-1,1,Butez
+sosfanta,Como,4-2-3-1,2,Couto
+sosfanta,Como,4-2-3-1,3,Ramon
+sosfanta,Como,4-2-3-1,4,Chalobah
+sosfanta,Como,4-2-3-1,5,Valle
+sosfanta,Como,4-2-3-1,6,Perrone
+sosfanta,Como,4-2-3-1,7,Da Cunha
+sosfanta,Como,4-2-3-1,8,Baturina
+sosfanta,Como,4-2-3-1,9,Paz
+sosfanta,Como,4-2-3-1,10,Diao
+sosfanta,Como,4-2-3-1,11,Douvikas
+sosfanta,Fiorentina,4-3-3,1,De Gea
+sosfanta,Fiorentina,4-3-3,2,Jimenez
+sosfanta,Fiorentina,4-3-3,3,Dragusin
+sosfanta,Fiorentina,4-3-3,4,Viery
+sosfanta,Fiorentina,4-3-3,5,Valdepenas
+sosfanta,Fiorentina,4-3-3,6,Atta
+sosfanta,Fiorentina,4-3-3,7,Oulai
+sosfanta,Fiorentina,4-3-3,8,Ndour
+sosfanta,Fiorentina,4-3-3,9,Mastantuono
+sosfanta,Fiorentina,4-3-3,10,Beto
+sosfanta,Fiorentina,4-3-3,11,Pedro Goncalves
+sosfanta,Frosinone,4-2-3-1,1,Palmisani
+sosfanta,Frosinone,4-2-3-1,2,Tchato
+sosfanta,Frosinone,4-2-3-1,3,Calvani
+sosfanta,Frosinone,4-2-3-1,4,Monterisi
+sosfanta,Frosinone,4-2-3-1,5,Bracaglia
+sosfanta,Frosinone,4-2-3-1,6,Calo
+sosfanta,Frosinone,4-2-3-1,7,Grillitsch
+sosfanta,Frosinone,4-2-3-1,8,Kvernadze
+sosfanta,Frosinone,4-2-3-1,9,Schmid
+sosfanta,Frosinone,4-2-3-1,10,Ghedjemis
+sosfanta,Frosinone,4-2-3-1,11,Raimondo
+sosfanta,Genoa,3-4-2-1,1,Bijlow
+sosfanta,Genoa,3-4-2-1,2,Marcandalli
+sosfanta,Genoa,3-4-2-1,3,Ostigard
+sosfanta,Genoa,3-4-2-1,4,Vasquez
+sosfanta,Genoa,3-4-2-1,5,Drameh
+sosfanta,Genoa,3-4-2-1,6,Sow
+sosfanta,Genoa,3-4-2-1,7,Frendrup
+sosfanta,Genoa,3-4-2-1,8,Mitaj
+sosfanta,Genoa,3-4-2-1,9,Baldanzi
+sosfanta,Genoa,3-4-2-1,10,El Shaarawy
+sosfanta,Genoa,3-4-2-1,11,Colombo
+sosfanta,Inter,3-5-2,1,Martinez
+sosfanta,Inter,3-5-2,2,Akanji
+sosfanta,Inter,3-5-2,3,Stones
+sosfanta,Inter,3-5-2,4,Bastoni
+sosfanta,Inter,3-5-2,5,Diouf
+sosfanta,Inter,3-5-2,6,Barella
+sosfanta,Inter,3-5-2,7,Calhanoglu
+sosfanta,Inter,3-5-2,8,Jones
+sosfanta,Inter,3-5-2,9,Dimarco
+sosfanta,Inter,3-5-2,10,Martinez L.
+sosfanta,Inter,3-5-2,11,Thuram
+sosfanta,Juventus,4-2-3-1,1,Vicario
+sosfanta,Juventus,4-2-3-1,2,Kalulu
+sosfanta,Juventus,4-2-3-1,3,Bremer
+sosfanta,Juventus,4-2-3-1,4,Lucumi
+sosfanta,Juventus,4-2-3-1,5,Celik
+sosfanta,Juventus,4-2-3-1,6,Douglas Luiz
+sosfanta,Juventus,4-2-3-1,7,Locatelli
+sosfanta,Juventus,4-2-3-1,8,Conceicao
+sosfanta,Juventus,4-2-3-1,9,Mckennie
+sosfanta,Juventus,4-2-3-1,10,Yildiz
+sosfanta,Juventus,4-2-3-1,11,Kolo Muani
+sosfanta,Lazio,4-3-3,1,Mandas
+sosfanta,Lazio,4-3-3,2,Marusic
+sosfanta,Lazio,4-3-3,3,Provstgaard
+sosfanta,Lazio,4-3-3,4,Tavares
+sosfanta,Lazio,4-3-3,5,Rovella
+sosfanta,Lazio,4-3-3,6,Frattesi
+sosfanta,Lazio,4-3-3,7,Taylor
+sosfanta,Lazio,4-3-3,8,Isaksen
+sosfanta,Lazio,4-3-3,9,Pinamonti
+sosfanta,Lazio,4-3-3,10,Zaccagni
+sosfanta,Lazio,4-3-3,11,Motta
+sosfanta,Lecce,4-3-3,1,Falcone
+sosfanta,Lecce,4-3-3,2,Veiga
+sosfanta,Lecce,4-3-3,3,Tiago Gabriel
+sosfanta,Lecce,4-3-3,4,Gaspar
+sosfanta,Lecce,4-3-3,5,Gallo
+sosfanta,Lecce,4-3-3,6,Coulibaly
+sosfanta,Lecce,4-3-3,7,Ilic
+sosfanta,Lecce,4-3-3,8,Gorter
+sosfanta,Lecce,4-3-3,9,Pierotti
+sosfanta,Lecce,4-3-3,10,Geubbels
+sosfanta,Lecce,4-3-3,11,Monteiro
+sosfanta,Milan,3-4-2-1,1,Maignan
+sosfanta,Milan,3-4-2-1,2,Gila
+sosfanta,Milan,3-4-2-1,3,De Winter
+sosfanta,Milan,3-4-2-1,4,Pavlovic
+sosfanta,Milan,3-4-2-1,5,Chukwueze
+sosfanta,Milan,3-4-2-1,6,Rabiot
+sosfanta,Milan,3-4-2-1,7,Modric
+sosfanta,Milan,3-4-2-1,8,Moreira
+sosfanta,Milan,3-4-2-1,9,Pulisic
+sosfanta,Milan,3-4-2-1,10,Ramos
+sosfanta,Monza,3-4-2-1,1,Tornqvist
+sosfanta,Monza,3-4-2-1,2,Goglichidze
+sosfanta,Monza,3-4-2-1,3,Ziolkowski
+sosfanta,Monza,3-4-2-1,4,Carboni
+sosfanta,Monza,3-4-2-1,5,Toure
+sosfanta,Monza,3-4-2-1,6,Folorunsho
+sosfanta,Monza,3-4-2-1,7,Pessina
+sosfanta,Monza,3-4-2-1,8,Mangas
+sosfanta,Monza,3-4-2-1,9,Colpani
+sosfanta,Monza,3-4-2-1,10,Cutrone
+sosfanta,Monza,3-4-2-1,11,Varela
+sosfanta,Napoli,4-3-3,1,Meret
+sosfanta,Napoli,4-3-3,2,Di Lorenzo
+sosfanta,Napoli,4-3-3,3,Rrahmani
+sosfanta,Napoli,4-3-3,4,Badiashile
+sosfanta,Napoli,4-3-3,5,Spinazzola
+sosfanta,Napoli,4-3-3,6,De Bruyne
+sosfanta,Napoli,4-3-3,7,Lobotka
+sosfanta,Napoli,4-3-3,8,Mctominay
+sosfanta,Napoli,4-3-3,9,Politano
+sosfanta,Napoli,4-3-3,10,Hojlund
+sosfanta,Napoli,4-3-3,11,Santos
+sosfanta,Parma,4-3-3,1,Corvi
+sosfanta,Parma,4-3-3,2,Delprato
+sosfanta,Parma,4-3-3,3,Troilo
+sosfanta,Parma,4-3-3,4,Diego Carlos
+sosfanta,Parma,4-3-3,5,Valeri
+sosfanta,Parma,4-3-3,6,Bernabe
+sosfanta,Parma,4-3-3,7,Keita
+sosfanta,Parma,4-3-3,8,Fabbian
+sosfanta,Parma,4-3-3,9,Lontani
+sosfanta,Parma,4-3-3,10,Romero
+sosfanta,Parma,4-3-3,11,Toure
+sosfanta,Roma,4-3-3,1,Svilar
+sosfanta,Roma,4-3-3,2,Mancini
+sosfanta,Roma,4-3-3,3,N'dicka
+sosfanta,Roma,4-3-3,4,Hermoso
+sosfanta,Roma,4-3-3,5,Molina
+sosfanta,Roma,4-3-3,6,Cristante
+sosfanta,Roma,4-3-3,7,Kone
+sosfanta,Roma,4-3-3,8,Wesley
+sosfanta,Roma,4-3-3,9,Dybala
+sosfanta,Roma,4-3-3,10,Mora
+sosfanta,Roma,4-3-3,11,Malen
+sosfanta,Sassuolo,4-2-3-1,1,Muric
+sosfanta,Sassuolo,4-2-3-1,2,Van Der Brempt
+sosfanta,Sassuolo,4-2-3-1,3,Idzes
+sosfanta,Sassuolo,4-2-3-1,4,Leysen
+sosfanta,Sassuolo,4-2-3-1,5,Obrador
+sosfanta,Sassuolo,4-2-3-1,6,Matic
+sosfanta,Sassuolo,4-2-3-1,7,Bakola
+sosfanta,Sassuolo,4-2-3-1,8,Berardi
+sosfanta,Sassuolo,4-2-3-1,9,Thorstvedt
+sosfanta,Sassuolo,4-2-3-1,10,Lauriente
+sosfanta,Sassuolo,4-2-3-1,11,Esposito
+sosfanta,Torino,3-4-2-1,1,Perri
+sosfanta,Torino,3-4-2-1,2,Comuzzo
+sosfanta,Torino,3-4-2-1,3,Coco
+sosfanta,Torino,3-4-2-1,4,Rodriguez
+sosfanta,Torino,3-4-2-1,5,Belghali
+sosfanta,Torino,3-4-2-1,6,Mandragora
+sosfanta,Torino,3-4-2-1,7,Fitz-Jim
+sosfanta,Torino,3-4-2-1,8,Cacciamani
+sosfanta,Torino,3-4-2-1,9,Casadei
+sosfanta,Torino,3-4-2-1,10,Vlasic
+sosfanta,Torino,3-4-2-1,11,Simeone
+sosfanta,Udinese,3-4-2-1,1,Okoye
+sosfanta,Udinese,3-4-2-1,2,Abankwah
+sosfanta,Udinese,3-4-2-1,3,Kabasele
+sosfanta,Udinese,3-4-2-1,4,Solet
+sosfanta,Udinese,3-4-2-1,5,Vojvoda
+sosfanta,Udinese,3-4-2-1,6,Piotrowski
+sosfanta,Udinese,3-4-2-1,7,Karlstrom
+sosfanta,Udinese,3-4-2-1,8,Kamara
+sosfanta,Udinese,3-4-2-1,9,Zaniolo
+sosfanta,Udinese,3-4-2-1,10,Ekkelenkamp
+sosfanta,Udinese,3-4-2-1,11,Davis
+sosfanta,Venezia,3-5-2,1,Stankovic
+sosfanta,Venezia,3-5-2,2,Schingtienne
+sosfanta,Venezia,3-5-2,3,Bella-Kotchap
+sosfanta,Venezia,3-5-2,4,Juan Jesus
+sosfanta,Venezia,3-5-2,5,Mazzocchi
+sosfanta,Venezia,3-5-2,6,Sohm
+sosfanta,Venezia,3-5-2,7,Busio
+sosfanta,Venezia,3-5-2,8,Basic
+sosfanta,Venezia,3-5-2,9,Haps
+sosfanta,Venezia,3-5-2,10,Adams
+sosfanta,Venezia,3-5-2,11,Yeboah
+calciodangolo,Atalanta,4-3-3,1,Carnesecchi
+calciodangolo,Atalanta,4-3-3,2,Bellanova
+calciodangolo,Atalanta,4-3-3,3,Kristensen
+calciodangolo,Atalanta,4-3-3,4,Scalvini
+calciodangolo,Atalanta,4-3-3,5,Zalewski
+calciodangolo,Atalanta,4-3-3,6,Kessie
+calciodangolo,Atalanta,4-3-3,7,Gaetano
+calciodangolo,Atalanta,4-3-3,8,Ederson
+calciodangolo,Atalanta,4-3-3,9,De Ketelaere
+calciodangolo,Atalanta,4-3-3,10,Scamacca
+calciodangolo,Atalanta,4-3-3,11,Rowe
+calciodangolo,Bologna,4-2-3-1,1,Skorupski
+calciodangolo,Bologna,4-2-3-1,2,Zortea
+calciodangolo,Bologna,4-2-3-1,3,Heggem
+calciodangolo,Bologna,4-2-3-1,4,Theate
+calciodangolo,Bologna,4-2-3-1,5,Miranda
+calciodangolo,Bologna,4-2-3-1,6,Amondarain
+calciodangolo,Bologna,4-2-3-1,7,Ferguson
+calciodangolo,Bologna,4-2-3-1,8,Orsolini
+calciodangolo,Bologna,4-2-3-1,9,Bernardeschi
+calciodangolo,Bologna,4-2-3-1,10,Cambiaghi
+calciodangolo,Bologna,4-2-3-1,11,Dovbyk
+calciodangolo,Cagliari,4-3-2-1,1,Caprile
+calciodangolo,Cagliari,4-3-2-1,2,Ze Pedro
+calciodangolo,Cagliari,4-3-2-1,3,Mina
+calciodangolo,Cagliari,4-3-2-1,4,Rodriguez
+calciodangolo,Cagliari,4-3-2-1,5,Obert
+calciodangolo,Cagliari,4-3-2-1,6,Adopo
+calciodangolo,Cagliari,4-3-2-1,7,Romano
+calciodangolo,Cagliari,4-3-2-1,8,Winks
+calciodangolo,Cagliari,4-3-2-1,9,Maldini
+calciodangolo,Cagliari,4-3-2-1,10,Fazzini
+calciodangolo,Cagliari,4-3-2-1,11,Kevin Carlos
+calciodangolo,Como,4-2-3-1,1,Butez
+calciodangolo,Como,4-2-3-1,2,Couto
+calciodangolo,Como,4-2-3-1,3,Ramon
+calciodangolo,Como,4-2-3-1,4,Chalobah
+calciodangolo,Como,4-2-3-1,5,Valle
+calciodangolo,Como,4-2-3-1,6,Perrone
+calciodangolo,Como,4-2-3-1,7,Da Cunha
+calciodangolo,Como,4-2-3-1,8,Diao
+calciodangolo,Como,4-2-3-1,9,Paz
+calciodangolo,Como,4-2-3-1,10,Baturina
+calciodangolo,Como,4-2-3-1,11,Kean
+calciodangolo,Fiorentina,4-3-2-1,1,De Gea
+calciodangolo,Fiorentina,4-3-2-1,2,Jimenez
+calciodangolo,Fiorentina,4-3-2-1,3,Dragusin
+calciodangolo,Fiorentina,4-3-2-1,4,Viery
+calciodangolo,Fiorentina,4-3-2-1,5,Valdepenas
+calciodangolo,Fiorentina,4-3-2-1,6,Ndour
+calciodangolo,Fiorentina,4-3-2-1,7,Oulai
+calciodangolo,Fiorentina,4-3-2-1,8,Atta
+calciodangolo,Fiorentina,4-3-2-1,9,Mastantuono
+calciodangolo,Fiorentina,4-3-2-1,10,Goncalves
+calciodangolo,Fiorentina,4-3-2-1,11,Pellegrino
+calciodangolo,Frosinone,4-3-3,1,Palmisani
+calciodangolo,Frosinone,4-3-3,2,Tchato
+calciodangolo,Frosinone,4-3-3,3,Monterisi
+calciodangolo,Frosinone,4-3-3,4,Calvani
+calciodangolo,Frosinone,4-3-3,5,Terzic
+calciodangolo,Frosinone,4-3-3,6,Grillitsch
+calciodangolo,Frosinone,4-3-3,7,Calo
+calciodangolo,Frosinone,4-3-3,8,Masini
+calciodangolo,Frosinone,4-3-3,9,Schmid
+calciodangolo,Frosinone,4-3-3,10,Bobcek
+calciodangolo,Frosinone,4-3-3,11,Kvernadze
+calciodangolo,Genoa,3-4-2-1,1,Bijlow
+calciodangolo,Genoa,3-4-2-1,2,Marcandalli
+calciodangolo,Genoa,3-4-2-1,3,Ostigard
+calciodangolo,Genoa,3-4-2-1,4,Vasquez
+calciodangolo,Genoa,3-4-2-1,5,Drameh
+calciodangolo,Genoa,3-4-2-1,6,Frendrup
+calciodangolo,Genoa,3-4-2-1,7,Sow
+calciodangolo,Genoa,3-4-2-1,8,Mitaj
+calciodangolo,Genoa,3-4-2-1,9,Baldanzi
+calciodangolo,Genoa,3-4-2-1,10,Vitinha
+calciodangolo,Genoa,3-4-2-1,11,Colombo
+calciodangolo,Inter,3-5-2,1,Martinez Jo.
+calciodangolo,Inter,3-5-2,2,Akanji
+calciodangolo,Inter,3-5-2,3,Stones
+calciodangolo,Inter,3-5-2,4,Bastoni
+calciodangolo,Inter,3-5-2,5,Spence
+calciodangolo,Inter,3-5-2,6,Barella
+calciodangolo,Inter,3-5-2,7,Calhanoglu
+calciodangolo,Inter,3-5-2,8,Jones
+calciodangolo,Inter,3-5-2,9,Dimarco
+calciodangolo,Inter,3-5-2,10,Thuram
+calciodangolo,Inter,3-5-2,11,Martinez L.
+calciodangolo,Juventus,4-2-3-1,1,Vicario
+calciodangolo,Juventus,4-2-3-1,2,Kalulu
+calciodangolo,Juventus,4-2-3-1,3,Bremer
+calciodangolo,Juventus,4-2-3-1,4,Lucumi
+calciodangolo,Juventus,4-2-3-1,5,Celik
+calciodangolo,Juventus,4-2-3-1,6,Locatelli
+calciodangolo,Juventus,4-2-3-1,7,Sarr
+calciodangolo,Juventus,4-2-3-1,8,Conceicao
+calciodangolo,Juventus,4-2-3-1,9,Woltemade
+calciodangolo,Juventus,4-2-3-1,10,Yildiz
+calciodangolo,Juventus,4-2-3-1,11,Kolo Muani
+calciodangolo,Lazio,4-3-3,1,Motta
+calciodangolo,Lazio,4-3-3,2,Marusic
+calciodangolo,Lazio,4-3-3,3,Doekhi
+calciodangolo,Lazio,4-3-3,4,Sutalo
+calciodangolo,Lazio,4-3-3,5,Pedraza
+calciodangolo,Lazio,4-3-3,6,Frattesi
+calciodangolo,Lazio,4-3-3,7,Rovella
+calciodangolo,Lazio,4-3-3,8,Taylor
+calciodangolo,Lazio,4-3-3,9,Isaksen
+calciodangolo,Lazio,4-3-3,10,Pinamonti
+calciodangolo,Lazio,4-3-3,11,Zaccagni
+calciodangolo,Lecce,4-3-3,1,Falcone
+calciodangolo,Lecce,4-3-3,2,Veiga
+calciodangolo,Lecce,4-3-3,3,Gaspar
+calciodangolo,Lecce,4-3-3,4,Tiago Gabriel
+calciodangolo,Lecce,4-3-3,5,Gallo
+calciodangolo,Lecce,4-3-3,6,Coulibaly
+calciodangolo,Lecce,4-3-3,7,Ilic
+calciodangolo,Lecce,4-3-3,8,Ngom
+calciodangolo,Lecce,4-3-3,9,Pierotti
+calciodangolo,Lecce,4-3-3,10,Geubbels
+calciodangolo,Lecce,4-3-3,11,Monteiro
+calciodangolo,Milan,3-4-2-1,1,Maignan
+calciodangolo,Milan,3-4-2-1,2,Gila
+calciodangolo,Milan,3-4-2-1,3,Gabbia
+calciodangolo,Milan,3-4-2-1,4,Pavlovic
+calciodangolo,Milan,3-4-2-1,5,Chukwueze
+calciodangolo,Milan,3-4-2-1,6,Modric
+calciodangolo,Milan,3-4-2-1,7,Rabiot
+calciodangolo,Milan,3-4-2-1,8,Estupinan
+calciodangolo,Milan,3-4-2-1,9,Hutchinson
+calciodangolo,Milan,3-4-2-1,10,Pulisic
+calciodangolo,Milan,3-4-2-1,11,Ramos
+calciodangolo,Monza,3-4-2-1,1,Tornqvist
+calciodangolo,Monza,3-4-2-1,2,Ziolkowski
+calciodangolo,Monza,3-4-2-1,3,Goglichidze
+calciodangolo,Monza,3-4-2-1,4,Carboni
+calciodangolo,Monza,3-4-2-1,5,Birindelli
+calciodangolo,Monza,3-4-2-1,6,Pessina
+calciodangolo,Monza,3-4-2-1,7,Folorunsho
+calciodangolo,Monza,3-4-2-1,8,Mangas
+calciodangolo,Monza,3-4-2-1,9,Ngonge
+calciodangolo,Monza,3-4-2-1,10,Zeballos
+calciodangolo,Monza,3-4-2-1,11,Varela
+calciodangolo,Napoli,4-3-3,1,Meret
+calciodangolo,Napoli,4-3-3,2,Di Lorenzo
+calciodangolo,Napoli,4-3-3,3,Rrahmani
+calciodangolo,Napoli,4-3-3,4,Badiashile
+calciodangolo,Napoli,4-3-3,5,Spinazzola
+calciodangolo,Napoli,4-3-3,6,Anguissa
+calciodangolo,Napoli,4-3-3,7,Lobotka
+calciodangolo,Napoli,4-3-3,8,McTominay
+calciodangolo,Napoli,4-3-3,9,Politano
+calciodangolo,Napoli,4-3-3,10,Hojlund
+calciodangolo,Napoli,4-3-3,11,Santos
+calciodangolo,Parma,4-3-3,1,Corvi
+calciodangolo,Parma,4-3-3,2,Delprato
+calciodangolo,Parma,4-3-3,3,Troilo
+calciodangolo,Parma,4-3-3,4,Diego Carlos
+calciodangolo,Parma,4-3-3,5,Valeri
+calciodangolo,Parma,4-3-3,6,Bernabe
+calciodangolo,Parma,4-3-3,7,Keita
+calciodangolo,Parma,4-3-3,8,Fabbian
+calciodangolo,Parma,4-3-3,9,Almqvist
+calciodangolo,Parma,4-3-3,10,Romero
+calciodangolo,Parma,4-3-3,11,Toure
+calciodangolo,Roma,3-4-2-1,1,Svilar
+calciodangolo,Roma,3-4-2-1,2,Mancini
+calciodangolo,Roma,3-4-2-1,3,N'dicka
+calciodangolo,Roma,3-4-2-1,4,Hermoso
+calciodangolo,Roma,3-4-2-1,5,Molina
+calciodangolo,Roma,3-4-2-1,6,Cristante
+calciodangolo,Roma,3-4-2-1,7,Kone
+calciodangolo,Roma,3-4-2-1,8,Wesley
+calciodangolo,Roma,3-4-2-1,9,Dybala
+calciodangolo,Roma,3-4-2-1,10,Mora
+calciodangolo,Roma,3-4-2-1,11,Malen
+calciodangolo,Sassuolo,4-3-3,1,Muric
+calciodangolo,Sassuolo,4-3-3,2,Van Der Brempt
+calciodangolo,Sassuolo,4-3-3,3,Walukiewicz
+calciodangolo,Sassuolo,4-3-3,4,Idzes
+calciodangolo,Sassuolo,4-3-3,5,Obrador
+calciodangolo,Sassuolo,4-3-3,6,Bakola
+calciodangolo,Sassuolo,4-3-3,7,Matic
+calciodangolo,Sassuolo,4-3-3,8,Adzic
+calciodangolo,Sassuolo,4-3-3,9,Berardi
+calciodangolo,Sassuolo,4-3-3,10,Lauriente
+calciodangolo,Torino,3-4-2-1,1,Perri
+calciodangolo,Torino,3-4-2-1,2,Coco
+calciodangolo,Torino,3-4-2-1,3,Comert
+calciodangolo,Torino,3-4-2-1,4,Comuzzo
+calciodangolo,Torino,3-4-2-1,5,Belghali
+calciodangolo,Torino,3-4-2-1,6,Fitz-Jim
+calciodangolo,Torino,3-4-2-1,7,Mandragora
+calciodangolo,Torino,3-4-2-1,8,Fortini
+calciodangolo,Torino,3-4-2-1,9,Vlasic
+calciodangolo,Torino,3-4-2-1,10,Casadei
+calciodangolo,Torino,3-4-2-1,11,Simeone
+calciodangolo,Udinese,3-5-2,1,Okoye
+calciodangolo,Udinese,3-5-2,2,Bertola
+calciodangolo,Udinese,3-5-2,3,Kabasele
+calciodangolo,Udinese,3-5-2,4,Solet
+calciodangolo,Udinese,3-5-2,5,Vojvoda
+calciodangolo,Udinese,3-5-2,6,Ekkelenkamp
+calciodangolo,Udinese,3-5-2,7,Karlstrom
+calciodangolo,Udinese,3-5-2,8,Piotrowski
+calciodangolo,Udinese,3-5-2,9,Kamara
+calciodangolo,Udinese,3-5-2,10,Zaniolo
+calciodangolo,Udinese,3-5-2,11,Davis
+calciodangolo,Venezia,3-5-2,1,Stankovic
+calciodangolo,Venezia,3-5-2,2,Schingtienne
+calciodangolo,Venezia,3-5-2,3,Bella-Kotchap
+calciodangolo,Venezia,3-5-2,4,Juan Jesus
+calciodangolo,Venezia,3-5-2,5,Hainaut
+calciodangolo,Venezia,3-5-2,6,Basic
+calciodangolo,Venezia,3-5-2,7,Perez
+calciodangolo,Venezia,3-5-2,8,Sohm
+calciodangolo,Venezia,3-5-2,9,Correia
+calciodangolo,Venezia,3-5-2,10,Adams
+calciodangolo,Venezia,3-5-2,11,Yeboah
+fantamaster,Atalanta,4-3-3,1,Carnesecchi
+fantamaster,Atalanta,4-3-3,2,Zappacosta
+fantamaster,Atalanta,4-3-3,3,Kristensen
+fantamaster,Atalanta,4-3-3,4,Scalvini
+fantamaster,Atalanta,4-3-3,5,Bernasconi
+fantamaster,Atalanta,4-3-3,6,Ederson
+fantamaster,Atalanta,4-3-3,7,Gaetano
+fantamaster,Atalanta,4-3-3,8,Kessie
+fantamaster,Atalanta,4-3-3,9,De Ketelaere
+fantamaster,Atalanta,4-3-3,10,Scamacca
+fantamaster,Atalanta,4-3-3,11,Raspadori
+fantamaster,Bologna,4-3-3,1,Skorupski
+fantamaster,Bologna,4-3-3,2,Zortea
+fantamaster,Bologna,4-3-3,3,Theate
+fantamaster,Bologna,4-3-3,4,Heggem
+fantamaster,Bologna,4-3-3,5,Miranda
+fantamaster,Bologna,4-3-3,6,Ferguson
+fantamaster,Bologna,4-3-3,7,Amondarain
+fantamaster,Bologna,4-3-3,8,Bernardeschi
+fantamaster,Bologna,4-3-3,9,Orsolini
+fantamaster,Bologna,4-3-3,10,Piccoli
+fantamaster,Bologna,4-3-3,11,Cambiaghi
+fantamaster,Cagliari,4-3-2-1,1,Caprile
+fantamaster,Cagliari,4-3-2-1,2,Sugawara
+fantamaster,Cagliari,4-3-2-1,3,Mina
+fantamaster,Cagliari,4-3-2-1,4,Rodriguez
+fantamaster,Cagliari,4-3-2-1,5,Obert
+fantamaster,Cagliari,4-3-2-1,6,Adopo
+fantamaster,Cagliari,4-3-2-1,7,Winks
+fantamaster,Cagliari,4-3-2-1,8,Romano
+fantamaster,Cagliari,4-3-2-1,9,Fazzini
+fantamaster,Cagliari,4-3-2-1,10,Maldini
+fantamaster,Cagliari,4-3-2-1,11,Kevin Carlos
+fantamaster,Como,4-2-3-1,1,Butez
+fantamaster,Como,4-2-3-1,2,Couto
+fantamaster,Como,4-2-3-1,3,Ramon
+fantamaster,Como,4-2-3-1,4,Chalobah
+fantamaster,Como,4-2-3-1,5,Valle
+fantamaster,Como,4-2-3-1,6,Milla
+fantamaster,Como,4-2-3-1,7,Da Cunha
+fantamaster,Como,4-2-3-1,8,Diao
+fantamaster,Como,4-2-3-1,9,Paz
+fantamaster,Como,4-2-3-1,10,Baturina
+fantamaster,Como,4-2-3-1,11,Kean
+fantamaster,Fiorentina,4-3-2-1,1,De Gea
+fantamaster,Fiorentina,4-3-2-1,2,Jimenez
+fantamaster,Fiorentina,4-3-2-1,3,Dragusin
+fantamaster,Fiorentina,4-3-2-1,4,Pongracic
+fantamaster,Fiorentina,4-3-2-1,5,Valdepenas
+fantamaster,Fiorentina,4-3-2-1,6,Atta
+fantamaster,Fiorentina,4-3-2-1,7,Fagioli
+fantamaster,Fiorentina,4-3-2-1,8,Ndour
+fantamaster,Fiorentina,4-3-2-1,9,Mastantuono
+fantamaster,Fiorentina,4-3-2-1,10,Goncalves
+fantamaster,Fiorentina,4-3-2-1,11,Pellegrino
+fantamaster,Frosinone,4-2-3-1,1,Palmisani
+fantamaster,Frosinone,4-2-3-1,2,Oyono
+fantamaster,Frosinone,4-2-3-1,3,Calvani
+fantamaster,Frosinone,4-2-3-1,4,Monterisi
+fantamaster,Frosinone,4-2-3-1,5,Bracaglia
+fantamaster,Frosinone,4-2-3-1,6,Calo
+fantamaster,Frosinone,4-2-3-1,7,Masini
+fantamaster,Frosinone,4-2-3-1,8,Fini
+fantamaster,Frosinone,4-2-3-1,9,Schmid
+fantamaster,Frosinone,4-2-3-1,10,Raimondo
+fantamaster,Frosinone,4-2-3-1,11,Kvernadze
+fantamaster,Genoa,3-4-2-1,1,Bijlow
+fantamaster,Genoa,3-4-2-1,2,Marcandalli
+fantamaster,Genoa,3-4-2-1,3,Ostigard
+fantamaster,Genoa,3-4-2-1,4,Vasquez
+fantamaster,Genoa,3-4-2-1,5,Drameh
+fantamaster,Genoa,3-4-2-1,6,Frendrup
+fantamaster,Genoa,3-4-2-1,7,Sow
+fantamaster,Genoa,3-4-2-1,8,Ellertsson
+fantamaster,Genoa,3-4-2-1,9,Baldanzi
+fantamaster,Genoa,3-4-2-1,10,Vitinha
+fantamaster,Genoa,3-4-2-1,11,Colombo
+fantamaster,Inter,3-5-2,1,Martinez
+fantamaster,Inter,3-5-2,2,Bisseck
+fantamaster,Inter,3-5-2,3,Akanji
+fantamaster,Inter,3-5-2,4,Bastoni
+fantamaster,Inter,3-5-2,5,Spence
+fantamaster,Inter,3-5-2,6,Barella
+fantamaster,Inter,3-5-2,7,Calhanoglu
+fantamaster,Inter,3-5-2,8,Zielinski
+fantamaster,Inter,3-5-2,9,Dimarco
+fantamaster,Inter,3-5-2,10,Martinez L.
+fantamaster,Inter,3-5-2,11,Thuram
+fantamaster,Juventus,4-2-3-1,1,Vicario
+fantamaster,Juventus,4-2-3-1,2,Kalulu
+fantamaster,Juventus,4-2-3-1,3,Bremer
+fantamaster,Juventus,4-2-3-1,4,Lucumi
+fantamaster,Juventus,4-2-3-1,5,Celik
+fantamaster,Juventus,4-2-3-1,6,Locatelli
+fantamaster,Juventus,4-2-3-1,7,Douglas Luiz
+fantamaster,Juventus,4-2-3-1,8,Conceicao
+fantamaster,Juventus,4-2-3-1,9,McKennie
+fantamaster,Juventus,4-2-3-1,10,Boga
+fantamaster,Juventus,4-2-3-1,11,Kolo Muani
+fantamaster,Lazio,4-3-3,1,Mandas
+fantamaster,Lazio,4-3-3,2,Marusic
+fantamaster,Lazio,4-3-3,3,Sutalo
+fantamaster,Lazio,4-3-3,4,Provstgaard
+fantamaster,Lazio,4-3-3,5,Nuno Tavares
+fantamaster,Lazio,4-3-3,6,Frattesi
+fantamaster,Lazio,4-3-3,7,Rovella
+fantamaster,Lazio,4-3-3,8,Taylor
+fantamaster,Lazio,4-3-3,9,Gudmundsson
+fantamaster,Lazio,4-3-3,10,Pinamonti
+fantamaster,Lazio,4-3-3,11,Zaccagni
+fantamaster,Lecce,4-2-3-1,1,Falcone
+fantamaster,Lecce,4-2-3-1,2,Veiga
+fantamaster,Lecce,4-2-3-1,3,Gaspar
+fantamaster,Lecce,4-2-3-1,4,Tiago Gabriel
+fantamaster,Lecce,4-2-3-1,5,Gallo
+fantamaster,Lecce,4-2-3-1,6,Ilic
+fantamaster,Lecce,4-2-3-1,7,Coulibaly
+fantamaster,Lecce,4-2-3-1,8,Pierotti
+fantamaster,Lecce,4-2-3-1,9,Gorter
+fantamaster,Lecce,4-2-3-1,10,N'dri
+fantamaster,Lecce,4-2-3-1,11,Stulic
+fantamaster,Milan,3-4-2-1,1,Maignan
+fantamaster,Milan,3-4-2-1,2,Gila
+fantamaster,Milan,3-4-2-1,3,Gabbia
+fantamaster,Milan,3-4-2-1,4,Pavlovic
+fantamaster,Milan,3-4-2-1,5,Chukwueze
+fantamaster,Milan,3-4-2-1,6,Modric
+fantamaster,Milan,3-4-2-1,7,Musah
+fantamaster,Milan,3-4-2-1,8,Bartesaghi
+fantamaster,Milan,3-4-2-1,9,Rabiot
+fantamaster,Milan,3-4-2-1,10,Pulisic
+fantamaster,Milan,3-4-2-1,11,Ramos
+fantamaster,Monza,3-4-2-1,1,Tornqvist
+fantamaster,Monza,3-4-2-1,2,Kouadio
+fantamaster,Monza,3-4-2-1,3,Ziolkowski
+fantamaster,Monza,3-4-2-1,4,Carboni
+fantamaster,Monza,3-4-2-1,5,Birindelli
+fantamaster,Monza,3-4-2-1,6,Folorunsho
+fantamaster,Monza,3-4-2-1,7,Mout
+fantamaster,Monza,3-4-2-1,8,Mangas
+fantamaster,Monza,3-4-2-1,9,Colpani
+fantamaster,Monza,3-4-2-1,10,Cutrone
+fantamaster,Monza,3-4-2-1,11,Varela
+fantamaster,Napoli,4-3-3,1,Meret
+fantamaster,Napoli,4-3-3,2,Di Lorenzo
+fantamaster,Napoli,4-3-3,3,Rrahmani
+fantamaster,Napoli,4-3-3,4,Badiashile
+fantamaster,Napoli,4-3-3,5,Spinazzola
+fantamaster,Napoli,4-3-3,6,Anguissa
+fantamaster,Napoli,4-3-3,7,Lobotka
+fantamaster,Napoli,4-3-3,8,McTominay
+fantamaster,Napoli,4-3-3,9,Politano
+fantamaster,Napoli,4-3-3,10,Hojlund
+fantamaster,Napoli,4-3-3,11,Santos
+fantamaster,Parma,4-3-2-1,1,Corvi
+fantamaster,Parma,4-3-2-1,2,Delprato
+fantamaster,Parma,4-3-2-1,3,Troilo
+fantamaster,Parma,4-3-2-1,4,Diego Carlos
+fantamaster,Parma,4-3-2-1,5,Valeri
+fantamaster,Parma,4-3-2-1,6,Bernabe
+fantamaster,Parma,4-3-2-1,7,Keita
+fantamaster,Parma,4-3-2-1,8,Fabbian
+fantamaster,Parma,4-3-2-1,9,Toure
+fantamaster,Parma,4-3-2-1,10,Lontani
+fantamaster,Parma,4-3-2-1,11,Romero
+fantamaster,Roma,3-4-2-1,1,Svilar
+fantamaster,Roma,3-4-2-1,2,Mancini
+fantamaster,Roma,3-4-2-1,3,N'dicka
+fantamaster,Roma,3-4-2-1,4,Hermoso
+fantamaster,Roma,3-4-2-1,5,Molina
+fantamaster,Roma,3-4-2-1,6,Cristante
+fantamaster,Roma,3-4-2-1,7,Kone
+fantamaster,Roma,3-4-2-1,8,Wesley
+fantamaster,Roma,3-4-2-1,9,Mora
+fantamaster,Roma,3-4-2-1,10,Dybala
+fantamaster,Roma,3-4-2-1,11,Malen
+fantamaster,Sassuolo,4-3-3,1,Muric
+fantamaster,Sassuolo,4-3-3,2,Van Der Brempt
+fantamaster,Sassuolo,4-3-3,3,Leysen
+fantamaster,Sassuolo,4-3-3,4,Idzes
+fantamaster,Sassuolo,4-3-3,5,Doig
+fantamaster,Sassuolo,4-3-3,6,Bakola
+fantamaster,Sassuolo,4-3-3,7,Matic
+fantamaster,Sassuolo,4-3-3,8,Adzic
+fantamaster,Sassuolo,4-3-3,9,Berardi
+fantamaster,Sassuolo,4-3-3,10,Bowie
+fantamaster,Sassuolo,4-3-3,11,Lauriente
+fantamaster,Torino,3-4-2-1,1,Perri
+fantamaster,Torino,3-4-2-1,2,Comuzzo
+fantamaster,Torino,3-4-2-1,3,Comert
+fantamaster,Torino,3-4-2-1,4,Coco
+fantamaster,Torino,3-4-2-1,5,Belghali
+fantamaster,Torino,3-4-2-1,6,Mandragora
+fantamaster,Torino,3-4-2-1,7,Fitz-Jim
+fantamaster,Torino,3-4-2-1,8,Cacciamani
+fantamaster,Torino,3-4-2-1,9,Vlasic
+fantamaster,Torino,3-4-2-1,10,Casadei
+fantamaster,Torino,3-4-2-1,11,Simeone
+fantamaster,Udinese,3-5-2,1,Okoye
+fantamaster,Udinese,3-5-2,2,Abankwah
+fantamaster,Udinese,3-5-2,3,Kabasele
+fantamaster,Udinese,3-5-2,4,Solet
+fantamaster,Udinese,3-5-2,5,Vojvoda
+fantamaster,Udinese,3-5-2,6,Ekkelenkamp
+fantamaster,Udinese,3-5-2,7,Karlstrom
+fantamaster,Udinese,3-5-2,8,Piotrowski
+fantamaster,Udinese,3-5-2,9,Kamara
+fantamaster,Udinese,3-5-2,10,Zaniolo
+fantamaster,Udinese,3-5-2,11,Davis
+fantamaster,Venezia,3-5-2,1,Stankovic
+fantamaster,Venezia,3-5-2,2,Bella-Kotchap
+fantamaster,Venezia,3-5-2,3,Schingtienne
+fantamaster,Venezia,3-5-2,4,Juan Jesus
+fantamaster,Venezia,3-5-2,5,Mazzocchi
+fantamaster,Venezia,3-5-2,6,Basic
+fantamaster,Venezia,3-5-2,7,Busio
+fantamaster,Venezia,3-5-2,8,Sohm
+fantamaster,Venezia,3-5-2,9,Haps
+fantamaster,Venezia,3-5-2,10,Adams
+fantamaster,Venezia,3-5-2,11,Yeboah

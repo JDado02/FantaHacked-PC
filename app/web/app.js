@@ -25,6 +25,9 @@ const NOME_RUOLO = { P: 'Portieri', D: 'Difensori', C: 'Centrocampisti', A: 'Att
 // sgrammaticata li' fa sembrare approssimativo anche il conto sotto.
 const NOME_SINGOLARE = { P: 'portiere', D: 'difensore',
                          C: 'centrocampista', A: 'attaccante' };
+// Il tasto che sceglie la squadra i-esima (da zero): 1..9, poi 0 per la
+// decima. Oltre la decima non c'e' scorciatoia, e il pulsante non la mostra.
+const tastoSquadra = (i) => (i === 9 ? '0' : String(i + 1));
 
 const S = {
   stato: null,        // riepilogo dal server
@@ -1244,7 +1247,7 @@ function disegnaScheda(mantieni) {
   }
   if (!venduto && st.fase && d.ruolo !== st.fase) {
     avvisi.push(['', `Si stanno chiamando <b>${NOME_RUOLO[st.fase].toLowerCase()}</b>,
-      questo &egrave; un ${NOME_RUOLO[d.ruolo].slice(0, -1).toLowerCase()}.
+      questo &egrave; un ${NOME_SINGOLARE[d.ruolo]}.
       Puoi registrarlo lo stesso, ma controlla di non aver sbagliato giocatore.`]);
   }
 
@@ -1301,7 +1304,7 @@ function disegnaScheda(mantieni) {
       <div>
         <div class="scheda-nome">${esc(d.nome)} ${grado(d.gerarchia)}${rigore(d.gerarchia)}${fuoriLista(d)}</div>
         <div class="scheda-sotto"><b>${esc(d.squadra)}</b> ·
-          quotazione ${d.qi} · ${NOME_RUOLO[d.ruolo].slice(0, -1).toLowerCase()}
+          quotazione ${d.qi} · ${NOME_SINGOLARE[d.ruolo]}
           ${stima ? ' · <b>stima da quotazione</b>' : ''}</div>
       </div>
       <!-- Aprire un giocatore dal listone lasciava senza via d'uscita: la
@@ -1348,7 +1351,7 @@ function disegnaScheda(mantieni) {
           const pieno = p.slot[d.ruolo] >= st.regole.slot[d.ruolo];
           return `<button class="chi${p.io ? ' mio' : ''}${p.id === S.acquirente ? ' scelto' : ''}"
                     data-acquirente="${p.id}" ${pieno ? 'disabled title="reparto pieno"' : ''}>
-                    <kbd>${i + 1}</kbd>${esc(p.nome)}</button>`;
+                    ${i < 10 ? `<kbd>${tastoSquadra(i)}</kbd>` : ''}${esc(p.nome)}</button>`;
         }).join('')}
       </div>
       <div class="assegna-prezzo">
@@ -1421,7 +1424,7 @@ function apriRinomina() {
   f.innerHTML = S.stato.presidenti.map((p, i) => `
     <label class="rinomina-riga">
       <span>${p.io ? 'tu' : i}</span>
-      <input type="text" maxlength="24" data-presidente="${p.id}"
+      <input type="text" maxlength="24" data-rinomina="${p.id}"
              value="${esc(p.nome)}">
     </label>`).join('') + `
     <div class="rinomina-azioni">
@@ -1569,7 +1572,10 @@ document.addEventListener('click', async (ev) => {
     return;
   }
 
-  const squadra = t.closest('[data-presidente]');
+  // Solo la scheda della squadra nella barra: prima bastava un qualunque
+  // elemento con `data-presidente`, e i campi per correggere i nomi lo
+  // avevano. Cliccarci dentro per scrivere passava il turno a quella squadra.
+  const squadra = t.closest('.squadra[data-presidente]');
   if (squadra) {
     const id = parseInt(squadra.dataset.presidente, 10);
     try { S.stato = await post('/api/turno', { presidente: id }); disegna(); }
@@ -1656,9 +1662,12 @@ document.addEventListener('keydown', (ev) => {
       && $('#avvio').hidden === false) {
     ev.preventDefault(); nuovaAsta(); return;
   }
-  // Cifre 1..8: scelgono chi si e' aggiudicato il giocatore sotto esame.
-  if (!dentroCampo && S.scheda && /^[1-9]$/.test(ev.key)) {
-    const i = parseInt(ev.key, 10) - 1;
+  // Cifre 1..9, e 0 per la decima: scelgono chi si e' aggiudicato il
+  // giocatore sotto esame. Prima il pulsante della decima squadra mostrava
+  // "10", che da tastiera non si puo' premere, e dall'undicesima in poi le
+  // etichette promettevano scorciatoie che non c'erano.
+  if (!dentroCampo && S.scheda && /^[0-9]$/.test(ev.key)) {
+    const i = ev.key === '0' ? 9 : parseInt(ev.key, 10) - 1;
     const p = S.stato.presidenti[i];
     if (p) {
       // Senza questo, la stessa cifra finisce anche dentro il campo prezzo

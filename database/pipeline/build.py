@@ -10,20 +10,48 @@ Uso:  python build.py
 import csv, json, os, sys, collections, datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.abspath(__file__)))), 'motore'))
 from nomi import norm, variants, split_fanta, chiavi_understat, combacia_iniziale
+import stagione
 
 BASE  = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONTI = os.path.join(BASE, 'fonti')
 OUT   = BASE
 
-STAGIONE_CORRENTE = '2026-27'
-STAGIONI_STORICHE = ['2025-26', '2024-25', '2023-24']
+# Quali stagioni: in `motore/stagione.py`, che e' l'unico posto da cambiare.
+STAGIONE_CORRENTE = stagione.CORRENTE
+STAGIONI_STORICHE = list(stagione.CONCLUSE)
+ULTIMA = stagione.ULTIMA_CONCLUSA
 # Stagioni dei due listoni del seed, verificate confrontando i gol con la
 # fonte statistica indipendente: 99.2% e 99.6% di accordo.
 LISTONE_SEASON = {'seed_listone_stagione_recente.csv':    '2025-26',
                   'seed_listone_stagione_precedente.csv': '2024-25'}
 UNDERSTAT_SEASON = {2023: '2023-24', 2024: '2024-25', 2025: '2025-26'}
+# A campionato iniziato entra anche la stagione in corso: le giornate gia'
+# giocate, lette da `fonti/web/aggiorna_letture.py`. Se i file non ci sono -
+# a inizio stagione, prima della prima giornata - si va avanti senza.
+if os.path.exists(os.path.join(FONTI, 'seed_listone_stagione_in_corso.csv')):
+    LISTONE_SEASON['seed_listone_stagione_in_corso.csv'] = STAGIONE_CORRENTE
+_ANNO_CORRENTE = int(STAGIONE_CORRENTE[:4])
+if os.path.exists(os.path.join(FONTI, 'understat_seriea_%d.json' % _ANNO_CORRENTE)):
+    UNDERSTAT_SEASON[_ANNO_CORRENTE] = STAGIONE_CORRENTE
 MINUTI_STAGIONE = 38 * 90
+# Il listone com'era quando e' stata compilata la tabella dei prezzi d'asta
+# (`seed_prezzi_asta.csv`). Serve a riportare quei prezzi a oggi: vedi la
+# sezione 10. Se manca, i prezzi restano quelli della tabella.
+LISTONE_DEI_PREZZI = os.path.join(FONTI, 'web', 'storico', '2026-09-10',
+                                  'seed_giocatori_correnti.csv')
+# Il riprezzamento non puo' moltiplicare o dividere per piu' di tanto: e' una
+# correzione del prezzo di allora, non un prezzo nuovo.
+RIPREZZA_MAX = 3.0
+# E sulle quotazioni minuscole il rapporto e' rumore: da 1 a 3 non e' "il
+# triplo". Questo cuscinetto lo smorza.
+RIPREZZA_CUSCINETTO = 5.0
+# Il giorno delle ultime letture. E' la data dei dati, e non quella in cui
+# si lancia lo script: rifare la pipeline sugli stessi file deve dare gli
+# stessi file, altrimenti "niente da pubblicare" non vorrebbe dire niente.
+DATA_DATI = stagione.data_riferimento(os.path.join(FONTI, 'web', 'fonti.csv'))
 
 lacune = []
 def lacuna(file, id_, colonna, motivo, fonte=''):
@@ -281,10 +309,10 @@ squadre_correnti = sorted(set(sq(r['squadra']) for r in correnti))
 # origine: senza questa soglia, un club con un solo giocatore risulterebbe
 # non promosso e con zero gol subiti, e il suo portiere sembrerebbe imbattibile.
 MIN_ROSA_STORICA = 15
-_rose = collections.Counter(sq(r['squadra']) for r in listoni['2025-26'])
+_rose = collections.Counter(sq(r['squadra']) for r in listoni[ULTIMA])
 storiche_2526 = set(t for t, n in _rose.items() if n >= MIN_ROSA_STORICA)
 gf_prec, gs_prec = collections.Counter(), collections.Counter()
-for row in listoni['2025-26']:
+for row in listoni[ULTIMA]:
     t = sq(row['squadra'])
     gf_prec[t] += num(row['gf'], int) or 0
     gs_prec[t] += num(row['gs'], int) or 0
@@ -305,13 +333,18 @@ n_squadre = scrivi('squadre.csv',
 
 
 # ------------------------------------------------------------ 5. GIOCATORI
-squadra_2526 = dict((int(row['id']), sq(row['squadra'])) for row in listoni['2025-26'])
+squadra_2526 = dict((int(row['id']), sq(row['squadra'])) for row in listoni[ULTIMA])
 
 righe = []
 for r in correnti:
     pid = id_di[r['nome']]
     prec = squadra_2526.get(pid)
-    nuovo = '' if prec is None else (1 if prec != sq(r['squadra']) else 0)
+    # Chi la stagione scorsa in serie A non c'era e' arrivato quest'anno:
+    # dall'estero, dalla B, dalle giovanili. Prima restava vuoto - 166
+    # giocatori - e il calcolo della titolarita' non applicava lo sconto di
+    # certezza a chi lo meritava di piu': quello di cui lo storico non dice
+    # niente.
+    nuovo = 1 if prec is None else (1 if prec != sq(r['squadra']) else 0)
     u = match_us.get(r['nome'])
     righe.append({
         'id': pid, 'nome': r['nome'],
@@ -326,9 +359,6 @@ for r in correnti:
     if not u:
         lacuna('giocatori.csv', pid, 'nome_completo',
                'non abbinato alla fonte statistica', 'understat')
-    if nuovo == '':
-        lacuna('giocatori.csv', pid, 'nuovo_acquisto',
-               'nessuna squadra nota per la stagione 2025-26', '')
 righe.sort(key=lambda x: x['id'])
 n_gioc = scrivi('giocatori.csv',
     ['id', 'nome', 'nome_completo', 'squadra', 'ruolo', 'qi', 'qa', 'fvm',
@@ -363,7 +393,7 @@ for r in correnti:
         anno = inv_stag[stag]
         us = u['seasons'].get(anno) if u else None
         minuti = num(us['time'], int) if us else ''
-        if stag == '2025-26':
+        if stag == ULTIMA:
             minuti_di[pid] = minuti
         riga = {'id': pid, 'stagione': stag, 'squadra': sq(src['squadra']),
                 'ruolo': src['ruolo'], 'minuti': minuti}
@@ -411,7 +441,7 @@ lacuna('avanzate.csv', '', 'tocchi_area', 'non esposto dalla fonte utilizzata', 
 # ------------------------------------------------------------- 8. CONTESTO
 # titolarita NON viene stimata: e' un giudizio prospettico. Viene fornita solo
 # la quota minuti storica, che e' un dato calcolato su fonte reale.
-rig_2526 = dict((int(row['id']), num(row['rc'], int) or 0) for row in listoni['2025-26'])
+rig_2526 = dict((int(row['id']), num(row['rc'], int) or 0) for row in listoni[ULTIMA])
 
 righe = []
 for r in correnti:
@@ -424,7 +454,7 @@ for r in correnti:
         lacuna('contesto.csv', pid, 'rigorista', 'nessuno storico rigori calciati', '')
     else:
         rigorista = 1 if rc >= 3 else (2 if rc >= 1 else 0)
-        fonte_rig = 'derivato_da_rigori_calciati_2025-26'
+        fonte_rig = 'derivato_da_rigori_calciati_%s' % ULTIMA
     righe.append({
         'id': pid, 'titolarita': '', 'quota_minuti_2025_26': quota,
         'ballottaggio_con': '', 'rigorista': rigorista, 'fonte_rigorista': fonte_rig,
@@ -464,7 +494,52 @@ n_cal = scrivi('calendario.csv', ['giornata', 'data', 'casa', 'trasferta'], righ
 
 
 # --------------------------------------------------------- 10. PREZZI ASTA
+# I prezzi medi d'asta vengono da una tabella compilata a inizio settembre.
+# A campionato iniziato invecchiano in fretta, e in un verso preciso: chi e'
+# partito forte oggi costa il doppio (Kvernadze, Raimondo), chi ha perso il
+# posto o si e' fatto male la meta' (Raspadori, Locatelli). Il motore li usa
+# due volte - per stimare la curva dei prezzi e, con `fiducia_nel_mercato`,
+# come parere del mercato su quanto vale un giocatore - quindi un prezzo
+# vecchio sposta sia quanto il programma pensa che costi, sia quanto pensa
+# che valga.
+#
+# Il mercato un numero aggiornato lo pubblica: l'FVM del listone ufficiale.
+# Non si sostituisce al prezzo della tabella (non e' sulla stessa scala: sui
+# giocatori di fascia media vale circa il triplo dei prezzi pagati davvero),
+# ma il suo **movimento** si': il prezzo di allora moltiplicato per quanto e'
+# cambiato l'FVM da allora a oggi.
+def _fvm(v):
+    try:
+        f = float(v)
+    except (TypeError, ValueError):
+        return None
+    return f if f > 0 else None
+
 idx_nome = dict((norm(r['nome']), id_di[r['nome']]) for r in correnti)
+fvm_ora = dict((norm(r['nome']), _fvm(r.get('fvm'))) for r in correnti)
+uff_di = dict((norm(r['nome']), (r.get('id_ufficiale') or '').strip())
+              for r in correnti)
+fvm_allora = {}
+if os.path.exists(LISTONE_DEI_PREZZI):
+    with open(LISTONE_DEI_PREZZI, encoding='utf-8', newline='') as f:
+        for r in csv.DictReader(f):
+            if (r.get('id_ufficiale') or '').strip():
+                fvm_allora[r['id_ufficiale'].strip()] = _fvm(r.get('fvm'))
+
+def riprezza(nome, prezzo):
+    """Il prezzo della tabella, portato al mercato di oggi. (prezzo, fattore)"""
+    if prezzo in ('', None):
+        return prezzo, None
+    chiave = norm(nome)
+    ora, allora = fvm_ora.get(chiave), fvm_allora.get(uff_di.get(chiave, ''))
+    if ora is None or allora is None:
+        return prezzo, None
+    k = (ora + RIPREZZA_CUSCINETTO) / (allora + RIPREZZA_CUSCINETTO)
+    k = max(1.0 / RIPREZZA_MAX, min(RIPREZZA_MAX, k))
+    return round(prezzo * k, 1), k
+
+_DATA_PREZZI = os.path.basename(os.path.dirname(LISTONE_DEI_PREZZI))
+riprezzati = 0
 righe = []
 for p in prezzi:
     nome = p['nome_maiuscolo']
@@ -472,11 +547,17 @@ for p in prezzi:
     if pid == '':
         lacuna('prezzi_asta.csv', '', nome,
                'nome non presente nel listone corrente: riga senza id', '')
+    prezzo, k = riprezza(nome, num(p['prezzo_medio_per_1000_crediti']))
+    fonte = 'tabella_prezzi_medi_asta_seed'
+    if k is not None and abs(k - 1.0) >= 0.005:
+        fonte += ' x FVM %s/%s (%.2f)' % (DATA_DATI, _DATA_PREZZI, k)
+        riprezzati += 1
     righe.append({'id': pid, 'nome': nome,
-                  'prezzo_medio_per_1000': num(p['prezzo_medio_per_1000_crediti']),
+                  'prezzo_medio_per_1000': prezzo,
                   'mediana_per_1000': '', 'p25': '', 'p75': '',
                   'n_campioni': '', 'partecipanti': '',
-                  'fonte': 'tabella_prezzi_medi_asta_seed'})
+                  'fonte': fonte})
+print("  prezzi d'asta riportati a oggi con l'FVM: %d su %d" % (riprezzati, len(prezzi)))
 righe.sort(key=lambda x: (x['id'] == '', x['id'] if x['id'] != '' else 0))
 n_prz = scrivi('prezzi_asta.csv',
     ['id', 'nome', 'prezzo_medio_per_1000', 'mediana_per_1000', 'p25', 'p75',
@@ -591,26 +672,49 @@ n_lac = scrivi('lacune.csv', ['file', 'id', 'colonna', 'motivo', 'fonte_tentata'
 
 
 # ------------------------------------------------------------ 13. MANIFEST
+def _fonti_web():
+    """Le letture dal web, come le dichiara `fonti/web/fonti.csv`."""
+    p = os.path.join(FONTI, 'web', 'fonti.csv')
+    if not os.path.exists(p):
+        return []
+    with open(p, encoding='utf-8', newline='') as f:
+        return [{'blocco': 'web', 'nome': r['fonte'], 'url': r['url'],
+                 'tipo': r['tipo'], 'scaricato_il': r['letta_il'],
+                 'peso': r['peso'], 'note': r['nota']}
+                for r in csv.DictReader(f)]
+
+
 manifest = collections.OrderedDict([
-    ('generato_il', datetime.date.today().isoformat()),
+    ('generato_il', DATA_DATI),
+    ('data_riferimento', DATA_DATI),
     ('stagione_corrente', STAGIONE_CORRENTE),
     ('stagioni_storiche', STAGIONI_STORICHE),
+    ('stagioni_nei_dati', sorted(set(LISTONE_SEASON.values())
+                                 | set(UNDERSTAT_SEASON.values()), reverse=True)),
     ('modalita', 'classic'),
     ('fonti', [
         {'blocco': 'anagrafica_quotazioni',
-         'nome': 'Listone corrente estratto dal foglio FantaAlgoritmo PRO',
-         'url': 'locale: fonti/seed_giocatori_correnti.csv',
-         'tipo': 'seed_estratto', 'scaricato_il': '2026-09-02',
-         'note': 'Espone una sola quotazione: qa impostata uguale a qi.'},
+         'nome': 'Listone ufficiale fantacalcio.it (quotazione attuale, FVM, id ufficiali)',
+         'url': 'https://www.fantacalcio.it/quotazioni-fantacalcio',
+         'tipo': 'pagina', 'scaricato_il': DATA_DATI,
+         'note': 'qi e qa sono entrambe la quotazione attuale: e quella che la '
+                 'stanza vede la sera dell asta.'},
         {'blocco': 'statistiche_storiche',
          'nome': 'Listoni statistici con id ufficiali Fantacalcio',
          'url': 'locale: fonti/seed_listone_stagione_*.csv',
          'tipo': 'seed_estratto', 'scaricato_il': '2026-09-02',
          'note': 'Stagioni identificate confrontando i gol con la fonte avanzata: '
                  'accordo 99.2% (2025-26) e 99.6% (2024-25).'},
+        {'blocco': 'statistiche_stagione_in_corso',
+         'nome': 'Statistiche fantacalcio.it della stagione in corso',
+         'url': 'https://www.fantacalcio.it/statistiche-serie-a/%s/fantacalcio/medie'
+                % STAGIONE_CORRENTE,
+         'tipo': 'pagina', 'scaricato_il': DATA_DATI,
+         'note': 'Presenze a voto, medie, gol, assist e rigori delle giornate gia giocate.'},
         {'blocco': 'minuti_avanzate', 'nome': 'Understat - Serie A',
-         'url': 'https://understat.com/getLeagueData/Serie%20A/{2023,2024,2025}',
-         'tipo': 'endpoint_json', 'scaricato_il': '2026-09-02',
+         'url': 'https://understat.com/getLeagueData/Serie%%20A/{%s}'
+                % ','.join(str(a) for a in sorted(UNDERSTAT_SEASON)),
+         'tipo': 'endpoint_json', 'scaricato_il': DATA_DATI,
          'note': 'Fonte unica per minuti, xG, npxG, xA, tiri, passaggi chiave. '
                  'Non copre la Serie B: i giocatori delle neopromosse sono assenti.'},
         {'blocco': 'calendario', 'nome': 'fixturedownload.com - Serie A 2026/27',
@@ -619,12 +723,12 @@ manifest = collections.OrderedDict([
          'note': '380 partite, 38 giornate, 20 squadre coerenti col listone.'},
         {'blocco': 'prezzi_asta', 'nome': 'Tabella prezzi medi d asta del foglio di partenza',
          'url': 'locale: fonti/seed_prezzi_asta.csv', 'tipo': 'seed_estratto',
-         'scaricato_il': '2026-09-02', 'note': 'Solo media, normalizzata su 1000 crediti.'},
-        {'blocco': 'contesto_editoriale', 'nome': 'NON REPERITO', 'url': '',
-         'tipo': 'mancante', 'scaricato_il': '',
-         'note': 'titolarita, ballottaggi, calci piazzati e infortuni richiedono '
-                 'compilazione manuale: nessuna fonte strutturata disponibile.'},
-    ]),
+         'scaricato_il': '2026-09-02',
+         'note': ('Solo media, normalizzata su 1000 crediti. Riportata a %s col '
+                  'movimento dell FVM del listone ufficiale rispetto al %s '
+                  '(fattore fra 1/%g e %g).'
+                  % (DATA_DATI, _DATA_PREZZI, RIPREZZA_MAX, RIPREZZA_MAX))},
+    ] + _fonti_web()),
     ('conteggi', collections.OrderedDict([
         ('giocatori', n_gioc), ('per_ruolo', dict(per_ruolo)),
         ('righe_statistiche', n_stat), ('righe_avanzate', n_avan),
@@ -634,21 +738,24 @@ manifest = collections.OrderedDict([
     ('copertura', collections.OrderedDict((k, round(cop[k], 4)) for k in cop)),
     ('abbinamento_fonte_statistica', dict(conta)),
     ('convenzioni', collections.OrderedDict([
-        ('titolarita', 'campo vuoto: non stimato. Usare quota_minuti_2025_26 come base.'),
+        ('titolarita', 'in contesto.csv resta vuota: la titolarita viene dal consenso '
+                       'delle fonti web (gerarchie.csv, database/pipeline/consenso.py).'),
         ('rigori', 'rpiu + rmeno == rc'),
-        ('rigorista', 'derivato dai rigori calciati 2025-26: >=3 primo, 1-2 secondo, '
-                      '0 nessuno. Da confermare manualmente.'),
+        ('rigorista', 'in contesto.csv e derivato dai rigori calciati %s; nel file dei '
+                      'dati viene sostituito dal consenso delle fonti per ogni squadra '
+                      'di cui le fonti parlano (motore/db.py).' % ULTIMA),
         ('fonte_xg_unica', 'understat'),
-        ('id_sintetici', 'id >= 900001 per chi non ha storico Serie A; id_ufficiale=0'),
-        ('qa', 'uguale a qi: la fonte disponibile espone una sola quotazione'),
+        ('id', 'tutti gli id sono quelli ufficiali del listone fantacalcio.it'),
+        ('qa', 'uguale a qi: entrambe sono la quotazione attuale del listone'),
+        ('nuovo_acquisto', '1 se la stagione scorsa giocava altrove o non era in serie A'),
     ])),
     ('lacune_totali', n_lac),
     ('errori_validazione', errori),
     ('avvertenze', [
-        'titolarita, calci_piazzati, corner e stato infortuni NON sono compilati.',
         'Gli abbinamenti con metodo token_parziale hanno confidenza 0.70 e vanno riletti.',
         'I giocatori delle neopromosse non hanno statistiche di Serie A: assenza corretta.',
-        'qa e uguale a qi perche il listone disponibile espone una sola quotazione.',
+        'Infortuni, formazioni e rigoristi vengono dalle letture in fonti/web/letture/: '
+        'valgono alla data di riferimento, e vanno riletti a ridosso dell asta.',
     ]),
 ])
 with open(os.path.join(OUT, 'manifest.json'), 'w', encoding='utf-8') as f:

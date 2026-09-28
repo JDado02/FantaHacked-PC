@@ -30,7 +30,9 @@ import collections, csv, os, sys
 
 QUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, QUI)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(QUI)), 'motore'))
 from nomi import norm, variants, split_fanta, combacia_iniziale
+import stagione
 
 DATABASE = os.path.dirname(QUI)
 WEB = os.path.join(DATABASE, 'fonti', 'web')
@@ -42,9 +44,18 @@ FONTI_MINIME = 3
 # Il giorno in cui le pagine sono state lette. Serve a contare gli infortuni
 # nel modo giusto: le giornate gia' giocate non le salta nessuno da qui in
 # avanti, e includerle farebbe sembrare un affaticamento un crociato.
-OGGI = '2026-09-10'
+#
+# Era scritto a mano, e alla rilettura del 28 settembre diceva ancora il 10:
+# gli infortuni di oggi venivano contati da tre settimane prima. Adesso e' la
+# data di lettura degli infortuni dichiarata in `fonti.csv`.
+OGGI = stagione.data_riferimento(os.path.join(WEB, 'fonti.csv'))
 
-GIORNATE = 38
+GIORNATE = stagione.GIORNATE
+
+# Quanto vale, nel dire chi tira i rigori, essere primo, secondo o terzo in
+# una fonte. Il voto e' pesato e si somma fra le fonti: vince chi ha piu'
+# punti nella sua squadra, e ogni squadra ha un primo solo.
+PUNTI_ORDINE_RIGORI = {1: 1.0, 2: 0.35, 3: 0.12}
 
 # Posti nell'undici tipo per ruolo del listone: servono a dire, dentro un
 # reparto, chi era il titolare e chi no.
@@ -283,8 +294,12 @@ def calcola():
         # Martinez dell'Inter senza dover indovinare. Dove manca resta la
         # vecchia regola: in prima posizione c'e' il portiere.
         atteso = r.get('ruolo') or ('P' if r['posto'] == '1' else None)
-        ident = abbina(r['squadra'], r['giocatore'], r['fonte'], 'formazione',
-                       atteso)
+        # Quando la fonte porta l'id ufficiale del giocatore non c'e' niente
+        # da indovinare: basta controllare che sia davvero di quella squadra.
+        ident = _per_id(listone, r)
+        if ident is None:
+            ident = abbina(r['squadra'], r['giocatore'], r['fonte'],
+                           'formazione', atteso)
         if ident is None:
             continue
         # Una fonte che dichiara **quanto** e' probabile che giochi vale
@@ -318,13 +333,6 @@ def calcola():
                 pa, pb = pb, pa
             d['pct'].append((pa, pb))
 
-    # --- dal dischetto -----------------------------------------------------
-    rig = collections.defaultdict(list)        # id -> [ordine, ...]
-    for r in rigoristi:
-        ident = abbina(r['squadra'], r['giocatore'], r['fonte'], 'rigorista')
-        if ident is None:
-            continue
-        rig[ident].append(int(r['ordine']))
 
     # --- chi non e' nemmeno iscritto alla lista ---------------------------
     # Un infortunio toglie giornate; l'esclusione dalla lista le toglie
@@ -344,6 +352,30 @@ def calcola():
         if ident is not None:
             fuori.add(ident)
 
+    # --- dal dischetto -----------------------------------------------------
+    # **Un primo rigorista per squadra, scelto a maggioranza pesata.** Prima
+    # bastava che una fonte sola dicesse "primo" perche' lo diventasse: con
+    # due fonti in disaccordo una squadra si ritrovava due primi rigoristi, e
+    # le proiezioni gli davano l'85% dei rigori a testa. Adesso ogni fonte
+    # vota col suo peso, il primo posto vale piu' del secondo, e nella
+    # squadra si mette in fila. Chi e' fuori lista non vota e non e' votato:
+    # un rigorista che ha lasciato il campionato non tira piu' niente.
+    voti_rig = collections.defaultdict(lambda: collections.defaultdict(float))
+    fonti_rig = collections.defaultdict(set)
+    for r in rigoristi:
+        ident = abbina(r['squadra'], r['giocatore'], r['fonte'], 'rigorista')
+        if ident is None or ident in fuori:
+            continue
+        ordine = int(r['ordine'])
+        voti_rig[r['squadra']][ident] += (pesi.get(r['fonte'], 1.0)
+                                          * PUNTI_ORDINE_RIGORI.get(ordine, 0.05))
+        fonti_rig[ident].add(r['fonte'])
+    rig = {}                                   # id -> (posto, quante fonti)
+    for squadra, punti in voti_rig.items():
+        fila = sorted(punti.items(), key=lambda t: (-t[1], t[0]))
+        for posto, (ident, _) in enumerate(fila[:3], start=1):
+            rig[ident] = (posto, len(fonti_rig[ident]))
+
     # --- chi e' fermo, e per quanto ---------------------------------------
     fermi = {}
     partite = partite_per_squadra()
@@ -362,6 +394,27 @@ def calcola():
                         'saltate': saltate, 'testo': r['rientro_testo']}
 
     return listone, copertura, voti, schierato_da, coppie, rig, fermi, fuori, mancati
+
+
+def giornate_giocate():
+    """Quante giornate della stagione in corso sono gia' state giocate a OGGI."""
+    percorso = os.path.join(DATABASE, 'calendario.csv')
+    if not os.path.exists(percorso):
+        return 0
+    cal = [(r['giornata'], r['data']) for r in leggi(percorso)]
+    return stagione.giornate_giocate(cal, OGGI)
+
+
+def _per_id(listone, r):
+    """L'id ufficiale scritto dalla fonte, se c'e' e se e' di quella squadra."""
+    try:
+        ident = int(r.get('id') or 0)
+    except ValueError:
+        return None
+    voce = listone.per_id.get(ident)
+    if voce is None or voce['squadra'] != r['squadra']:
+        return None
+    return ident
 
 
 def partite_per_squadra():
@@ -384,6 +437,7 @@ def righe_giocatore(listone, copertura, voti, schierato_da, coppie, rig, fermi,
                     fuori=(), presenze=None):
     """Una riga per giocatore, con quello che le fonti dicono di lui."""
     titolare, riserva = presenze or misura_presenze()
+    rimanenti = max(1, GIORNATE - giornate_giocate())
     # Per ogni giocatore, chi gli contende il posto.
     rivali = collections.defaultdict(list)
     for (a, b), d in coppie.items():
@@ -413,7 +467,11 @@ def righe_giocatore(listone, copertura, voti, schierato_da, coppie, rig, fermi,
         pres_web = None if quota is None else base + (piena - base) * quota
         saltate = fermi.get(ident, {}).get('saltate', 0) or 0
         if pres_web is not None and saltate:
-            pres_web *= max(0.0, float(GIORNATE - saltate)) / GIORNATE
+            # La quota si toglie sulle giornate che **restano**, non su
+            # trentotto: a stagione cominciata, cinque partite saltate su
+            # trentatre' da giocare sono un settimo di quello che si compra
+            # in asta, non un ottavo.
+            pres_web *= max(0.0, float(rimanenti - saltate)) / rimanenti
         # Quanto le fonti sono concordi su di lui: 1 se lo schierano tutte o
         # nessuna, 0 se si dividono a meta'. E' la certezza, e va tenuta
         # separata dal giudizio: "titolare al 50%" e "titolare sicuro" non
@@ -434,8 +492,8 @@ def righe_giocatore(listone, copertura, voti, schierato_da, coppie, rig, fermi,
             'ballottaggio_id': '|'.join(str(b) for b, _, _ in miei_rivali),
             'ballottaggio_pct': '|'.join(
                 ('' if p is None else '%d' % round(p)) for _, _, p in miei_rivali),
-            'rigorista_web': (min(rig[ident]) if ident in rig else ''),
-            'rigorista_fonti': len(rig.get(ident, [])),
+            'rigorista_web': (rig[ident][0] if ident in rig else ''),
+            'rigorista_fonti': (rig[ident][1] if ident in rig else 0),
             'stato': fermi.get(ident, {}).get('problema', ''),
             'rientro_stimato': fermi.get(ident, {}).get('rientro', ''),
             'partite_saltate': fermi.get(ident, {}).get('saltate', ''),
@@ -554,6 +612,8 @@ def _o(x):
 def main():
     listone, copertura, voti, schierato_da, coppie, rig, fermi, fuori, mancati = calcola()
     presenze = misura_presenze()
+    print('dati letti il %s: %d giornate giocate, %d da giocare'
+          % (OGGI, giornate_giocate(), GIORNATE - giornate_giocate()))
     print('presenze misurate  titolari %s' % presenze[0])
     print('                   alternative %s' % presenze[1])
     righe = righe_giocatore(listone, copertura, voti, schierato_da, coppie,

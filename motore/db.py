@@ -26,7 +26,10 @@ cui sta. Due cose pero' non attraversano il confine, e sono trattate qui:
   - **le viste**, che vedono solo il file in cui sono definite: `v_disponibili`
     tocca entrambi e viene creata come vista temporanea a ogni connessione.
 
-Uso:  python db.py            ricrea i due database da zero
+Uso:  python db.py               ricrea il file dei dati; l'asta la crea solo
+                                 se non c'e' ancora
+      python db.py --asta-nuova  ricrea anche l'asta, vuota (cancella quella
+                                 che c'era)
 """
 import contextlib, csv, os, sqlite3, sys, time
 
@@ -328,9 +331,12 @@ def crea_dati(percorso=None, verboso=True, generato_il=None):
         [(r['id'], r['nome'], _v(r['prezzo_medio_per_1000']), r['fonte']) for r in righe])
     n['prezzi_asta'] = len(righe)
 
+    n['rigoristi_consenso'] = _rigoristi_effettivi(con)
+
     con.executemany('INSERT INTO meta (chiave, valore) VALUES (?,?)',
                     [('schema', str(SCHEMA_DATI)),
-                     ('generato_il', generato_il or _data_manifest())])
+                     ('generato_il', generato_il or _data_manifest()),
+                     ('data_riferimento', _data_riferimento())])
     con.commit()
     if verboso:
         print('Dati creati: %s' % percorso)
@@ -339,6 +345,56 @@ def crea_dati(percorso=None, verboso=True, generato_il=None):
             print('  %-14s %5d righe' % (k, n[k]))
     con.close()
     return n
+
+
+def _rigoristi_effettivi(con):
+    """Un rigorista per squadra, lo stesso per le proiezioni e per lo schermo.
+
+    Le proiezioni leggevano la gerarchia dal dischetto delle guide di
+    quest'anno; l'interfaccia - la "R" accanto al nome, il conto dei
+    rigoristi in rosa - leggeva invece `contesto.rigorista`, dedotto dai
+    rigori calciati **la stagione scorsa**. Erano due risposte diverse alla
+    stessa domanda: 11 rigoristi da una parte, 23 dall'altra, e su 16
+    giocatori non erano d'accordo. Nkunku, fuori dalla lista di serie A,
+    risultava rigorista del Milan.
+
+    Adesso il consenso delle guide vince per ogni squadra di cui le guide
+    hanno parlato: chi ne e' il primo resta 1, gli altri della stessa squadra
+    vanno a 0 anche se l'anno scorso tiravano. Le squadre su cui le guide
+    tacciono restano con la deduzione dall'anno scorso, che e' meglio di
+    niente. Si scrive qui, nel file dei dati, cosi' lo leggono uguale tutti:
+    il programma per computer e quello per telefono.
+    """
+    try:
+        coperte = [r[0] for r in con.execute(
+            """SELECT DISTINCT g.squadra FROM gerarchie ge
+               JOIN giocatori g ON g.id = ge.id
+               WHERE COALESCE(ge.rigorista, 0) > 0""")]
+    except sqlite3.OperationalError:
+        return 0
+    if not coperte:
+        return 0
+    segnaposto = ','.join('?' * len(coperte))
+    con.execute(
+        """UPDATE contesto
+           SET rigorista = COALESCE((SELECT ge.rigorista FROM gerarchie ge
+                                     WHERE ge.id = contesto.id), 0),
+               fonte_rigorista = 'consenso_guide'
+           WHERE id IN (SELECT id FROM giocatori WHERE squadra IN (%s))"""
+        % segnaposto, coperte)
+    # Chi non puo' giocare non tira nessun rigore.
+    con.execute("""UPDATE contesto SET rigorista = 0
+                   WHERE id IN (SELECT id FROM gerarchie
+                                WHERE COALESCE(fuori_lista, 0) = 1)""")
+    return con.execute(
+        'SELECT COUNT(*) FROM contesto WHERE rigorista = 1').fetchone()[0]
+
+
+def _data_riferimento():
+    """Il giorno delle ultime letture: da li' si contano le giornate giocate."""
+    import stagione
+    return stagione.data_riferimento(
+        os.path.join(DATABASE, 'fonti', 'web', 'fonti.csv'))
 
 
 def _data_manifest():
@@ -419,7 +475,16 @@ def dati_generati_il(con):
 
 
 if __name__ == '__main__':
-    con = crea()
+    # Rifare i dati non deve costare l'asta: prima questo comando cancellava
+    # sempre anche `asta.db`, e chi lo lanciava per aggiornare i numeri la
+    # sera dell'asta perdeva gli acquisti. Adesso l'asta si ricrea solo se
+    # manca, o se lo si chiede.
+    crea_dati(DATI_PATH)
+    if '--asta-nuova' in sys.argv or not os.path.exists(DB_PATH):
+        crea_asta(DB_PATH)
+    else:
+        print("Asta esistente lasciata com'era: %s" % DB_PATH)
+    con = connetti(DB_PATH, DATI_PATH)
     q = lambda s: con.execute(s).fetchone()[0]
     print('\nControlli:')
     print('  giocatori per ruolo: %s' % dict(

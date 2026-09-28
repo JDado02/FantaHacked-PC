@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """Dimostrazione del motore: listone valutato, poi una chiamata in asta live.
 
+Gioca su un'asta di servizio, mai su quella vera: lanciarla durante un'asta
+non cancella niente.
+
 Uso:  python demo.py
 """
 import os, sys
@@ -26,7 +29,11 @@ def intestazione():
 
 
 def main():
-    con = dbmod.connetti()
+    with dbmod.asta_di_servizio() as con:
+        _dimostra(con)
+
+
+def _dimostra(con):
     reg = regmod.carica()
     if con.execute('SELECT COUNT(*) FROM proiezioni').fetchone()[0] == 0:
         prmod.esegui(con, reg)
@@ -93,9 +100,6 @@ def main():
             perc = 100.0 * y.punti / x.punti if x.punti else 0
             print('      %-18s %5.0f (%.0f%% dei punti) a %.0f crediti'
                   % (y.nome[:18], y.punti, perc, y.prezzo_mercato))
-
-    stato.inizializza(AVVERSARI, mio_nome='Davide')
-    con.close()
 
 
 if __name__ == '__main__':

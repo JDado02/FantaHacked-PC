@@ -212,11 +212,22 @@ in [`PROGRESSI.md`](PROGRESSI.md).
 ## Rifare tutto da zero
 
 ```bash
+python database/fonti/web/aggiorna_letture.py   # l'ultima lettura del web al suo posto
 python database/pipeline/build.py      # dai file grezzi ai CSV
 python database/pipeline/consenso.py   # il consenso fra le guide
-python motore/db.py                    # i due database
+python motore/db.py                    # il file dei dati (l'asta non si tocca)
 python motore/proiezioni.py            # i punti attesi
 ```
+
+Il primo passo serve solo quando c'e' una lettura nuova in
+`database/fonti/web/letture/AAAA-MM-GG/`: formazioni probabili, quotazioni,
+statistiche della stagione in corso, infortuni e rigoristi, cosi' come sono
+usciti dalle pagine. La stagione in corso, le concluse e i loro pesi stanno
+tutti in `motore/stagione.py`: a ogni campionato si cambia quel file e basta.
+
+`motore/db.py` rifa' il file dei dati e **lascia stare l'asta**: prima la
+cancellava ogni volta, anche la sera dell'asta. Un'asta vuota si chiede
+apposta, con `python motore/db.py --asta-nuova`.
 
 E per pubblicare i dati aggiornati:
 
@@ -262,8 +273,8 @@ programma.
 
 ```bash
 python motore/test_motore.py           # 63 sul motore
-python motore/test_aggiornamento.py    # 23 sui due database e sull'aggiornamento
-python app/test_app.py                 # 305 sull'applicazione, contro un server vero
+python motore/test_aggiornamento.py    # 27 sui due database e sull'aggiornamento
+python app/test_app.py                 # 294 sull'applicazione, contro un server vero
 python simulazioni/cento_aste.py 500   # cinquecento aste complete
 python build/marchio.py                # icone e SVG, se cambia il marchio
 ```

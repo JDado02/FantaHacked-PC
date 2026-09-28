@@ -31,13 +31,15 @@ def verifica(nome, condizione, dettaglio=''):
 class Deposito(object):
     """Un server locale che serve manifest e pacchetto, e sa anche rompersi."""
 
-    def __init__(self, file_dati, generato_il, guasto=None):
+    def __init__(self, file_dati, generato_il, guasto=None, versione=None):
         corpo = io.open(file_dati, 'rb').read()
         self.pacchetto = gzip.compress(corpo, 6)
-        self.manifest = json.dumps({
-            'generato_il': generato_il, 'schema': 1, 'file': 'dati.db.gz',
-            'sha256': hashlib.sha256(self.pacchetto).hexdigest(),
-            'dimensione': len(self.pacchetto)}).encode('utf-8')
+        m = {'generato_il': generato_il, 'schema': 1, 'file': 'dati.db.gz',
+             'sha256': hashlib.sha256(self.pacchetto).hexdigest(),
+             'dimensione': len(self.pacchetto)}
+        if versione:
+            m['versione'] = versione
+        self.manifest = json.dumps(m).encode('utf-8')
         self.guasto = guasto
         deposito = self
 
@@ -139,6 +141,24 @@ def main():
     verifica('riconosce di essere gia\' aggiornato',
              esito.stato == 'gia_aggiornato', repr(esito))
     deposito.chiudi()
+
+    print('\n[3b] Una seconda pubblicazione nello stesso giorno arriva')
+    # Stessa data dei dati, versione piu' recente: e' la correzione della
+    # mattina dell'asta. Prima si confrontava solo la data, e non arrivava.
+    stesso_giorno = Deposito(vero_dati, '2099-01-01', versione='2099-01-01T18:40')
+    esito = aggmod.aggiorna(percorsi.DATI_FILE, stesso_giorno.origine)
+    verifica('la scarica', esito.stato == 'aggiornato', repr(esito))
+    verifica('e a schermo mostra solo il giorno',
+             esito.data_locale == '2099-01-01', repr(esito.data_locale))
+    esito = aggmod.aggiorna(percorsi.DATI_FILE, stesso_giorno.origine)
+    verifica('una volta presa non la riscarica',
+             esito.stato == 'gia_aggiornato', repr(esito))
+    stesso_giorno.chiudi()
+    vecchia = Deposito(vero_dati, '2099-01-01', versione='2099-01-01T09:00')
+    esito = aggmod.aggiorna(percorsi.DATI_FILE, vecchia.origine)
+    verifica('una versione piu\' vecchia non torna indietro',
+             esito.stato == 'gia_aggiornato', repr(esito))
+    vecchia.chiudi()
 
     print('\n[4] Quando la rete non c\'e\', si parte lo stesso')
     prima = os.path.getsize(percorsi.DATI_FILE)

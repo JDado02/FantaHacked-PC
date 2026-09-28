@@ -1,16 +1,18 @@
 # Motore di valutazione
 
-Nucleo di calcolo dell'assistente d'asta. Nessuna dipendenza esterna: solo la
-libreria standard di Python 3.8+. Non ha interfaccia: è il pezzo che l'app
-userà, ed è testabile da solo.
+Nucleo di calcolo dell'assistente d'asta: Python 3.8+ e **numpy**, che non è
+facoltativo &mdash; senza, l'ottimizzatore pota il listone e dà numeri diversi
+(vedi `PROGRESSI.md`, «Una riga che era falsa»). L'interfaccia sta in `../app`:
+questo è il pezzo che la usa, ed è testabile da solo.
 
 ## Avvio
 
 ```bash
-python db.py            # crea fanta.db dai CSV in ../database
+python db.py            # crea database/dati.db dai CSV (asta.db solo se manca)
 python proiezioni.py    # calcola i punti attesi
-python test_motore.py   # 24 verifiche
-python demo.py          # listone valutato + simulazione di una chiamata
+python test_motore.py   # 63 verifiche
+python demo.py          # listone valutato + simulazione di una chiamata,
+                        # su un'asta di servizio: quella vera non si tocca
 ```
 
 ## Moduli
@@ -21,6 +23,7 @@ python demo.py          # listone valutato + simulazione di una chiamata
 | `schema_asta.sql` | Schema del file che resta locale: asta, presidenti, acquisti |
 | `aggiornamento.py` | Scarica i dati pubblicati e rifa' le proiezioni se il regolamento e' cambiato |
 | `db.py` | Creazione database e caricamento dei CSV |
+| `stagione.py` | Stagione in corso, stagioni concluse, pesi, giornate gia' giocate |
 | `regole.py` | Lettura e **validazione** di `regole_lega.json` |
 | `proiezioni.py` | Da statistiche storiche a punti attesi |
 | `modificatore.py` | Bonus atteso del modificatore di difesa |
@@ -34,7 +37,9 @@ python demo.py          # listone valutato + simulazione di una chiamata
 
 ### 1. Punti attesi (`proiezioni.py`)
 
-Media pesata delle ultime stagioni (peso 1.00 / 0.55 / 0.30), regressa verso la
+Media pesata delle ultime stagioni (peso 1.00 / 0.55 / 0.30, e 1.50 per la
+stagione in corso, sui minuti che ha messo davvero a disposizione: cinque
+giornate sono 450 minuti, non 3420), regressa verso la
 media di ruolo in proporzione al campione disponibile. I gol si stimano dagli
 **xG**, non dai gol segnati: i gol sono rumorosi, gli xG molto meno. I rigori si
 contano a parte, perché npxG li esclude per costruzione.

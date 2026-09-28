@@ -54,6 +54,24 @@ class Cliente(object):
     post = lambda self, p, c=None: self._chiama(p, c or {})
 
 
+def _accordo_guide(soglia):
+    """Gli id su cui le guide sono d'accordo almeno a `soglia`, dal file dei dati.
+
+    None quando le prove girano contro un server gia' acceso, di cui non si
+    conosce il file: allora il filtro non si applica.
+    """
+    percorso = (AMBIENTE or {}).get('FANTAHACKED_DATI')
+    if not percorso or not os.path.exists(percorso):
+        return None
+    import sqlite3
+    c = sqlite3.connect(percorso)
+    try:
+        return set(r[0] for r in c.execute(
+            'SELECT id FROM gerarchie WHERE accordo >= ? AND fonti > 0', (soglia,)))
+    finally:
+        c.close()
+
+
 def attendi(cliente, secondi=60):
     scadenza = time.time() + secondi
     while time.time() < scadenza:
@@ -256,6 +274,47 @@ def collauda(c):
     verifica('nessun file fuori dall\'interfaccia e\' raggiungibile', not fughe,
              str(fughe))
 
+    # Una pagina qualunque aperta nel browser puo' mandare richieste a
+    # 127.0.0.1. Prima arrivavano: un modulo nascosto su un sito estraneo
+    # poteva registrare acquisti o cancellare l'asta mentre era aperta.
+    def grezza(percorso, corpo, intestazioni):
+        req = urllib.request.Request(c.base + percorso, data=corpo,
+                                     headers=intestazioni)
+        try:
+            with urllib.request.urlopen(req, timeout=10) as r:
+                return r.status
+        except urllib.error.HTTPError as e:
+            return e.code
+    crediti_lega = lambda: sum(p['crediti'] for p in c.get('/api/stato')['presidenti'])
+    prima = crediti_lega()
+    trovato = [x for x in c.get('/api/cerca?q=a') if not x.get('venduto')]
+    corpo = json.dumps({'id': trovato[0]['id'] if trovato else 1,
+                        'presidente': 2, 'prezzo': 1}).encode('utf-8')
+    estranee = {
+        'origine estranea': grezza('/api/acquisto', corpo, {
+            'Content-Type': 'application/json',
+            'Origin': 'https://sito-qualunque.example'}),
+        'modulo text/plain': grezza('/api/acquisto', corpo, {
+            'Content-Type': 'text/plain'}),
+        'modulo urlencoded': grezza('/api/nuova', b'mio_nome=x', {
+            'Content-Type': 'application/x-www-form-urlencoded'}),
+        'nome estraneo (rebinding)': grezza('/api/stato', None, {
+            'Host': 'attacco.example:%s' % c.base.rsplit(':', 1)[1]}),
+    }
+    passate = [k for k, v in estranee.items() if v != 403]
+    verifica('le richieste da fuori dall\'interfaccia sono rifiutate',
+             not passate, str(estranee))
+    verifica('e non hanno toccato l\'asta',
+             crediti_lega() == prima)
+    nostra = grezza('/api/ping', None, {
+        'Origin': c.base, 'Host': c.base.split('//', 1)[1]})
+    verifica('la nostra pagina passa ancora', nostra == 200, str(nostra))
+    congedo = grezza('/api/congedo', b'{}', {
+        'Content-Type': 'text/plain;charset=UTF-8', 'Origin': c.base})
+    verifica('il congedo della pagina (sendBeacon, text/plain) passa',
+             congedo == 200, str(congedo))
+    c.get('/api/ping')                     # annulla il congedo appena dato
+
     st = c.post('/api/nuova', {'mio_nome': 'Davide', 'avversari': nomi})
     lungo = c.post('/api/nuova', {'mio_nome': 'X' * 400, 'avversari': nomi})
     verifica('un nome lunghissimo viene accorciato, non sfonda la barra',
@@ -433,9 +492,15 @@ def collauda(c):
     # Il piano B esiste per riempire uno slot in fretta: proporre li' una
     # fantamedia alta prodotta da otto presenze e' il danno peggiore che il
     # programma possa fare.
+    #
+    # "Titolare" qui e' la definizione del motore (`gioca_sempre`: grado e
+    # presenze), non la `certezza`, che misura quanto concordano le fonti. Un
+    # portiere appena arrivato che ha giocato tre partite su cinque e che le
+    # guide danno titolare all'80% ha poca certezza per il poco campione, ma
+    # e' esattamente il ripiego giusto.
     cons = c.get('/api/consiglio')
     non_titolari = [d['nome'] for d in (cons.get('ripiego') or [])
-                    if not d['gerarchia']['sicuro']]
+                    if not d.get('titolare_pieno', d['gerarchia']['sicuro'])]
     verifica('il piano B propone titolari sicuri',
              not non_titolari, str(non_titolari[:4]))
     punteggi = [d.get('punteggio', 0) for d in (cons.get('prendere') or [])]
@@ -603,9 +668,18 @@ def collauda(c):
     # unanimi**. Mandas sta in alto nei prezzi ma le fonti si dividono sul
     # portiere della Lazio, e dargli trentacinque presenze sarebbe inventare
     # una certezza che non esiste. Sono i titolari certi a dover stare in alto.
+    #
+    # A campionato iniziato "sicuro primo del reparto" e "le guide sono
+    # unanimi" smettono di coincidere: il Napoli ha alternato due portieri
+    # nelle prime giornate, e il primo resta davanti al secondo di parecchio
+    # (certezza piena sul posto) senza che nessuno gli dia trentacinque
+    # partite. La domanda di questa prova e' la seconda, e si fa sull'accordo
+    # delle guide, letto dal file dei dati.
+    unanimi = _accordo_guide(0.9)
     por = [r for r in c.get('/api/listone?ruolo=P&n=200')['righe']
            if (r.get('gerarchia') or {}).get('grado') == 'titolare'
-           and (r.get('gerarchia') or {}).get('certezza', 0) >= 0.9]
+           and (r.get('gerarchia') or {}).get('certezza', 0) >= 0.9
+           and (unanimi is None or r['id'] in unanimi)]
     verifica("ci sono portieri su cui le guide sono tutte d'accordo",
              len(por) >= 10, '%d trovati' % len(por))
     scarsi = [(r['nome'], r['presenze']) for r in por if r['presenze'] < 30]

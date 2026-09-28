@@ -7,17 +7,22 @@ con dentro listone, statistiche, gerarchie e proiezioni. Accanto ci va un
 ogni avvio per decidere se scaricare o no.
 
     python pubblica.py                 costruisce in ../pubblicazione/
-    python pubblica.py --pubblica      e crea anche la release su GitHub
+    python pubblica.py --pubblica      e li manda nel repository dei dati
 
-La seconda forma ha bisogno di `gh` (lo strumento a riga di comando di GitHub)
-oppure di `git` con le credenziali gia' salvate. Se non c'e' ne' l'uno ne'
-l'altro, i due file restano li' pronti e si caricano a mano dalla pagina delle
-release: sono due, e ci vogliono venti secondi.
+La seconda forma ha bisogno di `git` con le credenziali gia' salvate. Se non
+c'e', i tre file restano li' pronti e si caricano a mano dalla pagina del
+repository.
 
-Perche' una release e non i file nel repository: un database da mezzo mega
-messo sotto controllo di versione lascia una copia intera nella cronologia a
-ogni aggiornamento, e in una stagione il repository diventa piu' grande dei
-dati che contiene. Le release stanno fuori dalla cronologia.
+I file stanno nel ramo principale del repository, non in una release: il
+perche' e' scritto in `motore/aggiornamento.py`, accanto all'indirizzo da cui
+il programma li scarica.
+
+**La versione.** Il manifest porta la data dei dati (`generato_il`) e, da
+quando si pubblica, anche data e ora della pubblicazione (`versione`). La
+prima dice di quando sono i numeri; la seconda e' quella che il programma
+confronta per decidere se scaricare, cosi' una correzione pubblicata lo
+stesso giorno arriva lo stesso. Se i file sono identici a quelli gia'
+pubblicati la versione resta quella di prima e non si pubblica niente.
 """
 import argparse, gzip, hashlib, io, json, os, subprocess, sys, time
 
@@ -117,6 +122,28 @@ def costruisci(uscita=USCITA, con_proiezioni=True):
     return manifest, uscita
 
 
+def _versione(manifest, clone):
+    """La versione da pubblicare: nuova se i file cambiano, altrimenti quella di prima.
+
+    Mettere l'ora di adesso a ogni giro renderebbe diverso il manifest anche
+    quando i dati sono identici, e ogni lancio "per sicurezza" diventerebbe
+    una pubblicazione, con tutti i programmi che riscaricano per niente.
+    """
+    try:
+        with io.open(os.path.join(clone, 'manifest.json'), encoding='utf-8') as f:
+            prima = json.load(f)
+    except Exception:
+        prima = {}
+    uguali = all(prima.get(k) == manifest.get(k)
+                 for k in ('sha256', 'sha256_json', 'generato_il', 'regole_firma'))
+    if uguali and prima.get('versione'):
+        return prima['versione']
+    ora = time.strftime('%Y-%m-%dT%H:%M')
+    # Mai all'indietro rispetto alla data dei dati, anche con un orologio
+    # sbagliato: chi confronta le versioni come testo deve vederla crescere.
+    return max(ora, manifest.get('generato_il') or '')
+
+
 def _generato_il():
     """La data che dichiara la pipeline dei dati."""
     try:
@@ -156,6 +183,10 @@ def pubblica(manifest, uscita=USCITA, repo=REPO):
         if r.returncode != 0:
             print('    clone non riuscito: %s' % (r.stderr or '').strip()[:200])
             return False
+        manifest = dict(manifest, versione=_versione(manifest, clone))
+        io.open(os.path.join(uscita, 'manifest.json'), 'w', encoding='utf-8').write(
+            json.dumps(manifest, ensure_ascii=False, indent=2) + chr(10))
+        print('    versione %s' % manifest['versione'])
         for f in ('dati.db.gz', 'dati.json', 'manifest.json'):
             sh.copyfile(os.path.join(uscita, f), os.path.join(clone, f))
         _scrivi_leggimi(clone, manifest, repo)
@@ -188,11 +219,12 @@ def _scrivi_leggimi(clone, manifest, repo):
         'I dati dei giocatori usati da FantaHacked, in un file solo.' + chr(10) * 2 +
         '| | |' + chr(10) + '|---|---|' + chr(10) +
         '| aggiornati al | **%s** |' % manifest['generato_il'] + chr(10) +
+        '| pubblicati il | %s |' % manifest.get('versione', '').replace('T', ' ') + chr(10) +
         '| giocatori | %d |' % manifest['giocatori'] + chr(10) +
         '| dimensione | %.0f KB compressi |' % (manifest['dimensione'] / 1024.0) + chr(10) +
         '| formato | SQLite, schema %s |' % manifest['schema'] + chr(10) * 2 +
         'Il programma legge `manifest.json` a ogni avvio - due kilobyte - e' + chr(10) +
-        'scarica `dati.db.gz` solo se la data e cambiata. Se internet non c e,' + chr(10) +
+        'scarica `dati.db.gz` solo se la versione e cambiata. Se internet non c e,' + chr(10) +
         'parte con i dati che ha gia.' + chr(10) * 2 +
         'Dentro ci sono listone, statistiche, gerarchie di reparto e proiezioni.' + chr(10) +
         'Non c e niente dell asta: quella resta sul dispositivo di chi la gioca.' + chr(10) * 2 +
@@ -209,7 +241,7 @@ def _c_e(programma):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--pubblica', action='store_true',
-                    help='crea anche la release su GitHub')
+                    help='manda anche i file nel repository dei dati')
     ap.add_argument('--uscita', default=USCITA)
     ap.add_argument('--repo', default=REPO)
     a = ap.parse_args()

@@ -28,7 +28,7 @@ a = Analysis(
         ('../motore/schema_dati.sql', 'motore'),
         ('../database/regole_lega.json', 'database'),
     ],
-    hiddenimports=['percorsi', 'db', 'regole', 'proiezioni', 'titolarita', 'asta', 'valutazione', 'modificatore', 'ottimizzatore', 'strategia', 'equilibrio', 'aggiornamento'],
+    hiddenimports=['percorsi', 'db', 'regole', 'proiezioni', 'titolarita', 'asta', 'valutazione', 'modificatore', 'ottimizzatore', 'strategia', 'equilibrio', 'aggiornamento', 'formazione', 'stagione'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

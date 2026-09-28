@@ -1046,6 +1046,45 @@ class Gestore(BaseHTTPRequestHandler):
         Gestore.congedo = None
         BaseHTTPRequestHandler.handle_one_request(self)
 
+    # ------------------------------------------------------------ provenienza
+    def _nomi_ammessi(self):
+        porta = self.server.server_address[1]
+        return set('%s:%d' % (h, porta) for h in ('127.0.0.1', 'localhost'))
+
+    def _estranea(self, scrittura):
+        """Perche' rifiutare la richiesta, o None se viene dall'interfaccia.
+
+        Il server ascolta solo su 127.0.0.1, ma questo non basta: qualunque
+        pagina aperta nel browser puo' mandare una richiesta a 127.0.0.1, e
+        una richiesta "semplice" (un modulo, un `text/plain`) arriva a
+        destinazione anche se la pagina poi non puo' leggere la risposta. Per
+        un'asta vuol dire che un sito qualunque poteva registrare acquisti,
+        annullarli o cancellare l'asta, alla cieca, mentre era aperto.
+
+        Tre controlli, dal piu' largo:
+          - `Host` deve essere il nostro: chiude il DNS rebinding, cioe' un
+            nome esterno che punta a 127.0.0.1 e da li' legge anche le risposte;
+          - `Origin`, quando c'e', deve essere la nostra pagina: i browser lo
+            mandano sempre con i POST, e un sito estraneo non puo' falsificarlo;
+          - le scritture devono essere JSON: un `application/json` da un'altra
+            origine richiede un permesso preventivo (preflight) che questo
+            server non concede mai.
+        Chi chiama da riga di comando (le prove, curl) non manda `Origin` e
+        passa, se usa il nome giusto e il tipo giusto.
+        """
+        ammessi = self._nomi_ammessi()
+        host = (self.headers.get('Host') or '').strip().lower()
+        if host not in ammessi:
+            return 'host non ammesso'
+        origine = (self.headers.get('Origin') or '').strip().lower()
+        if origine and origine not in set('http://' + a for a in ammessi):
+            return 'origine non ammessa'
+        if scrittura:
+            tipo = (self.headers.get('Content-Type') or '').split(';')[0]
+            if tipo.strip().lower() != 'application/json':
+                return 'il corpo deve essere application/json'
+        return None
+
     # ------------------------------------------------------------- risposte
     def _json(self, dati, codice=200):
         corpo = json.dumps(dati, ensure_ascii=False,
@@ -1092,6 +1131,9 @@ class Gestore(BaseHTTPRequestHandler):
         q = parse_qs(u.query)
         uno = lambda k, d=None: (q.get(k) or [d])[0]
         s = self.sessione
+        motivo = self._estranea(scrittura=False)
+        if motivo:
+            return self._json({'errore': motivo}, 403)
         try:
             if u.path.startswith('/api/'):
                 if not s.pronta() and u.path not in ('/api/stato', '/api/ping'):
@@ -1142,6 +1184,14 @@ class Gestore(BaseHTTPRequestHandler):
     def do_POST(self):
         u = urlparse(self.path)
         s = self.sessione
+        # Il congedo parte con `sendBeacon` mentre la finestra si chiude, e
+        # sendBeacon con un testo manda `text/plain`: per lui niente controllo
+        # sul tipo, ma quelli su nome e origine si'. Il peggio che un sito
+        # estraneo potrebbe fare con lui e' annunciare una chiusura, che il
+        # primo segno di vita della pagina vera annulla.
+        motivo = self._estranea(scrittura=(u.path != '/api/congedo'))
+        if motivo:
+            return self._json({'errore': motivo}, 403)
         try:
             n = int(self.headers.get('Content-Length') or 0)
             if n > 1 << 20:

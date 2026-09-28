@@ -5,7 +5,7 @@ Due lavori distinti, che pero' si tengono per mano.
 
 **Scaricare.** I dati dei giocatori stanno online in un unico file da mezzo
 mega. All'avvio il programma chiede solo il `manifest.json` &mdash; due
-kilobyte &mdash; e se la data e' la stessa che ha gia' non scarica niente.
+kilobyte &mdash; e se la versione e' la stessa che ha gia' non scarica niente.
 Se la rete non c'e', o e' lenta, o risponde male, **non succede niente**: si
 parte con i dati che ci sono e si scrive a schermo di quando sono. Un
 assistente d'asta che non si apre perche' il wifi della stanza fa i capricci
@@ -216,16 +216,36 @@ def aggiorna(dati=None, origine=None, attivo=True):
 
     m, motivo = manifest_remoto(origine)
     if m is None:
-        return Esito('offline', motivo, locale)
-    remota = m.get('generato_il') or ''
+        return Esito('offline', motivo, _giorno(locale))
+    remota = versione_pubblicata(m)
     if os.path.exists(dati) and remota and remota <= locale:
-        return Esito('gia_aggiornato', '', locale, remota)
+        return Esito('gia_aggiornato', '', _giorno(locale), _giorno(remota))
     try:
         scarica(dati, origine, atteso=m.get('sha256'))
         _segna_installato(dati, remota)
     except Exception as e:
-        return Esito('errore', str(e), locale, remota)
-    return Esito('aggiornato', '', remota, remota)
+        return Esito('errore', str(e), _giorno(locale), _giorno(remota))
+    return Esito('aggiornato', '', _giorno(remota), _giorno(remota))
+
+
+def versione_pubblicata(m):
+    """Cosa identifica il pacchetto pubblicato: la `versione`, se c'e'.
+
+    La data dei dati da sola non basta. Due pubblicazioni nello stesso giorno
+    - una correzione la mattina dell'asta, un infortunio dell'ultima ora -
+    hanno la stessa `generato_il`, e chi aveva gia' preso la prima non vedeva
+    mai la seconda: "stessa data, niente da scaricare". La `versione` e' data
+    e ora della pubblicazione (`2026-09-28T18:40`) e si confronta come testo
+    con quello che c'era prima: e' piu' lunga di una data sola, quindi a
+    parita' di giorno vince lei, e i pacchetti vecchi senza versione restano
+    confrontabili come prima.
+    """
+    return m.get('versione') or m.get('generato_il') or ''
+
+
+def _giorno(versione):
+    """Per lo schermo basta il giorno: l'ora serve solo al confronto."""
+    return (versione or '')[:10]
 
 
 def _versione_locale(dati):
