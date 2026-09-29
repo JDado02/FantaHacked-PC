@@ -79,7 +79,7 @@
       "tipo": "consenso dichiarato di dieci guide, con percentuali",
       "scaricato_il": "2026-09-03",
       "peso": "0.28",
-      "note": "riporta solo le maglie su cui le guide si esprimono; guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
+      "note": "riporta solo le maglie su cui le guide si esprimono; guida di inizio stagione: pesata 38% dopo 5 giornate giocate; guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
     },
     {
       "blocco": "web",
@@ -88,7 +88,7 @@
       "tipo": "formazioni tipo per l'asta, con le alternative",
       "scaricato_il": "2026-09-03",
       "peso": "0.19",
-      "note": "guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
+      "note": "guida di inizio stagione: pesata 38% dopo 5 giornate giocate; guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
     },
     {
       "blocco": "web",
@@ -97,7 +97,7 @@
       "tipo": "formazioni tipo \"come giocherebbero oggi\"",
       "scaricato_il": "2026-09-03",
       "peso": "0.19",
-      "note": "guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
+      "note": "guida di inizio stagione: pesata 38% dopo 5 giornate giocate; guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
     },
     {
       "blocco": "web",
@@ -106,7 +106,7 @@
       "tipo": "probabili formazioni con i ballottaggi aperti",
       "scaricato_il": "2026-09-03",
       "peso": "0.19",
-      "note": "guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
+      "note": "guida di inizio stagione: pesata 38% dopo 5 giornate giocate; guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
     },
     {
       "blocco": "web",
@@ -115,7 +115,7 @@
       "tipo": "probabili formazioni della giornata",
       "scaricato_il": "2026-09-03",
       "peso": "0.19",
-      "note": "lettura del 3 settembre sulle sei squadre che allora mancavano; ora fantacalcio.it le copre tutte, resta come secondo parere; guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
+      "note": "lettura del 3 settembre sulle sei squadre che allora mancavano; ora fantacalcio.it le copre tutte, resta come secondo parere; guida di inizio stagione: pesata 38% dopo 5 giornate giocate; guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
     },
     {
       "blocco": "web",
@@ -132,8 +132,8 @@
       "url": "https://www.goal.com/it/liste/fantacalcio-rigoristi-serie-a-2026-2027-tiratori-e-gerarchie-dal-dischetto-delle-20-squadre-del-campionato/bltdebca56c3bd91419",
       "tipo": "gerarchie dal dischetto",
       "scaricato_il": "2026-09-03",
-      "peso": "1.0",
-      "note": ""
+      "peso": "0.38",
+      "note": "guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
     },
     {
       "blocco": "web",
@@ -141,8 +141,8 @@
       "url": "https://www.fantamaster.it/rigoristi-seriea-fantacalcio-2026-2027-gerarchie-20-squadre/",
       "tipo": "gerarchie dal dischetto",
       "scaricato_il": "2026-09-03",
-      "peso": "1.0",
-      "note": ""
+      "peso": "0.38",
+      "note": "guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
     },
     {
       "blocco": "web",

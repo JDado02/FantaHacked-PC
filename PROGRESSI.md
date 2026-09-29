@@ -3344,3 +3344,60 @@ aspetta che scarichi i dati, apre un'asta, chiede i consigli, controlla che
 una richiesta non JSON venga rifiutata, lo passa a Defender e solo allora
 rimette `FantaHacked-Windows.zip` nel repository. Lo zip dell'11 settembre era
 rimasto indietro di due giri di correzioni: non succede piu'.
+
+---
+
+# 29 settembre, sera: tre attaccanti di neopromosse non sono un attacco
+
+Il piano di spesa proponeva Varela, Raimondo e Kvernadze come attacco
+intero, 183 crediti su 186, con un limite di 94 su Varela e di 51 su
+Hojlund. Il motore li proiettava forti quanto Hojlund dopo quattro o cinque
+partite, e l'ottimizzatore, che cerca i punti al minor prezzo, finiva
+esattamente sui giocatori che il modello sopravvalutava di piu'. Le aste
+simulate non potevano accorgersene: danno i punti con le stesse proiezioni.
+
+Quattro correzioni, tutte misurate sui dati prima di scriverle.
+
+**La regressione verso la media era troppo debole.** Da una stagione
+all'altra la media voto degli stessi giocatori si ripete poco (correlazione
+0.40-0.57 dentro ogni ruolo): il prior che ne esce sta fra 1900 e 3600 minuti
+per la media voto e fra 1150 e 1700 per gli npxG. Erano 900 e 700; ora 1800 e
+1200, il bordo basso della misura.
+
+**Il punto di partenza e' la media del ruolo nella sua squadra.** L'npxG per
+90' di un giocatore segue quello della squadra con esponente circa 1
+(attaccanti 1.03, su 264 stagioni); la forza d'attacco di una squadra si
+conserva da un anno all'altro (0.74-0.87); le neopromosse nella stagione
+della promozione stanno a 0.85 della media. La forza di ogni squadra
+(`database/squadre_attacco.csv`, e nel file dei dati in `meta`) riparte
+dall'anno scorso e aggiunge le giornate giocate come dodici partite di prior.
+
+**Chi da titolare si ferma spesso continua a fermarsi.** Sui titolari "quando
+giocano" di due stagioni di fila (129 giocatori), ogni presenza sotto la
+media ne toglie 0.35 l'anno dopo. Si applica a chi ha due stagioni da
+titolare nei dati, non ai portieri: Dybala, 20 e 21 presenze, passa da 28.8 a
+26.4.
+
+**Un rigore tirato non fa un rigorista.** Il campo vale per intero da tre
+rigori in su; le gerarchie dal dischetto di settembre invecchiano come le
+formazioni. Il rigorista del Monza torna Cutrone, come dice fantacalcio.it.
+
+| | prima | dopo |
+|---|---|---|
+| limite su Varela / Raimondo / Kvernadze | 94 / 69 / 60 | **35 / 35 / 33** |
+| limite su Hojlund / Ramos | 51 / 49 | **76 / 85** |
+| attacco del piano | Varela, Raimondo, Kvernadze + tre da 1 | **Douvikas, Varela, Robinson + tre da 1** |
+
+Il piano continua a non prendere Malen o Lautaro, ed e' una scelta, non un
+errore: costano 190-200 crediti per 230 punti, mentre Paz ne fa 228 a 46. E'
+l'inefficienza del mercato su cui il motore e' costruito. Chi vuole la punta
+da venti gol la prende, e il piano si rifa' intorno a lei.
+
+## E i consigli coi titolari che mancano
+
+Una prova dell'applicazione e' caduta coi dati nuovi, e aveva ragione lei:
+con due difensori titolari da trovare, il secondo consiglio era uno da
+diciannove presenze, perche' la regola che promuove i titolari scattava solo
+se in cima non ce n'era nessuno. Adesso ne mette in testa tanti quante sono
+le caselle scoperte, nel motore Python e in quello del telefono, e le prove
+di equivalenza lo confermano.

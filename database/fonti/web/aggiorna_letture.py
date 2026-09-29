@@ -55,7 +55,11 @@ PESO_RIGORI_FANTACALCIO = 1.5
 PESO_RIGORI_CAMPO = 1.5
 PESO_GUIDE_AGOSTO = {'fantacalcio-online': 0.75, 'sosfanta': 0.5,
                      'calciodangolo': 0.5, 'fantamaster': 0.5,
-                     'fantamaster-g3': 0.5}
+                     'fantamaster-g3': 0.5,
+                     # Anche le gerarchie dal dischetto scritte a settembre
+                     # invecchiano: Pessina primo rigorista del Monza, e
+                     # Pessina e' fermo fino a novembre.
+                     'goal.com': 1.0, 'fantamaster-rigori': 1.0}
 # Da quante giornate giocate le guide d'agosto scendono di peso, e quanto:
 # un ottavo a giornata dalla prima in poi, fino a un quinto del peso iniziale.
 # Dopo cinque giornate valgono poco piu' di un terzo: raccontano chi pensava di
@@ -278,10 +282,13 @@ def rigoristi(listone):
             voce = listone.get(int(r['id']))
             calciati = int(((r.get('rig_segnati_calciati') or '0/0').partition('/')[2]) or 0)
             if voce and calciati > 0:
+                # Quanti ne ha tirati: un rigore solo e' un indizio, non una
+                # gerarchia. `consenso.py` ne tiene conto.
                 aggiunte.append({'fonte': fonte_campo, 'squadra': voce['squadra'],
-                                 'ordine': 1, 'giocatore': voce['nome']})
+                                 'ordine': 1, 'giocatore': voce['nome'],
+                                 'calciati': calciati})
     righe = [r for r in _csv(p) if r['fonte'] not in nuove] + aggiunte
-    _scrivi(p, ['fonte', 'squadra', 'ordine', 'giocatore'], righe)
+    _scrivi(p, ['fonte', 'squadra', 'ordine', 'giocatore', 'calciati'], righe)
 
 
 def aggiorna_fonti(data, giocate, giornata):

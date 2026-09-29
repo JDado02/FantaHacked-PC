@@ -334,6 +334,84 @@ n_squadre = scrivi('squadre.csv',
     ['squadra', 'nome_ufficiale', 'allenatore', 'promossa', 'gf_prec', 'gs_prec'], righe)
 
 
+# ------------------------------------------------ 4b. FORZA DELL'ATTACCO
+# Quanti gol attesi produce ogni squadra rispetto alla media della lega. Serve
+# alle proiezioni come punto di partenza per chi ha pochi dati: un attaccante
+# del Frosinone con cinque partite alle spalle non va riportato verso
+# l'attaccante medio della serie A, ma verso l'attaccante medio di una squadra
+# che crea quello che crea il Frosinone.
+#
+# Misurato sulle stagioni in archivio (fonte: understat, tutti i giocatori,
+# anche quelli che non sono piu' nel listone):
+#   - l'npxG per 90' di un giocatore segue quello della sua squadra con
+#     esponente ~1 (attaccanti 1.03, centrocampisti 1.08, difensori 0.87);
+#   - la forza di una squadra si conserva da un anno all'altro (correlazione
+#     0.74-0.87): si riparte dall'anno scorso, un po' riportato verso la media;
+#   - le neopromosse, nella stagione della promozione, stanno a 0.85 della
+#     media (Como 0.99, Parma 0.94, Venezia 0.76, Cremonese 0.70, Pisa 0.75,
+#     Sassuolo 0.98).
+# La stagione in corso entra come le altre informazioni di squadra: cinque
+# partite pesano quanto cinque partite contro le dodici del punto di partenza.
+PERSISTENZA_ATTACCO = 0.8
+GIORNATE_PRIOR_ATTACCO = 12.0
+
+
+def _npxg_squadre(anno):
+    percorso = os.path.join(FONTI, 'understat_seriea_%d.json' % anno)
+    if not os.path.exists(percorso):
+        return {}
+    with open(percorso, encoding='utf-8') as f:
+        d = json.load(f)
+    tot = collections.defaultdict(float)
+    for p in d['players']:
+        squadre_p = [sq(t.strip()) for t in p['team_title'].split(',') if t.strip()]
+        for t in squadre_p:
+            tot[t] += float(p.get('npxG') or 0) / len(squadre_p)
+    return dict(tot)
+
+
+def _fattori(tot):
+    media = (sum(tot.values()) / len(tot)) if tot else 0.0
+    return dict((t, v / media) for t, v in tot.items()) if media > 0 else {}
+
+
+_anni = sorted(UNDERSTAT_SEASON)
+_npxg = dict((a, _npxg_squadre(a)) for a in _anni)
+# Le neopromosse della storia: squadre di un anno assenti l'anno prima.
+_neo = []
+for a in _anni:
+    if a - 1 in _npxg and a != _ANNO_CORRENTE and _npxg[a] and _npxg[a - 1]:
+        f = _fattori(_npxg[a])
+        _neo += [f[t] for t in _npxg[a] if t not in _npxg[a - 1]]
+PRIOR_NEOPROMOSSE = (sum(_neo) / len(_neo)) if _neo else 0.85
+_anno_prec = int(ULTIMA[:4])
+_f_prec = _fattori(_npxg.get(_anno_prec, {}))
+_f_ora = _fattori(_npxg.get(_ANNO_CORRENTE, {})) if _ANNO_CORRENTE in UNDERSTAT_SEASON else {}
+_giocate_ora = stagione.giornate_giocate(
+    [(m['Round Number'], datetime.datetime.strptime(m['Date'].split()[0], '%d/%m/%Y')
+      .strftime('%Y-%m-%d')) for m in calend if m.get('Date')], DATA_DATI)
+righe = []
+for t in squadre_correnti:
+    if t in _f_prec:
+        base = 1.0 + PERSISTENZA_ATTACCO * (_f_prec[t] - 1.0)
+    else:
+        base = PRIOR_NEOPROMOSSE
+    fattore = base
+    if t in _f_ora and _giocate_ora > 0:
+        w = _giocate_ora / (_giocate_ora + GIORNATE_PRIOR_ATTACCO)
+        fattore = (1 - w) * base + w * _f_ora[t]
+    righe.append({'squadra': t,
+                  'fattore_prec': round(_f_prec[t], 3) if t in _f_prec else '',
+                  'fattore_ora': round(_f_ora[t], 3) if t in _f_ora else '',
+                  'giornate': _giocate_ora, 'fattore': round(fattore, 3)})
+scrivi('squadre_attacco.csv',
+       ['squadra', 'fattore_prec', 'fattore_ora', 'giornate', 'fattore'], righe)
+print("  forza d'attacco: neopromosse storiche %.2f, da %s a %s"
+      % (PRIOR_NEOPROMOSSE,
+         min(righe, key=lambda r: r['fattore'])['squadra'],
+         max(righe, key=lambda r: r['fattore'])['squadra']))
+
+
 # ------------------------------------------------------------ 5. GIOCATORI
 squadra_2526 = dict((int(row['id']), sq(row['squadra'])) for row in listoni[ULTIMA])
 

@@ -45,7 +45,7 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 1930,Pinsoglio,Juventus,P,5.76,0.01,0.001,0.998,2.3,1,,,,,0,,,,0
 1933,Mandragora,Torino,C,5.57,4.32,0.776,0.551,26.9,5,Braganca,7624,,3,2,,,,0
 2012,Milik,Juventus,A,5.76,0.0,0.0,1.0,0.0,0,,,,,0,,,,1
-2038,Pinamonti,Lazio,A,5.76,1.78,0.309,0.382,18.4,6,Isaksen,6398,85,,0,,,,0
+2038,Pinamonti,Lazio,A,5.76,1.78,0.309,0.382,18.4,6,Isaksen,6398,85,3,2,,,,0
 2061,Simeone,Torino,A,5.57,4.65,0.835,0.67,27.3,5,,,,2,3,,,,0
 2077,Pasalic,Atalanta,C,5.57,1.44,0.259,0.481,18.7,2,Kessiè,1850,,,0,,,,0
 2097,Kean,Como,A,5.57,2.8,0.503,0.005,21.7,4,Douvikas,7017,62,2,2,,,,0
@@ -54,7 +54,7 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 2127,Satalino,Sassuolo,P,5.57,0.01,0.001,0.998,2.3,1,,,,,0,,,,0
 2134,Falcone,Lecce,P,5.76,5.56,0.965,0.931,33.0,6,,,,,0,,,,0
 2137,Scamacca,Atalanta,A,5.57,3.91,0.702,0.404,25.1,5,Krstovic,6435,,1,3,,,,0
-2155,Cutrone,Monza,A,5.57,3.04,0.546,0.092,22.4,4,Ngonge,6145,,2,3,,,,0
+2155,Cutrone,Monza,A,5.57,3.04,0.546,0.092,22.4,4,Ngonge,6145,,1,3,,,,0
 2167,Orsolini,Bologna,C,5.57,3.05,0.548,0.095,23.3,5,,,,1,3,,,,0
 2169,Rodriguez R.,Torino,D,5.57,0.51,0.092,0.817,15.0,3,,,,,0,,,,0
 2170,Milinkovic-Savic V.,Napoli,P,5.57,1.23,0.22,0.56,9.3,2,,,,,0,,,,0
@@ -98,7 +98,7 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 4177,Pavard,Inter,D,5.57,0.98,0.176,0.648,16.4,2,,,,,0,,,,0
 4179,Gonzalez N.,Juventus,C,5.76,3.52,0.611,0.222,24.3,3,,,,,0,,,,0
 4199,Loftus-Cheek,Milan,C,5.76,1.69,0.293,0.415,19.2,2,Rabiot,2379,,,0,,,,0
-4210,Mina,Cagliari,D,5.76,3.26,0.566,0.132,23.0,5,,,,3,2,,,,0
+4210,Mina,Cagliari,D,5.76,3.26,0.566,0.132,23.0,5,,,,,0,,,,0
 4220,Zambo Anguissa,Napoli,C,5.57,2.0,0.359,0.282,20.2,3,De Bruyne,2517,65,,0,lesione miofasciale di basso grado dell adduttore lungo,2026-10-10,0,0
 4236,Muric,Sassuolo,P,5.57,4.97,0.892,0.785,30.7,5,,,,,0,,,,0
 4260,Winks,Cagliari,C,5.76,5.35,0.929,0.858,29.4,6,,,,,0,,,,0
@@ -157,7 +157,7 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 4952,Monterisi,Frosinone,D,5.57,3.74,0.671,0.343,24.8,5,,,,,0,,,,0
 4957,Montipò,Venezia,P,5.57,0.03,0.004,0.991,2.4,1,,,,,0,,,,0
 4964,Vicario,Juventus,P,5.76,5.56,0.965,0.931,33.0,6,,,,,0,,,,0
-4970,Messias,Genoa,C,5.57,1.65,0.296,0.408,19.2,2,,,,3,2,,,,0
+4970,Messias,Genoa,C,5.57,1.65,0.296,0.408,19.2,2,,,,,0,,,,0
 4973,McKennie,Juventus,C,5.76,4.16,0.722,0.444,26.1,4,,,,,0,,,,0
 4976,Kalulu,Juventus,D,5.76,5.56,0.965,0.931,29.8,6,,,,,0,,,,0
 4994,Vojvoda,Udinese,D,5.76,5.24,0.91,0.819,28.9,6,,,,,0,,,,0
@@ -184,7 +184,7 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 5422,Zalewski,Atalanta,C,5.57,1.15,0.206,0.589,17.8,3,,,,,0,,,,0
 5424,Amey,Frosinone,D,5.57,0.2,0.036,0.928,14.0,1,,,,,0,,,,0
 5427,Gutierrez,Napoli,D,5.57,0.0,0.0,1.0,0.0,0,,,,,0,,,,1
-5436,Raimondo,Frosinone,A,5.57,4.63,0.831,0.662,27.2,4,,,,3,2,,,,0
+5436,Raimondo,Frosinone,A,5.57,4.63,0.831,0.662,27.2,4,,,,,0,,,,0
 5449,Parisi,Fiorentina,D,5.57,0.0,0.0,1.0,11.0,0,,,,,0,infortunio al legamento crociato,2026-11-10,6,0
 5453,Ricci S.,Como,C,5.57,0.67,0.119,0.761,16.4,2,,,,,0,,,,0
 5457,Maleh,Lecce,C,5.76,3.05,0.53,0.059,23.0,2,Gorter,7248,,,0,,,,0
@@ -217,12 +217,12 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 5680,Sarr P.,Juventus,C,5.76,0.91,0.158,0.684,17.0,3,Douglas Luiz,4911,,,0,,,,0
 5685,Koopmeiners,Juventus,C,5.76,1.08,0.188,0.623,17.5,2,,,,,0,,,,0
 5687,Vlasic,Torino,C,5.57,5.25,0.943,0.885,29.6,5,,,,1,3,,,,0
-5694,Beto,Fiorentina,A,5.57,1.12,0.201,0.598,16.6,3,Pellegrino M.,7023,58,,0,,,,0
+5694,Beto,Fiorentina,A,5.57,1.12,0.201,0.598,16.6,3,Pellegrino M.,7023,58,3,1,,,,0
 5695,Haps,Venezia,D,5.57,2.12,0.381,0.239,19.9,3,Correia T.,4845,,,0,,,,0
 5701,Obert,Cagliari,D,5.76,5.56,0.965,0.931,29.8,6,,,,,0,,,,0
 5707,Piana,Udinese,P,5.76,0.0,0.0,1.0,2.3,0,,,,,0,,,,0
 5725,Kone B.,Frosinone,C,5.57,0.0,0.0,1.0,14.5,0,,,,,0,,,,0
-5734,Soulè,Roma,A,5.57,3.26,0.585,0.171,23.1,2,Mora,7556,,3,2,,,,0
+5734,Soulè,Roma,A,5.57,3.26,0.585,0.171,23.1,2,Mora,7556,,,0,,,,0
 5735,Volpato,Sassuolo,C,5.57,2.1,0.377,0.246,20.5,1,,,,,0,lesione di grado moderato al flessore della gamba destra,2026-10-10,0,0
 5739,De Winter,Milan,D,5.76,4.98,0.865,0.729,28.1,4,,,,,0,,,,0
 5742,Drameh,Genoa,D,5.57,0.72,0.129,0.741,15.6,4,,,,,0,,,,0
@@ -232,7 +232,7 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 5761,Zhegrova,Juventus,C,5.76,0.75,0.13,0.74,16.6,2,,,,,0,,,,0
 5791,Frendrup,Genoa,C,5.57,5.37,0.964,0.928,29.9,5,,,,,0,,,,0
 5792,Ederson D.S.,Atalanta,C,5.57,5.16,0.926,0.853,29.3,5,,,,,0,,,,0
-5800,Gudmundsson A.,Lazio,C,5.76,1.1,0.191,0.618,17.0,3,Isaksen|Cancellieri,6398|5500,|,3,2,problema alla spalla sinistra in nazionale,2026-10-12,1,0
+5800,Gudmundsson A.,Lazio,C,5.76,1.1,0.191,0.618,17.0,3,Isaksen|Cancellieri,6398|5500,|,,0,problema alla spalla sinistra in nazionale,2026-10-12,1,0
 5812,Terracciano F.,Milan,D,5.76,0.15,0.026,0.948,13.8,1,,,,,0,,,,0
 5813,Miretti,Juventus,C,5.76,0.0,0.0,1.0,0.0,0,,,,,0,,,,1
 5820,Bertola,Udinese,D,5.76,0.61,0.107,0.786,15.2,3,,,,,0,,,,0
@@ -316,7 +316,7 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 6415,Palmisani,Frosinone,P,5.57,5.37,0.964,0.928,33.0,5,,,,,0,,,,0
 6424,Prati,Cagliari,C,5.76,0.0,0.0,1.0,0.0,0,,,,,0,,,,1
 6426,Pedersen,Torino,D,5.57,0.48,0.0,0.828,0.0,1,,,,,0,,,,1
-6434,Yildiz,Juventus,A,5.76,1.58,0.274,0.451,14.1,3,,,,2,1,"frattura del quinto metatarso, operato",2026-11-27,7,0
+6434,Yildiz,Juventus,A,5.76,1.58,0.274,0.451,14.1,3,,,,3,1,"frattura del quinto metatarso, operato",2026-11-27,7,0
 6435,Krstovic,Atalanta,A,5.57,1.56,0.28,0.44,17.9,2,Scamacca,2137,,3,1,,,,0
 6462,Okoye,Udinese,P,5.76,5.56,0.965,0.931,33.0,6,,,,,0,,,,0
 6482,Mandas,Lazio,P,5.76,5.37,0.932,0.865,31.9,5,,,,,0,,,,0
@@ -334,7 +334,7 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 6549,Pierotti,Lecce,C,5.76,4.85,0.842,0.684,28.0,6,Monteiro J.,7619,,,0,,,,0
 6556,Noslin,Lazio,A,5.76,2.57,0.446,0.108,20.7,2,,,,,0,,,,0
 6569,Stolz,Genoa,P,5.57,0.03,0.004,0.991,2.4,1,,,,,0,,,,0
-6572,Castro S.,Roma,A,5.57,0.94,0.168,0.664,16.0,2,,,,,0,,,,0
+6572,Castro S.,Roma,A,5.57,0.94,0.168,0.664,16.0,2,,,,3,1,,,,0
 6592,Forson O.,Monza,C,5.57,0.83,0.149,0.702,16.9,2,,,,,0,,,,0
 6593,Akinsanmiro,Monza,C,5.57,3.6,0.646,0.293,24.8,2,,,,,0,,,,0
 6598,Mutandwa,Cagliari,A,5.76,0.0,0.0,1.0,0.0,0,,,,,0,,,,1
@@ -369,7 +369,7 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 6684,Ekkelenkamp,Udinese,C,5.76,5.5,0.955,0.91,29.8,6,,,,,0,,,,0
 6717,Konè I.,Sassuolo,C,5.57,0.0,0.0,1.0,11.0,0,,,,,0,"rottura di tibia e perone, operato",2026-12-05,8,0
 6727,Couto,Como,D,5.57,4.99,0.896,0.792,28.6,5,,,,,0,,,,0
-6752,Woltemade,Juventus,A,5.76,0.79,0.137,0.726,15.5,3,Kolo Muani,5951,,3,2,,,,0
+6752,Woltemade,Juventus,A,5.76,0.79,0.137,0.726,15.5,3,Kolo Muani,5951,,2,2,,,,0
 6766,Kelly L.,Juventus,D,5.76,1.21,0.21,0.58,17.0,2,Lucumì,6042,,,0,,,,0
 6783,Unai Gomez,Udinese,C,5.76,1.87,0.325,0.351,19.7,3,,,,,0,,,,0
 6809,Marianucci,Napoli,D,5.57,0.0,0.0,1.0,12.6,0,,,,,0,lesione di alto grado del collaterale mediale del ginocchio sinistro,2026-10-18,2,0
@@ -396,7 +396,7 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 6896,Van Der Brempt,Sassuolo,D,5.57,0.77,0.138,0.724,15.8,4,,,,,0,,,,0
 6898,Keita M.,Parma,C,5.57,5.28,0.948,0.896,29.7,5,,,,,0,,,,0
 6903,Hasa,Frosinone,C,5.57,0.41,0.075,0.851,15.7,2,,,,,0,,,,0
-6904,Yeboah J.,Venezia,A,5.57,4.92,0.883,0.767,28.1,5,,,,2,1,,,,0
+6904,Yeboah J.,Venezia,A,5.57,4.92,0.883,0.767,28.1,5,,,,3,1,,,,0
 6908,Atta,Fiorentina,C,5.57,4.59,0.824,0.648,27.7,5,,,,,0,,,,0
 6916,Ahanor,Atalanta,D,5.57,0.0,0.0,1.0,0.0,0,,,,,0,,,,1
 6917,Masini,Frosinone,C,5.57,4.76,0.855,0.709,28.2,4,,,,,0,,,,0
@@ -418,7 +418,7 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 7012,Provstgaard,Lazio,D,5.76,5.37,0.932,0.865,29.2,5,,,,,0,,,,0
 7014,Smolcic I.,Como,D,5.57,0.38,0.068,0.864,14.6,2,,,,,0,,,,0
 7017,Douvikas,Como,A,5.57,2.65,0.476,0.048,21.2,3,Kean,2097,46,3,3,,,,0
-7023,Pellegrino M.,Fiorentina,A,5.57,4.15,0.745,0.49,25.8,4,Beto,5694,51,3,2,,,,0
+7023,Pellegrino M.,Fiorentina,A,5.57,4.15,0.745,0.49,25.8,4,Beto,5694,51,,0,,,,0
 7027,Azon,Como,A,5.57,0.0,0.0,1.0,0.0,0,,,,,0,,,,1
 7036,Bakola,Sassuolo,C,5.57,3.95,0.709,0.418,25.8,5,Adzic,6677,65,,0,,,,0
 7048,De Marzi,Roma,P,5.57,0.01,0.001,0.998,2.3,1,,,,,0,,,,0
@@ -537,9 +537,9 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 7481,Dagasso,Venezia,C,5.57,0.12,0.022,0.957,14.8,1,,,,,0,problema fisico,2026-10-10,0,0
 7482,Lauberbach,Venezia,A,5.57,0.41,0.074,0.853,14.4,2,,,,,0,,,,0
 7483,Alhassane,Bologna,D,5.57,1.05,0.189,0.621,16.6,2,,,,,0,,,,0
-7484,Adams A.,Venezia,A,5.57,5.16,0.926,0.853,28.9,5,,,,3,3,,,,0
+7484,Adams A.,Venezia,A,5.57,5.16,0.926,0.853,28.9,5,,,,2,3,,,,0
 7485,Mangas,Monza,D,5.57,4.89,0.878,0.756,28.3,5,,,,,0,,,,0
-7523,Varela G.,Monza,A,5.57,5.22,0.937,0.874,29.0,5,,,,1,4,,,,0
+7523,Varela G.,Monza,A,5.57,5.22,0.937,0.874,29.0,5,,,,2,4,,,,0
 7525,Diawara S.,Milan,D,5.76,0.1,0.017,0.965,13.7,1,,,,,0,,,,0
 7526,Comert,Torino,D,5.57,4.31,0.774,0.548,26.6,4,,,,,0,,,,0
 7528,Amondarain,Bologna,C,5.57,1.26,0.226,0.548,18.1,4,Pobega,5298,,,0,,,,0
@@ -555,7 +555,7 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 7540,Akpoguma,Frosinone,D,5.57,0.12,0.022,0.955,13.8,1,,,,,0,,,,0
 7545,Vismara,Atalanta,P,5.57,0.0,0.0,1.0,0.0,0,,,,,0,,,,1
 7546,Robinson J.,Monza,A,5.57,3.19,0.573,0.145,22.9,2,,,,,0,,,,0
-7547,Kevin Carlos,Cagliari,A,5.76,1.86,0.323,0.354,18.7,5,Nzola|Mendy P.,5336|7374,67|,,0,,,,0
+7547,Kevin Carlos,Cagliari,A,5.76,1.86,0.323,0.354,18.7,5,Nzola|Mendy P.,5336|7374,67|,3,1,,,,0
 7548,Aurelio,Cagliari,D,5.76,0.12,0.022,0.957,13.8,1,,,,,0,,,,0
 7550,Grillitsch,Frosinone,C,5.57,0.38,0.068,0.864,13.2,2,Calò,7472,,,0,"sindrome retto-adduttoria, operato",2026-11-02,5,0
 7551,Schmid,Frosinone,C,5.57,4.89,0.878,0.756,28.5,5,,,,2,2,,,,0
@@ -576,14 +576,14 @@ id,nome,squadra,ruolo,fonti_squadra,peso_titolare,titolarita_web,accordo,presenz
 7579,Massolin,Cagliari,C,5.76,0.2,0.035,0.931,15.1,1,,,,,0,,,,0
 7580,Sutalo J.,Lazio,D,5.76,2.95,0.512,0.024,22.1,4,Doekhi,6320,61,,0,,,,0
 7599,Lulli,Roma,D,5.57,2.44,0.437,0.126,20.8,2,Molina N.,4998,,,0,,,,0
-7600,Osmajic,Genoa,A,5.57,3.75,0.673,0.346,24.6,2,,,,,0,,,,0
+7600,Osmajic,Genoa,A,5.57,3.75,0.673,0.346,24.6,2,,,,3,1,,,,0
 7602,Fatah,Lecce,A,5.76,0.88,0.152,0.696,15.8,2,Monteiro J.,7619,19,,0,,,,0
 7603,Grabara,Juventus,P,5.76,0.0,0.0,1.0,0.6,0,,,,,0,"lesione del crociato anteriore del ginocchio destro, operato",2027-04-05,25,0
 7604,Maye,Monza,D,5.57,0.2,0.036,0.928,14.0,1,,,,,0,,,,0
 7605,Tchato,Frosinone,D,5.57,0.53,0.095,0.81,15.0,3,,,,,0,,,,0
 7610,Birligea,Frosinone,A,5.57,0.2,0.036,0.928,13.8,1,,,,,0,,,,0
 7611,Mrozek,Udinese,P,5.76,0.03,0.004,0.991,2.4,1,,,,,0,,,,0
-7612,Bobcek,Frosinone,A,5.57,0.58,0.105,0.79,15.0,3,,,,,0,,,,0
+7612,Bobcek,Frosinone,A,5.57,0.58,0.105,0.79,15.0,3,,,,3,1,,,,0
 7615,Drobnic,Parma,D,5.57,1.38,0.247,0.506,17.6,2,,,,,0,,,,0
 7618,Hutchinson,Milan,C,5.76,0.39,0.068,0.865,15.6,2,,,,,0,,,,0
 7619,Monteiro J.,Lecce,C,5.76,3.52,0.611,0.222,24.3,4,Pierotti|Fatah,6549|7602,|50,,0,,,,0

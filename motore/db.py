@@ -31,7 +31,7 @@ Uso:  python db.py               ricrea il file dei dati; l'asta la crea solo
       python db.py --asta-nuova  ricrea anche l'asta, vuota (cancella quella
                                  che c'era)
 """
-import contextlib, csv, os, sqlite3, sys, time
+import contextlib, csv, json, os, sqlite3, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import percorsi
@@ -333,10 +333,16 @@ def crea_dati(percorso=None, verboso=True, generato_il=None):
 
     n['rigoristi_consenso'] = _rigoristi_effettivi(con)
 
-    con.executemany('INSERT INTO meta (chiave, valore) VALUES (?,?)',
-                    [('schema', str(SCHEMA_DATI)),
-                     ('generato_il', generato_il or _data_manifest()),
-                     ('data_riferimento', _data_riferimento())])
+    meta = [('schema', str(SCHEMA_DATI)),
+            ('generato_il', generato_il or _data_manifest()),
+            ('data_riferimento', _data_riferimento())]
+    # La forza d'attacco delle squadre, per le proiezioni. Sta in `meta` e
+    # non in una colonna di `squadre`: cosi' lo schema resta quello di prima
+    # e i programmi gia' installati aprono il file senza accorgersene.
+    attacco = _fattori_attacco()
+    if attacco:
+        meta.append(('fattore_attacco', json.dumps(attacco, sort_keys=True)))
+    con.executemany('INSERT INTO meta (chiave, valore) VALUES (?,?)', meta)
     con.commit()
     if verboso:
         print('Dati creati: %s' % percorso)
@@ -388,6 +394,16 @@ def _rigoristi_effettivi(con):
                                 WHERE COALESCE(fuori_lista, 0) = 1)""")
     return con.execute(
         'SELECT COUNT(*) FROM contesto WHERE rigorista = 1').fetchone()[0]
+
+
+def _fattori_attacco():
+    """{squadra: fattore} da `database/squadre_attacco.csv`, se c'e'."""
+    p = os.path.join(DATABASE, 'squadre_attacco.csv')
+    if not os.path.exists(p):
+        return {}
+    with open(p, encoding='utf-8', newline='') as f:
+        return dict((r['squadra'], round(float(r['fattore']), 3))
+                    for r in csv.DictReader(f) if r.get('fattore'))
 
 
 def _data_riferimento():

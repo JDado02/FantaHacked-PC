@@ -57,6 +57,9 @@ GIORNATE = stagione.GIORNATE
 # punti nella sua squadra, e ogni squadra ha un primo solo.
 PUNTI_ORDINE_RIGORI = {1: 1.0, 2: 0.35, 3: 0.12}
 
+# Da quanti rigori tirati quest'anno il campo dice chi e' il rigorista.
+RIGORI_PER_FIDARSI = 3.0
+
 # Quanto di una partita da titolare vale un ingresso dalla panchina.
 QUOTA_INGRESSO = 0.25
 
@@ -395,7 +398,14 @@ def calcola():
         if ident is None or ident in fuori:
             continue
         ordine = int(r['ordine'])
-        voti_rig[r['squadra']][ident] += (pesi.get(r['fonte'], 1.0)
+        # Chi li ha tirati davvero vale quanto ne ha tirati. Varela e' stato
+        # primo rigorista del Monza per un rigore solo, contro la gerarchia di
+        # fantacalcio.it che mette Cutrone davanti: da tre rigori in su la
+        # fonte del campo vale per intero, sotto in proporzione.
+        fiducia = 1.0
+        if r.get('calciati') not in (None, ''):
+            fiducia = min(1.0, float(r['calciati']) / RIGORI_PER_FIDARSI)
+        voti_rig[r['squadra']][ident] += (pesi.get(r['fonte'], 1.0) * fiducia
                                           * PUNTI_ORDINE_RIGORI.get(ordine, 0.05))
         fonti_rig[ident].add(r['fonte'])
     rig = {}                                   # id -> (posto, quante fonti)

@@ -17,7 +17,7 @@ sono calibrati sul database a ogni esecuzione.
 
 Uso:  python proiezioni.py
 """
-import math, os, sqlite3, statistics, sys
+import collections, math, os, sqlite3, statistics, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db as dbmod
@@ -35,11 +35,30 @@ PESO_RENDIMENTO = stagione.PESO_RENDIMENTO
 PESO_MINUTAGGIO = stagione.PESO_MINUTAGGIO
 
 # Forza della regressione verso la media di ruolo, espressa in minuti di prior.
-# 900 minuti = dieci partite intere: sotto quella soglia la stima e' dominata
-# dalla media di ruolo, sopra dal rendimento individuale.
-K_MV    = 900.0
-K_TASSI = 700.0
+#
+# **Misurata, non scelta.** Da una stagione all'altra la media voto degli
+# stessi giocatori si ripete poco (correlazione 0.40-0.57 dentro ogni ruolo,
+# su chi ha giocato almeno 1500 minuti in entrambe): vuol dire che una
+# stagione intera di voti ne dice meno di quanto sembri, e che cinque partite
+# ne dicono pochissimo. Il prior che ne esce sta fra 1900 e 3600 minuti per la
+# media voto e fra 1150 e 1700 per gli npxG; si prende il bordo basso, perche'
+# chi gioca 1500 minuti in due stagioni di fila e' un campione gia' filtrato e
+# quella misura esagera un po'. Prima erano 900 e 700: un attaccante con
+# quattro gol in quattro partite finiva a meta' strada fra i suoi numeri e la
+# media, e il motore lo pagava come Hojlund.
+K_MV    = 1800.0
+K_TASSI = 1200.0
+# Quanto pesa la media di ruolo sui minuti a partita e sui cartellini: qui la
+# misura non e' cambiata, e restano i valori di prima.
+K_MPG   = 900.0
+K_ALTRI = 700.0
 K_QUOTA = 600.0
+
+# Quanto la forza d'attacco della squadra sposta il punto di partenza dei
+# tassi offensivi (npxG e xA per 90'), per ruolo: misurato sulle stagioni in
+# archivio, l'npxG di un giocatore segue quello della squadra con esponente
+# circa 1 (vedi `database/pipeline/build.py`, sezione 4b).
+ESPONENTE_SQUADRA = {'P': 0.0, 'D': 0.87, 'C': 1.0, 'A': 1.0}
 
 RUOLI = ('P', 'D', 'C', 'A')
 
@@ -64,6 +83,27 @@ class Calibrazione(object):
         self._assist_su_xa()
         self._difese()
         self._fit_quotazione()
+        self._attacco()
+
+    def _attacco(self):
+        """La forza d'attacco delle squadre, se il file dei dati la porta."""
+        self.fattore_attacco = {}
+        try:
+            r = self.con.execute(
+                "SELECT valore FROM meta WHERE chiave = 'fattore_attacco'").fetchone()
+            if r and r[0]:
+                import json
+                self.fattore_attacco = dict((k, float(v))
+                                            for k, v in json.loads(r[0]).items())
+        except Exception:
+            self.fattore_attacco = {}
+
+    def forza_attacco(self, squadra, ruolo):
+        """Il moltiplicatore del punto di partenza offensivo: 1 se non si sa."""
+        f = self.fattore_attacco.get(squadra)
+        if not f or f <= 0:
+            return 1.0
+        return f ** ESPONENTE_SQUADRA.get(ruolo, 1.0)
 
     def _q(self, sql, *a):
         return self.con.execute(sql, a).fetchall()
@@ -320,7 +360,7 @@ class Proiettore(object):
                 pg_num += peso * s['minuti']
                 pg_den += peso * s['pg']
         mpg_pers = (pg_num / pg_den) if pg_den else mpg
-        mpg_eff = _shrink(mpg_pers * peso_st, peso_st, mpg, K_MV, camp_st)
+        mpg_eff = _shrink(mpg_pers * peso_st, peso_st, mpg, K_MPG, camp_st)
         presenze = min(float(GIORNATE), minuti / max(mpg_eff, 20.0))
 
         # --- tassi offensivi ---------------------------------------------
@@ -330,9 +370,14 @@ class Proiettore(object):
             if v and v.get('minuti'):
                 npxg += peso * (v.get('npxg') or 0.0)
                 xa += peso * (v.get('xa') or 0.0)
-        npxg90 = _shrink(npxg * 90.0, peso_av, cal.npxg90.get(ruolo, 0.0), K_TASSI,
-                         camp_av)
-        xa90 = _shrink(xa * 90.0, peso_av, cal.xa90.get(ruolo, 0.0), K_TASSI, camp_av)
+        # Il punto di partenza e' la media del ruolo **nella sua squadra**: un
+        # attaccante dell'Inter e uno di una neopromossa, senza altri dati,
+        # non creano gli stessi gol attesi.
+        forza = cal.forza_attacco(p['squadra'], ruolo)
+        npxg90 = _shrink(npxg * 90.0, peso_av, cal.npxg90.get(ruolo, 0.0) * forza,
+                         K_TASSI, camp_av)
+        xa90 = _shrink(xa * 90.0, peso_av, cal.xa90.get(ruolo, 0.0) * forza,
+                       K_TASSI, camp_av)
 
         novanta = minuti / 90.0
         gol_azione = npxg90 * novanta
@@ -361,9 +406,9 @@ class Proiettore(object):
             if s and s.get('minuti'):
                 amm_num += peso * (s.get('amm') or 0)
                 esp_num += peso * (s.get('esp') or 0)
-        amm90 = _shrink(amm_num * 90.0, peso_st, cal.amm90.get(ruolo, 0.15), K_TASSI,
+        amm90 = _shrink(amm_num * 90.0, peso_st, cal.amm90.get(ruolo, 0.15), K_ALTRI,
                         camp_st)
-        esp90 = _shrink(esp_num * 90.0, peso_st, cal.esp90.get(ruolo, 0.01), K_TASSI,
+        esp90 = _shrink(esp_num * 90.0, peso_st, cal.esp90.get(ruolo, 0.01), K_ALTRI,
                         camp_st)
         amm = amm90 * novanta
         esp = esp90 * novanta
@@ -381,7 +426,7 @@ class Proiettore(object):
                 s = p['st'].get(stag)
                 if s and s.get('minuti'):
                     rp_num += peso * (s.get('rp') or 0)
-            rp = _shrink(rp_num * 90.0, peso_st, 0.02, K_TASSI, camp_st) * novanta
+            rp = _shrink(rp_num * 90.0, peso_st, 0.02, K_ALTRI, camp_st) * novanta
 
         # --- bonus totali ----------------------------------------------------
         bonus = (gol_azione * reg.gol_ruolo[ruolo]
@@ -539,6 +584,65 @@ def applica_consenso(con, righe):
     return righe
 
 
+# Chi da titolare salta molte partite, di solito continua a saltarne: e' la
+# cosa che cinque giornate giocate tutte non possono dire. Misurato sui
+# titolari "quando giocano" (almeno 60 minuti a presenza) in due stagioni di
+# fila, 129 giocatori: ogni presenza sotto la media (27,5) nel 2024-25 ne ha
+# tolta un terzo abbondante nel 2025-26 (pendenza 0.35, correlazione 0.38).
+# Chi ne aveva fatte 22 o meno ne ha fatte in media 26 l'anno dopo; chi ne
+# aveva fatte 30 o piu', 31.
+PENDENZA_DISPONIBILITA = 0.35
+PRESENZE_NORMA_TITOLARE = 27.5
+MINUTI_A_PRESENZA_TITOLARE = 60.0
+
+
+def applica_disponibilita(con, righe):
+    """Corregge le presenze di chi, da titolare, si ferma spesso (o quasi mai).
+
+    Solo per chi ha **due** stagioni concluse da titolare nei dati: con una
+    sola non si distingue l'infortunio dall'arrivo a gennaio (Malen nel
+    2025-26 ha 18 presenze perche' e' arrivato a stagione in corso, non
+    perche' si fermi). E solo per chi e' atteso come titolare: per le riserve
+    le presenze le decide la panchina, non il fisico.
+    """
+    stagioni = tuple(stagione.CONCLUSE[:2])
+    storia = collections.defaultdict(list)
+    try:
+        righe_st = con.execute(
+            'SELECT id, pg, minuti, squadra FROM statistiche WHERE stagione IN (?, ?)',
+            stagioni).fetchall()
+    except sqlite3.Error:
+        return righe
+    for r in righe_st:
+        pg, minuti = r['pg'] or 0, r['minuti'] or 0
+        if (pg >= 8 and minuti >= MINUTI_A_PRESENZA_TITOLARE * pg
+                and '|' not in (r['squadra'] or '')):
+            storia[r['id']].append(pg)
+    ruoli = dict(con.execute('SELECT id, ruolo FROM giocatori').fetchall())
+    for r in righe:
+        s = storia.get(r['id'])
+        prima = r['presenze_attese'] or 0.0
+        # Non per i portieri: un portiere con poche presenze non si e' fatto
+        # male, ha perso il posto (Meret nel 2025-26), e la misura e' fatta
+        # sui giocatori di movimento.
+        if (not s or len(s) < 2 or r.get('fuori_lista') or prima < 20
+                or ruoli.get(r['id']) == 'P'):
+            continue
+        delta = PENDENZA_DISPONIBILITA * (sum(s) / float(len(s)) - PRESENZE_NORMA_TITOLARE)
+        delta = max(-5.0, min(2.0, delta))
+        dopo = max(0.0, min(float(GIORNATE), prima + delta))
+        if abs(dopo - prima) < 0.05:
+            continue
+        k = dopo / prima
+        r['presenze_attese'] = round(dopo, 2)
+        r['minuti_attesi'] = round((r['minuti_attesi'] or 0.0) * k, 1)
+        r['punti_attesi'] = round(dopo * (r['fantamedia_attesa'] or 0.0), 2)
+        for campo in ('gol_attesi', 'assist_attesi', 'amm_attese', 'esp_attese',
+                      'gs_attesi', 'rp_attesi', 'imbattuto_attese'):
+            r[campo] = round((r[campo] or 0.0) * k, 3)
+    return righe
+
+
 def applica_gerarchia(con, righe):
     """Ridistribuisce i minuti dentro ogni reparto e ne annota la gerarchia.
 
@@ -641,7 +745,8 @@ def esegui(con=None, reg=None):
     # Prima quello che dicono le guide di quest'anno, poi il controllo che i
     # minuti di ogni reparto stiano dentro quelli che esistono. In quest'ordine:
     # la seconda correzione deve lavorare su numeri gia' aggiornati al mercato.
-    righe = applica_gerarchia(con, applica_consenso(con, p.proietta_tutti()))
+    righe = applica_gerarchia(con, applica_disponibilita(
+        con, applica_consenso(con, p.proietta_tutti())))
     salva(con, righe)
     return p.cal, righe
 

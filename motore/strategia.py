@@ -988,10 +988,20 @@ class Consigliere(object):
         # perche' gioca solo le partite giuste &mdash; e finisce in cima. Ma se
         # in formazione manca ancora un titolare, la risposta giusta non e'
         # quella: e' il difensore da trentuno presenze che costa uguale.
+        #
+        # **Tanti quanti ne mancano, non uno.** La regola scattava solo se in
+        # cima non c'era nessun titolare: con due caselle scoperte e un solo
+        # titolare fra i consigliati, il secondo posto andava a un difensore
+        # da diciannove presenze mentre sul listone ce n'erano da trentuno a
+        # quattro crediti. Adesso in testa ci vanno tanti titolari quante sono
+        # le caselle che mancano, e i promossi entrano **dopo** quelli che gia'
+        # c'erano, nell'ordine delle alternative (prima entravano al contrario).
         if cop['mancano'] >= 0.5 and PRIMA_I_TITOLARI and alternative:
-            if not any(d.get('titolare_pieno') for d in top[:max(1, quanti // 3)]):
+            servono = max(1, cop['mancano_interi'])
+            gia = sum(1 for d in top[:servono] if d.get('titolare_pieno'))
+            if gia < servono:
                 da_promuovere = [d for d in alternative if d.get('titolare_pieno')]
-                for d in da_promuovere[:max(1, cop['mancano_interi'])]:
+                for i, d in enumerate(da_promuovere[:servono - gia]):
                     e = dict(d)
                     e['categoria'] = 'copertura'
                     e['perche'] = (
@@ -1001,7 +1011,7 @@ class Consigliere(object):
                         'sono coperte questa e\' la spesa che rende di piu\'.'
                         % (d['presenze'], max(1, d['chiusura']),
                            cop['coperti'], cop['servono']))
-                    top.insert(0, e)
+                    top.insert(gia + i, e)
                 promossi = set(d['id'] for d in top)
                 alternative = [d for d in alternative if d['id'] not in promossi]
 
