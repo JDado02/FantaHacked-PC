@@ -237,6 +237,11 @@ python database/pipeline/pubblica.py --pubblica
 
 ### Costruire l'eseguibile
 
+**Non serve farlo a mano.** A ogni modifica del programma GitHub lo ricostruisce
+da solo su una macchina Windows (`.github/workflows/windows.yml`), lo prova e
+rimette `FantaHacked-Windows.zip` nel repository. I comandi qui sotto servono
+solo per lavorarci in locale.
+
 Quello che si distribuisce è la versione **a cartella**, poi impacchettata:
 
 ```bash
@@ -274,7 +279,7 @@ programma.
 ```bash
 python motore/test_motore.py           # 63 sul motore
 python motore/test_aggiornamento.py    # 27 sui due database e sull'aggiornamento
-python app/test_app.py                 # 297 sull'applicazione, contro un server vero
+python app/test_app.py                 # ~310 sull'applicazione, contro un server vero
 python simulazioni/cento_aste.py 500   # cinquecento aste complete
 python build/marchio.py                # icone e SVG, se cambia il marchio
 ```

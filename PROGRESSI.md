@@ -3280,3 +3280,67 @@ Android, prende l'apk di prima, sostituisce gli asset e alza la versione nel
 manifest binario; uber-apk-signer allinea e firma con la chiave di sviluppo
 del computer che aveva costruito la 1.1, cosi' la 1.2 si installa sopra
 senza perdere l'asta salvata nel telefono.
+
+---
+
+# 29 settembre: chi gioca lo dice questa stagione
+
+Dopo cinque giornate il programma credeva ancora troppo all'estate. Nelle
+presenze attese la stagione in corso pesava poco per costruzione: nel
+minutaggio erano 450 minuti a peso doppio contro i 3420 dell'anno scorso, un
+quarto di stagione; nel consenso le formazioni d'agosto valevano quasi quanto
+il campo, e il campo contava le **partite a voto**, cosi' cinque ingressi al
+75' facevano di una riserva un titolare fisso.
+
+## Cosa e' cambiato
+
+- **Il campo si misura in minuti**, sulle partite che il giocatore poteva
+  giocare: quelle saltate per infortunio (dalle letture archiviate degli
+  infortunati) non si contano. McTominay, fermo tre giornate per
+  un'ablazione, su quelle che poteva giocare e' un titolare. Il campo vale 3,
+  le probabili della giornata 2, le guide d'agosto un ottavo di peso in meno
+  a ogni giornata giocata (dopo cinque, poco piu' di un terzo).
+- **Dalla panchina la percentuale e' la probabilita' di entrare**, non di
+  giocare: vale un quarto di partita. Prima ogni riserva citata nelle
+  probabili diventava un uomo da sedici presenze.
+- **Nel minutaggio la stagione in corso pesa una volta e mezza l'ultima
+  conclusa**, qualunque sia il numero di giornate (`stagione.peso_minutaggio`);
+  nel rendimento, due volte per minuto. La regressione verso la media usa i
+  minuti veri: cinque partite pesano di piu', non diventano quaranta.
+- **I reparti si misurano su come gioca la squadra quest'anno.** La capienza
+  di un reparto era la mediana della lega; ora non scende sotto i minuti che
+  quella squadra gli sta dando in campo. Il Frosinone gioca con due punte e
+  mezza a partita, e la terza non e' un eccesso da tagliare.
+- **Fra i pali la maglia e' una sola**: i portieri di una squadra sommavano
+  fino a 40 presenze su 38. Ora al massimo una stagione di minuti.
+- Sei giocatori che la fonte dei minuti non riconosce ricevono minuti stimati
+  dalle partite a voto invece di sparire dalla stagione in corso.
+
+## Il controllo
+
+| | prima | dopo |
+|---|---|---|
+| correlazione fra minuti giocati quest'anno e presenze attese | 0,787 | **0,926** |
+| correlazione con le probabili della sesta giornata | 0,723 | **0,832** |
+| sempre in campo quest'anno ma sotto le 25 presenze attese | 5 | 1 |
+| quasi mai in campo ma proiettati titolari | 3 | 0 |
+| portieri di una squadra, presenze sommate (su 38) | fino a 40,1 | al massimo 38,5 |
+| presenze totali per squadra (al ritmo di quest'anno: 547) | 476-538 | 481-540 |
+
+Restano dieci giocatori dati titolari nelle probabili con pochi minuti alle
+spalle (Tornqvist, Caleta-Car, Helgason...): due segnali opposti, e il
+programma sta nel mezzo, intorno alle venti presenze. E' giusto cosi':
+cinque giornate dicono una cosa, una formazione probabile un'altra.
+
+Verifiche: 63 + 27 + 312, tutte superate; duecento aste, 200 vinte, +163 sul
+secondo, zero rose incomplete; sul telefono 54.500 numeri, 102 liste e 200
+aste intere identiche al computer.
+
+## L'eseguibile si costruisce da solo
+
+`.github/workflows/windows.yml`: a ogni modifica del programma GitHub lo
+compila su una macchina Windows con gli stessi comandi del README, lo avvia,
+aspetta che scarichi i dati, apre un'asta, chiede i consigli, controlla che
+una richiesta non JSON venga rifiutata, lo passa a Defender e solo allora
+rimette `FantaHacked-Windows.zip` nel repository. Lo zip dell'11 settembre era
+rimasto indietro di due giri di correzioni: non succede piu'.

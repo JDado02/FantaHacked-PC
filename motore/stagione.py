@@ -31,12 +31,23 @@ ULTIMA_CONCLUSA = CONCLUSE[0]
 # giocati sono pochi, il suo peso complessivo resta comunque piccolo finche'
 # le giornate non si accumulano: la regressione verso la media la tiene a
 # bada da sola.
-PESO_RENDIMENTO = {CORRENTE: 1.50, '2025-26': 1.00, '2024-25': 0.55,
+PESO_RENDIMENTO = {CORRENTE: 2.00, '2025-26': 1.00, '2024-25': 0.55,
                    '2023-24': 0.30}
 # Per il minutaggio la memoria e' piu' corta, e la stagione in corso conta
 # ancora di piu': chi gioca adesso e' la domanda.
 PESO_MINUTAGGIO = {CORRENTE: 2.00, '2025-26': 1.00, '2024-25': 0.35,
                    '2023-24': 0.15}
+
+# **Chi gioca adesso lo dice la stagione in corso.** Con un peso per minuto
+# fisso, cinque giornate erano 450 minuti contro i 3420 dell'anno scorso: anche
+# a peso doppio valevano un quarto di una stagione, e il modello continuava a
+# credere piu' all'allenatore dell'anno prima che a quello di adesso. Il peso
+# della stagione in corso si misura invece **sull'intera stagione**: da quando
+# si gioca, conta una volta e mezza l'ultima conclusa, qualunque sia il numero
+# di giornate. Il campione per la regressione resta quello vero (vedi
+# `proiezioni._campione`): cinque partite non diventano quaranta, pesano solo
+# di piu' nella media.
+PESO_CORRENTE_IN_STAGIONI = 1.5
 
 
 def data_riferimento(fonti_csv=None):
@@ -74,6 +85,14 @@ def giornate_giocate(calendario, oggi):
         g = int(giornata)
         ultima[g] = max(ultima.get(g, ''), str(data)[:10])
     return sum(1 for d in ultima.values() if d < oggi)
+
+
+def peso_minutaggio(stag, giocate):
+    """Il peso, per minuto disponibile, di una stagione nel minutaggio atteso."""
+    base = PESO_MINUTAGGIO.get(stag, 0.0)
+    if stag == CORRENTE and giocate > 0:
+        return max(base, PESO_CORRENTE_IN_STAGIONI * GIORNATE / float(giocate))
+    return base
 
 
 def minuti_disponibili(stagione, giocate):

@@ -139,6 +139,11 @@ def capienze(giocatori):
         # La mediana e' la misura di riferimento, ma non puo' scendere sotto
         # il minimo tecnico: i posti dell'undici tipo esistono comunque.
         out[ruolo] = max(med, POSTI.get(ruolo, 1.0) * MINUTI_STAGIONE * 0.55)
+    # Fra i pali la maglia e' una sola: i portieri di una squadra non possono
+    # giocare in tutto piu' di una stagione. La mediana diceva 3600 minuti, e
+    # il titolare piu' le due riserve arrivavano a 40 presenze su 38.
+    if 'P' in out:
+        out['P'] = min(out['P'], MINUTI_STAGIONE)
     return out
 
 
@@ -173,14 +178,22 @@ def _ordine_reparto(elenco):
     return sorted(elenco, key=lambda g: -punteggio(g))
 
 
-def calcola(giocatori):
+def calcola(giocatori, in_campo=None):
     """Da minuti attesi grezzi a gerarchia di reparto.
 
     `giocatori`: elenco di dizionari con id, squadra, ruolo, minuti, presenze,
     affidabilita (0..1), nuovo (bool), mercato (prezzo d'asta di riferimento,
     facoltativo). Restituisce {id: Posizione}.
+
+    `in_campo`: {(squadra, ruolo): minuti} che quel reparto sta **davvero**
+    usando quest'anno, riportati a una stagione intera. Un reparto non viene
+    mai tagliato sotto quello che la sua squadra gli sta dando in campo: la
+    mediana della lega dice che si gioca con due punte, ma se il Frosinone ne
+    schiera due e mezza a partita da cinque giornate, la terza non e' un
+    eccesso da tagliare. Non vale per i portieri: la maglia e' una sola.
     """
     cap = capienze(giocatori)
+    in_campo = in_campo or {}
     per_reparto = collections.defaultdict(list)
     for g in giocatori:
         per_reparto[(g['squadra'], g['ruolo'])].append(g)
@@ -188,6 +201,8 @@ def calcola(giocatori):
     out = {}
     for (squadra, ruolo), elenco in per_reparto.items():
         capienza = cap.get(ruolo, POSTI.get(ruolo, 1.0) * MINUTI_STAGIONE)
+        if ruolo != 'P':
+            capienza = max(capienza, in_campo.get((squadra, ruolo), 0.0))
         elenco = _ordine_reparto(elenco)
         minuti = [max(0.0, g.get('minuti') or 0.0) for g in elenco]
         somma = sum(minuti)

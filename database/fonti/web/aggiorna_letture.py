@@ -46,14 +46,23 @@ import stagione
 # pensava di giocare, non chi sta giocando. Non si buttano, perche' su chi
 # e' fermo o in ballottaggio dicono ancora qualcosa.
 PESO_GIORNATA = 2.0
-PESO_CAMPO = 2.0
+# Il campo vale piu' di qualunque previsione: e' l'unica fonte che non e' un
+# parere. La quota la calcola `consenso.py` sui minuti veri (statistiche.csv),
+# non sulle partite a voto: cinque ingressi al 70' non sono cinque partite da
+# titolare.
+PESO_CAMPO = 3.0
 PESO_RIGORI_FANTACALCIO = 1.5
 PESO_RIGORI_CAMPO = 1.5
 PESO_GUIDE_AGOSTO = {'fantacalcio-online': 0.75, 'sosfanta': 0.5,
                      'calciodangolo': 0.5, 'fantamaster': 0.5,
                      'fantamaster-g3': 0.5}
-# Da quante giornate giocate le guide d'agosto scendono di peso.
+# Da quante giornate giocate le guide d'agosto scendono di peso, e quanto:
+# un ottavo a giornata dalla prima in poi, fino a un quinto del peso iniziale.
+# Dopo cinque giornate valgono poco piu' di un terzo: raccontano chi pensava di
+# giocare ad agosto, e intanto si e' visto chi gioca.
 GIORNATE_PER_SCALARE = 3
+CALO_GUIDE_PER_GIORNATA = 1.0 / 8
+PESO_MINIMO_GUIDE = 0.2
 
 
 def _psv(percorso):
@@ -180,19 +189,9 @@ def aggiorna_formazioni(listone, giocate, data):
                            'modulo': r['modulo'], 'posto': posto,
                            'giocatore': r['giocatore'], 'ruolo': r['ruolo'],
                            'pct': r['pct'], 'id': r['id']})
-    if stat and giocate > 0:
-        # Chi ha preso voto, e quante volte, nelle giornate gia' giocate: e'
-        # l'unica fonte che non e' un'opinione.
-        for r in _psv(stat):
-            voce = listone.get(int(r['id']))
-            pv = int(_numero(r['pv']) or 0)
-            if not voce or pv <= 0:
-                continue
-            tenute.append({'fonte': fonte_campo, 'squadra': voce['squadra'],
-                           'modulo': '', 'posto': '', 'giocatore': voce['nome'],
-                           'ruolo': voce['ruolo'],
-                           'pct': int(round(100.0 * min(pv, giocate) / giocate)),
-                           'id': r['id']})
+    # Le righe del campo (`campo-AAAA-AA`) non si scrivono piu' qui: le
+    # costruisce `consenso.py` dai minuti veri di `statistiche.csv`, che a
+    # questo punto non esiste ancora. Qui si tolgono quelle vecchie.
     _scrivi(p, campi, tenute)
 
     # I ballottaggi della giornata vecchia se ne vanno con la sua formazione.
@@ -304,9 +303,10 @@ def aggiorna_fonti(data, giocate, giornata):
     if giocate > 0 and _cerca('statistiche'):
         metti('campo-' + stagione.CORRENTE,
               url='https://www.fantacalcio.it/statistiche-serie-a/%s/fantacalcio/medie' % stagione.CORRENTE,
-              tipo='partite a voto nelle giornate gia giocate',
+              tipo='minuti giocati nelle giornate gia giocate',
               peso=PESO_CAMPO, letta_il=data,
-              nota='quota = partite a voto / %d giornate giocate' % giocate)
+              nota='quota = minuti giocati / minuti delle %d giornate giocate '
+                   '(calcolata da consenso.py su statistiche.csv)' % giocate)
         metti('campo-%s-rigori' % stagione.CORRENTE,
               url='https://www.fantacalcio.it/statistiche-serie-a/%s/fantacalcio/medie' % stagione.CORRENTE,
               tipo='chi ha calciato i rigori in campionato',
@@ -321,13 +321,16 @@ def aggiorna_fonti(data, giocate, giornata):
               tipo='infortunati e indisponibili', letta_il=data,
               nota='riletta per intero il %s: %d indisponibili' % (data, n))
     if giocate >= GIORNATE_PER_SCALARE:
+        fattore = max(PESO_MINIMO_GUIDE, 1.0 - CALO_GUIDE_PER_GIORNATA * giocate)
         for nome, peso in PESO_GUIDE_AGOSTO.items():
             if nome in per_nome:
                 voce = per_nome[nome]
-                voce['peso'] = str(peso)
-                if 'pesata meno' not in voce['nota']:
-                    voce['nota'] = ((voce['nota'] + '; ') if voce['nota'] else '') + (
-                        'guida di inizio stagione: pesata meno dopo %d giornate giocate' % giocate)
+                voce['peso'] = '%.2f' % (peso * fattore)
+                nota = [n for n in voce['nota'].split('; ')
+                        if n and 'pesata meno' not in n]
+                nota.append('guida di inizio stagione: pesata %.0f%% dopo %d giornate '
+                            'giocate' % (100 * fattore, giocate))
+                voce['nota'] = '; '.join(nota)
     _scrivi(p, ['fonte', 'url', 'tipo', 'peso', 'letta_il', 'nota'], list(per_nome.values()))
 
 

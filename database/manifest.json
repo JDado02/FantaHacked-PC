@@ -78,8 +78,8 @@
       "url": "https://www.fantacalcio-online.com/it/consigli-fantacalcio/formazioni-tipo-serie-a-2026-2027",
       "tipo": "consenso dichiarato di dieci guide, con percentuali",
       "scaricato_il": "2026-09-03",
-      "peso": "0.75",
-      "note": "riporta solo le maglie su cui le guide si esprimono; guida di inizio stagione: pesata meno dopo 5 giornate giocate"
+      "peso": "0.28",
+      "note": "riporta solo le maglie su cui le guide si esprimono; guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
     },
     {
       "blocco": "web",
@@ -87,8 +87,8 @@
       "url": "https://www.sosfanta.com/asta-fantacalcio/seriea-tutte-formazioni-tipo-fantacalcio-2026-2027-asta-consigli-chi-prendere/",
       "tipo": "formazioni tipo per l'asta, con le alternative",
       "scaricato_il": "2026-09-03",
-      "peso": "0.5",
-      "note": "guida di inizio stagione: pesata meno dopo 5 giornate giocate"
+      "peso": "0.19",
+      "note": "guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
     },
     {
       "blocco": "web",
@@ -96,8 +96,8 @@
       "url": "https://calciodangolo.com/fantacalcio-come-giocherebbero-oggi-formazioni-tipo-serie-a-2026-2027/",
       "tipo": "formazioni tipo \"come giocherebbero oggi\"",
       "scaricato_il": "2026-09-03",
-      "peso": "0.5",
-      "note": "guida di inizio stagione: pesata meno dopo 5 giornate giocate"
+      "peso": "0.19",
+      "note": "guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
     },
     {
       "blocco": "web",
@@ -105,8 +105,8 @@
       "url": "https://www.fantamaster.it/probabili-formazioni-seriea-2026-2027-moduli-titolari-ballottaggi/",
       "tipo": "probabili formazioni con i ballottaggi aperti",
       "scaricato_il": "2026-09-03",
-      "peso": "0.5",
-      "note": "guida di inizio stagione: pesata meno dopo 5 giornate giocate"
+      "peso": "0.19",
+      "note": "guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
     },
     {
       "blocco": "web",
@@ -114,8 +114,8 @@
       "url": "https://www.fantamaster.it/probabili-formazioni-3-giornata-seriea-2026-2027-titolari-ballottaggi-ultime-dai-campi/",
       "tipo": "probabili formazioni della giornata",
       "scaricato_il": "2026-09-03",
-      "peso": "0.5",
-      "note": "lettura del 3 settembre sulle sei squadre che allora mancavano; ora fantacalcio.it le copre tutte, resta come secondo parere; guida di inizio stagione: pesata meno dopo 5 giornate giocate"
+      "peso": "0.19",
+      "note": "lettura del 3 settembre sulle sei squadre che allora mancavano; ora fantacalcio.it le copre tutte, resta come secondo parere; guida di inizio stagione: pesata 38% dopo 5 giornate giocate"
     },
     {
       "blocco": "web",
@@ -157,10 +157,10 @@
       "blocco": "web",
       "nome": "campo-2026-27",
       "url": "https://www.fantacalcio.it/statistiche-serie-a/2026-27/fantacalcio/medie",
-      "tipo": "partite a voto nelle giornate gia giocate",
+      "tipo": "minuti giocati nelle giornate gia giocate",
       "scaricato_il": "2026-09-28",
-      "peso": "2.0",
-      "note": "quota = partite a voto / 5 giornate giocate"
+      "peso": "3.0",
+      "note": "quota = minuti giocati / minuti delle 5 giornate giocate (calcolata da consenso.py su statistiche.csv)"
     },
     {
       "blocco": "web",
@@ -198,7 +198,7 @@
   },
   "copertura": {
     "statistiche.mv": 1.0,
-    "statistiche.minuti": 0.9464,
+    "statistiche.minuti": 0.9516,
     "contesto.quota_minuti": 0.6377,
     "contesto.rigorista": 0.6895,
     "contesto.titolarita": 0.0,

@@ -57,6 +57,9 @@ GIORNATE = stagione.GIORNATE
 # punti nella sua squadra, e ogni squadra ha un primo solo.
 PUNTI_ORDINE_RIGORI = {1: 1.0, 2: 0.35, 3: 0.12}
 
+# Quanto di una partita da titolare vale un ingresso dalla panchina.
+QUOTA_INGRESSO = 0.25
+
 # Posti nell'undici tipo per ruolo del listone: servono a dire, dentro un
 # reparto, chi era il titolare e chi no.
 POSTI_TITOLARI = {'P': 1, 'D': 4, 'C': 4, 'A': 2}
@@ -287,6 +290,20 @@ def calcola():
             fonti_per_squadra[r['squadra']].add(chiave)
             copertura[r['squadra']] += pesi.get(r['fonte'], 1.0)
 
+    # --- il campo: chi ha giocato davvero, e quanto -------------------------
+    # E' la fonte che conta di piu' a campionato iniziato, e l'unica che non
+    # e' un parere. Si misura sui **minuti** della stagione in corso, non
+    # sulle partite a voto: un ingresso al 75' prende voto quanto una partita
+    # intera, e cinque ingressi facevano di una riserva un titolare fisso.
+    campo = campo_stagione(listone)
+    fonte_campo = 'campo-' + stagione.CORRENTE
+    formazioni = [r for r in formazioni if r['fonte'] != fonte_campo] + campo
+    for r in campo:
+        chiave = (r['fonte'], r['squadra'])
+        if chiave not in fonti_per_squadra[r['squadra']]:
+            fonti_per_squadra[r['squadra']].add(chiave)
+            copertura[r['squadra']] += pesi.get(r['fonte'], 1.0)
+
     voti = collections.defaultdict(float)      # id -> peso di chi lo schiera
     schierato_da = collections.defaultdict(list)
     for r in formazioni:
@@ -311,6 +328,17 @@ def calcola():
         quanto = 1.0
         if r.get('pct') not in (None, ''):
             quanto = max(0.0, min(1.0, float(r['pct']) / 100.0))
+        # Dalla panchina la percentuale e' la probabilita' di **entrare**, non
+        # di giocare: il 55% di Bobcek vuol dire uno spezzone una domenica su
+        # due, non mezza maglia da titolare. Contata come quella di un
+        # titolare, faceva di ogni riserva citata un uomo da sedici presenze.
+        # Un ingresso vale circa un quarto di partita.
+        try:
+            in_panchina = int(r.get('posto') or 0) > 11
+        except ValueError:
+            in_panchina = False
+        if in_panchina:
+            quanto *= QUOTA_INGRESSO
         voti[ident] += pesi.get(r['fonte'], 1.0) * quanto
         if quanto > 0:
             schierato_da[ident].append(r['fonte'])
@@ -394,6 +422,84 @@ def calcola():
                         'saltate': saltate, 'testo': r['rientro_testo']}
 
     return listone, copertura, voti, schierato_da, coppie, rig, fermi, fuori, mancati
+
+
+def campo_stagione(listone):
+    """Una "formazione" per giocatore: la quota di minuti giocati quest'anno.
+
+    Si legge da `statistiche.csv`, dove i minuti sono gia' abbinati al
+    listone. Chi non ha giocato non compare: la sua assenza la misura la
+    copertura della squadra, come per le altre fonti.
+
+    **Le partite saltate per infortunio non si contano.** McTominay ha
+    giocato 150 minuti in cinque giornate, ma per tre era fermo per
+    un'ablazione: su quelle che poteva giocare e' un titolare, non uno da
+    un quarto di stagione. Le assenze si ricavano dalle letture degli
+    infortunati archiviate in `fonti/web/storico/` e da quella di oggi.
+    """
+    giocate = giornate_giocate()
+    percorso = os.path.join(DATABASE, 'statistiche.csv')
+    if giocate <= 0 or not os.path.exists(percorso):
+        return []
+    fermo = partite_perse_per_infortunio(listone)
+    out = []
+    for r in leggi(percorso):
+        if r.get('stagione') != stagione.CORRENTE:
+            continue
+        try:
+            ident, minuti = int(r['id']), float(r.get('minuti') or 0)
+        except ValueError:
+            continue
+        voce = listone.per_id.get(ident)
+        if voce is None or minuti <= 0:
+            continue
+        # Se era fermo per tutte le giornate giocate, il campo non sa niente.
+        # E le liste degli infortunati a volte sbagliano per eccesso: chi ha
+        # preso voto in quattro partite, in quattro partite c'era (Varela, dato
+        # fermo fino a ottobre, ha giocato le ultime tre).
+        try:
+            votate = int(float(r.get('pg') or 0))
+        except ValueError:
+            votate = 0
+        potute = max(giocate - min(giocate, fermo.get(ident, 0)), min(giocate, votate))
+        if potute <= 0:
+            continue
+        out.append({'fonte': 'campo-' + stagione.CORRENTE, 'squadra': voce['squadra'],
+                    'modulo': '', 'posto': '', 'giocatore': voce['nome'],
+                    'ruolo': voce['ruolo'], 'id': str(ident),
+                    'pct': str(int(round(100.0 * min(1.0, minuti / (potute * 90.0)))))})
+    return out
+
+
+def partite_perse_per_infortunio(listone):
+    """Quante delle giornate gia' giocate ognuno ha saltato perche' era fermo.
+
+    Da ogni lettura degli infortunati (quelle archiviate e quella di oggi): le
+    partite della sua squadra fra il giorno della lettura e il rientro
+    stimato, se sono gia' state giocate. Quello che succede fra una lettura e
+    l'altra non si vede, e allora non si conta: meglio una partita persa per
+    infortunio contata come panchina che il contrario.
+    """
+    letture = []
+    storico = os.path.join(WEB, 'storico')
+    if os.path.isdir(storico):
+        for giorno in sorted(os.listdir(storico)):
+            p = os.path.join(storico, giorno, 'infortuni.csv')
+            if os.path.exists(p):
+                letture.append((giorno, p))
+    letture.append((OGGI, os.path.join(WEB, 'infortuni.csv')))
+    partite = partite_per_squadra()
+    perse = collections.defaultdict(set)
+    for giorno, p in letture:
+        for r in leggi(p):
+            ident, _ = listone.trova(r['squadra'], r['giocatore'])
+            rientro = r.get('rientro_stimato') or ''
+            if ident is None or not rientro:
+                continue
+            for d in partite.get(r['squadra'], []):
+                if giorno <= d < rientro and d < OGGI:
+                    perse[ident].add(d)
+    return dict((i, len(d)) for i, d in perse.items())
 
 
 def giornate_giocate():

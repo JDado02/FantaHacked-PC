@@ -37,6 +37,8 @@ _ANNO_CORRENTE = int(STAGIONE_CORRENTE[:4])
 if os.path.exists(os.path.join(FONTI, 'understat_seriea_%d.json' % _ANNO_CORRENTE)):
     UNDERSTAT_SEASON[_ANNO_CORRENTE] = STAGIONE_CORRENTE
 MINUTI_STAGIONE = 38 * 90
+# Minuti medi di chi prende voto, per stimare quelli che la fonte non ha.
+MINUTI_PER_VOTO = 75
 # Il listone com'era quando e' stata compilata la tabella dei prezzi d'asta
 # (`seed_prezzi_asta.csv`). Serve a riportare quei prezzi a oggi: vedi la
 # sezione 10. Se manca, i prezzi restano quelli della tabella.
@@ -393,6 +395,17 @@ for r in correnti:
         anno = inv_stag[stag]
         us = u['seasons'].get(anno) if u else None
         minuti = num(us['time'], int) if us else ''
+        if (minuti == '' and stag == STAGIONE_CORRENTE
+                and (num(src['pg'], int) or 0) > 0):
+            # Della stagione in corso ogni partita conta: sei giocatori che la
+            # fonte dei minuti non riconosce (Valdepenas, Pedraza...) finivano
+            # senza minuti, e il modello li trattava come se quest'anno non
+            # avessero giocato. Si stimano dalle partite a voto, con la media
+            # di minuti di chi il voto lo prende; la lacuna resta scritta.
+            minuti = int(round(num(src['pg'], int) * MINUTI_PER_VOTO))
+            lacuna('statistiche.csv', pid, 'minuti',
+                   '%s: minuti stimati dalle partite a voto (%d x %d)'
+                   % (stag, num(src['pg'], int), MINUTI_PER_VOTO), 'understat')
         if stag == ULTIMA:
             minuti_di[pid] = minuti
         riga = {'id': pid, 'stagione': stag, 'squadra': sq(src['squadra']),

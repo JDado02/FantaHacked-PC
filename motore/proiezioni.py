@@ -254,7 +254,8 @@ class Proiettore(object):
 
         # --- minutaggio atteso -------------------------------------------
         sm = sw = sc = 0.0
-        for stag, peso in PESO_MINUTAGGIO.items():
+        for stag in PESO_MINUTAGGIO:
+            peso = stagione.peso_minutaggio(stag, self.giocate)
             m = (p['st'].get(stag) or {}).get('minuti')
             if m is None:
                 m = (p['av'].get(stag) or {}).get('minuti')
@@ -573,7 +574,7 @@ def applica_gerarchia(con, righe):
                      'titolarita_web': r['titolarita'],
                      'accordo': r['accordo'], 'fonti_web': r['fonti'],
                      'nuovo': bool(r['nuovo'])})
-    posizioni = titmod.calcola(dati)
+    posizioni = titmod.calcola(dati, _in_campo(con))
 
     for r in righe:
         pos = posizioni.get(r['id'])
@@ -600,6 +601,23 @@ def applica_gerarchia(con, righe):
         r['grado'] = pos.grado
         r['certezza'] = pos.certezza
     return righe
+
+
+def _in_campo(con):
+    """I minuti che ogni reparto sta giocando quest'anno, su una stagione intera."""
+    giocate = giornate_giocate(con)
+    if giocate <= 0:
+        return {}
+    try:
+        righe = con.execute("""SELECT g.squadra, g.ruolo, SUM(s.minuti) minuti
+                                FROM statistiche s JOIN giocatori g ON g.id = s.id
+                                WHERE s.stagione = ? AND s.minuti IS NOT NULL
+                                GROUP BY g.squadra, g.ruolo""",
+                             (stagione.CORRENTE,)).fetchall()
+    except sqlite3.Error:
+        return {}
+    return dict(((r['squadra'], r['ruolo']),
+                 float(r['minuti'] or 0) * GIORNATE / float(giocate)) for r in righe)
 
 
 def salva(con, righe):

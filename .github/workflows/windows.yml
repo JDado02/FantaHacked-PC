@@ -1,0 +1,108 @@
+# L'eseguibile per Windows, costruito da GitHub e rimesso nel repository.
+#
+# Lo zip che si scarica dal README si costruiva a mano, su un computer
+# Windows, con tre comandi. Funziona, ma solo se qualcuno si ricorda di farlo:
+# dopo le correzioni del 28 settembre il codice era aggiornato e lo zip era
+# ancora quello dell'11. Qui si rifa' da solo a ogni modifica del programma,
+# sulla macchina Windows di GitHub, con gli stessi comandi del README.
+#
+# Prima di rimetterlo nel repository si controlla che funzioni davvero: si
+# avvia l'eseguibile, si aspetta che scarichi i dati, si apre un'asta e si
+# chiedono i consigli. Poi passa a Windows Defender (`build/controlla.py`),
+# che e' la regola del progetto: non si pubblica un pacchetto segnalato.
+#
+# Solo il programma fa ripartire il lavoro, non i dati: quelli il programma
+# li scarica da solo da DBFantaHacked, e ricompilare per un infortunio in piu'
+# vorrebbe dire venti megabyte nella cronologia per niente.
+
+name: Eseguibile Windows
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'app/**'
+      - 'motore/**'
+      - 'build/**'
+      - 'database/regole_lega.json'
+      - '.github/workflows/windows.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: eseguibile-windows
+  cancel-in-progress: true
+
+jobs:
+  costruisci:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          # La stessa di prima: dentro lo zip dell'11 settembre c'era python312.dll.
+          python-version: '3.12'
+
+      - name: Strumenti
+        run: python -m pip install --upgrade pip pyinstaller numpy
+
+      - name: Versione a cartella
+        run: python -m PyInstaller --clean --distpath build/dist --workpath build/lavoro build/FantaHacked_cartella.spec
+
+      - name: Prova che parta, scarichi i dati e dia consigli
+        shell: pwsh
+        run: |
+          $prova = Join-Path $env:RUNNER_TEMP 'prova'
+          Copy-Item -Recurse build/dist/FantaHacked $prova
+          $exe = Join-Path $prova 'FantaHacked.exe'
+          $p = Start-Process -FilePath $exe -ArgumentList '--no-browser' -PassThru
+          $porta = $null
+          for ($i = 0; $i -lt 90 -and -not $porta; $i++) {
+            Start-Sleep -Seconds 2
+            $f = Get-ChildItem -Path $prova -Recurse -Filter 'fanta.porta' -ErrorAction SilentlyContinue | Select-Object -First 1
+            if ($f) { $porta = (Get-Content $f.FullName -Raw).Trim() }
+          }
+          if (-not $porta) { throw "l'eseguibile non si e' avviato (nessuna porta scritta)" }
+          $base = "http://127.0.0.1:$porta"
+          $ping = Invoke-RestMethod "$base/api/ping"
+          if ($ping.app -ne 'FantaHacked') { throw "risponde qualcun altro sulla porta $porta" }
+          $corpo = '{"mio_nome":"Io","avversari":["B","C","D","E","F","G","H"]}'
+          $asta = Invoke-RestMethod -Method Post -ContentType 'application/json' -Body $corpo "$base/api/nuova"
+          Write-Host "dati del $($asta.dati.generato_il), aggiornamento: $($asta.dati.aggiornamento)"
+          if (-not $asta.dati.generato_il) { throw 'nessun dato caricato' }
+          $cons = Invoke-RestMethod "$base/api/consiglio"
+          $quanti = @($cons.prendere).Count
+          Write-Host "consigli da prendere: $quanti"
+          if ($quanti -lt 1) { throw 'nessun consiglio: il motore non gira' }
+          $estranea = $null
+          try {
+            Invoke-WebRequest -Method Post -ContentType 'text/plain' -Body $corpo "$base/api/nuova" -UseBasicParsing | Out-Null
+            $estranea = 'accettata'
+          } catch { $estranea = 'rifiutata' }
+          if ($estranea -ne 'rifiutata') { throw 'una richiesta non JSON e'' passata' }
+          Invoke-RestMethod -Method Post -ContentType 'application/json' -Body '{}' "$base/api/spegni" | Out-Null
+          Start-Sleep -Seconds 3
+          if (-not $p.HasExited) { Stop-Process -Id $p.Id -Force }
+          Write-Host 'l''eseguibile parte, scarica i dati, apre l''asta e da'' consigli'
+
+      - name: Zip
+        run: python build/impacchetta.py
+
+      - name: Windows Defender
+        run: python build/controlla.py
+
+      - name: Rimetti lo zip nel repository
+        shell: pwsh
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add FantaHacked-Windows.zip
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 0) { Write-Host 'zip identico: niente da fare'; exit 0 }
+          git commit -m "Eseguibile Windows ricompilato ($($env:GITHUB_SHA.Substring(0,7)))"
+          git pull --rebase origin main
+          git push origin HEAD:main
