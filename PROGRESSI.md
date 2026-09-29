@@ -3252,10 +3252,31 @@ mossi.
   paga coi prezzi d'inizio settembre, e la rosa si riempie prima di aver
   speso. In un'asta vera quei nomi costeranno di piu'.
 
-## Da portare sul telefono
+## Il telefono, lo stesso giorno
 
 L'applicazione Android legge gli stessi dati, quindi rigoristi, infortuni e
-prezzi aggiornati valgono anche li'. Del motore e' cambiata una riga di
-`strategia.py` (il tetto di «falli pagare», `_svuota`): prima di rigenerare
-`attesi_consiglio.json` va tradotta anche in JavaScript, o il confronto
-segnera' quella differenza.
+prezzi aggiornati valgono anche li'. Del motore era cambiata una riga di
+`strategia.py` (il tetto di «falli pagare», `_svuota`): e' tradotta anche in
+JavaScript, e le prove lo confermano coi dati nuovi &mdash; **54.500 numeri,
+102 liste e 200 aste intere, zero differenze**. Tolta la riga dal
+JavaScript, il confronto delle liste segna due differenze: la prova se ne
+accorge.
+
+## Chi e' in infermeria si vede
+
+Le proiezioni gli infortuni li contavano, ma a schermo non c'era scritto
+niente: Locatelli con sedici presenze attese e nessun perche'. Adesso nelle
+liste c'e' un cartellino «FERMO 13G» e nella scheda cos'ha, quando rientra e
+quante giornate salta; chi rientra per la prossima giornata e' segnato come
+acciaccato, solo nella scheda. Il motore non si tocca: il server aggiunge
+l'informazione all'uscita (`segna_fermi`), il telefono la legge dal pacchetto.
+Le verifiche dell'applicazione salgono a 297.
+
+## L'apk senza Gradle
+
+Gradle e l'SDK Android non si scaricano da qui, e per un aggiornamento che
+tocca solo `web/` non servono: `reimpacchetta_apk.py`, nel repository
+Android, prende l'apk di prima, sostituisce gli asset e alza la versione nel
+manifest binario; uber-apk-signer allinea e firma con la chiave di sviluppo
+del computer che aveva costruito la 1.1, cosi' la 1.2 si installa sopra
+senza perdere l'asta salvata nel telefono.

@@ -1247,6 +1247,20 @@ kbd {
   background: var(--alto);
 }
 
+/* In infermeria: ambra, non rosso. Tornera', e le presenze attese lo sanno
+   gia'; il cartellino dice solo perche' sono meno di quante ci si aspetta. */
+.cartellino.fermo {
+  margin-left: 6px;
+  padding: 1px 5px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--fondo);
+  background: var(--attesa);
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
 /* Fuori dalla lista di serie A. Rosso pieno, non una sfumatura: non e' un
    giudizio del motore ma un fatto del regolamento, e chi lo compra si prende
    una casella vuota in rosa per tutta la stagione. */

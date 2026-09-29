@@ -274,7 +274,7 @@ programma.
 ```bash
 python motore/test_motore.py           # 63 sul motore
 python motore/test_aggiornamento.py    # 27 sui due database e sull'aggiornamento
-python app/test_app.py                 # 294 sull'applicazione, contro un server vero
+python app/test_app.py                 # 297 sull'applicazione, contro un server vero
 python simulazioni/cento_aste.py 500   # cinquecento aste complete
 python build/marchio.py                # icone e SVG, se cambia il marchio
 ```

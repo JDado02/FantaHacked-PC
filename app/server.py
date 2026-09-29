@@ -7,7 +7,7 @@ puo' essere curata davvero senza portarsi dietro un framework desktop.
 
 Avvio:  python server.py        (o doppio clic su "Avvia FantaHacked.vbs")
 """
-import datetime, json, mimetypes, os, socket, sys, threading, time, traceback, webbrowser
+import datetime, json, mimetypes, os, socket, sqlite3, sys, threading, time, traceback, webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
 
@@ -114,6 +114,7 @@ class Sessione(object):
         self.aggiornamento = aggmod.aggiorna(
             attivo=not os.environ.get('FANTAHACKED_NIENTE_RETE'))
         self.con = dbmod.connetti(check_same_thread=False)
+        self.fermi = _leggi_fermi(self.con)
         # Due regolamenti, non uno.
         #
         #   `reg_nuova` e' quello scelto dalla schermata iniziale: quante
@@ -139,6 +140,34 @@ class Sessione(object):
         self._consiglio = None
         if self.stato.esiste():
             self._monta()
+
+    # ------------------------------------------------------------- infermeria
+    def segna_fermi(self, dati):
+        """Accanto a ogni giocatore, se e' in infermeria e fino a quando.
+
+        Le proiezioni gli infortuni li contano gia', ma a schermo non si
+        vedevano: Locatelli risultava con sedici presenze attese e nessuno
+        diceva perche'. Il motore non si tocca - i due motori devono restare
+        uguali numero per numero - quindi l'informazione si aggiunge qui,
+        sull'uscita, a ogni giocatore che la pagina riceve.
+        """
+        if not self.fermi:
+            return dati
+        def giro(o):
+            if isinstance(o, dict):
+                gid = o.get('id')
+                if (isinstance(gid, int) and 'nome' in o and 'squadra' in o
+                        and gid in self.fermi):
+                    o['fermo'] = self.fermi[gid]
+                for v in o.values():
+                    if isinstance(v, (dict, list)):
+                        giro(v)
+            elif isinstance(o, list):
+                for v in o:
+                    if isinstance(v, (dict, list)):
+                        giro(v)
+        giro(dati)
+        return dati
 
     # ------------------------------------------------------------ regolamento
     CAMPI_REGOLE = ('partecipanti', 'crediti_iniziali', 'modificatore_difesa',
@@ -966,6 +995,25 @@ class Sessione(object):
             return {'righe': out, 'totale': len(righe)}
 
 
+def _leggi_fermi(con):
+    """Gli infortunati dal file dei dati: id -> stato, rientro, giornate saltate."""
+    try:
+        righe = con.execute(
+            "SELECT id, stato, rientro_stimato, partite_saltate FROM gerarchie"
+            " WHERE COALESCE(stato, '') != ''").fetchall()
+    except sqlite3.Error:
+        return {}
+    fermi = {}
+    for r in righe:
+        try:
+            saltate = int(float(r['partite_saltate'] or 0))
+        except (TypeError, ValueError):
+            saltate = 0
+        fermi[r['id']] = {'stato': r['stato'], 'rientro': r['rientro_stimato'] or '',
+                          'saltate': saltate}
+    return fermi
+
+
 def _intero(valore, nome, predefinito=None, minimo=None, massimo=None):
     """Legge un parametro numerico e lo rifiuta con parole comprensibili.
 
@@ -1087,6 +1135,9 @@ class Gestore(BaseHTTPRequestHandler):
 
     # ------------------------------------------------------------- risposte
     def _json(self, dati, codice=200):
+        if self.sessione is not None and codice == 200:
+            with self.sessione.lock:
+                dati = self.sessione.segna_fermi(dati)
         corpo = json.dumps(dati, ensure_ascii=False,
                            default=_semplifica).encode('utf-8')
         self.send_response(codice)

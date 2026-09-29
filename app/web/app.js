@@ -157,6 +157,23 @@ const SPIEGA_GRADO = {
 /* Chi non e' iscritto alla lista di serie A non puo' giocare: e' l'unico
    cartellino che conta piu' di qualunque statistica accanto, e va visto senza
    dover aprire la scheda. */
+// In infermeria. Le proiezioni ne tengono gia' conto; il cartellino serve a
+// sapere *perche'* un giocatore ha meno presenze di quante ci si aspetta, e a
+// non scoprirlo dopo averlo comprato. Solo per chi salta almeno una giornata:
+// chi rientra per la prossima sta nella scheda, non nella lista.
+const MESI = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set',
+              'ott', 'nov', 'dic'];
+function giornoMese(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
+  return m ? `${parseInt(m[3], 10)} ${MESI[parseInt(m[2], 10) - 1]}` : '';
+}
+function fermo(d) {
+  const f = d && d.fermo;
+  if (!f || !(f.saltate >= 1)) return '';
+  const quando = giornoMese(f.rientro);
+  return `<span class="cartellino fermo" title="${esc(f.stato)}${quando ? ' — rientro stimato ' + quando : ''}">FERMO ${f.saltate}G</span>`;
+}
+
 function fuoriLista(d) {
   return d && d.fuori_lista
     ? '<span class="cartellino fuori-lista" title="Non &egrave; iscritto alla lista di serie A: non pu&ograve; scendere in campo">FUORI LISTA</span>'
@@ -550,7 +567,7 @@ async function caricaRosaAvversario() {
         ${presi.length ? presi.map((x) => `
           <div class="giocatore-riga">
             <span class="cresce">${esc(x.nome)}
-              ${grado({ grado: x.grado, sicuro: x.sicuro }, true)}${rigore(x)}</span>
+              ${grado({ grado: x.grado, sicuro: x.sicuro }, true)}${rigore(x)}${fermo(x)}</span>
             ${scarto(x)}<span class="prezzo">${x.prezzo}</span>
             <button class="togli" data-annulla="${x.id}"
                     title="Annulla questo acquisto">&times;</button>
@@ -589,7 +606,7 @@ function disegnaRosa() {
     const righe = presi.map((x) => `
       <div class="giocatore-riga">
         <span class="cresce" title="${esc(x.squadra)} — fantamedia attesa ${x.fm} su ${x.presenze} presenze">${esc(x.nome)}
-          ${grado({ grado: x.grado, sicuro: x.sicuro }, true)}${rigore(x)}</span>
+          ${grado({ grado: x.grado, sicuro: x.sicuro }, true)}${rigore(x)}${fermo(x)}</span>
         ${scartoMio(x)}<span class="prezzo">${x.prezzo}</span>
         <button class="togli" data-annulla="${x.id}" title="Annulla questo acquisto">&times;</button>
       </div>`).join('');
@@ -877,7 +894,7 @@ async function caricaConsiglio() {
         </div>
         <div class="consiglio-riga2">
           <span class="esito ${CLASSE[d.verdetto] || 'stop'}">${esc(d.verdetto)}</span>
-          ${grado(d.gerarchia, true)}${rigore(d.gerarchia)}
+          ${grado(d.gerarchia, true)}${rigore(d.gerarchia)}${fermo(d)}
           ${d.categoria === 'coppia'
             ? '<span class="tag-coppia">chiude una coppia</span>' : ''}
           ${scoperto && !d.titolare_pieno
@@ -1075,7 +1092,7 @@ async function caricaListone() {
           <span class="cresce" style="${x.venduto ? 'opacity:.45' : ''}">
             ${tag(x.ruolo)} ${esc(x.nome)}
             <span class="fioco">${esc(x.squadra)}</span>
-            ${grado(x.gerarchia, true)}${rigore(x.gerarchia)}${fuoriLista(x)}</span>
+            ${grado(x.gerarchia, true)}${rigore(x.gerarchia)}${fermo(x)}${fuoriLista(x)}</span>
           ${x.venduto
             ? `<span class="fioco venduto-a">${esc(x.a_chi)}</span>
                <span class="cifra forte">${x.pagato}</span>`
@@ -1202,6 +1219,16 @@ function disegnaScheda(mantieni) {
   if (d.divergenza) {
     avvisi.push([d.divergenza.verso === 'sopra' ? 'grave' : '', esc(d.divergenza.testo)]);
   }
+  if (d.fermo) {
+    const f = d.fermo, quando = giornoMese(f.rientro);
+    avvisi.push([f.saltate >= 4 ? 'grave' : '', f.saltate >= 1
+      ? `<b>In infermeria:</b> ${esc(f.stato)}. Rientro stimato
+         ${quando ? `<b>${quando}</b>` : 'non noto'}: salta circa
+         <b>${f.saltate} ${f.saltate === 1 ? 'giornata' : 'giornate'}</b>, e le
+         presenze attese qui sotto ne tengono gi&agrave; conto.`
+      : `<b>Acciaccato:</b> ${esc(f.stato)}. Dovrebbe esserci alla prossima
+         giornata${quando ? ` (rientro stimato ${quando})` : ''}.`]);
+  }
   if (stima) {
     avvisi.push(['', `Non ha storico di Serie A: la stima viene dalla quotazione,
       non dai suoi numeri. Trattala con prudenza.`]);
@@ -1293,7 +1320,7 @@ function disegnaScheda(mantieni) {
   const alternative = d.alternative.map((a) => `
     <div class="riga-lista cliccabile" data-giocatore="${a.id}">
       <span class="cresce">${esc(a.nome)} <span class="fioco">${esc(a.squadra)}</span>
-        ${grado(a.gerarchia, true)}${rigore(a.gerarchia)}</span>
+        ${grado(a.gerarchia, true)}${rigore(a.gerarchia)}${fermo(a)}</span>
       ${a.quota_punti != null ? `<span class="fioco">${a.quota_punti}% dei punti</span>` : ''}
       <span class="cifra">${a.max_bid}</span>
     </div>`).join('');
@@ -1302,7 +1329,7 @@ function disegnaScheda(mantieni) {
     <div class="scheda-testa">
       ${tag(d.ruolo)}
       <div>
-        <div class="scheda-nome">${esc(d.nome)} ${grado(d.gerarchia)}${rigore(d.gerarchia)}${fuoriLista(d)}</div>
+        <div class="scheda-nome">${esc(d.nome)} ${grado(d.gerarchia)}${rigore(d.gerarchia)}${fermo(d)}${fuoriLista(d)}</div>
         <div class="scheda-sotto"><b>${esc(d.squadra)}</b> ·
           quotazione ${d.qi} · ${NOME_SINGOLARE[d.ruolo]}
           ${stima ? ' · <b>stima da quotazione</b>' : ''}</div>

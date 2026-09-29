@@ -329,6 +329,21 @@ def collauda(c):
              rosa['D'] and rosa['D'][0]['prezzo'] == 4,
              str(rosa['D'])[:80])
 
+    print('\n[4b-bis] Chi e\' in infermeria si vede')
+    # Le proiezioni gli infortuni li contavano gia', ma a schermo non c'era
+    # scritto: un titolare con sedici presenze attese e nessun perche'.
+    fermi = [x for x in c.get('/api/listone?n=600')['righe'] if x.get('fermo')]
+    verifica('il listone segna chi e\' in infermeria', len(fermi) >= 10,
+             '%d segnati' % len(fermi))
+    lunghi = [x for x in fermi if x['fermo']['saltate'] >= 4]
+    if lunghi:
+        sc = c.get('/api/scheda?id=%d' % lunghi[0]['id'])
+        verifica('e la scheda dice quanto sta fuori e quando rientra',
+                 sc.get('fermo', {}).get('saltate') == lunghi[0]['fermo']['saltate']
+                 and sc['fermo'].get('rientro'), str(sc.get('fermo')))
+    verifica('i presidenti non vengono scambiati per giocatori',
+             all('fermo' not in p for p in c.get('/api/stato')['presidenti']))
+
     print('\n[4c] Portieri a pacchetto')
     st = c.post('/api/nuova', {'mio_nome': 'Davide', 'avversari': nomi})
     if st['regole'].get('portieri_pacchetto'):
