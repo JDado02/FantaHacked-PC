@@ -1,0 +1,482 @@
+squadra|modulo|sezione|posto|ruolo|id|giocatore|pct
+Genoa|3-5-2|S|1|P|7332|Bijlow|90
+Genoa|3-5-2|S|2|D|6660|Marcandalli|90
+Genoa|3-5-2|S|3|D|5750|Ostigard|90
+Genoa|3-5-2|S|4|D|5514|Vasquez|90
+Genoa|3-5-2|S|5|D|6047|Ehizibue|80
+Genoa|3-5-2|S|6|C|5791|Frendrup|90
+Genoa|3-5-2|S|7|C|5946|Sow|90
+Genoa|3-5-2|S|8|C|5823|Baldanzi|90
+Genoa|3-5-2|S|9|C|6020|Ellertsson|90
+Genoa|3-5-2|S|10|A|4923|Colombo|75
+Genoa|3-5-2|S|11|A|7600|Osmajic|90
+Genoa|3-5-2|R|1|P|6569|Stolz|5
+Genoa|3-5-2|R|2|P|219|Sommariva|1
+Genoa|3-5-2|R|3|D|7537|Mitaj|50
+Genoa|3-5-2|R|4|D|7413|Puczka|30
+Genoa|3-5-2|R|5|D|791|Sabelli|25
+Genoa|3-5-2|R|6|D|5742|Drameh|30
+Genoa|3-5-2|R|7|D|6977|Otoa|35
+Genoa|3-5-2|R|8|C|7341|Amorim|55
+Genoa|3-5-2|R|9|C|2857|Traorè Hj.|40
+Genoa|3-5-2|R|10|C|795|El Shaarawy|60
+Genoa|3-5-2|R|11|C|7608|Wiafe|15
+Genoa|3-5-2|R|12|C|4970|Messias|60
+Genoa|3-5-2|R|13|A|6164|Vitinha O.|60
+Fiorentina|4-3-2-1|S|1|P|2521|De Gea|90
+Fiorentina|4-3-2-1|S|2|D|6531|Jimenez A.|90
+Fiorentina|4-3-2-1|S|3|D|5365|Dragusin|90
+Fiorentina|4-3-2-1|S|4|D|4378|Ranieri L.|90
+Fiorentina|4-3-2-1|S|5|D|7410|Viery|90
+Fiorentina|4-3-2-1|S|6|C|6294|Ndour|90
+Fiorentina|4-3-2-1|S|7|C|4465|Fagioli|90
+Fiorentina|4-3-2-1|S|8|C|6908|Atta|90
+Fiorentina|4-3-2-1|S|9|C|7078|Mastantuono|90
+Fiorentina|4-3-2-1|S|10|C|6827|Njie|70
+Fiorentina|4-3-2-1|S|11|A|7023|Pellegrino M.|70
+Fiorentina|4-3-2-1|R|1|P|6403|Christensen O.|5
+Fiorentina|4-3-2-1|R|2|P|158|Lezzerini|1
+Fiorentina|4-3-2-1|R|3|D|7175|Joao Mario|50
+Fiorentina|4-3-2-1|R|4|D|5885|Dodò|20
+Fiorentina|4-3-2-1|R|5|D|5603|Pongracic|40
+Fiorentina|4-3-2-1|R|6|D|7294|Valdepenas|55
+Fiorentina|4-3-2-1|R|7|C|4947|Brescianini|40
+Fiorentina|4-3-2-1|R|8|C|7464|Oulai|50
+Fiorentina|4-3-2-1|R|9|C|7625|Goncalves P.|60
+Fiorentina|4-3-2-1|R|10|A|5694|Beto|60
+Fiorentina|4-3-2-1|R|11|A|7623|Gnonto|55
+Inter|3-5-2|S|1|P|5116|Martinez Jo.|90
+Inter|3-5-2|S|2|D|6217|Bisseck|80
+Inter|3-5-2|S|3|D|4159|Akanji|90
+Inter|3-5-2|S|4|D|2120|Bastoni|90
+Inter|3-5-2|S|5|C|6274|Diouf|90
+Inter|3-5-2|S|6|C|1870|Barella|90
+Inter|3-5-2|S|7|C|152|Zielinski|75
+Inter|3-5-2|S|8|C|5172|Jones C.|70
+Inter|3-5-2|S|9|D|254|Dimarco|80
+Inter|3-5-2|S|10|A|4871|Thuram|80
+Inter|3-5-2|S|11|A|2764|Martinez L.|90
+Inter|3-5-2|R|1|P|2814|Provedel|5
+Inter|3-5-2|R|2|P|1926|Di Gennaro|1
+Inter|3-5-2|R|3|D|4177|Pavard|40
+Inter|3-5-2|R|4|D|5982|Spence|30
+Inter|3-5-2|R|5|D|2514|Stones|20
+Inter|3-5-2|R|6|D|5877|Carlos Augusto|60
+Inter|3-5-2|R|7|C|5301|Luis Henrique|50
+Inter|3-5-2|R|8|C|2194|Calhanoglu|50
+Inter|3-5-2|R|9|C|2529|Mkhitaryan|35
+Inter|3-5-2|R|10|C|7070|Sucic P.|60
+Inter|3-5-2|R|11|C|6503|Stankovic A.|25
+Inter|3-5-2|R|12|A|6669|Bonny|55
+Inter|3-5-2|R|13|A|7071|Esposito F.P.|60
+Parma|3-4-2-1|S|1|P|6662|Corvi|90
+Parma|3-4-2-1|S|2|D|6664|Delprato|90
+Parma|3-4-2-1|S|3|D|7235|Troilo|90
+Parma|3-4-2-1|S|4|D|4137|Diego Carlos|90
+Parma|3-4-2-1|S|5|D|7255|Britschgi|70
+Parma|3-4-2-1|S|6|C|7628|Sierro|90
+Parma|3-4-2-1|S|7|C|6898|Keita M.|90
+Parma|3-4-2-1|S|8|D|5862|Valeri|90
+Parma|3-4-2-1|S|9|A|6229|Tourè E.|80
+Parma|3-4-2-1|S|10|A|7561|Lontani|80
+Parma|3-4-2-1|S|11|A|7554|Romero D.|85
+Parma|3-4-2-1|R|1|P|7411|Daffara|5
+Parma|3-4-2-1|R|2|P|2874|Ghidotti|1
+Parma|3-4-2-1|R|3|D|7615|Drobnic|35
+Parma|3-4-2-1|R|4|D|7202|Ndiaye|40
+Parma|3-4-2-1|R|5|D|6149|Carboni F.|30
+Parma|3-4-2-1|R|6|D|5307|Valenti|20
+Parma|3-4-2-1|R|7|C|6206|Fabbian|60
+Parma|3-4-2-1|R|8|C|7276|Cremaschi|35
+Parma|3-4-2-1|R|9|C|7581|Konate A.|30
+Parma|3-4-2-1|R|10|C|7138|Ordonez C.|60
+Parma|3-4-2-1|R|11|C|6666|Bernabè|50
+Parma|3-4-2-1|R|12|C|7536|Diallo O.|20
+Parma|3-4-2-1|R|13|C|6207|Almqvist|60
+Parma|3-4-2-1|R|14|A|7342|Elphege|60
+Parma|3-4-2-1|R|15|A|7213|Frigan|50
+Napoli|4-3-3|S|1|P|572|Meret|70
+Napoli|4-3-3|S|2|D|2816|Di Lorenzo|90
+Napoli|4-3-3|S|3|D|4409|Rrahmani|90
+Napoli|4-3-3|S|4|D|6638|Marin R.|80
+Napoli|4-3-3|S|5|D|5840|Olivera|70
+Napoli|4-3-3|S|6|C|5131|Gilmour|80
+Napoli|4-3-3|S|7|C|4287|Lobotka|90
+Napoli|4-3-3|S|8|C|2517|De Bruyne|90
+Napoli|4-3-3|S|9|C|536|Politano|90
+Napoli|4-3-3|S|10|A|6052|Hojlund|90
+Napoli|4-3-3|S|11|A|7120|Lang|70
+Napoli|4-3-3|R|1|P|2170|Milinkovic-Savic V.|5
+Napoli|4-3-3|R|2|P|2845|Contini|1
+Napoli|4-3-3|R|3|D|7563|Favasuli|60
+Napoli|4-3-3|R|4|D|6202|Beukema|40
+Napoli|4-3-3|R|5|D|1852|Spinazzola|50
+Napoli|4-3-3|R|6|D|4664|Badiashile|35
+Napoli|4-3-3|R|7|C|4777|McTominay|50
+Napoli|4-3-3|R|8|C|7223|Vergara|60
+Napoli|4-3-3|R|9|A|6831|Neres|60
+Napoli|4-3-3|R|10|A|6215|Lucca|60
+Frosinone|4-2-3-1|S|1|P|6415|Palmisani|90
+Frosinone|4-2-3-1|S|2|D|6238|Oyono A.|90
+Frosinone|4-2-3-1|S|3|D|7467|Calvani|90
+Frosinone|4-2-3-1|S|4|D|4952|Monterisi|70
+Frosinone|4-2-3-1|S|5|D|7469|Bracaglia|90
+Frosinone|4-2-3-1|S|6|C|7472|Calò|90
+Frosinone|4-2-3-1|S|7|C|6917|Masini|90
+Frosinone|4-2-3-1|S|8|A|6530|Ghedjemis|90
+Frosinone|4-2-3-1|S|9|C|7551|Schmid|90
+Frosinone|4-2-3-1|S|10|A|6204|Kvernadze|90
+Frosinone|4-2-3-1|S|11|A|7612|Bobcek|70
+Frosinone|4-2-3-1|R|1|P|7463|Desplanches|5
+Frosinone|4-2-3-1|R|2|P|7560|Pisseri|1
+Frosinone|4-2-3-1|R|3|D|5757|Cittadini|55
+Frosinone|4-2-3-1|R|4|D|7605|Tchato|30
+Frosinone|4-2-3-1|R|5|D|7553|Omar Fayed|20
+Frosinone|4-2-3-1|R|6|D|5424|Amey|40
+Frosinone|4-2-3-1|R|7|D|7540|Akpoguma|25
+Frosinone|4-2-3-1|R|8|C|6506|Fini|50
+Frosinone|4-2-3-1|R|9|C|7473|Cichella|60
+Frosinone|4-2-3-1|R|10|C|6903|Hasa|35
+Frosinone|4-2-3-1|R|11|C|7456|El Azzouzi A.|25
+Frosinone|4-2-3-1|R|12|C|5998|Zerbin|60
+Frosinone|4-2-3-1|R|13|A|7610|Birligea|60
+Frosinone|4-2-3-1|R|14|A|5436|Raimondo|50
+Como|4-2-3-1|S|1|P|6966|Butez|80
+Como|4-2-3-1|S|2|D|6727|Couto|80
+Como|4-2-3-1|S|3|D|6869|Ramon|90
+Como|4-2-3-1|S|4|D|5641|Chalobah T.|90
+Como|4-2-3-1|S|5|D|6867|Valle|70
+Como|4-2-3-1|S|6|C|5559|Da Cunha|80
+Como|4-2-3-1|S|7|C|6151|Perrone|80
+Como|4-2-3-1|S|8|A|6967|Diao|90
+Como|4-2-3-1|S|9|C|6875|Paz N.|90
+Como|4-2-3-1|S|10|C|7126|Baturina|85
+Como|4-2-3-1|S|11|A|2097|Kean|70
+Como|4-2-3-1|R|1|P|6344|Sanchez Ro.|5
+Como|4-2-3-1|R|2|P|2809|Vigorito|1
+Como|4-2-3-1|R|3|D|7014|Smolcic I.|40
+Como|4-2-3-1|R|4|D|6893|Kempf|35
+Como|4-2-3-1|R|5|D|7414|Kaiki|55
+Como|4-2-3-1|R|6|D|6601|Kambwala|25
+Como|4-2-3-1|R|7|D|6230|Dossena|15
+Como|4-2-3-1|R|8|D|418|Goldaniga|20
+Como|4-2-3-1|R|9|C|7412|Milla|60
+Como|4-2-3-1|R|10|C|5036|Caqueret|40
+Como|4-2-3-1|R|11|C|5453|Ricci S.|55
+Como|4-2-3-1|R|12|C|7127|Addai|35
+Como|4-2-3-1|R|13|C|6678|Liberali|30
+Como|4-2-3-1|R|14|C|7129|Rodriguez Je.|60
+Como|4-2-3-1|R|15|A|7017|Douvikas|60
+Roma|3-4-2-1|S|1|P|5841|Svilar|90
+Roma|3-4-2-1|S|2|D|2296|Mancini|90
+Roma|3-4-2-1|S|3|D|4705|Balerdi|70
+Roma|3-4-2-1|S|4|D|4807|Hermoso|90
+Roma|3-4-2-1|S|5|D|4998|Molina N.|80
+Roma|3-4-2-1|S|6|C|5589|Konè M.|90
+Roma|3-4-2-1|S|7|C|779|Cristante|80
+Roma|3-4-2-1|S|8|D|7181|Wesley|80
+Roma|3-4-2-1|S|9|A|5734|Soulè|70
+Roma|3-4-2-1|S|10|A|309|Dybala|80
+Roma|3-4-2-1|S|11|A|5585|Malen|80
+Roma|3-4-2-1|R|1|P|610|Gollini|5
+Roma|3-4-2-1|R|2|P|7048|De Marzi|1
+Roma|3-4-2-1|R|3|D|4317|N'Dicka|60
+Roma|3-4-2-1|R|4|D|7599|Lulli|55
+Roma|3-4-2-1|R|5|D|7529|Koulierakis|35
+Roma|3-4-2-1|R|6|D|6986|Rensch|50
+Roma|3-4-2-1|R|7|D|6631|Ghilardi|35
+Roma|3-4-2-1|R|8|C|22|De Roon|40
+Roma|3-4-2-1|R|9|C|6190|Pisilli|60
+Roma|3-4-2-1|R|10|C|7556|Mora|60
+Roma|3-4-2-1|R|11|C|530|Pellegrini Lo.|25
+Roma|3-4-2-1|R|12|A|6572|Castro S.|55
+Lazio|4-3-3|S|1|P|6482|Mandas|90
+Lazio|4-3-3|S|2|D|7131|Floriani Mussolini|80
+Lazio|4-3-3|S|3|D|7580|Sutalo J.|70
+Lazio|4-3-3|S|4|D|7012|Provstgaard|90
+Lazio|4-3-3|S|5|D|5620|Tavares N.|90
+Lazio|4-3-3|S|6|C|2848|Frattesi|90
+Lazio|4-3-3|S|7|C|6191|Belahyane|80
+Lazio|4-3-3|S|8|C|7314|Taylor K.|90
+Lazio|4-3-3|S|9|C|6398|Isaksen|70
+Lazio|4-3-3|S|10|A|6556|Noslin|70
+Lazio|4-3-3|S|11|C|632|Zaccagni|90
+Lazio|4-3-3|R|1|P|7337|Motta|5
+Lazio|4-3-3|R|2|P|7534|Renzetti|1
+Lazio|4-3-3|R|3|D|4817|Pedraza|55
+Lazio|4-3-3|R|4|D|6320|Doekhi|50
+Lazio|4-3-3|R|5|D|2188|Marusic|20
+Lazio|4-3-3|R|6|D|6319|Leite|30
+Lazio|4-3-3|R|7|D|2263|Lazzari|40
+Lazio|4-3-3|R|8|C|6629|Dele-Bashiru|50
+Lazio|4-3-3|R|9|C|5500|Cancellieri|60
+Lazio|4-3-3|R|10|A|2038|Pinamonti|60
+Monza|3-4-2-1|S|1|P|7301|Tornqvist|90
+Monza|3-4-2-1|S|2|D|7238|Kouadio|90
+Monza|3-4-2-1|S|3|D|6659|Lucchesi|90
+Monza|3-4-2-1|S|4|D|4925|Carboni A.|90
+Monza|3-4-2-1|S|5|D|5838|Birindelli|90
+Monza|3-4-2-1|S|6|C|6593|Akinsanmiro|90
+Monza|3-4-2-1|S|7|C|6252|Folorunsho|90
+Monza|3-4-2-1|S|8|D|7485|Mangas|90
+Monza|3-4-2-1|S|9|A|2155|Cutrone|70
+Monza|3-4-2-1|S|10|A|7546|Robinson J.|80
+Monza|3-4-2-1|S|11|A|7523|Varela G.|90
+Monza|3-4-2-1|R|1|P|4485|Thiam|5
+Monza|3-4-2-1|R|2|P|7475|Strajnar|1
+Monza|3-4-2-1|R|3|D|5399|Antov|20
+Monza|3-4-2-1|R|4|D|6537|Goglichidze|30
+Monza|3-4-2-1|R|5|D|7604|Maye|40
+Monza|3-4-2-1|R|6|D|7476|Bakoune|60
+Monza|3-4-2-1|R|7|C|6592|Forson O.|40
+Monza|3-4-2-1|R|8|C|7574|Foe Ondoa|55
+Monza|3-4-2-1|R|9|C|7477|Colombo L.|25
+Monza|3-4-2-1|R|10|C|7575|Mout|50
+Monza|3-4-2-1|R|11|C|7146|Tourè I.|20
+Monza|3-4-2-1|R|12|C|5878|Colpani|55
+Monza|3-4-2-1|R|13|A|5882|Mota|60
+Monza|3-4-2-1|R|14|A|6145|Ngonge|40
+Monza|3-4-2-1|R|15|A|7620|Zeballos|55
+Lecce|4-3-3|S|1|P|2134|Falcone|90
+Lecce|4-3-3|S|2|D|6990|Veiga D.|90
+Lecce|4-3-3|S|3|D|6632|Gaspar K.|70
+Lecce|4-3-3|S|4|D|7240|Siebert|80
+Lecce|4-3-3|S|5|D|4502|Gallo|90
+Lecce|4-3-3|S|6|C|5504|Coulibaly L.|90
+Lecce|4-3-3|S|7|C|5007|Ilic|90
+Lecce|4-3-3|S|8|C|5457|Maleh|70
+Lecce|4-3-3|S|9|C|6549|Pierotti|80
+Lecce|4-3-3|S|10|A|7252|Stulic|70
+Lecce|4-3-3|S|11|C|7619|Monteiro J.|85
+Lecce|4-3-3|R|1|P|4468|Bleve|5
+Lecce|4-3-3|R|2|P|7557|Penev|1
+Lecce|4-3-3|R|3|D|7182|Ndaba|40
+Lecce|4-3-3|R|4|D|6826|Dembelè A.|30
+Lecce|4-3-3|R|5|D|6883|Jean|20
+Lecce|4-3-3|R|6|D|6989|Tiago Gabriel|50
+Lecce|4-3-3|R|7|C|7248|Gorter|55
+Lecce|4-3-3|R|8|C|7322|Ngom|60
+Lecce|4-3-3|R|9|C|6410|Kaba|30
+Lecce|4-3-3|R|10|C|7319|Fofana Sa.|25
+Lecce|4-3-3|R|11|C|7318|Gandelman|30
+Lecce|4-3-3|R|12|A|7001|N'Dri|60
+Lecce|4-3-3|R|13|A|7647|Esteban|40
+Lecce|4-3-3|R|14|A|5029|Geubbels|50
+Lecce|4-3-3|R|15|A|7602|Fatah|55
+Bologna|3-4-2-1|S|1|P|133|Skorupski|80
+Bologna|3-4-2-1|S|2|D|7326|Helland|80
+Bologna|3-4-2-1|S|3|D|7212|Heggem|90
+Bologna|3-4-2-1|S|4|D|5675|Theate|90
+Bologna|3-4-2-1|S|5|D|4433|Zortea|90
+Bologna|3-4-2-1|S|6|C|5298|Pobega|80
+Bologna|3-4-2-1|S|7|C|5858|Ferguson|90
+Bologna|3-4-2-1|S|8|D|4734|Miranda J.|90
+Bologna|3-4-2-1|S|9|C|2167|Orsolini|70
+Bologna|3-4-2-1|S|10|C|184|Bernardeschi|80
+Bologna|3-4-2-1|S|11|A|4359|Piccoli|80
+Bologna|3-4-2-1|R|1|P|7172|Pessina Mas.|5
+Bologna|3-4-2-1|R|2|P|7533|Happonen|1
+Bologna|3-4-2-1|R|3|D|7483|Alhassane|25
+Bologna|3-4-2-1|R|4|D|7068|Vitik|30
+Bologna|3-4-2-1|R|5|D|487|De Silvestri|40
+Bologna|3-4-2-1|R|6|D|5498|Casale|30
+Bologna|3-4-2-1|R|7|C|6054|Moro N.|60
+Bologna|3-4-2-1|R|8|C|7528|Amondarain|50
+Bologna|3-4-2-1|R|9|C|6225|El Azzouzi O.|30
+Bologna|3-4-2-1|R|10|C|4436|Cambiaghi|60
+Bologna|3-4-2-1|R|11|C|6833|Mbangula|55
+Bologna|3-4-2-1|R|12|C|7629|Libra|20
+Bologna|3-4-2-1|R|13|A|7627|Enem|30
+Bologna|3-4-2-1|R|14|A|6675|Dovbyk|60
+Sassuolo|4-3-3|S|1|P|4236|Muric|70
+Sassuolo|4-3-3|S|2|D|7573|Cinquegrano|85
+Sassuolo|4-3-3|S|3|D|4147|Caleta-Car|90
+Sassuolo|4-3-3|S|4|D|7564|Leysen F.|90
+Sassuolo|4-3-3|S|5|D|5851|Doig|70
+Sassuolo|4-3-3|S|6|C|5844|Thorstvedt|85
+Sassuolo|4-3-3|S|7|C|2528|Matic|90
+Sassuolo|4-3-3|S|8|C|7036|Bakola|70
+Sassuolo|4-3-3|S|9|A|531|Berardi|90
+Sassuolo|4-3-3|S|10|A|4463|Esposito Se.|70
+Sassuolo|4-3-3|S|11|A|6060|Laurientè|90
+Sassuolo|4-3-3|R|1|P|4867|Turati|5
+Sassuolo|4-3-3|R|2|P|2127|Satalino|1
+Sassuolo|4-3-3|R|3|D|6896|Van Der Brempt|40
+Sassuolo|4-3-3|R|4|D|7329|Obrador|55
+Sassuolo|4-3-3|R|5|D|7154|Odenthal|25
+Sassuolo|4-3-3|R|6|C|6246|Lipani|60
+Sassuolo|4-3-3|R|7|C|6677|Adzic|60
+Sassuolo|4-3-3|R|8|C|6895|Dominguez B.|50
+Sassuolo|4-3-3|R|9|C|4930|Ghion|25
+Sassuolo|4-3-3|R|10|C|6024|Sulemana I.|35
+Sassuolo|4-3-3|R|11|A|7347|Bowie|60
+Sassuolo|4-3-3|R|12|A|1842|Pierini|15
+Sassuolo|4-3-3|R|13|A|7159|Skjellerup|30
+Milan|3-4-2-1|S|1|P|4312|Maignan|90
+Milan|3-4-2-1|S|2|D|5833|Gila|90
+Milan|3-4-2-1|S|3|D|5739|De Winter|80
+Milan|3-4-2-1|S|4|D|5022|Pavlovic|90
+Milan|3-4-2-1|S|5|C|4856|Chukwueze|80
+Milan|3-4-2-1|S|6|C|2606|Modric|90
+Milan|3-4-2-1|S|7|C|2379|Rabiot|90
+Milan|3-4-2-1|S|8|D|5273|Estupinan|70
+Milan|3-4-2-1|S|9|C|2423|Pulisic|90
+Milan|3-4-2-1|S|10|C|6372|Moreira|80
+Milan|3-4-2-1|S|11|A|6397|Ramos G.|90
+Milan|3-4-2-1|R|1|P|2815|Terracciano|5
+Milan|3-4-2-1|R|2|P|6813|Torriani|1
+Milan|3-4-2-1|R|3|D|4751|Tomori|25
+Milan|3-4-2-1|R|4|D|4401|Gabbia|55
+Milan|3-4-2-1|R|5|D|5812|Terracciano F.|30
+Milan|3-4-2-1|R|6|D|6496|Bartesaghi|40
+Milan|3-4-2-1|R|7|D|7525|Diawara S.|20
+Milan|3-4-2-1|R|8|C|4892|Saelemaekers|50
+Milan|3-4-2-1|R|9|C|5295|Musah|60
+Milan|3-4-2-1|R|10|C|7572|Comotto|10
+Milan|3-4-2-1|R|11|C|7203|Jashari|50
+Milan|3-4-2-1|R|12|C|7618|Hutchinson|40
+Milan|3-4-2-1|R|13|C|4199|Loftus-Cheek|55
+Milan|3-4-2-1|R|14|C|6618|Cissè A.|60
+Milan|3-4-2-1|R|15|A|6519|Camarda|30
+Cagliari|4-4-2|S|1|P|4360|Caprile|90
+Cagliari|4-4-2|S|2|D|7274|Zè Pedro|80
+Cagliari|4-4-2|S|3|D|4210|Mina|85
+Cagliari|4-4-2|S|4|D|7268|Rodriguez Ju.|90
+Cagliari|4-4-2|S|5|D|5701|Obert|90
+Cagliari|4-4-2|S|6|C|4870|Adopo|90
+Cagliari|4-4-2|S|7|C|4260|Winks|90
+Cagliari|4-4-2|S|8|C|7311|Romano|90
+Cagliari|4-4-2|S|9|C|6010|Fazzini|75
+Cagliari|4-4-2|S|10|A|4896|Maldini|90
+Cagliari|4-4-2|S|11|A|7374|Mendy P.|90
+Cagliari|4-4-2|R|1|P|3|Radunovic|5
+Cagliari|4-4-2|R|2|P|6650|Sherri|1
+Cagliari|4-4-2|R|3|D|7548|Aurelio|25
+Cagliari|4-4-2|R|4|D|7621|Sugawara|55
+Cagliari|4-4-2|R|5|D|7532|Kofler|35
+Cagliari|4-4-2|R|6|C|7165|Liteta|20
+Cagliari|4-4-2|R|7|C|5462|Ciervo|50
+Cagliari|4-4-2|R|8|C|801|Gagliardini|55
+Cagliari|4-4-2|R|9|C|6815|Fadera|60
+Cagliari|4-4-2|R|10|C|7579|Massolin|40
+Cagliari|4-4-2|R|11|C|7634|Sulev|15
+Cagliari|4-4-2|R|12|A|7630|Sugamele|20
+Cagliari|4-4-2|R|13|A|5336|Nzola|30
+Cagliari|4-4-2|R|14|A|7547|Kevin Carlos|60
+Juventus|4-2-3-1|S|1|P|4964|Vicario|90
+Juventus|4-2-3-1|S|2|D|4976|Kalulu|90
+Juventus|4-2-3-1|S|3|D|2788|Bremer|90
+Juventus|4-2-3-1|S|4|D|6042|Lucumì|80
+Juventus|4-2-3-1|S|5|D|4657|Celik|90
+Juventus|4-2-3-1|S|6|C|4973|McKennie|90
+Juventus|4-2-3-1|S|7|C|4911|Douglas Luiz|90
+Juventus|4-2-3-1|S|8|C|6884|Conceicao|70
+Juventus|4-2-3-1|S|9|C|4179|Gonzalez N.|90
+Juventus|4-2-3-1|S|10|C|7436|Alajbegovic|75
+Juventus|4-2-3-1|S|11|A|5951|Kolo Muani|70
+Juventus|4-2-3-1|R|1|P|283|Neto|5
+Juventus|4-2-3-1|R|2|P|1930|Pinsoglio|1
+Juventus|4-2-3-1|R|3|D|5520|Cambiaso|50
+Juventus|4-2-3-1|R|4|D|6039|Cabal|25
+Juventus|4-2-3-1|R|5|D|6766|Kelly L.|50
+Juventus|4-2-3-1|R|6|D|294|Rugani|25
+Juventus|4-2-3-1|R|7|D|5831|Gatti|35
+Juventus|4-2-3-1|R|8|C|5680|Sarr P.|60
+Juventus|4-2-3-1|R|9|C|5685|Koopmeiners|55
+Juventus|4-2-3-1|R|10|C|5761|Zhegrova|60
+Juventus|4-2-3-1|R|11|A|6752|Woltemade|60
+Atalanta|4-3-3|S|1|P|4431|Carnesecchi|90
+Atalanta|4-3-3|S|2|D|4887|Bellanova|85
+Atalanta|4-3-3|S|3|D|6485|Kristensen T.|80
+Atalanta|4-3-3|S|4|D|5526|Scalvini|90
+Atalanta|4-3-3|S|5|D|7219|Bernasconi|70
+Atalanta|4-3-3|S|6|C|5119|Samardzic|70
+Atalanta|4-3-3|S|7|C|1850|Kessiè|70
+Atalanta|4-3-3|S|8|C|5792|Ederson D.S.|90
+Atalanta|4-3-3|S|9|A|5995|De Ketelaere|90
+Atalanta|4-3-3|S|10|A|2137|Scamacca|80
+Atalanta|4-3-3|S|11|C|6844|Rowe|90
+Atalanta|4-3-3|R|1|P|4|Sportiello|5
+Atalanta|4-3-3|R|2|P|7626|Pompei|1
+Atalanta|4-3-3|R|3|D|2640|Kolasinac|40
+Atalanta|4-3-3|R|4|D|554|Zappacosta|60
+Atalanta|4-3-3|R|5|D|7633|Obric|15
+Atalanta|4-3-3|R|6|C|4364|Gaetano|60
+Atalanta|4-3-3|R|7|C|2077|Pasalic|55
+Atalanta|4-3-3|R|8|C|4479|Elmas|55
+Atalanta|4-3-3|R|9|C|5422|Zalewski|35
+Atalanta|4-3-3|R|10|A|6435|Krstovic|60
+Atalanta|4-3-3|R|11|A|4371|Raspadori|50
+Venezia|3-5-2|S|1|P|6248|Stankovic F.|90
+Venezia|3-5-2|S|2|D|6892|Schingtienne|90
+Venezia|3-5-2|S|3|D|256|Juan Jesus|90
+Venezia|3-5-2|S|4|D|6890|Moreno M.|70
+Venezia|3-5-2|S|5|D|6821|Hainaut|80
+Venezia|3-5-2|S|6|C|6994|Perez K.|90
+Venezia|3-5-2|S|7|C|5319|Sohm|90
+Venezia|3-5-2|S|8|C|5872|Helgason|80
+Venezia|3-5-2|S|9|D|4845|Correia T.|75
+Venezia|3-5-2|S|10|A|6904|Yeboah J.|90
+Venezia|3-5-2|S|11|A|7484|Adams A.|90
+Venezia|3-5-2|R|1|P|4957|Montipò|5
+Venezia|3-5-2|R|2|P|6671|Grandi|1
+Venezia|3-5-2|R|3|D|7538|Halhal|50
+Venezia|3-5-2|R|4|D|7454|Gomes|25
+Venezia|3-5-2|R|5|D|6681|Sagrado|60
+Venezia|3-5-2|R|6|D|5481|Mazzocchi|55
+Venezia|3-5-2|R|7|C|7632|Panada|35
+Venezia|3-5-2|R|8|C|7635|Fanne|40
+Venezia|3-5-2|R|9|C|7232|Fernandez T.|60
+Venezia|3-5-2|R|10|A|7449|Rrahmani Al.|60
+Venezia|3-5-2|R|11|A|7482|Lauberbach|40
+Venezia|3-5-2|R|12|A|7408|Lisman|15
+Torino|3-4-2-1|S|1|P|6534|Perri|90
+Torino|3-4-2-1|S|2|D|6495|Comuzzo|80
+Torino|3-4-2-1|S|3|D|6642|Coco|90
+Torino|3-4-2-1|S|4|D|7526|Comert|90
+Torino|3-4-2-1|S|5|D|7220|Belghali|70
+Torino|3-4-2-1|S|6|C|1933|Mandragora|90
+Torino|3-4-2-1|S|7|C|7535|Fitz-Jim|90
+Torino|3-4-2-1|S|8|C|7060|Cacciamani|80
+Torino|3-4-2-1|S|9|C|5888|Casadei|70
+Torino|3-4-2-1|S|10|C|5687|Vlasic|90
+Torino|3-4-2-1|S|11|A|2061|Simeone|90
+Torino|3-4-2-1|R|1|P|7457|Mascardi|5
+Torino|3-4-2-1|R|2|P|7363|Siviero|1
+Torino|3-4-2-1|R|3|D|5010|Ismajli|50
+Torino|3-4-2-1|R|4|D|5751|Patterson|40
+Torino|3-4-2-1|R|5|D|252|Biraghi|20
+Torino|3-4-2-1|R|6|D|2169|Rodriguez R.|40
+Torino|3-4-2-1|R|7|D|7069|Fortini|60
+Torino|3-4-2-1|R|8|C|6005|Ilkhan|40
+Torino|3-4-2-1|R|9|C|7624|Braganca|60
+Torino|3-4-2-1|R|10|C|6170|Gineitis|55
+Torino|3-4-2-1|R|11|C|7183|Aboukhlal|30
+Torino|3-4-2-1|R|12|C|6218|Oristanio|55
+Torino|3-4-2-1|R|13|C|7631|Luongo|15
+Torino|3-4-2-1|R|14|A|608|Zapata D.|40
+Torino|3-4-2-1|R|15|A|7349|Kulenovic|60
+Udinese|3-4-2-1|S|1|P|6462|Okoye|90
+Udinese|3-4-2-1|S|2|D|6021|Abankwah|70
+Udinese|3-4-2-1|S|3|D|4263|Kabasele|90
+Udinese|3-4-2-1|S|4|D|6956|Solet|75
+Udinese|3-4-2-1|S|5|D|4994|Vojvoda|80
+Udinese|3-4-2-1|S|6|C|7208|Miller L.|90
+Udinese|3-4-2-1|S|7|C|6680|Karlstrom|90
+Udinese|3-4-2-1|S|8|D|5555|Kamara H.|90
+Udinese|3-4-2-1|S|9|C|6783|Unai Gomez|70
+Udinese|3-4-2-1|S|10|C|6684|Ekkelenkamp|90
+Udinese|3-4-2-1|S|11|A|5637|Davis K.|70
+Udinese|3-4-2-1|R|1|P|7611|Mrozek|5
+Udinese|3-4-2-1|R|2|P|543|Padelli|1
+Udinese|3-4-2-1|R|3|D|5994|Ebosse|40
+Udinese|3-4-2-1|R|4|D|5820|Bertola|25
+Udinese|3-4-2-1|R|5|D|6925|Palma|30
+Udinese|3-4-2-1|R|6|D|5527|Zanoli|60
+Udinese|3-4-2-1|R|7|D|2404|Alaba|35
+Udinese|3-4-2-1|R|8|D|7312|Arizala|25
+Udinese|3-4-2-1|R|9|C|7418|Chakvetadze|60
+Udinese|3-4-2-1|R|10|C|6212|Zarraga|50
+Udinese|3-4-2-1|R|11|C|7092|Jovanovic|20
+Udinese|3-4-2-1|R|12|C|5850|Lovric|30
+Udinese|3-4-2-1|R|13|A|7161|Bayo V.|60

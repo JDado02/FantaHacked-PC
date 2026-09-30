@@ -1,0 +1,600 @@
+id|giocatore|squadra_slug|ruolo|qi|qa|fvm|pct_giocate
+5585|Malen|roma|A|34|37|437|83
+2764|Martinez L.|inter|A|35|36|418|67
+4871|Thuram|inter|A|29|31|275|67
+6875|Paz N.|como|C|30|29|248|83
+254|Dimarco|inter|D|32|29|210|83
+2194|Calhanoglu|inter|C|27|27|220|50
+6052|Hojlund|napoli|A|28|27|240|83
+2423|Pulisic|milan|C|25|25|150|33
+6397|Ramos G.|milan|A|27|25|237|83
+2379|Rabiot|milan|C|22|24|141|83
+4777|McTominay|napoli|C|28|24|120|33
+2167|Orsolini|bologna|C|26|23|138|50
+2097|Kean|como|A|25|23|138|67
+5951|Kolo Muani|juventus|A|26|23|122|83
+7017|Douvikas|como|A|20|22|138|83
+6752|Woltemade|juventus|A|23|22|97|33
+7126|Baturina|como|C|19|21|153|83
+6434|Yildiz|juventus|A|23|20|70|17
+7556|Mora|roma|C|19|20|65|67
+2137|Scamacca|atalanta|A|19|19|100|83
+5841|Svilar|roma|P|18|19|90|83
+5637|Davis K.|udinese|A|19|19|113|67
+1870|Barella|inter|C|17|18|84|83
+7071|Esposito F.P.|inter|A|16|18|107|67
+632|Zaccagni|lazio|C|16|18|122|83
+4510|Leao|milan|A|18|18|75|0
+7181|Wesley|roma|D|17|18|93|67
+531|Berardi|sassuolo|A|18|18|103|67
+5559|Da Cunha|como|C|18|17|69|83
+2788|Bremer|juventus|D|15|17|80|83
+2517|De Bruyne|napoli|C|15|17|90|83
+309|Dybala|roma|A|14|17|120|83
+4998|Molina N.|roma|D|18|17|65|67
+4431|Carnesecchi|atalanta|P|16|16|56|83
+6435|Krstovic|atalanta|A|18|16|80|83
+7023|Pellegrino M.|fiorentina|A|15|16|51|83
+5734|Soulè|roma|A|12|16|63|83
+6060|Laurientè|sassuolo|A|15|16|77|83
+2766|Zaniolo|udinese|C|18|16|71|33
+4964|Vicario|juventus|P|16|16|65|83
+5995|De Ketelaere|atalanta|A|17|15|64|83
+6675|Dovbyk|bologna|A|16|15|33|50
+4973|McKennie|juventus|C|17|15|61|33
+4312|Maignan|milan|P|15|15|54|83
+4409|Rrahmani|napoli|D|14|15|53|83
+2296|Mancini|roma|D|15|15|54|83
+6372|Moreira|milan|C|12|15|60|50
+5119|Samardzic|atalanta|C|12|14|36|83
+4371|Raspadori|atalanta|A|13|14|30|67
+4463|Esposito Se.|sassuolo|A|13|14|41|33
+6967|Diao|como|A|11|14|67|83
+6908|Atta|fiorentina|C|17|14|63|83
+5116|Martinez Jo.|inter|P|17|14|63|83
+4159|Akanji|inter|D|16|14|41|83
+6884|Conceicao|juventus|C|12|14|70|83
+5589|Konè M.|roma|C|10|14|50|83
+6684|Ekkelenkamp|udinese|C|10|14|64|83
+7078|Mastantuono|fiorentina|C|12|14|70|83
+5792|Ederson D.S.|atalanta|C|12|13|45|83
+4360|Caprile|cagliari|P|9|13|30|83
+6966|Butez|como|P|16|13|43|67
+5800|Gudmundsson A.|lazio|C|13|13|38|50
+2120|Bastoni|inter|D|14|13|40|83
+6217|Bisseck|inter|D|11|13|34|67
+152|Zielinski|inter|C|10|13|41|83
+4976|Kalulu|juventus|D|13|13|41|83
+6482|Mandas|lazio|P|9|13|41|83
+7314|Taylor K.|lazio|C|13|13|43|83
+5833|Gila|milan|D|12|13|30|83
+5022|Pavlovic|milan|D|14|13|50|83
+4728|Nkunku|milan|A|13|13|20|0
+7351|Santos A.|napoli|A|14|13|37|50
+6572|Castro S.|roma|A|14|13|40|67
+2061|Simeone|torino|A|15|13|58|83
+7554|Romero D.|parma|A|10|13|44|67
+4179|Gonzalez N.|juventus|C|11|13|46|67
+5694|Beto|fiorentina|A|14|13|49|50
+184|Bernardeschi|bologna|C|9|12|35|83
+6869|Ramon|como|D|10|12|34|83
+1933|Mandragora|torino|C|9|12|40|83
+5436|Raimondo|frosinone|A|7|12|60|83
+2848|Frattesi|lazio|C|7|12|113|83
+2606|Modric|milan|C|12|12|40|83
+2816|Di Lorenzo|napoli|D|12|12|37|83
+4807|Hermoso|roma|D|10|12|35|83
+7347|Bowie|sassuolo|A|10|12|33|83
+6956|Solet|udinese|D|13|12|30|50
+7484|Adams A.|venezia|A|12|12|33|83
+5172|Jones C.|inter|C|12|12|33|67
+4896|Maldini|cagliari|A|5|11|45|83
+6151|Perrone|como|C|10|11|32|83
+7129|Rodriguez Je.|como|C|12|11|23|50
+7472|Calò|frosinone|C|7|11|37|83
+6530|Ghedjemis|frosinone|A|9|11|31|50
+6204|Kvernadze|frosinone|A|4|11|50|83
+2514|Stones|inter|D|12|11|14|50
+6274|Diouf|inter|C|8|11|56|67
+7436|Alajbegovic|juventus|C|12|11|40|67
+5500|Cancellieri|lazio|C|9|11|22|83
+4892|Saelemaekers|milan|C|10|11|32|67
+4287|Lobotka|napoli|C|7|11|28|83
+536|Politano|napoli|C|10|11|42|83
+4317|N'Dicka|roma|D|13|11|32|50
+779|Cristante|roma|C|8|11|31|83
+6677|Adzic|sassuolo|C|5|11|37|83
+5687|Vlasic|torino|C|14|11|57|83
+6646|Adams C.|torino|A|9|11|25|50
+7551|Schmid|frosinone|C|8|11|38|83
+1850|Kessiè|atalanta|C|12|11|33|33
+7625|Goncalves P.|fiorentina|C|12|11|37|17
+5526|Scalvini|atalanta|D|10|10|23|83
+4734|Miranda J.|bologna|D|8|10|22|67
+7311|Romano|cagliari|C|5|10|21|83
+2521|De Gea|fiorentina|P|13|10|25|83
+6531|Jimenez A.|fiorentina|D|8|10|30|67
+5750|Ostigard|genoa|D|11|10|26|83
+5823|Baldanzi|genoa|C|11|10|21|83
+4923|Colombo|genoa|A|11|10|53|83
+5877|Carlos Augusto|inter|D|7|10|27|50
+5761|Zhegrova|juventus|C|6|10|22|50
+5672|Dia|lazio|A|10|10|20|33
+6556|Noslin|lazio|A|6|10|35|50
+5504|Coulibaly L.|lecce|C|6|10|17|83
+4856|Chukwueze|milan|C|6|10|23|83
+7485|Mangas|monza|D|6|10|25|83
+7523|Varela G.|monza|A|3|10|69|67
+2531|Lukaku|napoli|A|10|10|45|0
+2038|Pinamonti|lazio|A|13|10|40|33
+5555|Kamara H.|udinese|D|6|10|15|83
+6229|Tourè E.|parma|A|11|10|31|83
+7547|Kevin Carlos|cagliari|A|13|10|20|33
+5982|Spence|inter|D|12|10|17|0
+7600|Osmajic|genoa|A|8|10|36|67
+2404|Alaba|udinese|D|10|10|25|0
+133|Skorupski|bologna|P|10|9|23|67
+6844|Rowe|atalanta|C|11|9|35|50
+4210|Mina|cagliari|D|8|9|17|17
+4870|Adopo|cagliari|C|6|9|12|83
+7414|Kaiki|como|D|7|9|17|33
+4359|Piccoli|bologna|A|8|9|41|83
+6415|Palmisani|frosinone|P|4|9|21|83
+7469|Bracaglia|frosinone|D|5|9|17|83
+6238|Oyono A.|frosinone|D|5|9|10|83
+5514|Vasquez|genoa|D|9|9|28|67
+7070|Sucic P.|inter|C|8|9|19|67
+5876|Di Gregorio|juventus|P|9|9|10|0
+5620|Tavares N.|lazio|D|6|9|45|67
+7313|Ratkov|lazio|A|10|9|22|0
+6989|Tiago Gabriel|lecce|D|7|9|22|67
+572|Meret|napoli|P|11|9|40|50
+4220|Zambo Anguissa|napoli|C|11|9|27|50
+7223|Vergara|napoli|C|8|9|25|50
+5862|Valeri|parma|D|8|9|22|83
+6190|Pisilli|roma|C|5|9|30|67
+2528|Matic|sassuolo|C|5|9|15|83
+5844|Thorstvedt|sassuolo|C|10|9|31|83
+5735|Volpato|sassuolo|C|7|9|20|50
+6680|Karlstrom|udinese|C|6|9|20|83
+5641|Chalobah T.|como|D|9|9|25|67
+6534|Perri|torino|P|9|9|16|50
+6042|Lucumì|juventus|D|8|8|18|67
+5858|Ferguson|bologna|C|7|8|22|83
+5298|Pobega|bologna|C|6|8|12|67
+4436|Cambiaghi|bologna|C|8|8|22|83
+6643|Dallinga|bologna|A|8|8|10|0
+7274|Zè Pedro|cagliari|D|5|8|15|83
+5701|Obert|cagliari|D|7|8|15|83
+4260|Winks|cagliari|C|6|8|15|83
+7374|Mendy P.|cagliari|A|4|8|20|83
+6867|Valle|como|D|6|8|20|67
+5365|Dragusin|fiorentina|D|8|8|19|83
+5885|Dodò|fiorentina|D|10|8|8|17
+4465|Fagioli|fiorentina|C|8|8|22|83
+6294|Ndour|fiorentina|C|8|8|20|83
+7467|Calvani|frosinone|D|4|8|13|83
+6814|Norton-Cuffy|genoa|D|8|8|15|33
+6669|Bonny|inter|A|7|8|16|33
+4657|Celik|juventus|D|8|8|18|83
+827|Locatelli|juventus|C|8|8|15|50
+5562|Thuram K.|juventus|C|10|8|15|0
+5685|Koopmeiners|juventus|C|5|8|18|67
+5544|David|juventus|A|9|8|25|17
+6320|Doekhi|lazio|D|7|8|13|50
+6398|Isaksen|lazio|C|9|8|21|67
+6593|Akinsanmiro|monza|C|6|8|13|67
+5878|Colpani|monza|C|8|8|15|67
+2155|Cutrone|monza|A|9|8|16|67
+5427|Gutierrez|napoli|D|8|8|26|0
+1852|Spinazzola|napoli|D|8|8|21|67
+6664|Delprato|parma|D|8|8|21|83
+6207|Almqvist|parma|C|4|8|12|67
+5851|Doig|sassuolo|D|4|8|12|83
+7036|Bakola|sassuolo|C|5|8|17|67
+6642|Coco|torino|D|7|8|14|83
+7060|Cacciamani|torino|C|5|8|25|83
+5888|Casadei|torino|C|10|8|17|17
+6462|Okoye|udinese|P|9|8|25|83
+4994|Vojvoda|udinese|D|8|8|18|83
+6821|Hainaut|venezia|D|3|8|12|83
+6904|Yeboah J.|venezia|A|8|8|27|83
+6727|Couto|como|D|8|8|29|83
+7546|Robinson J.|monza|A|4|8|13|50
+530|Pellegrini Lo.|roma|C|10|8|12|0
+7564|Leysen F.|sassuolo|D|5|8|12|83
+7612|Bobcek|frosinone|A|9|8|10|17
+5675|Theate|bologna|D|8|8|20|50
+4705|Balerdi|roma|D|6|8|18|50
+4137|Diego Carlos|parma|D|8|8|16|50
+6344|Sanchez Ro.|como|P|8|8|12|17
+787|Djimsiti|atalanta|D|7|7|16|0
+554|Zappacosta|atalanta|D|8|7|14|50
+2077|Pasalic|atalanta|C|9|7|18|50
+2765|Odgaard|bologna|C|8|7|13|83
+6010|Fazzini|cagliari|C|7|7|25|67
+7412|Milla|como|C|5|7|26|50
+4952|Monterisi|frosinone|D|6|7|12|67
+5791|Frendrup|genoa|C|7|7|19|83
+6917|Masini|frosinone|C|2|7|13|83
+4970|Messias|genoa|C|3|7|8|83
+6164|Vitinha O.|genoa|A|8|7|11|67
+5520|Cambiaso|juventus|D|9|7|10|17
+2134|Falcone|lecce|P|8|7|23|83
+5029|Geubbels|lecce|A|9|7|15|33
+6496|Bartesaghi|milan|D|8|7|12|33
+5838|Birindelli|monza|D|4|7|13|83
+2170|Milinkovic-Savic V.|napoli|P|5|7|13|33
+6641|Suzuki|parma|P|7|7|20|0
+7529|Koulierakis|roma|D|8|7|9|17
+6672|Idzes|sassuolo|D|7|7|14|50
+6717|Konè I.|sassuolo|C|9|7|20|0
+6495|Comuzzo|torino|D|6|7|10|67
+5010|Ismajli|torino|D|7|7|12|67
+6827|Njie|fiorentina|C|4|7|28|67
+6021|Abankwah|udinese|D|1|7|14|83
+7272|Gueye|udinese|A|4|7|10|67
+5507|Busio|venezia|C|5|7|14|67
+5946|Sow|genoa|C|7|7|15|83
+7580|Sutalo J.|lazio|D|7|7|20|33
+7618|Hutchinson|milan|C|8|7|14|0
+7220|Belghali|torino|D|7|7|13|50
+5680|Sarr P.|juventus|C|7|7|23|33
+7620|Zeballos|monza|A|6|7|19|17
+6833|Mbangula|bologna|C|8|7|16|0
+7623|Gnonto|fiorentina|A|7|7|17|33
+7624|Braganca|torino|C|6|7|18|50
+795|El Shaarawy|genoa|C|7|7|12|33
+6046|Hien|atalanta|D|8|6|10|0
+2640|Kolasinac|atalanta|D|5|6|11|67
+6916|Ahanor|atalanta|D|6|6|13|0
+4364|Gaetano|atalanta|C|7|6|23|67
+5422|Zalewski|atalanta|C|6|6|11|50
+5678|Holm|bologna|D|5|6|11|67
+4433|Zortea|bologna|D|6|6|17|50
+7268|Rodriguez Ju.|cagliari|D|3|6|14|83
+6598|Mutandwa|cagliari|A|6|6|7|0
+5036|Caqueret|como|C|6|6|11|50
+7332|Bijlow|genoa|P|8|6|11|83
+218|Perin|juventus|P|6|6|5|0
+2832|Boga|juventus|A|6|6|21|50
+460|Romagnoli|lazio|D|7|6|20|0
+4459|Rovella|lazio|C|6|6|16|33
+6990|Veiga D.|lecce|D|5|6|12|83
+4502|Gallo|lecce|D|6|6|12|67
+6549|Pierotti|lecce|C|6|6|16|83
+7252|Stulic|lecce|A|7|6|11|83
+4401|Gabbia|milan|D|7|6|10|17
+5739|De Winter|milan|D|3|6|23|83
+7008|Gimenez|milan|A|6|6|10|0
+5882|Mota|monza|A|5|6|10|33
+5131|Gilmour|napoli|C|3|6|10|33
+6663|Circati|parma|D|6|6|18|0
+6898|Keita M.|parma|C|5|6|16|83
+6666|Bernabè|parma|C|7|6|27|50
+7526|Comert|torino|D|4|6|13|67
+7535|Fitz-Jim|torino|C|4|6|18|83
+6218|Oristanio|torino|C|7|6|12|17
+7349|Kulenovic|torino|A|4|6|13|33
+7198|Piotrowski|udinese|C|5|6|12|33
+6783|Unai Gomez|udinese|C|7|6|13|67
+4845|Correia T.|venezia|D|4|6|8|67
+7449|Rrahmani Al.|venezia|A|8|6|9|33
+7561|Lontani|parma|A|1|6|15|83
+6618|Cissè A.|milan|C|3|6|34|67
+7563|Favasuli|napoli|D|4|6|16|33
+7069|Fortini|torino|D|5|6|12|83
+4479|Elmas|atalanta|C|7|6|17|33
+4664|Badiashile|napoli|D|7|6|8|17
+7619|Monteiro J.|lecce|C|7|6|20|50
+4147|Caleta-Car|sassuolo|D|6|6|11|17
+7621|Sugawara|cagliari|D|6|6|9|33
+6319|Leite|lazio|D|6|6|11|0
+4887|Bellanova|atalanta|D|6|5|16|50
+7219|Bernasconi|atalanta|D|6|5|14|50
+7326|Helland|bologna|D|2|5|12|50
+7212|Heggem|bologna|D|6|5|14|83
+6054|Moro N.|bologna|C|4|5|14|50
+6895|Dominguez B.|sassuolo|C|3|5|12|67
+7532|Kofler|cagliari|D|5|5|4|33
+1871|Deiola|cagliari|C|3|5|10|83
+6893|Kempf|como|D|5|5|11|33
+6678|Liberali|como|C|6|5|10|17
+7294|Valdepenas|fiorentina|D|6|5|10|50
+7410|Viery|fiorentina|D|6|5|13|67
+7464|Oulai|fiorentina|C|6|5|16|50
+6506|Fini|frosinone|C|3|5|11|67
+5998|Zerbin|frosinone|C|5|5|11|33
+6660|Marcandalli|genoa|D|6|5|12|83
+6020|Ellertsson|genoa|C|6|5|14|83
+4177|Pavard|inter|D|6|5|12|33
+5301|Luis Henrique|inter|C|4|5|12|50
+5831|Gatti|juventus|D|4|5|11|17
+7012|Provstgaard|lazio|D|3|5|12|83
+4817|Pedraza|lazio|D|5|5|11|33
+2188|Marusic|lazio|D|6|5|16|17
+6191|Belahyane|lazio|C|1|5|3|67
+4751|Tomori|milan|D|7|5|7|0
+2741|Pessina|monza|C|7|5|15|0
+2724|Buongiorno|napoli|D|7|5|10|0
+6831|Neres|napoli|A|6|5|17|33
+7411|Daffara|parma|P|7|5|2|0
+6984|Ondrejka|parma|C|5|5|18|0
+7342|Elphege|parma|A|3|5|10|50
+6631|Ghilardi|roma|D|4|5|9|50
+4236|Muric|sassuolo|P|7|5|10|83
+6426|Pedersen|torino|D|5|5|12|17
+6170|Gineitis|torino|C|5|5|12|67
+608|Zapata D.|torino|A|7|5|10|17
+6485|Kristensen T.|atalanta|D|7|5|14|17
+5527|Zanoli|udinese|D|4|5|10|17
+6248|Stankovic F.|venezia|P|6|5|8|83
+5695|Haps|venezia|D|5|5|9|67
+5674|Basic|venezia|C|6|5|13|33
+5319|Sohm|venezia|C|5|5|10|67
+6994|Perez K.|venezia|C|5|5|14|83
+7329|Obrador|sassuolo|D|6|5|9|17
+7573|Cinquegrano|sassuolo|D|1|5|11|83
+7602|Fatah|lecce|A|4|5|8|67
+5751|Patterson|torino|D|5|5|10|33
+2169|Rodriguez R.|torino|D|5|5|9|17
+22|De Roon|roma|C|4|4|10|17
+5918|Sulemana K.|atalanta|A|6|4|4|0
+7068|Vitik|bologna|D|5|4|9|0
+7528|Amondarain|bologna|C|5|4|11|33
+4461|Zappa|cagliari|D|4|4|7|17
+6424|Prati|cagliari|C|4|4|7|0
+6640|Felici|cagliari|C|5|4|7|17
+6243|Borrelli|cagliari|A|4|4|9|17
+6815|Fadera|cagliari|C|2|4|12|50
+7127|Addai|como|C|5|4|10|0
+313|Morata|como|A|4|4|7|0
+5449|Parisi|fiorentina|D|5|4|10|0
+6206|Fabbian|parma|C|4|4|12|33
+5757|Cittadini|frosinone|D|3|4|11|83
+7473|Cichella|frosinone|C|4|4|9|33
+7474|Koutsoupias|frosinone|C|4|4|11|0
+2593|Martin|genoa|D|5|4|8|0
+7341|Amorim|genoa|C|4|4|10|33
+7409|Meichtry|genoa|C|5|4|9|33
+2857|Traorè Hj.|genoa|C|5|4|9|0
+2529|Mkhitaryan|inter|C|5|4|10|17
+6766|Kelly L.|juventus|D|5|4|12|50
+4911|Douglas Luiz|juventus|C|4|4|16|83
+6629|Dele-Bashiru|lazio|C|5|4|7|17
+6632|Gaspar K.|lecce|D|5|4|12|67
+7240|Siebert|lecce|D|4|4|12|83
+5457|Maleh|lecce|C|2|4|7|83
+7322|Ngom|lecce|C|4|4|12|83
+6015|Berisha M.|lecce|C|5|4|11|0
+7318|Gandelman|lecce|C|5|4|10|0
+7001|N'Dri|lecce|A|3|4|10|67
+5273|Estupinan|milan|D|3|4|13|67
+4686|Fofana Y.|milan|C|5|4|10|0
+7203|Jashari|milan|C|4|4|11|33
+5295|Musah|milan|C|2|4|16|67
+4199|Loftus-Cheek|milan|C|4|4|15|83
+6519|Camarda|milan|A|5|4|12|0
+2115|Delli Carri|monza|D|4|4|11|17
+6659|Lucchesi|monza|D|4|4|12|83
+7238|Kouadio|monza|D|3|4|14|83
+4925|Carboni A.|monza|D|3|4|9|83
+7476|Bakoune|monza|D|1|4|4|50
+6202|Beukema|napoli|D|6|4|7|0
+5840|Olivera|napoli|D|5|4|10|33
+7120|Lang|napoli|A|3|4|12|67
+6662|Corvi|parma|P|1|4|10|83
+7235|Troilo|parma|D|3|4|14|83
+7255|Britschgi|parma|D|3|4|12|50
+4349|Nicolussi Caviglia|parma|C|6|4|16|0
+7213|Frigan|parma|A|5|4|5|33
+6986|Rensch|roma|D|5|4|13|17
+6271|El Aynaoui|roma|C|4|4|13|0
+6005|Ilkhan|torino|C|4|4|8|50
+5007|Ilic|lecce|C|1|4|13|67
+5820|Bertola|udinese|D|4|4|9|33
+7208|Miller L.|udinese|C|3|4|12|83
+7253|Bella-Kotchap|venezia|D|6|4|11|33
+6890|Moreno M.|venezia|D|5|4|6|50
+4387|Adorante|venezia|A|5|4|4|0
+7550|Grillitsch|frosinone|C|5|4|9|0
+4375|Terzic|frosinone|D|4|4|5|33
+2012|Milik|juventus|A|5|4|1|0
+7146|Tourè I.|monza|C|6|4|10|0
+7610|Birligea|frosinone|A|5|4|3|0
+6145|Ngonge|monza|A|5|4|10|0
+256|Juan Jesus|venezia|D|4|4|10|33
+6047|Ehizibue|genoa|D|4|4|10|50
+5578|Kossounou|atalanta|D|3|3|12|67
+6024|Sulemana I.|sassuolo|C|3|3|7|17
+7301|Tornqvist|monza|P|1|3|8|17
+7014|Smolcic I.|como|D|4|3|10|17
+7128|Kuhn|como|A|3|3|5|0
+5603|Pongracic|fiorentina|D|4|3|8|17
+4378|Ranieri L.|fiorentina|D|3|3|10|50
+4947|Brescianini|fiorentina|C|3|3|8|50
+6903|Hasa|frosinone|C|2|3|5|33
+7537|Mitaj|genoa|D|4|3|7|0
+7453|Havel|genoa|A|4|3|4|0
+5813|Miretti|juventus|C|3|3|7|0
+7131|Floriani Mussolini|lazio|D|3|3|11|83
+333|Cataldi|lazio|C|4|3|8|0
+7248|Gorter|lecce|C|1|3|12|33
+7211|Athekame|milan|D|3|3|8|0
+5453|Ricci S.|como|C|4|3|12|17
+4485|Thiam|monza|P|5|3|3|50
+6252|Folorunsho|monza|C|4|3|15|67
+7162|Giovane|napoli|A|4|3|1|0
+6215|Lucca|napoli|A|3|3|11|67
+5307|Valenti|parma|D|4|3|10|17
+7138|Ordonez C.|parma|C|2|3|10|50
+7209|Sorensen O.|parma|C|3|3|12|0
+7536|Diallo O.|parma|C|3|3|8|17
+4772|Angelino|roma|D|3|3|12|0
+4374|Walukiewicz|sassuolo|D|4|3|10|0
+6246|Lipani|sassuolo|C|2|3|5|50
+4263|Kabasele|udinese|D|4|3|10|50
+5994|Ebosse|udinese|D|2|3|5|83
+7312|Arizala|udinese|D|4|3|8|0
+7418|Chakvetadze|udinese|C|2|3|6|33
+6681|Sagrado|venezia|D|2|3|4|33
+7154|Odenthal|sassuolo|D|1|3|6|17
+7599|Lulli|roma|D|1|3|10|67
+7579|Massolin|cagliari|C|4|3|12|0
+801|Gagliardini|cagliari|C|3|3|8|17
+7232|Fernandez T.|venezia|C|3|3|8|17
+5336|Nzola|cagliari|A|4|3|10|0
+5498|Casale|bologna|D|3|2|5|0
+487|De Silvestri|bologna|D|1|2|4|17
+7483|Alhassane|bologna|D|2|2|6|33
+6225|El Azzouzi O.|bologna|C|2|2|9|17
+7125|Idrissi R.|cagliari|D|3|2|3|0
+7175|Joao Mario|fiorentina|D|3|2|12|33
+7540|Akpoguma|frosinone|D|3|2|6|0
+6241|Gelli F.|frosinone|C|3|2|6|0
+6977|Otoa|genoa|D|2|2|5|33
+7413|Puczka|genoa|D|2|2|3|17
+791|Sabelli|genoa|D|2|2|5|17
+6503|Stankovic A.|inter|C|3|2|7|0
+6822|Ekhator|juventus|A|3|2|6|0
+6410|Kaba|lecce|C|1|2|2|17
+7477|Colombo L.|monza|C|3|2|4|17
+383|Petagna|monza|A|2|2|5|0
+6638|Marin R.|napoli|D|2|2|13|83
+7276|Cremaschi|parma|C|1|2|3|17
+6985|Candè|sassuolo|D|3|2|6|0
+7183|Aboukhlal|torino|C|3|2|5|33
+6925|Palma|udinese|D|2|2|8|17
+7161|Bayo V.|udinese|A|1|2|3|50
+7249|Buksa|udinese|A|2|2|4|0
+7538|Halhal|venezia|D|4|2|7|33
+6892|Schingtienne|venezia|D|3|2|10|83
+6673|Sverko|venezia|D|3|2|7|0
+7478|Franjic|venezia|D|2|2|6|33
+5872|Helgason|venezia|C|3|2|3|33
+7482|Lauberbach|venezia|A|1|2|1|17
+6592|Forson O.|monza|C|1|2|1|50
+7574|Foe Ondoa|monza|C|1|2|4|33
+7605|Tchato|frosinone|D|3|2|6|0
+6601|Kambwala|como|D|3|2|5|0
+7615|Drobnic|parma|D|1|2|1|33
+5742|Drameh|genoa|D|3|2|9|0
+7628|Sierro|parma|C|1|2|10|33
+7647|Esteban|lecce|A|1|2|3|33
+2297|Rossi F.|atalanta|P|1|1|1|0
+4|Sportiello|atalanta|P|1|1|1|0
+7533|Happonen|bologna|P|1|1|1|0
+7172|Pessina Mas.|bologna|P|1|1|1|17
+4929|Ciocci|cagliari|P|1|1|1|0
+6650|Sherri|cagliari|P|1|1|1|0
+7346|Raterink|cagliari|D|1|1|1|0
+7165|Liteta|cagliari|C|1|1|1|0
+7338|Albarracin|cagliari|A|1|1|1|0
+7317|Trepy|cagliari|A|1|1|1|0
+2809|Vigorito|como|P|1|1|1|0
+418|Goldaniga|como|D|1|1|1|0
+7407|Cuenca A.|como|D|1|1|8|0
+6896|Van Der Brempt|sassuolo|D|2|1|6|0
+7357|Lahdo|como|C|1|1|1|0
+7027|Azon|como|A|1|1|1|0
+6403|Christensen O.|fiorentina|P|1|1|1|0
+158|Lezzerini|fiorentina|P|1|1|1|0
+7463|Desplanches|frosinone|P|2|1|1|0
+7466|Lolic|frosinone|P|1|1|1|0
+5424|Amey|frosinone|D|1|1|1|0
+7468|Gelli J.|frosinone|D|1|1|1|0
+7470|Oyono J.|frosinone|D|1|1|2|0
+7471|Corrado|frosinone|D|1|1|1|0
+7456|El Azzouzi A.|frosinone|C|1|1|1|0
+5725|Kone B.|frosinone|C|1|1|3|0
+219|Sommariva|genoa|P|1|1|1|0
+6569|Stolz|genoa|P|1|1|1|0
+6245|Vogliacco|genoa|D|1|1|2|0
+6244|Matturro|genoa|D|1|1|2|0
+6980|Venturino|genoa|C|2|1|4|0
+1926|Di Gennaro|inter|P|1|1|1|0
+2814|Provedel|inter|P|2|1|5|0
+1930|Pinsoglio|juventus|P|1|1|1|0
+294|Rugani|juventus|D|1|1|3|0
+6039|Cabal|juventus|D|1|1|4|0
+7337|Motta|lazio|P|1|1|1|0
+7534|Renzetti|lazio|P|1|1|1|0
+327|Patric|lazio|D|1|1|1|0
+2263|Lazzari|lazio|D|2|1|5|0
+2728|Pellegrini Lu.|lazio|D|2|1|7|0
+7345|Przyborek|lazio|C|1|1|5|0
+2401|Fruchtl|lecce|P|1|1|1|0
+6523|Samooja|lecce|P|1|1|1|0
+6883|Jean|lecce|D|2|1|4|0
+7164|Perez M.|lecce|D|1|1|1|0
+7182|Ndaba|lecce|D|1|1|5|33
+7319|Fofana Sa.|lecce|C|1|1|1|0
+2815|Terracciano|milan|P|1|1|1|0
+6813|Torriani|milan|P|1|1|1|0
+7525|Diawara S.|milan|D|2|1|4|0
+6682|Pizzignacco|monza|P|1|1|1|17
+7475|Strajnar|monza|P|1|1|1|0
+5399|Antov|monza|D|1|1|2|0
+5880|Ciurria|monza|C|2|1|6|0
+2845|Contini|napoli|P|1|1|1|0
+6809|Marianucci|napoli|D|1|1|3|0
+5481|Mazzocchi|venezia|D|1|1|10|0
+7202|Ndiaye|parma|D|1|1|8|17
+6149|Carboni F.|parma|D|1|1|3|0
+7048|De Marzi|roma|P|1|1|1|0
+610|Gollini|roma|P|1|1|1|0
+7260|Ziolkowski|monza|D|1|1|7|0
+6981|Vaz|roma|A|1|1|4|0
+4518|Russo A.|sassuolo|P|1|1|1|0
+4867|Turati|sassuolo|P|1|1|1|0
+6189|Missori|sassuolo|D|1|1|2|0
+7156|Pieragnolo|sassuolo|D|1|1|1|0
+6219|Boloca|sassuolo|C|2|1|5|0
+7157|Iannoni|sassuolo|C|1|1|1|0
+7158|Moro L.|sassuolo|A|1|1|1|0
+7457|Mascardi|torino|P|1|1|1|33
+5320|Paleari|torino|P|1|1|1|0
+7363|Siviero|torino|P|1|1|1|0
+252|Biraghi|torino|D|2|1|5|0
+6889|Anjorin|torino|C|1|1|4|0
+543|Padelli|udinese|P|1|1|1|0
+5707|Piana|udinese|P|1|1|1|0
+7356|Mlacic|udinese|D|1|1|3|0
+7392|Camara A.|udinese|C|1|1|3|0
+6212|Zarraga|udinese|C|1|1|4|33
+6671|Grandi|venezia|P|1|1|1|0
+7531|Pozzi|venezia|P|1|1|1|0
+7454|Gomes|venezia|D|1|1|1|0
+5485|Bjarkason|venezia|C|1|1|3|0
+7481|Dagasso|venezia|C|1|1|1|17
+526|Duncan|venezia|C|2|1|4|0
+7408|Lisman|venezia|A|1|1|1|0
+7545|Vismara|atalanta|P|1|1|1|0
+2127|Satalino|sassuolo|P|1|1|1|0
+7548|Aurelio|cagliari|D|2|1|5|0
+7557|Penev|lecce|P|1|1|1|0
+7560|Pisseri|frosinone|P|1|1|1|0
+3|Radunovic|cagliari|P|1|1|1|0
+7568|De Martis|parma|A|1|1|1|0
+4957|Montipò|venezia|P|1|1|1|0
+7553|Omar Fayed|frosinone|D|1|1|1|0
+4468|Bleve|lecce|P|1|1|1|0
+7571|Laerke|lecce|C|1|1|1|0
+7572|Comotto|milan|C|1|1|1|0
+6537|Goglichidze|monza|D|2|1|5|0
+7396|Macchioni|sassuolo|D|1|1|1|0
+7575|Mout|monza|C|1|1|12|17
+5812|Terracciano F.|milan|D|2|1|4|0
+5462|Ciervo|cagliari|C|1|1|1|0
+7603|Grabara|juventus|P|1|1|1|0
+7604|Maye|monza|D|1|1|1|0
+7611|Mrozek|udinese|P|1|1|1|0
+6826|Dembelè A.|lecce|D|1|1|2|0
+7092|Jovanovic|udinese|C|2|1|5|0
+2874|Ghidotti|parma|P|1|1|1|0
+7622|Robinho Junior|genoa|A|1|1|1|0
+7626|Pompei|atalanta|P|1|1|1|0
+7627|Enem|bologna|A|2|1|4|0
+7629|Libra|bologna|C|1|1|2|17
+5850|Lovric|udinese|C|1|1|1|0
+283|Neto|juventus|P|1|1|1|0

@@ -850,7 +850,7 @@ fantacalcio.it,Frosinone,4-2-3-1,7,Masini,C,90,6917
 fantacalcio.it,Frosinone,4-2-3-1,8,Ghedjemis,A,90,6530
 fantacalcio.it,Frosinone,4-2-3-1,9,Schmid,C,90,7551
 fantacalcio.it,Frosinone,4-2-3-1,10,Kvernadze,A,90,6204
-fantacalcio.it,Frosinone,4-2-3-1,11,Raimondo,A,70,5436
+fantacalcio.it,Frosinone,4-2-3-1,11,Bobcek,A,70,7612
 fantacalcio.it,Frosinone,4-2-3-1,12,Desplanches,P,5,7463
 fantacalcio.it,Frosinone,4-2-3-1,13,Pisseri,P,1,7560
 fantacalcio.it,Frosinone,4-2-3-1,14,Cittadini,D,55,5757
@@ -863,8 +863,8 @@ fantacalcio.it,Frosinone,4-2-3-1,20,Cichella,C,60,7473
 fantacalcio.it,Frosinone,4-2-3-1,21,Hasa,C,35,6903
 fantacalcio.it,Frosinone,4-2-3-1,22,El Azzouzi A.,C,25,7456
 fantacalcio.it,Frosinone,4-2-3-1,23,Zerbin,C,60,5998
-fantacalcio.it,Frosinone,4-2-3-1,24,Birligea,A,40,7610
-fantacalcio.it,Frosinone,4-2-3-1,25,Bobcek,A,55,7612
+fantacalcio.it,Frosinone,4-2-3-1,24,Birligea,A,60,7610
+fantacalcio.it,Frosinone,4-2-3-1,25,Raimondo,A,50,5436
 fantacalcio.it,Como,4-2-3-1,1,Butez,P,80,6966
 fantacalcio.it,Como,4-2-3-1,2,Couto,D,80,6727
 fantacalcio.it,Como,4-2-3-1,3,Ramon,D,90,6869
@@ -1050,17 +1050,17 @@ fantacalcio.it,Milan,3-4-2-1,11,Ramos G.,A,90,6397
 fantacalcio.it,Milan,3-4-2-1,12,Terracciano,P,5,2815
 fantacalcio.it,Milan,3-4-2-1,13,Torriani,P,1,6813
 fantacalcio.it,Milan,3-4-2-1,14,Tomori,D,25,4751
-fantacalcio.it,Milan,3-4-2-1,15,Gabbia,D,50,4401
+fantacalcio.it,Milan,3-4-2-1,15,Gabbia,D,55,4401
 fantacalcio.it,Milan,3-4-2-1,16,Terracciano F.,D,30,5812
 fantacalcio.it,Milan,3-4-2-1,17,Bartesaghi,D,40,6496
 fantacalcio.it,Milan,3-4-2-1,18,Diawara S.,D,20,7525
-fantacalcio.it,Milan,3-4-2-1,19,Saelemaekers,C,60,4892
+fantacalcio.it,Milan,3-4-2-1,19,Saelemaekers,C,50,4892
 fantacalcio.it,Milan,3-4-2-1,20,Musah,C,60,5295
 fantacalcio.it,Milan,3-4-2-1,21,Comotto,C,10,7572
-fantacalcio.it,Milan,3-4-2-1,22,Jashari,C,40,7203
+fantacalcio.it,Milan,3-4-2-1,22,Jashari,C,50,7203
 fantacalcio.it,Milan,3-4-2-1,23,Hutchinson,C,40,7618
 fantacalcio.it,Milan,3-4-2-1,24,Loftus-Cheek,C,55,4199
-fantacalcio.it,Milan,3-4-2-1,25,Cissè A.,C,55,6618
+fantacalcio.it,Milan,3-4-2-1,25,Cissè A.,C,60,6618
 fantacalcio.it,Milan,3-4-2-1,26,Camarda,A,30,6519
 fantacalcio.it,Cagliari,4-4-2,1,Caprile,P,90,4360
 fantacalcio.it,Cagliari,4-4-2,2,Zè Pedro,D,80,7274
@@ -1094,7 +1094,7 @@ fantacalcio.it,Juventus,4-2-3-1,4,Lucumì,D,80,6042
 fantacalcio.it,Juventus,4-2-3-1,5,Celik,D,90,4657
 fantacalcio.it,Juventus,4-2-3-1,6,McKennie,C,90,4973
 fantacalcio.it,Juventus,4-2-3-1,7,Douglas Luiz,C,90,4911
-fantacalcio.it,Juventus,4-2-3-1,8,Conceicao,C,90,6884
+fantacalcio.it,Juventus,4-2-3-1,8,Conceicao,C,70,6884
 fantacalcio.it,Juventus,4-2-3-1,9,Gonzalez N.,C,90,4179
 fantacalcio.it,Juventus,4-2-3-1,10,Alajbegovic,C,75,7436
 fantacalcio.it,Juventus,4-2-3-1,11,Kolo Muani,A,70,5951
@@ -1127,10 +1127,10 @@ fantacalcio.it,Atalanta,4-3-3,15,Zappacosta,D,60,554
 fantacalcio.it,Atalanta,4-3-3,16,Obric,D,15,7633
 fantacalcio.it,Atalanta,4-3-3,17,Gaetano,C,60,4364
 fantacalcio.it,Atalanta,4-3-3,18,Pasalic,C,55,2077
-fantacalcio.it,Atalanta,4-3-3,19,Elmas,C,50,4479
+fantacalcio.it,Atalanta,4-3-3,19,Elmas,C,55,4479
 fantacalcio.it,Atalanta,4-3-3,20,Zalewski,C,35,5422
 fantacalcio.it,Atalanta,4-3-3,21,Krstovic,A,60,6435
-fantacalcio.it,Atalanta,4-3-3,22,Raspadori,A,55,4371
+fantacalcio.it,Atalanta,4-3-3,22,Raspadori,A,50,4371
 fantacalcio.it,Venezia,3-5-2,1,Stankovic F.,P,90,6248
 fantacalcio.it,Venezia,3-5-2,2,Schingtienne,D,90,6892
 fantacalcio.it,Venezia,3-5-2,3,Juan Jesus,D,90,256
@@ -1188,7 +1188,7 @@ fantacalcio.it,Udinese,3-4-2-1,5,Vojvoda,D,80,4994
 fantacalcio.it,Udinese,3-4-2-1,6,Miller L.,C,90,7208
 fantacalcio.it,Udinese,3-4-2-1,7,Karlstrom,C,90,6680
 fantacalcio.it,Udinese,3-4-2-1,8,Kamara H.,D,90,5555
-fantacalcio.it,Udinese,3-4-2-1,9,Zaniolo,C,70,2766
+fantacalcio.it,Udinese,3-4-2-1,9,Unai Gomez,C,70,6783
 fantacalcio.it,Udinese,3-4-2-1,10,Ekkelenkamp,C,90,6684
 fantacalcio.it,Udinese,3-4-2-1,11,Davis K.,A,70,5637
 fantacalcio.it,Udinese,3-4-2-1,12,Mrozek,P,5,7611
@@ -1203,5 +1203,4 @@ fantacalcio.it,Udinese,3-4-2-1,20,Chakvetadze,C,60,7418
 fantacalcio.it,Udinese,3-4-2-1,21,Zarraga,C,50,6212
 fantacalcio.it,Udinese,3-4-2-1,22,Jovanovic,C,20,7092
 fantacalcio.it,Udinese,3-4-2-1,23,Lovric,C,30,5850
-fantacalcio.it,Udinese,3-4-2-1,24,Unai Gomez,C,60,6783
-fantacalcio.it,Udinese,3-4-2-1,25,Bayo V.,A,60,7161
+fantacalcio.it,Udinese,3-4-2-1,24,Bayo V.,A,60,7161
